@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4078175019816DA25D9A4564 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42ED96ABDA7C8C67C86DB86F /* libPods.a */; };
+		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
+		7D6A14241B98C15600453DA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14231B98C15600453DA1 /* ViewController.swift */; };
+		7D6A14271B98C15600453DA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
+		7D6A14291B98C15600453DA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14281B98C15600453DA1 /* Images.xcassets */; };
+		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
+		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7D6A14321B98C15700453DA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D6A14141B98C15600453DA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D6A141B1B98C15600453DA1;
+			remoteInfo = VideoMaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		42ED96ABDA7C8C67C86DB86F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D6A14211B98C15600453DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7D6A14231B98C15600453DA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7D6A14261B98C15600453DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7D6A14281B98C15600453DA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7D6A142B1B98C15600453DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6A14361B98C15700453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMakerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D6A14191B98C15600453DA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4078175019816DA25D9A4564 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D6A142E1B98C15700453DA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D6A14131B98C15600453DA1 = {
+			isa = PBXGroup;
+			children = (
+				7D6A141E1B98C15600453DA1 /* VideoMaker */,
+				7D6A14341B98C15700453DA1 /* VideoMakerTests */,
+				7D6A141D1B98C15600453DA1 /* Products */,
+				EB62E34DA68EE12F47F59D81 /* Pods */,
+				C11CB4E72E49C4593853348C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7D6A141D1B98C15600453DA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A141C1B98C15600453DA1 /* VideoMaker.app */,
+				7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D6A141E1B98C15600453DA1 /* VideoMaker */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
+				7D6A14231B98C15600453DA1 /* ViewController.swift */,
+				7D6A14251B98C15600453DA1 /* Main.storyboard */,
+				7D6A14281B98C15600453DA1 /* Images.xcassets */,
+				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
+				7D6A141F1B98C15600453DA1 /* Supporting Files */,
+			);
+			path = VideoMaker;
+			sourceTree = "<group>";
+		};
+		7D6A141F1B98C15600453DA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A14201B98C15600453DA1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7D6A14341B98C15700453DA1 /* VideoMakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */,
+				7D6A14351B98C15700453DA1 /* Supporting Files */,
+			);
+			path = VideoMakerTests;
+			sourceTree = "<group>";
+		};
+		7D6A14351B98C15700453DA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A14361B98C15700453DA1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C11CB4E72E49C4593853348C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42ED96ABDA7C8C67C86DB86F /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB62E34DA68EE12F47F59D81 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */,
+				0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7D6A141B1B98C15600453DA1 /* VideoMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D6A143B1B98C15700453DA1 /* Build configuration list for PBXNativeTarget "VideoMaker" */;
+			buildPhases = (
+				BBAA3CF055F5F169CC72EA00 /* Check Pods Manifest.lock */,
+				7D6A14181B98C15600453DA1 /* Sources */,
+				7D6A14191B98C15600453DA1 /* Frameworks */,
+				7D6A141A1B98C15600453DA1 /* Resources */,
+				DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoMaker;
+			productName = VideoMaker;
+			productReference = 7D6A141C1B98C15600453DA1 /* VideoMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7D6A14301B98C15700453DA1 /* VideoMakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D6A143E1B98C15700453DA1 /* Build configuration list for PBXNativeTarget "VideoMakerTests" */;
+			buildPhases = (
+				7D6A142D1B98C15700453DA1 /* Sources */,
+				7D6A142E1B98C15700453DA1 /* Frameworks */,
+				7D6A142F1B98C15700453DA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7D6A14331B98C15700453DA1 /* PBXTargetDependency */,
+			);
+			name = VideoMakerTests;
+			productName = VideoMakerTests;
+			productReference = 7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7D6A14141B98C15600453DA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Tom;
+				TargetAttributes = {
+					7D6A141B1B98C15600453DA1 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 227D5X5CZY;
+					};
+					7D6A14301B98C15700453DA1 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 7D6A141B1B98C15600453DA1;
+					};
+				};
+			};
+			buildConfigurationList = 7D6A14171B98C15600453DA1 /* Build configuration list for PBXProject "VideoMaker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7D6A14131B98C15600453DA1;
+			productRefGroup = 7D6A141D1B98C15600453DA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7D6A141B1B98C15600453DA1 /* VideoMaker */,
+				7D6A14301B98C15700453DA1 /* VideoMakerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7D6A141A1B98C15600453DA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D6A14271B98C15600453DA1 /* Main.storyboard in Resources */,
+				7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */,
+				7D6A14291B98C15600453DA1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D6A142F1B98C15700453DA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BBAA3CF055F5F169CC72EA00 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7D6A14181B98C15600453DA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D6A14241B98C15600453DA1 /* ViewController.swift in Sources */,
+				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D6A142D1B98C15700453DA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7D6A14331B98C15700453DA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D6A141B1B98C15600453DA1 /* VideoMaker */;
+			targetProxy = 7D6A14321B98C15700453DA1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7D6A14251B98C15600453DA1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D6A14261B98C15600453DA1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D6A142B1B98C15600453DA1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7D6A14391B98C15700453DA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7D6A143A1B98C15700453DA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7D6A143C1B98C15700453DA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = VideoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7D6A143D1B98C15700453DA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = VideoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7D6A143F1B98C15700453DA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VideoMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoMaker.app/VideoMaker";
+			};
+			name = Debug;
+		};
+		7D6A14401B98C15700453DA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VideoMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoMaker.app/VideoMaker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D6A14171B98C15600453DA1 /* Build configuration list for PBXProject "VideoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D6A14391B98C15700453DA1 /* Debug */,
+				7D6A143A1B98C15700453DA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D6A143B1B98C15700453DA1 /* Build configuration list for PBXNativeTarget "VideoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D6A143C1B98C15700453DA1 /* Debug */,
+				7D6A143D1B98C15700453DA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D6A143E1B98C15700453DA1 /* Build configuration list for PBXNativeTarget "VideoMakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D6A143F1B98C15700453DA1 /* Debug */,
+				7D6A14401B98C15700453DA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7D6A14141B98C15600453DA1 /* Project object */;
+}
