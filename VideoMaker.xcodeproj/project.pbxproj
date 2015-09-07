@@ -14,6 +14,7 @@
 		7D6A14291B98C15600453DA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14281B98C15600453DA1 /* Images.xcassets */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
+		7D8999D21B9E149200F9136A /* RecordButtonTouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14361B98C15700453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMakerTests.swift; sourceTree = "<group>"; };
+		7D8999D11B9E149200F9136A /* RecordButtonTouchHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchHandler.swift; sourceTree = "<group>"; };
+		7DC97CC91B9B27A200F78F1F /* Main-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Main-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 			children = (
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
 				7D6A14231B98C15600453DA1 /* ViewController.swift */,
+				7D8999D11B9E149200F9136A /* RecordButtonTouchHandler.swift */,
 				7D6A14251B98C15600453DA1 /* Main.storyboard */,
 				7D6A14281B98C15600453DA1 /* Images.xcassets */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
@@ -97,6 +101,7 @@
 		7D6A141F1B98C15600453DA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DC97CC91B9B27A200F78F1F /* Main-Bridging-Header.h */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -273,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6A14241B98C15600453DA1 /* ViewController.swift in Sources */,
+				7D8999D21B9E149200F9136A /* RecordButtonTouchHandler.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +411,7 @@
 				INFOPLIST_FILE = VideoMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoMaker/Main-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -417,6 +424,7 @@
 				INFOPLIST_FILE = VideoMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoMaker/Main-Bridging-Header.h";
 			};
 			name = Release;
 		};
