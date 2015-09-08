@@ -1,5 +1,5 @@
 //
-//  RecordButtonTouchHandler.swift
+//  RecordButtonTouchGestureRecognizer.swift
 //  VideoMaker
 //
 //  Created by Tom on 9/7/15.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit.UIGestureRecognizerSubclass
 
-class RecordButtonTouchHandler: UIGestureRecognizer {
+class RecordButtonTouchGestureRecognizer: UIGestureRecognizer {
     override func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         if enabled {
             state = .Began

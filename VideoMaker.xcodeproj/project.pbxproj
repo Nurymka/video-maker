@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		4078175019816DA25D9A4564 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42ED96ABDA7C8C67C86DB86F /* libPods.a */; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
-		7D6A14241B98C15600453DA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14231B98C15600453DA1 /* ViewController.swift */; };
+		7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14231B98C15600453DA1 /* RecordViewController.swift */; };
 		7D6A14271B98C15600453DA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
 		7D6A14291B98C15600453DA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14281B98C15600453DA1 /* Images.xcassets */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
-		7D8999D21B9E149200F9136A /* RecordButtonTouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchHandler.swift */; };
+		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
+		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +35,15 @@
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6A14211B98C15600453DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7D6A14231B98C15600453DA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7D6A14231B98C15600453DA1 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		7D6A14261B98C15600453DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D6A14281B98C15600453DA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7D6A142B1B98C15600453DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14361B98C15700453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMakerTests.swift; sourceTree = "<group>"; };
-		7D8999D11B9E149200F9136A /* RecordButtonTouchHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchHandler.swift; sourceTree = "<group>"; };
+		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
+		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DC97CC91B9B27A200F78F1F /* Main-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Main-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,8 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
-				7D6A14231B98C15600453DA1 /* ViewController.swift */,
-				7D8999D11B9E149200F9136A /* RecordButtonTouchHandler.swift */,
+				7D6A14231B98C15600453DA1 /* RecordViewController.swift */,
+				7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */,
+				7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */,
 				7D6A14251B98C15600453DA1 /* Main.storyboard */,
 				7D6A14281B98C15600453DA1 /* Images.xcassets */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
@@ -277,8 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D6A14241B98C15600453DA1 /* ViewController.swift in Sources */,
-				7D8999D21B9E149200F9136A /* RecordButtonTouchHandler.swift in Sources */,
+				7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */,
+				7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */,
+				7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
