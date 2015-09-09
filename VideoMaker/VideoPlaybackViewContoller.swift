@@ -11,7 +11,7 @@ import UIKit
 
 class VideoPlaybackViewController: UIViewController {
     
-    @IBOutlet weak var videoPlaybackView: UIView!
+    @IBOutlet weak var filterSwipableView: SCSwipeableFilterView!
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
@@ -21,22 +21,34 @@ class VideoPlaybackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         player = SCPlayer()
-        player?.setItemByAsset(recordSession?.assetRepresentingSegments())
         player?.loopEnabled = true
-        playerLayer = AVPlayerLayer(player: player)
-        videoPlaybackView.layer.addSublayer(playerLayer)
-        
+        filterSwipableView.refreshAutomaticallyWhenScrolling = false // can't tell what this does, but it is false in the examples, so better stay it
+        filterSwipableView.contentMode = .ScaleAspectFit
+        let emptyFilter = SCFilter()
+        emptyFilter.name = "No Filter"
+        filterSwipableView.filters = [emptyFilter,
+                                      SCFilter(CIFilterName: "CIPhotoEffectChrome"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectFade"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectInstant"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectMono"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectNoir"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectProcess"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectTonal"),
+                                      SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
+        player?.CIImageRenderer = filterSwipableView
+        player?.loopEnabled = true
         // add "save to camera roll" button on the right side
         var btnSaveToCameraRoll = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveToCameraRollPressed:")
         navigationItem.rightBarButtonItem = btnSaveToCameraRoll
     }
     
     override func viewWillAppear(animated: Bool) {
+        player?.setItemByAsset(recordSession?.assetRepresentingSegments())
         player?.play()
     }
     
     override func viewDidLayoutSubviews() {
-        playerLayer?.frame = videoPlaybackView.bounds
+        playerLayer?.frame = filterSwipableView.bounds
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -61,7 +73,8 @@ class VideoPlaybackViewController: UIViewController {
         assetExport.outputUrl = recordSession?.outputUrl
         assetExport.outputFileType = AVFileTypeMPEG4
         assetExport.videoConfiguration.preset = SCPresetHighestQuality
-        
+        assetExport.audioConfiguration.preset = SCPresetHighestQuality
+        assetExport.videoConfiguration.filter = filterSwipableView.selectedFilter
         let timestamp = CACurrentMediaTime()
         assetExport.exportAsynchronouslyWithCompletionHandler({
             println(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))

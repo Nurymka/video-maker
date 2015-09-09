@@ -86,6 +86,14 @@ class RecordViewController: UIViewController {
         }
     }
     
+    @IBAction func retakeButtonPressed(sender: AnyObject) {
+        if (recorder.session != nil) {
+            recorder.pause()
+            recorder.session?.cancelSession({})
+            recorder.session = nil
+            prepareSession()
+        }
+    }
     
 // MARK: - Misc
     func prepareSession() {
@@ -94,11 +102,21 @@ class RecordViewController: UIViewController {
             var session = SCRecordSession()
             session.fileType = AVFileTypeMPEG4
             recorder.session = session
+            updateRecordingTimeLabel()
         }
     }
     
     func showVideo() {
         performSegueWithIdentifier("Show Video", sender: self)
+    }
+    
+    func updateRecordingTimeLabel() {
+        if let duration = recorder.session?.duration {
+            recordingTimeLabel.text = String(format: "Recording Time: %0.2f", CMTimeGetSeconds(duration))
+        }
+        else {
+            recordingTimeLabel.text = "Recording Time: 0.00"
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -129,11 +147,6 @@ extension RecordViewController: SCRecorderDelegate {
 
     func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession)
     {
-        if let duration = recorder.session?.duration {
-            recordingTimeLabel.text = String(format: "Recording Time: %0.2f", CMTimeGetSeconds(duration))
-        }
-        else {
-            recordingTimeLabel.text = "Recording Time: 0.00"
-        }
+        updateRecordingTimeLabel()
     }
 }
