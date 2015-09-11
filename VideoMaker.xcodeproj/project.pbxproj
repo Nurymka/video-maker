@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4078175019816DA25D9A4564 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42ED96ABDA7C8C67C86DB86F /* libPods.a */; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14231B98C15600453DA1 /* RecordViewController.swift */; };
 		7D6A14271B98C15600453DA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
@@ -16,6 +15,7 @@
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
+		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		42ED96ABDA7C8C67C86DB86F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,7 +43,7 @@
 		7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMakerTests.swift; sourceTree = "<group>"; };
 		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
-		7DC97CC91B9B27A200F78F1F /* Main-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Main-Bridging-Header.h"; sourceTree = "<group>"; };
+		FBB2B16BB987F261E35EE3DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4078175019816DA25D9A4564 /* libPods.a in Frameworks */,
+				8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +103,6 @@
 		7D6A141F1B98C15600453DA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7DC97CC91B9B27A200F78F1F /* Main-Bridging-Header.h */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -130,7 +128,7 @@
 		C11CB4E72E49C4593853348C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				42ED96ABDA7C8C67C86DB86F /* libPods.a */,
+				FBB2B16BB987F261E35EE3DE /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -156,6 +154,7 @@
 				7D6A14191B98C15600453DA1 /* Frameworks */,
 				7D6A141A1B98C15600453DA1 /* Resources */,
 				DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */,
+				BF7E4DF84E3898AC7ADBAC9D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +255,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BF7E4DF84E3898AC7ADBAC9D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */ = {
@@ -415,7 +429,6 @@
 				INFOPLIST_FILE = VideoMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "VideoMaker/Main-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -428,7 +441,6 @@
 				INFOPLIST_FILE = VideoMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "VideoMaker/Main-Bridging-Header.h";
 			};
 			name = Release;
 		};

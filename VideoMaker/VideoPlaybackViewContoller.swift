@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SCRecorder
 
 class VideoPlaybackViewController: UIViewController {
     
@@ -15,7 +16,8 @@ class VideoPlaybackViewController: UIViewController {
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
-
+    var segmentsRecordedTimeScale: [Float] = []
+    var composition: AVMutableComposition?
 // MARK: - View Controller Cycle
     
     override func viewDidLoad() {
@@ -37,14 +39,53 @@ class VideoPlaybackViewController: UIViewController {
                                       SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
         player?.CIImageRenderer = filterSwipableView
         player?.loopEnabled = true
+        
+        // speeding up/slowing down the video
+        composition = AVMutableComposition()
+        var mutableCompositionVideoTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
+        var mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
+        if let arrayCount = recordSession?.segments.count {
+            var currentAudioTime = kCMTimeZero
+            var currentVideoTime = kCMTimeZero
+            for index in 0..<arrayCount {
+                var segment = recordSession?.segments[index] as! SCRecordSessionSegment
+                var audioAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeAudio)
+                var videoAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeVideo)
+                
+                if let unwrapAudioAssetTracks = audioAssetTracks {
+                    for audioAssetTrack in unwrapAudioAssetTracks {
+                        let audioAssetTrack = audioAssetTrack as! AVAssetTrack
+                        mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, audioAssetTrack.timeRange.duration), ofTrack:audioAssetTrack, atTime:currentAudioTime, error: nil)
+                        var scaledDuration = CMTimeMultiplyByFloat64(audioAssetTrack.timeRange.duration, Float64(segmentsRecordedTimeScale[index]))
+                        mutableCompositionAudioTrack?.scaleTimeRange(CMTimeRangeMake(currentAudioTime, audioAssetTrack.timeRange.duration), toDuration:scaledDuration)
+                        currentAudioTime = CMTimeAdd(currentVideoTime, scaledDuration)
+                    }
+                }
+
+                if let unwrapVideoAssetTracks = videoAssetTracks {
+                    for videoAssetTrack in unwrapVideoAssetTracks {
+                        let videoAssetTrack = videoAssetTrack as! AVAssetTrack
+                        mutableCompositionVideoTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration), ofTrack:videoAssetTrack, atTime:currentVideoTime, error:nil)
+                        var scaledDuration = CMTimeMultiplyByFloat64(videoAssetTrack.timeRange.duration, Float64(segmentsRecordedTimeScale[index]))
+                        mutableCompositionVideoTrack?.scaleTimeRange(CMTimeRangeMake(currentVideoTime, videoAssetTrack.timeRange.duration), toDuration:scaledDuration)
+                        currentVideoTime = CMTimeAdd(currentVideoTime, scaledDuration)
+                        
+                    }
+                }
+            }
+            
+        }
+        
         // add "save to camera roll" button on the right side
         var btnSaveToCameraRoll = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveToCameraRollPressed:")
         navigationItem.rightBarButtonItem = btnSaveToCameraRoll
     }
     
     override func viewWillAppear(animated: Bool) {
-        player?.setItemByAsset(recordSession?.assetRepresentingSegments())
+        //player?.setItemByAsset(recordSession?.assetRepresentingSegments())
+        player?.setItemByAsset(composition)
         player?.play()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,7 +106,7 @@ class VideoPlaybackViewController: UIViewController {
     {
         player?.pause()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        let segmentsAsset = recordSession?.assetRepresentingSegments()
+        let segmentsAsset = composition
         var assetExport = SCAssetExportSession()
         if let asset = segmentsAsset {
             assetExport = SCAssetExportSession(asset: asset)
@@ -99,4 +140,6 @@ class VideoPlaybackViewController: UIViewController {
             UIAlertView(title: "Failed to save", message: "'", delegate: nil, cancelButtonTitle: "Okay").show()
         }
     }
+    
+    
 }

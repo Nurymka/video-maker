@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import SCRecorder
 
 class RecordViewController: UIViewController {
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var tapToRecordView: UIView!
     @IBOutlet weak var recordingTimeLabel: UILabel!
-    
+    @IBOutlet weak var recordingSpeedSegmentedControl: UISegmentedControl!
+
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
-    
+    var segmentTimeScale: [Float] = [] // each index corresponds to the time scale of a particular segment, used in VideoPlaybackViewController for speeding up/slowing down videos
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,6 @@ class RecordViewController: UIViewController {
         recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
         recorder.previewView = previewView
         recorder.delegate = self
-        
         tapToRecordView.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
     }
     
@@ -95,6 +96,12 @@ class RecordViewController: UIViewController {
         }
     }
     
+    @IBAction func recordingSpeedValueChanged(sender: AnyObject) {
+        let segmentedControl = sender as! UISegmentedControl
+        
+        println("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
+    }
+    
 // MARK: - Misc
     func prepareSession() {
         if (recorder.session == nil)
@@ -102,6 +109,7 @@ class RecordViewController: UIViewController {
             var session = SCRecordSession()
             session.fileType = AVFileTypeMPEG4
             recorder.session = session
+            segmentTimeScale = []
             updateRecordingTimeLabel()
         }
     }
@@ -123,9 +131,28 @@ class RecordViewController: UIViewController {
         if (segue.identifier == "Show Video") {
             var videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
             videoPlaybackViewController.recordSession = recordSession
+            videoPlaybackViewController.segmentsRecordedTimeScale = segmentTimeScale
         }
     }
     
+    func getVideoTimeScaleFromUISegment(index: Int) -> Float {
+        var retTimeScale: Float
+        switch (index) {
+        case 0:
+            retTimeScale = 4
+        case 1:
+            retTimeScale = 2
+        case 2:
+            retTimeScale = 1.0
+        case 3:
+            retTimeScale = 0.75
+        case 4:
+            retTimeScale = 0.5
+        default:
+            retTimeScale = 1.0
+        }
+        return retTimeScale
+    }
 }
 
 extension RecordViewController: SCRecorderDelegate {
@@ -148,5 +175,11 @@ extension RecordViewController: SCRecorderDelegate {
     func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession)
     {
         updateRecordingTimeLabel()
+    }
+    
+    func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {
+        if (error == nil) {
+            segmentTimeScale.append(getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex))
+        }
     }
 }

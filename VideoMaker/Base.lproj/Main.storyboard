@@ -37,21 +37,6 @@
                                             <action selector="recordingFinished:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ByS-Zc-chd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording Time: 0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqJ-Vs-lyd">
-                                        <rect key="frame" x="218" y="46" width="164" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.2901960784" green="0.6705882353" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI">
-                                        <rect key="frame" x="300" y="470" width="150" height="130"/>
-                                        <state key="normal" title="Retake">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="retakeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gea-yX-Rwl"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-AV-Mdq" userLabel="Tap and Hold to Record View">
                                         <rect key="frame" x="0.0" y="470" width="300" height="130"/>
                                         <subviews>
@@ -71,11 +56,41 @@
                                             <constraint firstItem="Npw-1o-Jd7" firstAttribute="centerX" secondItem="fCp-AV-Mdq" secondAttribute="centerX" id="wB7-Ff-SSo"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording Time: 0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqJ-Vs-lyd">
+                                        <rect key="frame" x="218" y="46" width="164" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.2901960784" green="0.6705882353" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI">
+                                        <rect key="frame" x="300" y="470" width="150" height="130"/>
+                                        <state key="normal" title="Retake">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="retakeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gea-yX-Rwl"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-PY-y1A">
+                                        <rect key="frame" x="30" y="434" width="540" height="29"/>
+                                        <segments>
+                                            <segment title="0.25x"/>
+                                            <segment title="0.5x"/>
+                                            <segment title="1x"/>
+                                            <segment title="1.5x"/>
+                                            <segment title="2x"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="recordingSpeedValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="qNa-qX-huG"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="e3e-BD-J2q" secondAttribute="bottom" id="5On-Yk-ttG"/>
                                     <constraint firstItem="cmA-fn-joI" firstAttribute="width" secondItem="WQJ-Nl-Hbb" secondAttribute="width" multiplier="0.25" id="8eD-lW-Jom"/>
+                                    <constraint firstAttribute="centerX" secondItem="5QG-PY-y1A" secondAttribute="centerX" id="AAK-AG-aMU"/>
+                                    <constraint firstItem="fCp-AV-Mdq" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="8" id="Ble-kT-3hG"/>
                                     <constraint firstItem="fCp-AV-Mdq" firstAttribute="top" secondItem="cmA-fn-joI" secondAttribute="top" id="Fcy-Ia-iEG"/>
                                     <constraint firstAttribute="trailing" secondItem="e3e-BD-J2q" secondAttribute="trailing" id="J1r-Dp-lbl"/>
                                     <constraint firstItem="TGD-RC-yfA" firstAttribute="top" secondItem="WQJ-Nl-Hbb" secondAttribute="topMargin" id="Pak-il-X3I"/>
@@ -85,6 +100,7 @@
                                     <constraint firstItem="fCp-AV-Mdq" firstAttribute="top" secondItem="e3e-BD-J2q" secondAttribute="top" id="ZK1-6N-ryh"/>
                                     <constraint firstItem="TGD-RC-yfA" firstAttribute="centerX" secondItem="RqJ-Vs-lyd" secondAttribute="centerX" id="bDR-59-dYg"/>
                                     <constraint firstItem="RqJ-Vs-lyd" firstAttribute="top" secondItem="TGD-RC-yfA" secondAttribute="bottom" constant="8" symbolic="YES" id="gN1-Mr-fHw"/>
+                                    <constraint firstItem="5QG-PY-y1A" firstAttribute="width" secondItem="WQJ-Nl-Hbb" secondAttribute="width" multiplier="0.9" id="gr0-6W-i41"/>
                                     <constraint firstAttribute="bottom" secondItem="cmA-fn-joI" secondAttribute="bottom" id="iS4-hE-iyX"/>
                                     <constraint firstItem="fCp-AV-Mdq" firstAttribute="leading" secondItem="WQJ-Nl-Hbb" secondAttribute="leading" id="kDi-h9-u33"/>
                                     <constraint firstItem="cmA-fn-joI" firstAttribute="width" secondItem="e3e-BD-J2q" secondAttribute="width" id="s6L-4I-JZp"/>
@@ -105,6 +121,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="previewView" destination="WQJ-Nl-Hbb" id="ARA-gF-gOc"/>
+                        <outlet property="recordingSpeedSegmentedControl" destination="5QG-PY-y1A" id="aSm-6i-gu6"/>
                         <outlet property="recordingTimeLabel" destination="RqJ-Vs-lyd" id="lfN-dw-OB8"/>
                         <outlet property="tapToRecordView" destination="fCp-AV-Mdq" id="rmL-W2-Awi"/>
                         <segue destination="McN-6d-tRK" kind="show" identifier="Show Video" id="vg3-zL-j0n"/>
