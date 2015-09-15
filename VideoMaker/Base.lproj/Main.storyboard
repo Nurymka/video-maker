@@ -147,16 +147,37 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCP-dy-H8l">
+                                <rect key="frame" x="512" y="72" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Ola-EX-WYX"/>
+                                    <constraint firstAttribute="height" constant="80" id="frW-kv-QOQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
+                                <state key="normal" title="T">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="insertCaptionPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="lcs-V4-hRj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VCP-dy-H8l" firstAttribute="top" secondItem="fsT-ZC-4gu" secondAttribute="bottom" constant="8" id="0Gb-xE-dhQ"/>
+                            <constraint firstAttribute="trailing" secondItem="VCP-dy-H8l" secondAttribute="trailing" constant="8" id="AAh-pj-2lx"/>
                             <constraint firstItem="FrG-rf-qba" firstAttribute="leading" secondItem="Vc1-M0-u7K" secondAttribute="leading" id="OWt-SP-Rq4"/>
                             <constraint firstAttribute="trailing" secondItem="FrG-rf-qba" secondAttribute="trailing" id="Tco-1t-CkQ"/>
                             <constraint firstItem="FrG-rf-qba" firstAttribute="top" secondItem="Vc1-M0-u7K" secondAttribute="top" id="WpY-ee-Gsj"/>
                             <constraint firstItem="FrG-rf-qba" firstAttribute="bottom" secondItem="7pE-eW-Uht" secondAttribute="top" id="ey8-U9-ByE"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationItem key="navigationItem" id="e6O-jR-oYD">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bLP-TU-hCl"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="filterSwipableView" destination="FrG-rf-qba" id="1xb-k1-rz3"/>
                     </connections>

@@ -18,8 +18,8 @@ class RecordViewController: UIViewController {
 
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
-    var segmentTimeScale: [Float] = [] // each index corresponds to the time scale of a particular segment, used in VideoPlaybackViewController for speeding up/slowing down videos
-// MARK: - View Controller Cycle
+
+    // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,7 +64,7 @@ class RecordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-// MARK: - Button Touch Handlers
+    // MARK: - Button Touch Handlers
     @IBAction func reverseCameraButtonPressed(sender: AnyObject) {
         recorder.switchCaptureDevices()
     }
@@ -102,14 +102,13 @@ class RecordViewController: UIViewController {
         println("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
     }
     
-// MARK: - Misc
+    // MARK: - Misc
     func prepareSession() {
         if (recorder.session == nil)
         {
             var session = SCRecordSession()
             session.fileType = AVFileTypeMPEG4
             recorder.session = session
-            segmentTimeScale = []
             updateRecordingTimeLabel()
         }
     }
@@ -131,27 +130,18 @@ class RecordViewController: UIViewController {
         if (segue.identifier == "Show Video") {
             var videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
             videoPlaybackViewController.recordSession = recordSession
-            videoPlaybackViewController.segmentsRecordedTimeScale = segmentTimeScale
         }
     }
     
     func getVideoTimeScaleFromUISegment(index: Int) -> Float {
-        var retTimeScale: Float
         switch (index) {
-        case 0:
-            retTimeScale = 4
-        case 1:
-            retTimeScale = 2
-        case 2:
-            retTimeScale = 1.0
-        case 3:
-            retTimeScale = 0.75
-        case 4:
-            retTimeScale = 0.5
-        default:
-            retTimeScale = 1.0
+        case 0: return 4.0
+        case 1: return 2.0
+        case 2: return 1.0
+        case 3: return 0.75
+        case 4: return 0.5
+        default: return 1.0
         }
-        return retTimeScale
     }
 }
 
@@ -177,9 +167,7 @@ extension RecordViewController: SCRecorderDelegate {
         updateRecordingTimeLabel()
     }
     
-    func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {
-        if (error == nil) {
-            segmentTimeScale.append(getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex))
-        }
+    func createSegmentInfoForRecorder(recorder: SCRecorder) -> [NSObject : AnyObject]? {
+        return ["timescale" : getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex)]
     }
 }

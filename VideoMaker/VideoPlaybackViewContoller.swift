@@ -16,8 +16,9 @@ class VideoPlaybackViewController: UIViewController {
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
-    var segmentsRecordedTimeScale: [Float] = []
     var composition: AVMutableComposition?
+    var overlayCaptionView: UIView?
+    
 // MARK: - View Controller Cycle
     
     override func viewDidLoad() {
@@ -39,46 +40,40 @@ class VideoPlaybackViewController: UIViewController {
                                       SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
         player?.CIImageRenderer = filterSwipableView
         player?.loopEnabled = true
+
         
         // speeding up/slowing down the video
         composition = AVMutableComposition()
-        var mutableCompositionVideoTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
-        var mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-        if let arrayCount = recordSession?.segments.count {
+        let mutableCompositionVideoTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
+        let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
+
+        if let segments = recordSession?.segments as? [SCRecordSessionSegment] {
             var currentAudioTime = kCMTimeZero
             var currentVideoTime = kCMTimeZero
-            for index in 0..<arrayCount {
-                var segment = recordSession?.segments[index] as! SCRecordSessionSegment
-                var audioAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeAudio)
-                var videoAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeVideo)
-                
-                if let unwrapAudioAssetTracks = audioAssetTracks {
-                    for audioAssetTrack in unwrapAudioAssetTracks {
+            for segment in segments {
+                if let audioAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeAudio) {
+                    for audioAssetTrack in audioAssetTracks {
                         let audioAssetTrack = audioAssetTrack as! AVAssetTrack
-                        mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, audioAssetTrack.timeRange.duration), ofTrack:audioAssetTrack, atTime:currentAudioTime, error: nil)
-                        var scaledDuration = CMTimeMultiplyByFloat64(audioAssetTrack.timeRange.duration, Float64(segmentsRecordedTimeScale[index]))
-                        mutableCompositionAudioTrack?.scaleTimeRange(CMTimeRangeMake(currentAudioTime, audioAssetTrack.timeRange.duration), toDuration:scaledDuration)
-                        currentAudioTime = CMTimeAdd(currentVideoTime, scaledDuration)
+                        mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, audioAssetTrack.timeRange.duration), ofTrack: audioAssetTrack, atTime: currentAudioTime, error: nil)
+                        let timescale = segment.info?["timescale"] as! Float
+                        let scaledDuration = CMTimeMultiplyByFloat64(audioAssetTrack.timeRange.duration, Float64(timescale))
+                        mutableCompositionAudioTrack?.scaleTimeRange(CMTimeRangeMake(currentAudioTime, audioAssetTrack.timeRange.duration), toDuration: scaledDuration)
+                        currentAudioTime = CMTimeAdd(currentAudioTime, scaledDuration)
                     }
                 }
-
-                if let unwrapVideoAssetTracks = videoAssetTracks {
-                    for videoAssetTrack in unwrapVideoAssetTracks {
+                
+                if let videoAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeVideo) {
+                    for videoAssetTrack in videoAssetTracks {
                         let videoAssetTrack = videoAssetTrack as! AVAssetTrack
                         mutableCompositionVideoTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration), ofTrack:videoAssetTrack, atTime:currentVideoTime, error:nil)
-                        var scaledDuration = CMTimeMultiplyByFloat64(videoAssetTrack.timeRange.duration, Float64(segmentsRecordedTimeScale[index]))
+                        let timescale = segment.info?["timescale"] as! Float
+                        let scaledDuration = CMTimeMultiplyByFloat64(videoAssetTrack.timeRange.duration, Float64(timescale))
                         mutableCompositionVideoTrack?.scaleTimeRange(CMTimeRangeMake(currentVideoTime, videoAssetTrack.timeRange.duration), toDuration:scaledDuration)
                         currentVideoTime = CMTimeAdd(currentVideoTime, scaledDuration)
-                        
                     }
                 }
             }
-            
         }
-        
-        // add "save to camera roll" button on the right side
-        var btnSaveToCameraRoll = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveToCameraRollPressed:")
-        navigationItem.rightBarButtonItem = btnSaveToCameraRoll
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -102,7 +97,7 @@ class VideoPlaybackViewController: UIViewController {
     
 // MARK: - Button Touch Handlers
     
-    func saveToCameraRollPressed(sender: AnyObject)
+    @IBAction func saveToCameraRollPressed(sender: AnyObject)
     {
         player?.pause()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
@@ -113,9 +108,13 @@ class VideoPlaybackViewController: UIViewController {
         }
         assetExport.outputUrl = recordSession?.outputUrl
         assetExport.outputFileType = AVFileTypeMPEG4
-        assetExport.videoConfiguration.preset = SCPresetHighestQuality
         assetExport.audioConfiguration.preset = SCPresetHighestQuality
+        assetExport.videoConfiguration.preset = SCPresetHighestQuality
         assetExport.videoConfiguration.filter = filterSwipableView.selectedFilter
+        if let overlayView = overlayCaptionView {
+            assetExport.videoConfiguration.overlay = overlayView
+        }
+        assetExport.videoConfiguration.maxFrameRate = 35
         let timestamp = CACurrentMediaTime()
         assetExport.exportAsynchronouslyWithCompletionHandler({
             println(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
@@ -129,6 +128,12 @@ class VideoPlaybackViewController: UIViewController {
         })
     }
     
+    @IBAction func insertCaptionPressed(sender: AnyObject) {
+        overlayCaptionView = OverlayCaptionView(frame: view.frame)
+        if let overlayView = overlayCaptionView {
+            view.addSubview(overlayView)
+        }
+    }
 // MARK: - Misc
     
     func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
