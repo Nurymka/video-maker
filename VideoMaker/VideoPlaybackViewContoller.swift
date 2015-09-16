@@ -12,12 +12,15 @@ import SCRecorder
 
 class VideoPlaybackViewController: UIViewController {
     
+    @IBOutlet weak var insertCaptionButton: UIButton!
     @IBOutlet weak var filterSwipableView: SCSwipeableFilterView!
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
     var composition: AVMutableComposition?
-    var overlayCaptionView: UIView?
+    var captionView: OverlayCaptionView?
+    var captionViewPanGestureRecognizer: UIPanGestureRecognizer?
+    var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal
     
 // MARK: - View Controller Cycle
     
@@ -85,6 +88,7 @@ class VideoPlaybackViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         playerLayer?.frame = filterSwipableView.bounds
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -111,8 +115,8 @@ class VideoPlaybackViewController: UIViewController {
         assetExport.audioConfiguration.preset = SCPresetHighestQuality
         assetExport.videoConfiguration.preset = SCPresetHighestQuality
         assetExport.videoConfiguration.filter = filterSwipableView.selectedFilter
-        if let overlayView = overlayCaptionView {
-            assetExport.videoConfiguration.overlay = overlayView
+        if let captionView = captionView {
+            assetExport.videoConfiguration.overlay = captionView
         }
         assetExport.videoConfiguration.maxFrameRate = 35
         let timestamp = CACurrentMediaTime()
@@ -129,12 +133,57 @@ class VideoPlaybackViewController: UIViewController {
     }
     
     @IBAction func insertCaptionPressed(sender: AnyObject) {
-        overlayCaptionView = OverlayCaptionView(frame: view.frame)
-        if let overlayView = overlayCaptionView {
-            view.addSubview(overlayView)
+        if captionView == nil {
+            tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+            if let recognizer = tapGestureRecognizer {
+                self.view.addGestureRecognizer(recognizer)
+            }
+            captionView = OverlayCaptionView(frame: view.frame)
+            captionViewPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "captionPanGestureRecognized:")
+            if let captionView = captionView {
+                if let gestureRecognizer = captionViewPanGestureRecognizer {
+                    captionView.addGestureRecognizer(gestureRecognizer)
+                    view.addSubview(captionView)
+                    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object:nil)
+                }
+            }
         }
     }
+    
+    func captionPanGestureRecognized(recognizer: UIPanGestureRecognizer) {
+        let translationPoint = recognizer.translationInView(self.view)
+        if let view = recognizer.view {
+            if view.center.y + translationPoint.y > CGRectGetMaxY(insertCaptionButton.frame) && view.center.y + translationPoint.y < self.view.frame.height - 60 { // 60 is temporary, change when new ui elements will be there
+                view.center = CGPointMake(view.center.x, view.center.y + translationPoint.y)
+                captionView?.viewPercentageYPos = view.frame.origin.y / self.view.frame.height
+                recognizer.setTranslation(CGPointMake(0, 0), inView:self.view)
+            }
+        }
+    }
+    
+    func dismissKeyboard(recognizer: UITapGestureRecognizer) {
+        if let isEditing = captionView?.textField.editing {
+            if isEditing == true {
+                captionView?.textField.endEditing(true)
+            }
+        }
+    }
+    
 // MARK: - Misc
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let captionView = captionView {
+            if captionView.textField.isFirstResponder() == true {
+                let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+                let animationDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+                UIView.animateWithDuration(animationDuration, animations: {
+                    captionView.frame = CGRect(x: captionView.frame.origin.x, y: keyboardFrame.origin.y - captionView.frame.size.height, width: captionView.frame.size.width, height: captionView.frame.size.height)
+                }, completion: { (Bool) -> Void in
+                    captionView.viewPercentageYPos = captionView.frame.origin.y / self.view.frame.height
+                })
+            }
+        }
+    }
     
     func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -145,6 +194,5 @@ class VideoPlaybackViewController: UIViewController {
             UIAlertView(title: "Failed to save", message: "'", delegate: nil, cancelButtonTitle: "Okay").show()
         }
     }
-    
     
 }

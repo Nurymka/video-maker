@@ -175,11 +175,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="e6O-jR-oYD">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bLP-TU-hCl"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bLP-TU-hCl">
+                            <connections>
+                                <action selector="saveToCameraRollPressed:" destination="McN-6d-tRK" id="MqM-fI-Jlf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="filterSwipableView" destination="FrG-rf-qba" id="1xb-k1-rz3"/>
+                        <outlet property="insertCaptionButton" destination="VCP-dy-H8l" id="iPp-9x-I68"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gy-OC-B4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
