@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 import SCRecorder
 
+protocol OverlayCaptionViewDelegate {
+    func keyboardReturnWithEmptyString()
+}
+
 class OverlayCaptionView: UIView {
     var textField: UITextField!
     var isFrameSet: Bool = false
     var viewPercentageYPos: CGFloat = 0.0
     var screenToCaptionHeightRatio: CGFloat = 0.0
+    var delegate: OverlayCaptionViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,9 +45,9 @@ class OverlayCaptionView: UIView {
             isFrameSet = true
         } else {
             textField.frame = CGRect(x: 0.0, y: frame.size.height * viewPercentageYPos, width: frame.size.width, height: frame.size.height / screenToCaptionHeightRatio)
-            textField.font = fontToFitHeight(30, maxFontSize: 70, labelText: textField.text, font: textField.font)
+            textField.font = fontToFitHeight(30, maxFontSize: 70, labelText: textField.text!, font: textField.font!)
         }
-        println("layoutSubviews")
+        print("layoutSubviews")
     }
     
     required init (coder aDecoder: NSCoder) {
@@ -56,7 +61,7 @@ class OverlayCaptionView: UIView {
         var maxFontSize = maxFontSize
         var fontSizeAverage: CGFloat = 0
         var textAndLabelHeightDiff: CGFloat = 0
-        var font = font
+        let font = font
     
         while (minFontSize <= maxFontSize) {
             fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
@@ -89,15 +94,15 @@ class OverlayCaptionView: UIView {
 
 extension OverlayCaptionView: SCVideoOverlay {
     func updateWithVideoTime(time: NSTimeInterval) {
-        println("updatewithVideoTime, time: \(time)")
+        print("updatewithVideoTime, time: \(time)")
     }
 }
 
 extension OverlayCaptionView: UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let newString = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string) as NSString
-        let textSize = newString.sizeWithAttributes([NSFontAttributeName : textField.font])
+        let newString = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string) as NSString
+        let textSize = newString.sizeWithAttributes([NSFontAttributeName : textField.font!])
         return (textSize.width < textField.bounds.size.width) ? true : false
     }
     
@@ -107,6 +112,9 @@ extension OverlayCaptionView: UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if textField.text == "" {
+            delegate?.keyboardReturnWithEmptyString()
+        }
         return true
     }
 }

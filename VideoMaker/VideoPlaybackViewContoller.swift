@@ -56,8 +56,11 @@ class VideoPlaybackViewController: UIViewController {
             for segment in segments {
                 if let audioAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeAudio) {
                     for audioAssetTrack in audioAssetTracks {
-                        let audioAssetTrack = audioAssetTrack as! AVAssetTrack
-                        mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, audioAssetTrack.timeRange.duration), ofTrack: audioAssetTrack, atTime: currentAudioTime, error: nil)
+                        do {
+                            try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, audioAssetTrack.timeRange.duration), ofTrack: audioAssetTrack, atTime: currentAudioTime)
+                        } catch {
+                            print("Mutable Audio Composition Track couldn't add a timeRange")
+                        }
                         let timescale = segment.info?["timescale"] as! Float
                         let scaledDuration = CMTimeMultiplyByFloat64(audioAssetTrack.timeRange.duration, Float64(timescale))
                         mutableCompositionAudioTrack?.scaleTimeRange(CMTimeRangeMake(currentAudioTime, audioAssetTrack.timeRange.duration), toDuration: scaledDuration)
@@ -67,8 +70,11 @@ class VideoPlaybackViewController: UIViewController {
                 
                 if let videoAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeVideo) {
                     for videoAssetTrack in videoAssetTracks {
-                        let videoAssetTrack = videoAssetTrack as! AVAssetTrack
-                        mutableCompositionVideoTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration), ofTrack:videoAssetTrack, atTime:currentVideoTime, error:nil)
+                        do {
+                         try mutableCompositionVideoTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration), ofTrack:videoAssetTrack, atTime:currentVideoTime)
+                        } catch {
+                            print("Mutable Video Composition Track couldn't adda timeRange")
+                        }
                         let timescale = segment.info?["timescale"] as! Float
                         let scaledDuration = CMTimeMultiplyByFloat64(videoAssetTrack.timeRange.duration, Float64(timescale))
                         mutableCompositionVideoTrack?.scaleTimeRange(CMTimeRangeMake(currentVideoTime, videoAssetTrack.timeRange.duration), toDuration:scaledDuration)
@@ -121,9 +127,11 @@ class VideoPlaybackViewController: UIViewController {
         assetExport.videoConfiguration.maxFrameRate = 35
         let timestamp = CACurrentMediaTime()
         assetExport.exportAsynchronouslyWithCompletionHandler({
-            println(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
+            print(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
             if (assetExport.error == nil) {
-                UISaveVideoAtPathToSavedPhotosAlbum(assetExport.outputUrl?.path, self, "video:didFinishSavingWithError:contextInfo:", nil)
+                if let path = assetExport.outputUrl?.path {
+                    UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
+                }
             }
             else {
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -168,6 +176,15 @@ class VideoPlaybackViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func chooseMusicTrack(sender: AnyObject) {
+        performSegueWithIdentifier("Choose Music Track", sender: self)
+//        Alamofire.request(.GET, "http://api2.zhiliaoapp.com/1.1/search", parameters: ["limit" : 20, "offset" : 0, "term" : "Eminem"]) .responseJSON { _, _, result in
+//                print(result)
+//                debugPrint(result)
+//            }
+    }
+    
     
 // MARK: - Misc
     

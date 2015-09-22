@@ -6,3 +6,6 @@ inhibit_all_warnings!
 use_frameworks!
 
 pod 'SCRecorder', '~> 2.5'
+pod 'Alamofire', '~> 2.0'
+pod 'SwiftyJSON'
+pod 'AlamofireImage', '~> 1.0'

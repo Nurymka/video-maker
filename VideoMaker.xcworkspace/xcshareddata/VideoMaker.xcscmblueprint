@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C772288A8864A8DAC69434C5AA489E70C33230D0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C772288A8864A8DAC69434C5AA489E70C33230D0" : 0,
+    "19E8779425E2998F859064A5F8A7629F737A4088" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "14B087D0-FF56-411F-B0C7-79B1B697078D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C772288A8864A8DAC69434C5AA489E70C33230D0" : "VideoMaker",
+    "19E8779425E2998F859064A5F8A7629F737A4088" : "Taylr\/enios"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VideoMaker",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VideoMaker.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/echonest\/enios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "19E8779425E2998F859064A5F8A7629F737A4088"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:s10tv\/video-maker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C772288A8864A8DAC69434C5AA489E70C33230D0"
+    }
+  ]
+}

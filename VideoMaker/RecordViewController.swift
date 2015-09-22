@@ -25,7 +25,7 @@ class RecordViewController: UIViewController {
 
         recorder = SCRecorder()
         if !recorder.startRunning() {
-            println("something went wrong: \(recorder.error)")
+            print("something went wrong: \(recorder.error)")
         }
         recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
         recorder.previewView = previewView
@@ -99,14 +99,14 @@ class RecordViewController: UIViewController {
     @IBAction func recordingSpeedValueChanged(sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
         
-        println("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
+        print("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
     }
     
     // MARK: - Misc
     func prepareSession() {
         if (recorder.session == nil)
         {
-            var session = SCRecordSession()
+            let session = SCRecordSession()
             session.fileType = AVFileTypeMPEG4
             recorder.session = session
             updateRecordingTimeLabel()
@@ -128,7 +128,7 @@ class RecordViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "Show Video") {
-            var videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
+            let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
             videoPlaybackViewController.recordSession = recordSession
         }
     }
@@ -149,16 +149,16 @@ extension RecordViewController: SCRecorderDelegate {
     
     func recorder(recorder: SCRecorder, didReconfigureAudioInput audioInputError: NSError?) {
         
-        println("Reconfigured audio input: \(audioInputError)")
+        print("Reconfigured audio input: \(audioInputError)")
     }
     
     func recorder(recorder: SCRecorder, didReconfigureVideoInput videoInputError: NSError?) {
-        println("Reconfigured video input: \(videoInputError)")
+        print("Reconfigured video input: \(videoInputError)")
     }
     
     
     func recorder(recorder: SCRecorder, didSkipVideoSampleBufferInSession session: SCRecordSession) {
-        println("Skipped video buffer")
+        print("Skipped video buffer")
     }
     
 
