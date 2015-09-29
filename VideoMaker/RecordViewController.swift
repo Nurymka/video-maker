@@ -15,7 +15,7 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var tapToRecordView: UIView!
     @IBOutlet weak var recordingTimeLabel: UILabel!
     @IBOutlet weak var recordingSpeedSegmentedControl: UISegmentedControl!
-
+    
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
 

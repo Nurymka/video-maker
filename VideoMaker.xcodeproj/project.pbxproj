@@ -18,6 +18,8 @@
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
+		7DB415A91BB66ECA002DEE33 /* 940453906.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DB415A81BB66ECA002DEE33 /* 940453906.m4a */; settings = {ASSET_TAGS = (); }; };
+		7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC14541BB38C29000177D7 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
 		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7DB415A81BB66ECA002DEE33 /* 940453906.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 940453906.m4a; sourceTree = "<group>"; };
+		7DDC14541BB38C29000177D7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FBB2B16BB987F261E35EE3DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,7 @@
 				7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */,
 				7D6A14251B98C15600453DA1 /* Main.storyboard */,
 				7D5F44FA1BAC8C2B00332DBA /* ChooseMusicTrackTableViewController.swift */,
+				7DDC14541BB38C29000177D7 /* Utilities.swift */,
 				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
 				7D6A14281B98C15600453DA1 /* Images.xcassets */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
@@ -114,6 +119,7 @@
 		7D6A141F1B98C15600453DA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DB415A81BB66ECA002DEE33 /* 940453906.m4a */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D282E131BA78DB000A04E14 /* Main-Bridging-Header.h */,
 			);
@@ -241,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6A14271B98C15600453DA1 /* Main.storyboard in Resources */,
+				7DB415A91BB66ECA002DEE33 /* 940453906.m4a in Resources */,
 				7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */,
 				7D6A14291B98C15600453DA1 /* Images.xcassets in Resources */,
 			);
@@ -314,6 +321,7 @@
 				7D2837261BB113DC00BE8DB9 /* MusicRetrievalAPI.swift in Sources */,
 				7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
+				7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */,
 				7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VideoMaker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Tom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,6 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VideoMaker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Tom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

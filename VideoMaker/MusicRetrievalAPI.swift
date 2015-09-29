@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 extension Alamofire.Request {
+    // the retrieved data is serialized into a uiimage, used for album cover retrieval
     class func imageResponseSerializer() -> GenericResponseSerializer<UIImage> {
         return GenericResponseSerializer { request, response, data in
             
@@ -55,6 +56,7 @@ struct MusicAPI {
     }
 }
 
+// each track from NSDictionary is stored as a TrackInfo
 struct TrackInfo {
     let id: Int
     let trackPreviewURL: String

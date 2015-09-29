@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Tom. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import SCRecorder
 
@@ -21,6 +20,7 @@ class VideoPlaybackViewController: UIViewController {
     var captionView: OverlayCaptionView?
     var captionViewPanGestureRecognizer: UIPanGestureRecognizer?
     var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal
+    var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value
     
 // MARK: - View Controller Cycle
     
@@ -42,18 +42,63 @@ class VideoPlaybackViewController: UIViewController {
                                       SCFilter(CIFilterName: "CIPhotoEffectTonal"),
                                       SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
         player?.CIImageRenderer = filterSwipableView
-        player?.loopEnabled = true
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("musicURL: \(musicTrackURL)")
         
-        // speeding up/slowing down the video
+        if musicTrackURL != nil { // if music is chosen, music is mixed to the video
+            compositionFromMusicTrackAndRecordedMaterial()
+        } else {
+            compositionFromRecordedMaterial()
+        }
+        player?.setItemByAsset(composition)
+        player?.play()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        playerLayer?.frame = filterSwipableView.bounds
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        player?.pause()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+// MARK: - Creating a composition
+    
+    func compositionFromMusicTrackAndRecordedMaterial() {
+        compositionFromRecordedMaterial()
+        if let oldMutableCompositionAudioTrack = composition?.tracksWithMediaType(AVMediaTypeAudio).first {
+            composition?.removeTrack(oldMutableCompositionAudioTrack)
+        }
+        
+        let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
+        let musicAsset = AVURLAsset(URL: musicTrackURL!)
+        let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first
+        if let musicAssetTrack = musicAssetTrack {
+            do {
+                try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, musicAssetTrack.timeRange.duration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
+            } catch {
+                print("Music Track timeRange couldn't be added: \(error)")
+            }
+        }
+    }
+    
+    func compositionFromRecordedMaterial() {
         composition = AVMutableComposition()
         let mutableCompositionVideoTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
         let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-
+        
         if let segments = recordSession?.segments as? [SCRecordSessionSegment] {
             var currentAudioTime = kCMTimeZero
             var currentVideoTime = kCMTimeZero
             for segment in segments {
+                
                 if let audioAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeAudio) {
                     for audioAssetTrack in audioAssetTracks {
                         do {
@@ -71,7 +116,7 @@ class VideoPlaybackViewController: UIViewController {
                 if let videoAssetTracks = segment.asset?.tracksWithMediaType(AVMediaTypeVideo) {
                     for videoAssetTrack in videoAssetTracks {
                         do {
-                         try mutableCompositionVideoTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration), ofTrack:videoAssetTrack, atTime:currentVideoTime)
+                            try mutableCompositionVideoTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration), ofTrack:videoAssetTrack, atTime:currentVideoTime)
                         } catch {
                             print("Mutable Video Composition Track couldn't adda timeRange")
                         }
@@ -83,26 +128,6 @@ class VideoPlaybackViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        //player?.setItemByAsset(recordSession?.assetRepresentingSegments())
-        player?.setItemByAsset(composition)
-        player?.play()
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        playerLayer?.frame = filterSwipableView.bounds
-        
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        player?.pause()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
 // MARK: - Button Touch Handlers
@@ -179,10 +204,6 @@ class VideoPlaybackViewController: UIViewController {
     
     @IBAction func chooseMusicTrack(sender: AnyObject) {
         performSegueWithIdentifier("Choose Music Track", sender: self)
-//        Alamofire.request(.GET, "http://api2.zhiliaoapp.com/1.1/search", parameters: ["limit" : 20, "offset" : 0, "term" : "Eminem"]) .responseJSON { _, _, result in
-//                print(result)
-//                debugPrint(result)
-//            }
     }
     
     

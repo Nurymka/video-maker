@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Tom. All rights reserved.
 //
 
-#ifndef VideoMaker_Main_Bridging_Header_h
-#define VideoMaker_Main_Bridging_Header_h
-
-#import <SCRecorder/SCRecorder.h>
-
-#endif
+//#ifndef VideoMaker_Main_Bridging_Header_h
+//#define VideoMaker_Main_Bridging_Header_h
+//
+//#import <SCRecorder/SCRecorder.h>
+//
+//#endif
