@@ -19,6 +19,7 @@
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
 		7DB415A91BB66ECA002DEE33 /* 940453906.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DB415A81BB66ECA002DEE33 /* 940453906.m4a */; settings = {ASSET_TAGS = (); }; };
+		7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */; settings = {ASSET_TAGS = (); }; };
 		7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC14541BB38C29000177D7 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
 		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DB415A81BB66ECA002DEE33 /* 940453906.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 940453906.m4a; sourceTree = "<group>"; };
+		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
 		7DDC14541BB38C29000177D7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FBB2B16BB987F261E35EE3DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,14 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
-				7D6A14231B98C15600453DA1 /* RecordViewController.swift */,
-				7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */,
-				7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */,
-				7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */,
-				7D6A14251B98C15600453DA1 /* Main.storyboard */,
-				7D5F44FA1BAC8C2B00332DBA /* ChooseMusicTrackTableViewController.swift */,
-				7DDC14541BB38C29000177D7 /* Utilities.swift */,
-				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
+				7DC092F21BBD0EAF00CC5619 /* View Controllers */,
+				7DC092F31BBD0EBD00CC5619 /* Views */,
+				7DC092F51BBD0EF700CC5619 /* Utils */,
+				7DC092F41BBD0EDF00CC5619 /* Storyboards */,
 				7D6A14281B98C15600453DA1 /* Images.xcassets */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
 				7D6A141F1B98C15600453DA1 /* Supporting Files */,
@@ -141,6 +139,43 @@
 				7D6A14361B98C15700453DA1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DC092F21BBD0EAF00CC5619 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A14231B98C15600453DA1 /* RecordViewController.swift */,
+				7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */,
+				7D5F44FA1BAC8C2B00332DBA /* ChooseMusicTrackTableViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7DC092F31BBD0EBD00CC5619 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */,
+				7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7DC092F41BBD0EDF00CC5619 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7D6A14251B98C15600453DA1 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		7DC092F51BBD0EF700CC5619 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */,
+				7DDC14541BB38C29000177D7 /* Utilities.swift */,
+				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		C11CB4E72E49C4593853348C /* Frameworks */ = {
@@ -320,6 +355,7 @@
 				7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */,
 				7D2837261BB113DC00BE8DB9 /* MusicRetrievalAPI.swift in Sources */,
 				7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */,
+				7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
 				7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */,
 				7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */,

@@ -13,6 +13,7 @@ class VideoPlaybackViewController: UIViewController {
     
     @IBOutlet weak var insertCaptionButton: UIButton!
     @IBOutlet weak var filterSwipableView: SCSwipeableFilterView!
+    @IBOutlet weak var editAudioButton: UIButton!
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
@@ -20,7 +21,7 @@ class VideoPlaybackViewController: UIViewController {
     var captionView: OverlayCaptionView?
     var captionViewPanGestureRecognizer: UIPanGestureRecognizer?
     var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal
-    var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value
+    var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value-
     
 // MARK: - View Controller Cycle
     
@@ -48,6 +49,7 @@ class VideoPlaybackViewController: UIViewController {
         print("musicURL: \(musicTrackURL)")
         
         if musicTrackURL != nil { // if music is chosen, music is mixed to the video
+            editAudioButton.enabled = true
             compositionFromMusicTrackAndRecordedMaterial()
         } else {
             compositionFromRecordedMaterial()
@@ -58,7 +60,6 @@ class VideoPlaybackViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         playerLayer?.frame = filterSwipableView.bounds
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -76,13 +77,13 @@ class VideoPlaybackViewController: UIViewController {
         if let oldMutableCompositionAudioTrack = composition?.tracksWithMediaType(AVMediaTypeAudio).first {
             composition?.removeTrack(oldMutableCompositionAudioTrack)
         }
+        let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
         
         let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
         let musicAsset = AVURLAsset(URL: musicTrackURL!)
-        let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first
-        if let musicAssetTrack = musicAssetTrack {
+        if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
             do {
-                try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, musicAssetTrack.timeRange.duration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
+                try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
             } catch {
                 print("Music Track timeRange couldn't be added: \(error)")
             }
@@ -205,6 +206,11 @@ class VideoPlaybackViewController: UIViewController {
     @IBAction func chooseMusicTrack(sender: AnyObject) {
         performSegueWithIdentifier("Choose Music Track", sender: self)
     }
+    
+    @IBAction func editAudioPressed(sender: AnyObject) {
+        
+    }
+    
     
     
 // MARK: - Misc
