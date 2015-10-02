@@ -14,6 +14,8 @@ class VideoPlaybackViewController: UIViewController {
     @IBOutlet weak var insertCaptionButton: UIButton!
     @IBOutlet weak var filterSwipableView: SCSwipeableFilterView!
     @IBOutlet weak var editAudioButton: UIButton!
+    @IBOutlet weak var draggableAudioSlider: DraggableSlider!
+    @IBOutlet weak var editAudioFinishedButton: UIButton!
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
@@ -23,6 +25,7 @@ class VideoPlaybackViewController: UIViewController {
     var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal
     var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value-
     
+    var audioStartingPosition: Double = 0.0
 // MARK: - View Controller Cycle
     
     override func viewDidLoad() {
@@ -43,19 +46,26 @@ class VideoPlaybackViewController: UIViewController {
                                       SCFilter(CIFilterName: "CIPhotoEffectTonal"),
                                       SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
         player?.CIImageRenderer = filterSwipableView
+        
+        if navigationController?.respondsToSelector("interactivePopGestureRecognizer") != nil {
+            navigationController?.interactivePopGestureRecognizer?.enabled = false
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         print("musicURL: \(musicTrackURL)")
         
         if musicTrackURL != nil { // if music is chosen, music is mixed to the video
+            audioStartingPosition = 0.0
             editAudioButton.enabled = true
             compositionFromMusicTrackAndRecordedMaterial()
         } else {
+            editAudioButton.enabled = false
             compositionFromRecordedMaterial()
         }
         player?.setItemByAsset(composition)
         player?.play()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -208,12 +218,63 @@ class VideoPlaybackViewController: UIViewController {
     }
     
     @IBAction func editAudioPressed(sender: AnyObject) {
-        
+        configureDraggableSlider()
     }
     
+    @IBAction func editAudioFinishedPressed(sender: AnyObject) {
+        draggableAudioSlider.hidden = true
+        editAudioFinishedButton.hidden = true
+        editAudioButton.enabled = true
+        audioStartingPosition = draggableAudioSlider.lowerValue
+    }
     
+    func draggableAudioSliderEditingDidStart() {
+        player?.pause()
+    }
+    
+    func draggableAudioSliderEditingDidEnd() {
+        if let oldMutableCompositionAudioTrack = composition?.tracksWithMediaType(AVMediaTypeAudio).first {
+            composition?.removeTrack(oldMutableCompositionAudioTrack)
+        }
+        
+        let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
+        
+        let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
+        let musicAsset = AVURLAsset(URL: musicTrackURL!)
+        if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
+            do {
+                let startingTime = CMTime(seconds: draggableAudioSlider.lowerValue, preferredTimescale: musicAssetTrack.timeRange.duration.timescale)
+                try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(startingTime, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
+            } catch {
+                print("Music Track timeRange couldn't be added: \(error)")
+            }
+        }
+        player?.setItemByAsset(composition)
+        player?.play()
+    }
     
 // MARK: - Misc
+    
+    func configureDraggableSlider() {
+        if let musicTrackURL = musicTrackURL {
+            let musicAsset = AVURLAsset(URL: musicTrackURL)
+            if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first {
+                draggableAudioSlider.minimumValue = 0.0
+                draggableAudioSlider.maximumValue = Double(CMTimeGetSeconds(musicAssetTrack.timeRange.duration))
+                
+                if let videoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first {
+                    draggableAudioSlider.upperValue = audioStartingPosition + Double(CMTimeGetSeconds(videoTrack.timeRange.duration))
+                    draggableAudioSlider.lowerValue = audioStartingPosition
+                    draggableAudioSlider.updateRange()
+                }
+                draggableAudioSlider.hidden = false
+                editAudioFinishedButton.hidden = false
+                editAudioButton.enabled = false
+                draggableAudioSlider.addTarget(self, action: "draggableAudioSliderEditingDidEnd", forControlEvents: .TouchDragExit)
+                draggableAudioSlider.addTarget(self, action: "draggableAudioSliderEditingDidStart", forControlEvents: .TouchDragEnter)
+            }
+        }
+    }
     
     func keyboardWillShow(notification: NSNotification) {
         if let captionView = captionView {

@@ -27,7 +27,7 @@ class ChooseMusicTrackTableViewController: UITableViewController {
     }
     
     func loadMusic() {
-        Alamofire.request(MusicAPI.Router.Search("Katy Perry", 0)).responseJSON { (_, _, resultJSON) in
+        Alamofire.request(MusicAPI.Router.Search("Twenty One Pilots", 0)).responseJSON { (_, _, resultJSON) in
             switch resultJSON {
             case .Success(let data):
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {

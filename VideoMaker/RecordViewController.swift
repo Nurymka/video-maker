@@ -10,15 +10,19 @@ import UIKit
 import SCRecorder
 
 class RecordViewController: UIViewController {
+    //let kMaximumRecordingLength = 15.0
+    let kMinimumRecordingLength = 5.0
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var tapToRecordView: UIView!
+    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var recordingTimeLabel: UILabel!
     @IBOutlet weak var recordingSpeedSegmentedControl: UISegmentedControl!
     
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
-
+    var scaledRecordedDuration: Double = 0.0
+    var previousDuration: CMTime?
     // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,9 +76,11 @@ class RecordViewController: UIViewController {
     func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
         if (touchDetector.state == .Began) {
             recorder.record()
+            recordingSpeedSegmentedControl.enabled = false
         }
         else if (touchDetector.state == .Ended) {
             recorder.pause()
+            recordingSpeedSegmentedControl.enabled = true
         }
     }
     
@@ -109,7 +115,9 @@ class RecordViewController: UIViewController {
             let session = SCRecordSession()
             session.fileType = AVFileTypeMPEG4
             recorder.session = session
-            updateRecordingTimeLabel()
+            scaledRecordedDuration = 0.0
+            previousDuration = nil
+            updateRecordingTime()
         }
     }
     
@@ -117,12 +125,23 @@ class RecordViewController: UIViewController {
         performSegueWithIdentifier("Show Video", sender: self)
     }
     
-    func updateRecordingTimeLabel() {
+    func updateRecordingTime() {
         if let duration = recorder.session?.duration {
-            recordingTimeLabel.text = String(format: "Recording Time: %0.2f", CMTimeGetSeconds(duration))
+            if let previousDuration = previousDuration {
+                let deltaDuration = CMTimeSubtract(duration, previousDuration)
+                scaledRecordedDuration += Double(CMTimeGetSeconds(deltaDuration)) * Double(getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex))
+                recordingTimeLabel.text = String(format: "Recording Time: %0.2f", scaledRecordedDuration)
+                self.previousDuration = duration
+            } else {
+                recordingTimeLabel.text = String(format: "Recording Time: %0.2f", scaledRecordedDuration)
+                previousDuration = duration
+            }
         }
-        else {
-            recordingTimeLabel.text = "Recording Time: 0.00"
+        
+        if scaledRecordedDuration >= kMinimumRecordingLength {
+            doneButton.enabled = true
+        } else {
+            doneButton.enabled = false
         }
     }
     
@@ -160,14 +179,14 @@ extension RecordViewController: SCRecorderDelegate {
     func recorder(recorder: SCRecorder, didSkipVideoSampleBufferInSession session: SCRecordSession) {
         print("Skipped video buffer")
     }
-    
 
     func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession)
     {
-        updateRecordingTimeLabel()
+        updateRecordingTime()
     }
     
     func createSegmentInfoForRecorder(recorder: SCRecorder) -> [NSObject : AnyObject]? {
         return ["timescale" : getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex)]
     }
+    
 }

@@ -58,18 +58,14 @@ class DraggableSlider: UIControl {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         
         range = upperValue - lowerValue
         trackLayer.draggableSlider = self
+        trackLayer.contentsScale = UIScreen.mainScreen().scale
         layer.addSublayer(trackLayer)
-        
         updateLayerFrames()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
     
     func updateLayerFrames() {
@@ -81,9 +77,16 @@ class DraggableSlider: UIControl {
         return Double(bounds.width) * (value - minimumValue) / (maximumValue - minimumValue)
     }
     
+    func updateRange() {
+        range = upperValue - lowerValue
+    }
+    
     override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
         previousLocation = touch.locationInView(self)
         trackLayer.isHighlighted = trackLayer.isPositionHighlighted(previousLocation)
+        if trackLayer.isHighlighted {
+            sendActionsForControlEvents(.TouchDragEnter)
+        }
         return trackLayer.isHighlighted
     }
     
@@ -112,6 +115,9 @@ class DraggableSlider: UIControl {
     }
     
     override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
+        if trackLayer.isHighlighted {
+            sendActionsForControlEvents(.TouchDragExit)
+        }
         trackLayer.isHighlighted = false
     }
 }
