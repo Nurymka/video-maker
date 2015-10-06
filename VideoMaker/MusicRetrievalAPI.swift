@@ -34,16 +34,18 @@ extension Alamofire.Request {
 }
 
 struct MusicAPI {
+    static let resultLimit = 20
     enum Router: URLRequestConvertible {
         static let baseURLString = "http://api2.zhiliaoapp.com/1.1/search"
         
-        case Search(String, Int) // search string, offset int
+        case Search(String, Int) // search string, page int
         
         var URLRequest: NSMutableURLRequest {
             let parameters: [String: AnyObject] = {
                 switch self {
-                case .Search(let searchTerm, let offset):
-                    return ["limit" : "20", "offset" : "\(offset)", "term" : searchTerm]
+                case .Search(let searchTerm, let page):
+                    NSLog("page * resultLimit: \(page * resultLimit)")
+                    return ["limit" : "\(resultLimit)", "offset" : "\(page * resultLimit)", "term" : searchTerm]
                 }
             }()
             
@@ -52,6 +54,14 @@ struct MusicAPI {
             let encoding = Alamofire.ParameterEncoding.URL
             
             return encoding.encode(URLRequest, parameters: parameters).0
+        }
+    }
+    
+    static func returnThumbnailUrlStringForDictObject(object: AnyObject) -> String {
+        if object as! NSObject == NSNull() {
+            return ""
+        } else {
+            return object as! String
         }
     }
 }

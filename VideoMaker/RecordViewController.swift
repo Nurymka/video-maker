@@ -10,7 +10,7 @@ import UIKit
 import SCRecorder
 
 class RecordViewController: UIViewController {
-    //let kMaximumRecordingLength = 15.0
+    let kMaximumRecordingLength = 15.0
     let kMinimumRecordingLength = 5.0
     
     @IBOutlet weak var previewView: UIView!
@@ -23,6 +23,7 @@ class RecordViewController: UIViewController {
     var recordSession: SCRecordSession?
     var scaledRecordedDuration: Double = 0.0
     var previousDuration: CMTime?
+    
     // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +91,7 @@ class RecordViewController: UIViewController {
                 self.recordSession = session
                 self.showVideo()
             }
+            print("recordingFinished called")
         }
     }
     
@@ -104,7 +106,6 @@ class RecordViewController: UIViewController {
     
     @IBAction func recordingSpeedValueChanged(sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
-        
         print("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
     }
     
@@ -142,6 +143,10 @@ class RecordViewController: UIViewController {
             doneButton.enabled = true
         } else {
             doneButton.enabled = false
+        }
+        
+        if scaledRecordedDuration >= kMaximumRecordingLength {
+            recordingFinished(self)
         }
     }
     
