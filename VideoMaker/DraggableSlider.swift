@@ -60,7 +60,6 @@ class DraggableSlider: UIControl {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         range = upperValue - lowerValue
         trackLayer.draggableSlider = self
         trackLayer.contentsScale = UIScreen.mainScreen().scale

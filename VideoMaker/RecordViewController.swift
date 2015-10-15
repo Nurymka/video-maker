@@ -11,7 +11,7 @@ import SCRecorder
 
 class RecordViewController: UIViewController {
     let kMaximumRecordingLength = 15.0
-    let kMinimumRecordingLength = 5.0
+    let kMinimumRecordingLength = 1.0
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var tapToRecordView: UIView!
@@ -21,10 +21,12 @@ class RecordViewController: UIViewController {
     
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
+    
+    // for storing the scaled recording duration
     var scaledRecordedDuration: Double = 0.0
     var previousDuration: CMTime?
     
-    // MARK: - View Controller Cycle
+// MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,7 @@ class RecordViewController: UIViewController {
         recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
         recorder.previewView = previewView
         recorder.delegate = self
+        
         tapToRecordView.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
     }
     
@@ -69,20 +72,22 @@ class RecordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Button Touch Handlers
-    @IBAction func reverseCameraButtonPressed(sender: AnyObject) {
-        recorder.switchCaptureDevices()
+    func prepareSession() {
+        if (recorder.session == nil)
+        {
+            let session = SCRecordSession()
+            session.fileType = AVFileTypeMPEG4
+            recorder.session = session
+            scaledRecordedDuration = 0.0
+            previousDuration = nil
+            updateRecordingTime()
+        }
     }
     
-    func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
-        if (touchDetector.state == .Began) {
-            recorder.record()
-            recordingSpeedSegmentedControl.enabled = false
-        }
-        else if (touchDetector.state == .Ended) {
-            recorder.pause()
-            recordingSpeedSegmentedControl.enabled = true
-        }
+// MARK: - Button Touch Handlers
+    
+    @IBAction func reverseCameraButtonPressed(sender: AnyObject) {
+        recorder.switchCaptureDevices()
     }
     
     @IBAction func recordingFinished(sender: AnyObject) {
@@ -104,27 +109,36 @@ class RecordViewController: UIViewController {
         }
     }
     
+    func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
+        if (touchDetector.state == .Began) {
+            recorder.record()
+            recordingSpeedSegmentedControl.enabled = false
+        }
+        else if (touchDetector.state == .Ended) {
+            recorder.pause()
+            recordingSpeedSegmentedControl.enabled = true
+        }
+    }
+    
     @IBAction func recordingSpeedValueChanged(sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
         print("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
     }
     
-    // MARK: - Misc
-    func prepareSession() {
-        if (recorder.session == nil)
-        {
-            let session = SCRecordSession()
-            session.fileType = AVFileTypeMPEG4
-            recorder.session = session
-            scaledRecordedDuration = 0.0
-            previousDuration = nil
-            updateRecordingTime()
-        }
-    }
+// MARK: - Segue Related
     
     func showVideo() {
         performSegueWithIdentifier("Show Video", sender: self)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "Show Video") {
+            let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
+            videoPlaybackViewController.recordSession = recordSession
+        }
+    }
+
+// MARK: - Time Related
     
     func updateRecordingTime() {
         if let duration = recorder.session?.duration {
@@ -149,13 +163,7 @@ class RecordViewController: UIViewController {
             recordingFinished(self)
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "Show Video") {
-            let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
-            videoPlaybackViewController.recordSession = recordSession
-        }
-    }
+
     
     func getVideoTimeScaleFromUISegment(index: Int) -> Float {
         switch (index) {

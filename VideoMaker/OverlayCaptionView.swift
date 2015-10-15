@@ -33,6 +33,10 @@ class OverlayCaptionView: UIView {
         addSubview(textField)
     }
     
+    required init (coder aDecoder: NSCoder) {
+        fatalError("This class doesn't support NSCoding")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         if !isFrameSet {
@@ -50,13 +54,8 @@ class OverlayCaptionView: UIView {
         print("layoutSubviews")
     }
     
-    required init (coder aDecoder: NSCoder) {
-        fatalError("This class doesn't support NSCoding")
-    }
-    
     
     private func fontToFitHeight(minFontSize: CGFloat, maxFontSize: CGFloat, labelText: String, font: UIFont) -> UIFont {
-        
         var minFontSize = minFontSize
         var maxFontSize = maxFontSize
         var fontSizeAverage: CGFloat = 0

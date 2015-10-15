@@ -1,56 +1,52 @@
 //
-//  ChooseMusicTrackTableViewController.swift
+//  SearchMusicTrackTableViewController.swift
 //  VideoMaker
 //
-//  Created by Tom on 10/9/15.
+//  Created by Tom on 9/18/15.
 //  Copyright © 2015 Tom. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Alamofire
 import AVFoundation
 
-class ChooseMusicTrackTableViewController: UITableViewController {
+class SearchMusicTrackTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate {
+    
     var tracks: [TrackInfo] = []
     let musicCache = NSCache()
     var audioPlayer: AVAudioPlayer?
     var spinner: UIActivityIndicatorView?
     var currentPlayingSongID: Int = -1
-    var currentPlayingCell: ChooseMusicTrackViewCell?
-    
-    var playlistItem: PlaylistItem? // if it exists, tracks are loaded from this playlist
+    var currentPlayingCell: SearchMusicTrackViewCell?
+
     // for music api requests
-    var currentResultPage = 1
-    var totalResultPages = -1
+    var currentResultPage = 0
     var loadingMusic = false
+    var currentSearchString = ""
     
     // constants
     let kCellIdentifier = "TrackItemCellIdentifier"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if totalResultPages == -1 {
-            loadMusic()
-        }
-    }
+    var currentNavigationController: UINavigationController? // used for seguing back to the video playback controller when the song is chosen. because SearchMusicTrackTableViewController is not part of the navigationcontroller stack, it has to be stored
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
-            if !tracks.isEmpty && currentResultPage <= totalResultPages {
-                loadMusic()
+            if !tracks.isEmpty {
+                loadMoreMusicAfterScrolling()
             }
         }
     }
 }
 
-// MARK: UITableViewDelegate
-extension ChooseMusicTrackTableViewController {
+// MARK: - UITableViewDelegate
+extension SearchMusicTrackTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tracks.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! ChooseMusicTrackViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! SearchMusicTrackViewCell
         
         cell.request?.cancel()
         cell.trackNameLabel.text = tracks[indexPath.row].trackName
@@ -83,29 +79,35 @@ extension ChooseMusicTrackTableViewController {
         }
         
         let trackURL = tracks[indexPath.row].trackPreviewURL
-        let playbackViewController = self.navigationController?.viewControllers.filter({$0 is VideoPlaybackViewController}).first as? VideoPlaybackViewController
         
-        if FileManager.trackExistsOnDisk(trackURL: trackURL) {
-            if let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
-                playbackViewController.musicTrackURL = diskTrackURL
-                self.navigationController?.popToViewController(playbackViewController, animated: true)
-            }
-        } else {
-            if let trackData = musicCache.objectForKey(trackURL) as? NSData, playbackViewController = playbackViewController {
-                if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL) {
+        if let currentNavigationController = currentNavigationController {
+            let playbackViewController = currentNavigationController.viewControllers.filter({$0 is VideoPlaybackViewController}).first as? VideoPlaybackViewController
+            
+            if FileManager.trackExistsOnDisk(trackURL: trackURL) {
+                if let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
                     playbackViewController.musicTrackURL = diskTrackURL
-                    self.navigationController?.popToViewController(playbackViewController, animated: true)
+                    
+                    currentNavigationController.popToViewController(playbackViewController, animated: true)
                 }
             } else {
-                Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
-                    switch data {
-                    case .Success(let track):
-                        if FileManager.writeTrackDataToDisk(track, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
-                            playbackViewController.musicTrackURL = diskTrackURL
-                            self.navigationController?.popToViewController(playbackViewController, animated: true)
+                if let trackData = musicCache.objectForKey(trackURL) as? NSData, playbackViewController = playbackViewController {
+                    if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL) {
+                        playbackViewController.musicTrackURL = diskTrackURL
+                        
+                        currentNavigationController.popToViewController(playbackViewController, animated: true)
+                    }
+                } else {
+                    Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
+                        switch data {
+                        case .Success(let track):
+                            if FileManager.writeTrackDataToDisk(track, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
+                                playbackViewController.musicTrackURL = diskTrackURL
+                                
+                                currentNavigationController.popToViewController(playbackViewController, animated: true)
+                            }
+                        case .Failure(_, let error):
+                            print(error)
                         }
-                    case .Failure(_, let error):
-                        print(error)
                     }
                 }
             }
@@ -114,9 +116,9 @@ extension ChooseMusicTrackTableViewController {
 }
 
 // MARK: Button Touch Handling
-extension ChooseMusicTrackTableViewController {
+extension SearchMusicTrackTableViewController {
     func playPreviewPressed(sender: AnyObject) {
-        func playTrackFromData(data: NSData, andConfigureButtonStateForCell cell: ChooseMusicTrackViewCell, inIndexPath indexPath: NSIndexPath) {
+        func playTrackFromData(data: NSData, andConfigureButtonStateForCell cell: SearchMusicTrackViewCell, inIndexPath indexPath: NSIndexPath) {
             self.playTrackFromData(data)
             cell.changeButtonStateTo(.PauseButton)
             if let lastPlayedCell = currentPlayingCell {
@@ -129,7 +131,7 @@ extension ChooseMusicTrackTableViewController {
         }
         
         let buttonPosition = (sender as! UIButton).convertPoint(CGPointZero, toView: tableView)
-        if let indexPath = tableView.indexPathForRowAtPoint(buttonPosition), cell = tableView.cellForRowAtIndexPath(indexPath) as? ChooseMusicTrackViewCell {
+        if let indexPath = tableView.indexPathForRowAtPoint(buttonPosition), cell = tableView.cellForRowAtIndexPath(indexPath) as? SearchMusicTrackViewCell {
             if cell.buttonState == .PlayButton {
                 cell.changeButtonStateTo(.LoadingPreview)
                 let trackURL = tracks[indexPath.row].trackPreviewURL
@@ -173,66 +175,75 @@ extension ChooseMusicTrackTableViewController {
 }
 
 // MARK: Music API Requests
-extension ChooseMusicTrackTableViewController {
-    func loadMusic() {
+extension SearchMusicTrackTableViewController {
+    func searchForMusicWithSearchString(searchString: String) {
         if loadingMusic {
             return
         }
         
         loadingMusic = true
-        NSLog("currentResultPage: \(currentResultPage) in totalResultPages: \(totalResultPages)")
-        if let playlistItem = playlistItem {
-            Alamofire.request(MusicPlaylistAPI.Router.Tracklist(playlistItem.tagId, currentResultPage)).responseJSON { (request, _, resultJSON) in
-                switch resultJSON {
-                case .Success(let data):
-                    
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                        let dataResult = (data as! NSDictionary).valueForKey("result") as! NSDictionary
-                        let trackInfos = (dataResult.valueForKey("content") as! [NSDictionary]).map({ (dic: NSDictionary) -> TrackInfo in
-                            let id = dic["trackId"] as? Int
-                            let trackPreviewURL = dic["previewUri"] as? String
-                            let trackName = (dic["song"] as! NSDictionary).valueForKey("title") as? String
-                            let artistName = (dic["author"] as! NSDictionary).valueForKey("name") as? String
-                            
-                            if let id = id, trackPreviewURL = trackPreviewURL, trackName = trackName, artistName = artistName {
-                                print("TrackInfo returned successfully")
-                                return TrackInfo(
-                                    id: id,
-                                    trackPreviewURL: trackPreviewURL,
-                                    albumCoverURL: MusicSearchAPI.returnThumbnailUrlStringForDictObject((dic["album"] as! NSDictionary).valueForKey("thumbnailUri")),
-                                    trackName: trackName,
-                                    artistName: artistName
-                                    )
-                            } else {
-                                print("Empty TrackInfo returned")
-                                return TrackInfo(id: -1, trackPreviewURL: "", albumCoverURL: "", trackName: "", artistName: "")
-                            }
-                        }).filter({ $0.id != -1 })
-
-                        let lastItem = self.tracks.count
-                        self.tracks.appendContentsOf(trackInfos)
-                        let indexPaths = (lastItem..<self.tracks.count).map { NSIndexPath(forRow: $0, inSection: 0) }
-                        
-                        if self.totalResultPages == -1 {
-                            self.totalResultPages = dataResult.valueForKey("totalPages") as! Int
-                        }
-                            
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-                        }
-                            
-                        self.currentResultPage++
+        
+        currentResultPage = 0
+        tracks = []
+        self.tableView.reloadData()
+        Alamofire.request(MusicSearchAPI.Router.Search(searchString, currentResultPage)).responseJSON { (_, _, resultJSON) in
+            switch resultJSON {
+            case .Success(let data):
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                    let trackInfos = ((data as! NSDictionary).valueForKey("results") as! [NSDictionary]).map {
+                        TrackInfo(id: $0["trackId"] as! Int, trackPreviewURL: $0["previewUri"] as! String, albumCoverURL: MusicSearchAPI.returnThumbnailUrlStringForDictObject($0["thumbnailUri"]!), trackName: $0["trackName"] as! String, artistName: $0["artistName"] as! String)
                     }
-                case .Failure(_, let error):
-                    print(error)
+                    let lastItem = self.tracks.count
+                    self.tracks.appendContentsOf(trackInfos)
+                    let indexPaths = (lastItem..<self.tracks.count).map { NSIndexPath(forRow: $0, inSection: 0) }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                    }
+                    
+                    self.currentSearchString = searchString
+                    self.currentResultPage++
                 }
-                self.loadingMusic = false
+            case .Failure(_, let error):
+                print(error)
             }
+            self.loadingMusic = false
+        }
+    }
+    
+    func loadMoreMusicAfterScrolling() {
+        if loadingMusic {
+            return
+        }
+        
+        loadingMusic = true
+        NSLog("currentResultPage: \(currentResultPage)")
+        Alamofire.request(MusicSearchAPI.Router.Search(currentSearchString, currentResultPage)).responseJSON { (_, _, resultJSON) in
+            switch resultJSON {
+            case .Success(let data):
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                    let trackInfos = ((data as! NSDictionary).valueForKey("results") as! [NSDictionary]).map {
+                        TrackInfo(id: $0["trackId"] as! Int, trackPreviewURL: $0["previewUri"] as! String, albumCoverURL: MusicSearchAPI.returnThumbnailUrlStringForDictObject($0["thumbnailUri"]!), trackName: $0["trackName"] as! String, artistName: $0["artistName"] as! String)
+                    }
+                    let lastItem = self.tracks.count
+                    self.tracks.appendContentsOf(trackInfos)
+                    let indexPaths = (lastItem..<self.tracks.count).map { NSIndexPath(forRow: $0, inSection: 0) }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                    }
+                    
+                    self.currentResultPage++
+                }
+            case .Failure(_, let error):
+                print(error)
+            }
+            self.loadingMusic = false
         }
     }
 }
 
-class ChooseMusicTrackViewCell: UITableViewCell {
+class SearchMusicTrackViewCell: UITableViewCell {
     @IBOutlet weak var albumCoverButton: UIButton!
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -240,7 +251,7 @@ class ChooseMusicTrackViewCell: UITableViewCell {
     
     var request: Alamofire.Request?
     var buttonState: ButtonState = .PlayButton
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

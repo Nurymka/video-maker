@@ -33,11 +33,10 @@ extension Alamofire.Request {
     }
 }
 
-struct MusicAPI {
+struct MusicSearchAPI {
     static let resultLimit = 20
     enum Router: URLRequestConvertible {
         static let baseURLString = "http://api2.zhiliaoapp.com/1.1/search"
-        
         case Search(String, Int) // search string, page int
         
         var URLRequest: NSMutableURLRequest {
@@ -52,17 +51,19 @@ struct MusicAPI {
             let URL = NSURL(string: Router.baseURLString)
             let URLRequest = NSURLRequest(URL: URL!)
             let encoding = Alamofire.ParameterEncoding.URL
-            
+            print(URL?.absoluteString)
             return encoding.encode(URLRequest, parameters: parameters).0
         }
     }
     
-    static func returnThumbnailUrlStringForDictObject(object: AnyObject) -> String {
-        if object as! NSObject == NSNull() {
-            return ""
-        } else {
-            return object as! String
+    // because thumbnails can be nsnull, this func is needed to avoid runtime crashes
+    static func returnThumbnailUrlStringForDictObject(object: AnyObject?) -> String {
+        if let object = object {
+            if object as! NSObject != NSNull() {
+                return object as! String
+            }
         }
+        return ""
     }
 }
 

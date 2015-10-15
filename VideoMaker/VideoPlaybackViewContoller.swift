@@ -16,18 +16,21 @@ class VideoPlaybackViewController: UIViewController {
     @IBOutlet weak var editAudioButton: UIButton!
     @IBOutlet weak var draggableAudioSlider: DraggableSlider!
     @IBOutlet weak var editAudioFinishedButton: UIButton!
+    
+    var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value-
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
     var composition: AVMutableComposition?
+    
     var captionView: OverlayCaptionView?
     var captionViewPanGestureRecognizer: UIPanGestureRecognizer?
+    
     var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal
-    var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value-
     
     var audioStartingPosition: Double = 0.0
-// MARK: - View Controller Cycle
     
+// MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         player = SCPlayer()
@@ -65,7 +68,6 @@ class VideoPlaybackViewController: UIViewController {
         }
         player?.setItemByAsset(composition)
         player?.play()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -80,8 +82,7 @@ class VideoPlaybackViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-// MARK: - Creating a composition
-    
+// MARK: - Creating a Composition
     func compositionFromMusicTrackAndRecordedMaterial() {
         compositionFromRecordedMaterial()
         if let oldMutableCompositionAudioTrack = composition?.tracksWithMediaType(AVMediaTypeAudio).first {
@@ -141,8 +142,7 @@ class VideoPlaybackViewController: UIViewController {
         }
     }
     
-// MARK: - Button Touch Handlers
-    
+// MARK: - Button Touch Handlers 
     @IBAction func saveToCameraRollPressed(sender: AnyObject)
     {
         player?.pause()
@@ -175,7 +175,7 @@ class VideoPlaybackViewController: UIViewController {
             }
         })
     }
-    
+
     @IBAction func insertCaptionPressed(sender: AnyObject) {
         if captionView == nil {
             tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
@@ -214,7 +214,7 @@ class VideoPlaybackViewController: UIViewController {
     }
     
     @IBAction func chooseMusicTrack(sender: AnyObject) {
-        performSegueWithIdentifier("Choose Music Track", sender: self)
+        performSegueWithIdentifier("Choose Music Playlist", sender: self)
     }
     
     @IBAction func editAudioPressed(sender: AnyObject) {
