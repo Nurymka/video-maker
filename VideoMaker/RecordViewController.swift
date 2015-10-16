@@ -14,17 +14,19 @@ class RecordViewController: UIViewController {
     let kMinimumRecordingLength = 1.0
     
     @IBOutlet weak var previewView: UIView!
-    @IBOutlet weak var tapToRecordView: UIView!
+    @IBOutlet weak var recordButton: RecordButton!
+    @IBOutlet weak var timescaleButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var recordingTimeLabel: UILabel!
-    @IBOutlet weak var recordingSpeedSegmentedControl: UISegmentedControl!
-    
+    @IBOutlet weak var timescaleSegmentedControl: TimescaleSegmentedControl!
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
     
     // for storing the scaled recording duration
     var scaledRecordedDuration: Double = 0.0
     var previousDuration: CMTime?
+    var recordedDurationRatio: Float {
+        return Float(scaledRecordedDuration / kMaximumRecordingLength)
+    }
     
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
@@ -38,7 +40,8 @@ class RecordViewController: UIViewController {
         recorder.previewView = previewView
         recorder.delegate = self
         
-        tapToRecordView.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
+        recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -102,6 +105,7 @@ class RecordViewController: UIViewController {
     
     @IBAction func retakeButtonPressed(sender: AnyObject) {
         if (recorder.session != nil) {
+            recordButton.progress = 0.0
             recorder.pause()
             recorder.session?.cancelSession({})
             recorder.session = nil
@@ -112,17 +116,26 @@ class RecordViewController: UIViewController {
     func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
         if (touchDetector.state == .Began) {
             recorder.record()
-            recordingSpeedSegmentedControl.enabled = false
+            timescaleSegmentedControl.enabled = false
         }
         else if (touchDetector.state == .Ended) {
             recorder.pause()
-            recordingSpeedSegmentedControl.enabled = true
+            timescaleSegmentedControl.enabled = true
         }
     }
     
     @IBAction func recordingSpeedValueChanged(sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
         print("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
+    }
+    
+    
+    @IBAction func timescaleButtonPressed(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func flashButtonPressed(sender: AnyObject) {
+        recorder.flashMode = recorder.flashMode == .Off ? .Light : .Off
     }
     
 // MARK: - Segue Related
@@ -144,11 +157,10 @@ class RecordViewController: UIViewController {
         if let duration = recorder.session?.duration {
             if let previousDuration = previousDuration {
                 let deltaDuration = CMTimeSubtract(duration, previousDuration)
-                scaledRecordedDuration += Double(CMTimeGetSeconds(deltaDuration)) * Double(getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex))
-                recordingTimeLabel.text = String(format: "Recording Time: %0.2f", scaledRecordedDuration)
+                scaledRecordedDuration += Double(CMTimeGetSeconds(deltaDuration)) * Double(getVideoTimeScaleFromUISegment(timescaleSegmentedControl.selectedSegmentIndex))
+                recordButton.progress = recordedDurationRatio
                 self.previousDuration = duration
             } else {
-                recordingTimeLabel.text = String(format: "Recording Time: %0.2f", scaledRecordedDuration)
                 previousDuration = duration
             }
         }
@@ -180,7 +192,6 @@ class RecordViewController: UIViewController {
 extension RecordViewController: SCRecorderDelegate {
     
     func recorder(recorder: SCRecorder, didReconfigureAudioInput audioInputError: NSError?) {
-        
         print("Reconfigured audio input: \(audioInputError)")
     }
     
@@ -188,18 +199,20 @@ extension RecordViewController: SCRecorderDelegate {
         print("Reconfigured video input: \(videoInputError)")
     }
     
-    
     func recorder(recorder: SCRecorder, didSkipVideoSampleBufferInSession session: SCRecordSession) {
         print("Skipped video buffer")
     }
 
-    func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession)
-    {
+    func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession) {
         updateRecordingTime()
     }
     
+    func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {
+        
+    }
+    
     func createSegmentInfoForRecorder(recorder: SCRecorder) -> [NSObject : AnyObject]? {
-        return ["timescale" : getVideoTimeScaleFromUISegment(recordingSpeedSegmentedControl.selectedSegmentIndex)]
+        return ["timescale" : getVideoTimeScaleFromUISegment(timescaleSegmentedControl.selectedSegmentIndex)]
     }
     
 }

@@ -13,9 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    func DebugPrintAllFonts() {
+        for familyName in UIFont.familyNames() {
+            print("Family: \(familyName)")
+            for fontName in UIFont.fontNamesForFamilyName(familyName) {
+                print("\tFont: \(fontName)")
+            }
+        }
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        DebugPrintAllFonts()
         return true
     }
 

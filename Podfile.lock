@@ -1,19 +1,22 @@
 PODS:
-  - Alamofire (2.0.1)
-  - AlamofireImage (1.0.0):
+  - Alamofire (2.0.2)
+  - AlamofireImage (1.1.2):
     - Alamofire (~> 2.0)
+  - RBBAnimation (0.4.0)
   - SCRecorder (2.5.3)
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
   - AlamofireImage (~> 1.0)
+  - RBBAnimation (= 0.4.0)
   - SCRecorder (~> 2.5)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 1d8e208d616fbbfd2391b15eae766d07c96cdc49
-  AlamofireImage: 0d181ae145f879ee2ebd204074eacbc659276ab3
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  AlamofireImage: dc3d3de5d095fd9545b144ba8f6da5bfc539512a
+  RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
 
