@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0BE7EC1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0E59891BCFE8F400F7A2B4 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0E598B1BCFE93C00F7A2B4 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */; settings = {ASSET_TAGS = (); }; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationKit.swift; sourceTree = "<group>"; };
 		7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				7DE932641BD05FEE00040833 /* StyleKit.swift */,
 				7D0E598D1BCFEBD200F7A2B4 /* FontKit.swift */,
 				7D0E598F1BD017B600F7A2B4 /* GeometryExtensions.swift */,
+				7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */,
 				7D0E598B1BCFE93C00F7A2B4 /* BaseViews.swift in Sources */,
 				7D0E59901BD017B700F7A2B4 /* GeometryExtensions.swift in Sources */,
+				7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

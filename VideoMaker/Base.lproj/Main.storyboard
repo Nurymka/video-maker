@@ -49,24 +49,12 @@
                                             <constraint firstAttribute="width" constant="100" id="IvF-mT-8cH"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
-                                        <rect key="frame" x="138" y="401" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
-                                            <constraint firstAttribute="height" constant="44" id="YCS-ek-iM1"/>
-                                        </constraints>
-                                        <state key="normal" image="btn-timescale"/>
-                                        <connections>
-                                            <action selector="timescaleButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vnc-IG-Tr6"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-IC-r9s" userLabel="Segmented Control Wrapper" customClass="TimescaleSegmentedControlWrapper" customModule="VideoMaker" customModuleProvider="target">
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-IC-r9s" userLabel="Segmented Control Wrapper" customClass="TimescaleSegmentedControlWrapper" customModule="VideoMaker" customModuleProvider="target">
                                         <rect key="frame" x="16" y="362" width="288" height="34"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-PY-y1A" customClass="TimescaleSegmentedControl" customModule="VideoMaker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.94999999999999996"/>
                                                 <segments>
                                                     <segment title="0.25x"/>
                                                     <segment title="0.5x"/>
@@ -87,10 +75,21 @@
                                             <constraint firstAttribute="trailing" secondItem="5QG-PY-y1A" secondAttribute="trailing" id="x0Q-bI-lzp"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snail" translatesAutoresizingMaskIntoConstraints="NO" id="SGO-Um-L04">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
+                                        <rect key="frame" x="138" y="401" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
+                                            <constraint firstAttribute="height" constant="44" id="YCS-ek-iM1"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-timescale"/>
+                                        <connections>
+                                            <action selector="timescaleButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vnc-IG-Tr6"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snail" translatesAutoresizingMaskIntoConstraints="NO" id="SGO-Um-L04">
                                         <rect key="frame" x="30" y="397" width="28" height="15"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horse" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-NW-pfo">
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horse" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-NW-pfo">
                                         <rect key="frame" x="261" y="395" width="25" height="21"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button">
@@ -101,7 +100,7 @@
                                         </constraints>
                                         <state key="normal" image="btn-speakerOn"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cN-cEq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cN-cEq" userLabel="Flash Button">
                                         <rect key="frame" x="274" y="154" width="19" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="19" id="Nko-OG-5Zq"/>
@@ -112,7 +111,7 @@
                                             <action selector="flashButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Foo-JD-ofo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-RC-yfA">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-RC-yfA" userLabel="Camera Flip Button">
                                         <rect key="frame" x="267" y="101" width="30" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="4yk-LQ-Mi5"/>
@@ -160,10 +159,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="doneButton" destination="e3e-BD-J2q" id="0hZ-Rg-wtV"/>
+                        <outlet property="horseImageView" destination="4iu-NW-pfo" id="5Lm-8A-Koi"/>
                         <outlet property="previewView" destination="WQJ-Nl-Hbb" id="ARA-gF-gOc"/>
                         <outlet property="recordButton" destination="fCp-AV-Mdq" id="NCB-RB-q4O"/>
+                        <outlet property="snailImageView" destination="SGO-Um-L04" id="MCu-jM-Bkj"/>
                         <outlet property="timescaleButton" destination="cao-jM-A8e" id="fUJ-dn-DtB"/>
                         <outlet property="timescaleSegmentedControl" destination="5QG-PY-y1A" id="8NR-vU-En3"/>
+                        <outlet property="timescaleSegmentedControlWrapper" destination="Vym-IC-r9s" id="upo-5Y-BSt"/>
                         <segue destination="McN-6d-tRK" kind="show" identifier="Show Video" id="vg3-zL-j0n"/>
                     </connections>
                 </viewController>

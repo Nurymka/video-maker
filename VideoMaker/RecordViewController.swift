@@ -8,6 +8,7 @@
 
 import UIKit
 import SCRecorder
+import RBBAnimation
 
 class RecordViewController: UIViewController {
     let kMaximumRecordingLength = 15.0
@@ -18,6 +19,11 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var timescaleButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var timescaleSegmentedControl: TimescaleSegmentedControl!
+    @IBOutlet weak var timescaleSegmentedControlWrapper: TimescaleSegmentedControlWrapper!
+    
+    @IBOutlet weak var snailImageView: UIImageView!
+    @IBOutlet weak var horseImageView: UIImageView!
+    
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
     
@@ -131,7 +137,27 @@ class RecordViewController: UIViewController {
     
     
     @IBAction func timescaleButtonPressed(sender: AnyObject) {
-        
+        if timescaleSegmentedControlWrapper.layer.opacity == 0.0 {
+            let fadeInAnim = AnimationKit.fadeIn()
+            
+            timescaleSegmentedControlWrapper.layer.addAnimation(fadeInAnim, forKey: "fadeIn")
+            snailImageView.layer.addAnimation(fadeInAnim, forKey: "fadeIn")
+            horseImageView.layer.addAnimation(fadeInAnim, forKey: "fadeIn")
+            
+            timescaleSegmentedControlWrapper.layer.opacity = 1.0
+            snailImageView.layer.opacity = 1.0
+            horseImageView.layer.opacity = 1.0
+        } else if timescaleSegmentedControlWrapper.layer.opacity == 1.0 {
+            let fadeOutAnim = AnimationKit.fadeOut()
+            
+            timescaleSegmentedControlWrapper.layer.addAnimation(fadeOutAnim, forKey: "fadeOut")
+            snailImageView.layer.addAnimation(fadeOutAnim, forKey: "fadeOut")
+            horseImageView.layer.addAnimation(fadeOutAnim, forKey: "fadeOut")
+            
+            timescaleSegmentedControlWrapper.layer.opacity = 0.0
+            snailImageView.layer.opacity = 0.0
+            horseImageView.layer.opacity = 0.0
+        }
     }
     
     @IBAction func flashButtonPressed(sender: AnyObject) {
