@@ -44,7 +44,6 @@ class FileManager {
         
         if NSFileManager.defaultManager().fileExistsAtPath(trackInfoURL.path!) {
             let data = NSFileManager.defaultManager().contentsAtPath(trackInfoURL.path!)
-            
             return TrackInfoLocal.unarchive(data)
         } else {
             print("File doesn't exist at path: \(trackInfoURL.path!)")

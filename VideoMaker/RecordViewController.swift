@@ -23,6 +23,10 @@ class RecordViewController: BaseViewController {
     @IBOutlet weak var timescaleSegmentedControl: TimescaleSegmentedControl!
     @IBOutlet weak var timescaleSegmentedControlWrapper: TimescaleSegmentedControlWrapper!
     
+    @IBOutlet weak var trackNameLabel: TrackNameLabel!
+    @IBOutlet weak var trackNameLabelBG: UIView!
+    @IBOutlet weak var editAudioButton: UIButton!
+
     @IBOutlet weak var snailImageView: UIImageView!
     @IBOutlet weak var horseImageView: UIImageView!
     
@@ -49,13 +53,23 @@ class RecordViewController: BaseViewController {
         recorder.delegate = self
         
         recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
         print("musicTrackInfo: \(musicTrackInfo)")
+        if let musicTrackInfo = musicTrackInfo {
+            trackNameLabel.changeScrollableTextTo(String.presentableArtistAndSongName(musicTrackInfo.artistName, songName: musicTrackInfo.trackName))
+            trackNameLabel.layer.opacity = 1.0
+            trackNameLabelBG.layer.opacity = 1.0
+            editAudioButton.layer.opacity = 1.0
+        } else {
+            trackNameLabel.layer.opacity = 0.0
+            trackNameLabelBG.layer.opacity = 0.0
+            editAudioButton.layer.opacity = 0.0
+        }
         prepareSession()
     }
     
@@ -177,6 +191,7 @@ class RecordViewController: BaseViewController {
         
         let originalSoundAction = UIAlertAction(title: "Original Sound", style: .Default) { (action) in
             self.audioTypeButton.changeButtonStateTo(.OriginalSound)
+            //self.musicTrackInfo = nil
         }
         actionSheetController.addAction(originalSoundAction)
         
@@ -188,6 +203,7 @@ class RecordViewController: BaseViewController {
         
         let noSoundAction = UIAlertAction(title: "No Sound", style: .Default) { (action) in
             self.audioTypeButton.changeButtonStateTo(.NoSound)
+            //self.musicTrackInfo = nil
         }
         actionSheetController.addAction(noSoundAction)
         

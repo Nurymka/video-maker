@@ -10,4 +10,5 @@ import UIKit
 
 class FontKit {
     static let segmentedControlLabel = UIFont(fontName: .cabinRegular, size: 16.0)
+    static let artistAndTrackNameLabel = UIFont(fontName: .cabinRegular, size: 16.0)
 }

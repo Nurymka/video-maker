@@ -140,3 +140,9 @@ struct TrackInfoLocal {
         return TrackInfoLocal(url: url, trackName: trackName, artistName: artistName)
     }
 }
+
+extension String {
+    static func presentableArtistAndSongName(artistName: String, songName: String) -> String {
+        return artistName + " - " + songName
+    }
+}

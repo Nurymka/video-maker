@@ -23,6 +23,7 @@
 		7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */; };
 		7D2837261BB113DC00BE8DB9 /* MusicRetrievalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */; settings = {ASSET_TAGS = (); }; };
 		7D4813271BD4D8460038325E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4813261BD4D8450038325E /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7D4C8B021BD574DA00ADA6D3 /* TrackNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		7D5F44FB1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14231B98C15600453DA1 /* RecordViewController.swift */; };
@@ -74,6 +75,7 @@
 		7D282E131BA78DB000A04E14 /* Main-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Main-Bridging-Header.h"; sourceTree = "<group>"; };
 		7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicRetrievalAPI.swift; sourceTree = "<group>"; };
 		7D4813261BD4D8450038325E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackNameLabel.swift; sourceTree = "<group>"; };
 		7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */,
 				7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */,
 				7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */,
+				7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */,
 				7D0E598C1BCFEB2300F7A2B4 /* Utils */,
 			);
 			name = "User Interface";
@@ -493,6 +496,7 @@
 				7D01C7DE1BD4BD220093E181 /* AudioTypeButton.swift in Sources */,
 				7D0E598B1BCFE93C00F7A2B4 /* BaseViews.swift in Sources */,
 				7D0E59901BD017B700F7A2B4 /* GeometryExtensions.swift in Sources */,
+				7D4C8B021BD574DA00ADA6D3 /* TrackNameLabel.swift in Sources */,
 				7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */,
 				7D01C7E81BD4C8760093E181 /* FontKit.swift in Sources */,
 			);

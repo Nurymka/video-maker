@@ -7,6 +7,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Record View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -17,14 +22,14 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQJ-Nl-Hbb" userLabel="Preview View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI" userLabel="Delete Last Segment Button">
-                                        <rect key="frame" x="18" y="486" width="35" height="35"/>
+                                        <rect key="frame" x="18" y="585" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="eiM-hK-ZIh"/>
                                             <constraint firstAttribute="width" constant="35" id="zsy-Jt-SiR"/>
@@ -37,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-AV-Mdq" customClass="RecordButton" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="111" y="453" width="100" height="100"/>
+                                        <rect key="frame" x="111" y="552" width="100" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Dd5-jp-9dZ"/>
@@ -45,10 +50,10 @@
                                         </constraints>
                                     </view>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-IC-r9s" userLabel="Segmented Control Wrapper" customClass="TimescaleSegmentedControlWrapper" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="362" width="288" height="34"/>
+                                        <rect key="frame" x="19" y="461" width="337" height="34"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-PY-y1A" customClass="TimescaleSegmentedControl" customModule="VideoMaker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="337" height="29"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <segments>
                                                     <segment title="0.25x"/>
@@ -71,7 +76,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
-                                        <rect key="frame" x="139" y="401" width="44" height="44"/>
+                                        <rect key="frame" x="139" y="500" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
                                             <constraint firstAttribute="height" constant="44" id="YCS-ek-iM1"/>
@@ -82,13 +87,34 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snail" translatesAutoresizingMaskIntoConstraints="NO" id="SGO-Um-L04">
-                                        <rect key="frame" x="30" y="397" width="28" height="15"/>
+                                        <rect key="frame" x="33" y="496" width="28" height="15"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horse" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-NW-pfo">
-                                        <rect key="frame" x="261" y="395" width="25" height="21"/>
+                                        <rect key="frame" x="313" y="494" width="25" height="21"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GI-or-ZJ7" userLabel="Track Name BG">
+                                        <rect key="frame" x="34" y="30" width="325" height="28"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="G3h-bH-iUv"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="VideoMaker" customModuleProvider="target">
+                                        <rect key="frame" x="71" y="33" width="231" height="21"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x14-w0-lLu">
+                                        <rect key="frame" x="28" y="26" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="0Kd-vF-LWG"/>
+                                            <constraint firstAttribute="width" constant="35" id="3ZL-eg-HIX"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-editAudio"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="255" y="16" width="55" height="55"/>
+                                        <rect key="frame" x="310" y="16" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="RGH-oU-pfd"/>
                                             <constraint firstAttribute="height" constant="55" id="fTe-A5-nMM"/>
@@ -99,7 +125,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cN-cEq" userLabel="Flash Button">
-                                        <rect key="frame" x="274" y="154" width="19" height="24"/>
+                                        <rect key="frame" x="329" y="154" width="19" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="19" id="Nko-OG-5Zq"/>
                                             <constraint firstAttribute="height" constant="24" id="rFG-Pi-J4B"/>
@@ -110,7 +136,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-RC-yfA" userLabel="Camera Flip Button">
-                                        <rect key="frame" x="267" y="101" width="30" height="23"/>
+                                        <rect key="frame" x="322" y="101" width="30" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="4yk-LQ-Mi5"/>
                                             <constraint firstAttribute="width" constant="30" id="ygt-qF-rOu"/>
@@ -121,7 +147,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-BD-J2q">
-                                        <rect key="frame" x="255" y="478" width="50" height="50"/>
+                                        <rect key="frame" x="310" y="577" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="E3r-Vy-MRv"/>
                                             <constraint firstAttribute="width" constant="50" id="c53-xg-nPj"/>
@@ -142,19 +168,27 @@
                                     <constraint firstItem="TGD-RC-yfA" firstAttribute="top" secondItem="2tj-aV-Juu" secondAttribute="bottom" constant="30" id="AEg-Qz-0Fv"/>
                                     <constraint firstItem="cmA-fn-joI" firstAttribute="centerY" secondItem="fCp-AV-Mdq" secondAttribute="centerY" id="Atj-WB-wjN"/>
                                     <constraint firstItem="e3e-BD-J2q" firstAttribute="centerY" secondItem="fCp-AV-Mdq" secondAttribute="centerY" id="Bgo-Si-pxR"/>
+                                    <constraint firstAttribute="trailing" secondItem="6GI-or-ZJ7" secondAttribute="trailing" constant="16" id="Em5-0G-VyA"/>
                                     <constraint firstItem="fCp-AV-Mdq" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="GCG-3O-htH"/>
                                     <constraint firstItem="2tj-aV-Juu" firstAttribute="top" secondItem="WQJ-Nl-Hbb" secondAttribute="top" constant="16" id="Hjc-YY-Vm3"/>
+                                    <constraint firstItem="2tj-aV-Juu" firstAttribute="leading" secondItem="LKB-Wj-PuV" secondAttribute="trailing" constant="8" id="Imi-bj-lQT"/>
                                     <constraint firstItem="SGO-Um-L04" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="7" id="JhN-xJ-Vvy"/>
                                     <constraint firstAttribute="trailing" secondItem="TGD-RC-yfA" secondAttribute="trailing" constant="23" id="KK6-mA-Bvs"/>
+                                    <constraint firstItem="6GI-or-ZJ7" firstAttribute="leading" secondItem="WQJ-Nl-Hbb" secondAttribute="leading" constant="34" id="Nwi-Er-BfD"/>
                                     <constraint firstItem="4iu-NW-pfo" firstAttribute="trailing" secondItem="5QG-PY-y1A" secondAttribute="trailing" constant="-18" id="TPr-i1-dAb"/>
+                                    <constraint firstItem="x14-w0-lLu" firstAttribute="leading" secondItem="WQJ-Nl-Hbb" secondAttribute="leading" constant="28" id="Tb3-qr-OzI"/>
                                     <constraint firstItem="4iu-NW-pfo" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="5" id="Vvw-sQ-rgP"/>
                                     <constraint firstItem="cao-jM-A8e" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="ZxR-qs-u1z"/>
+                                    <constraint firstItem="x14-w0-lLu" firstAttribute="centerY" secondItem="2tj-aV-Juu" secondAttribute="centerY" id="b0M-DD-IAb"/>
                                     <constraint firstAttribute="trailing" secondItem="e3e-BD-J2q" secondAttribute="trailing" constant="15" id="bDp-BF-iwV"/>
                                     <constraint firstItem="Vym-IC-r9s" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="dmW-OG-a6C"/>
                                     <constraint firstItem="cao-jM-A8e" firstAttribute="top" secondItem="Vym-IC-r9s" secondAttribute="bottom" constant="5" id="iKA-9A-PdA"/>
+                                    <constraint firstItem="LKB-Wj-PuV" firstAttribute="leading" secondItem="x14-w0-lLu" secondAttribute="trailing" constant="8" id="lbX-2x-SUa"/>
                                     <constraint firstAttribute="trailing" secondItem="2tj-aV-Juu" secondAttribute="trailing" constant="10" id="pE7-4v-Kdc"/>
                                     <constraint firstItem="inz-cN-cEq" firstAttribute="top" secondItem="TGD-RC-yfA" secondAttribute="bottom" constant="30" id="sqF-xb-NSz"/>
                                     <constraint firstAttribute="bottom" secondItem="fCp-AV-Mdq" secondAttribute="bottom" constant="15" id="tIW-vC-aPw"/>
+                                    <constraint firstItem="6GI-or-ZJ7" firstAttribute="centerY" secondItem="2tj-aV-Juu" secondAttribute="centerY" id="uC6-wJ-UPg"/>
+                                    <constraint firstItem="LKB-Wj-PuV" firstAttribute="centerY" secondItem="2tj-aV-Juu" secondAttribute="centerY" id="wFp-Pe-VZB"/>
                                     <constraint firstItem="5QG-PY-y1A" firstAttribute="leading" secondItem="SGO-Um-L04" secondAttribute="leading" constant="-14" id="xlT-t3-q0n"/>
                                     <constraint firstAttribute="trailing" secondItem="inz-cN-cEq" secondAttribute="trailing" constant="27" id="y7z-lT-by8"/>
                                 </constraints>
@@ -171,11 +205,12 @@
                     <navigationItem key="navigationItem" id="WNF-ZK-oIM"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="audioTypeButton" destination="2tj-aV-Juu" id="NRr-ER-cCq"/>
                         <outlet property="deleteLastSegmentButton" destination="cmA-fn-joI" id="sXo-Vr-fTQ"/>
                         <outlet property="doneButton" destination="e3e-BD-J2q" id="0hZ-Rg-wtV"/>
+                        <outlet property="editAudioButton" destination="x14-w0-lLu" id="cyi-dJ-0fU"/>
                         <outlet property="horseImageView" destination="4iu-NW-pfo" id="5Lm-8A-Koi"/>
                         <outlet property="previewView" destination="WQJ-Nl-Hbb" id="ARA-gF-gOc"/>
                         <outlet property="recordButton" destination="fCp-AV-Mdq" id="NCB-RB-q4O"/>
@@ -183,6 +218,8 @@
                         <outlet property="timescaleButton" destination="cao-jM-A8e" id="fUJ-dn-DtB"/>
                         <outlet property="timescaleSegmentedControl" destination="5QG-PY-y1A" id="8NR-vU-En3"/>
                         <outlet property="timescaleSegmentedControlWrapper" destination="Vym-IC-r9s" id="upo-5Y-BSt"/>
+                        <outlet property="trackNameLabel" destination="LKB-Wj-PuV" id="k9m-IO-LIz"/>
+                        <outlet property="trackNameLabelBG" destination="6GI-or-ZJ7" id="jQR-Np-Yhv"/>
                         <segue destination="McN-6d-tRK" kind="show" identifier="Show Video" id="vg3-zL-j0n"/>
                         <segue destination="gPx-Xh-dXN" kind="show" identifier="Choose Music Playlist" id="9my-Vd-KPz"/>
                     </connections>
@@ -559,6 +596,7 @@
         <image name="btn-cameraFlip" width="30" height="23"/>
         <image name="btn-check" width="50" height="50"/>
         <image name="btn-delete-last-segment" width="35" height="35"/>
+        <image name="btn-editAudio" width="35" height="35"/>
         <image name="btn-flash" width="19" height="24"/>
         <image name="btn-speakerOn" width="55" height="55"/>
         <image name="btn-timescale" width="35" height="35"/>
