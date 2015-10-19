@@ -9,7 +9,7 @@
 import UIKit
 import SCRecorder
 
-class VideoPlaybackViewController: UIViewController {
+class VideoPlaybackViewController: BaseViewController {
     
     @IBOutlet weak var insertCaptionButton: UIButton!
     @IBOutlet weak var filterSwipableView: SCSwipeableFilterView!
@@ -17,7 +17,6 @@ class VideoPlaybackViewController: UIViewController {
     @IBOutlet weak var draggableAudioSlider: DraggableSlider!
     @IBOutlet weak var editAudioFinishedButton: UIButton!
     
-    var musicTrackURL: NSURL? // when a track is selected from ChooseMusicTrackTableViewController, the property gets a value-
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var playerLayer: AVPlayerLayer?
@@ -56,9 +55,9 @@ class VideoPlaybackViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("musicURL: \(musicTrackURL)")
+        print("musicTrackInfo: \(musicTrackInfo)")
         
-        if musicTrackURL != nil { // if music is chosen, music is mixed to the video
+        if musicTrackInfo != nil { // if music is chosen, music is mixed to the video
             audioStartingPosition = 0.0
             editAudioButton.enabled = true
             compositionFromMusicTrackAndRecordedMaterial()
@@ -91,7 +90,7 @@ class VideoPlaybackViewController: UIViewController {
         let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
         
         let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-        let musicAsset = AVURLAsset(URL: musicTrackURL!)
+        let musicAsset = AVURLAsset(URL: musicTrackInfo!.url)
         if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
             do {
                 try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
@@ -240,7 +239,7 @@ class VideoPlaybackViewController: UIViewController {
         let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
         
         let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-        let musicAsset = AVURLAsset(URL: musicTrackURL!)
+        let musicAsset = AVURLAsset(URL: musicTrackInfo!.url)
         if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
             do {
                 let startingTime = CMTime(seconds: draggableAudioSlider.lowerValue, preferredTimescale: musicAssetTrack.timeRange.duration.timescale)
@@ -256,8 +255,8 @@ class VideoPlaybackViewController: UIViewController {
 // MARK: - Misc
     
     func configureDraggableSlider() {
-        if let musicTrackURL = musicTrackURL {
-            let musicAsset = AVURLAsset(URL: musicTrackURL)
+        if let musicTrackInfo = musicTrackInfo {
+            let musicAsset = AVURLAsset(URL: musicTrackInfo.url)
             if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first {
                 draggableAudioSlider.minimumValue = 0.0
                 draggableAudioSlider.maximumValue = Double(CMTimeGetSeconds(musicAssetTrack.timeRange.duration))

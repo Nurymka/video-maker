@@ -19,6 +19,7 @@ class ChooseMusicTrackTableViewController: UITableViewController {
     var currentPlayingCell: ChooseMusicTrackViewCell?
     
     var playlistItem: PlaylistItem? // if it exists, tracks are loaded from this playlist
+    var segueBackViewController: BaseViewController?
     // for music api requests
     var currentResultPage = 1
     var totalResultPages = -1
@@ -83,26 +84,27 @@ extension ChooseMusicTrackTableViewController {
         }
         
         let trackURL = tracks[indexPath.row].trackPreviewURL
-        let playbackViewController = self.navigationController?.viewControllers.filter({$0 is VideoPlaybackViewController}).first as? VideoPlaybackViewController
+        let artistName = tracks[indexPath.row].artistName
+        let trackName = tracks[indexPath.row].trackName
         
         if FileManager.trackExistsOnDisk(trackURL: trackURL) {
-            if let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
-                playbackViewController.musicTrackURL = diskTrackURL
-                self.navigationController?.popToViewController(playbackViewController, animated: true)
+            if let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = segueBackViewController {
+                segueBackViewController.musicTrackInfo = trackInfo
+                self.navigationController?.popToViewController(segueBackViewController, animated: true)
             }
         } else {
-            if let trackData = musicCache.objectForKey(trackURL) as? NSData, playbackViewController = playbackViewController {
-                if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL) {
-                    playbackViewController.musicTrackURL = diskTrackURL
-                    self.navigationController?.popToViewController(playbackViewController, animated: true)
+            if let trackData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
+                if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL) {
+                    segueBackViewController.musicTrackInfo = trackInfo
+                    self.navigationController?.popToViewController(segueBackViewController, animated: true)
                 }
             } else {
                 Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
                     switch data {
                     case .Success(let track):
-                        if FileManager.writeTrackDataToDisk(track, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
-                            playbackViewController.musicTrackURL = diskTrackURL
-                            self.navigationController?.popToViewController(playbackViewController, animated: true)
+                        if FileManager.writeTrackDataToDisk(track, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = self.segueBackViewController {
+                            segueBackViewController.musicTrackInfo = trackInfo
+                            self.navigationController?.popToViewController(segueBackViewController, animated: true)
                         }
                     case .Failure(_, let error):
                         print(error)
@@ -195,7 +197,6 @@ extension ChooseMusicTrackTableViewController {
                             let artistName = (dic["author"] as! NSDictionary).valueForKey("name") as? String
                             
                             if let id = id, trackPreviewURL = trackPreviewURL, trackName = trackName, artistName = artistName {
-                                print("TrackInfo returned successfully")
                                 return TrackInfo(
                                     id: id,
                                     trackPreviewURL: trackPreviewURL,
@@ -204,7 +205,6 @@ extension ChooseMusicTrackTableViewController {
                                     artistName: artistName
                                     )
                             } else {
-                                print("Empty TrackInfo returned")
                                 return TrackInfo(id: -1, trackPreviewURL: "", albumCoverURL: "", trackName: "", artistName: "")
                             }
                         }).filter({ $0.id != -1 })

@@ -12,7 +12,7 @@ import Foundation
 class FileManager {
     static let kVideoMakerMusicCacheDirectory = "VideoMakerMusicCache"
     
-    static func writeTrackDataToDisk(data: NSData, withFileName trackURL: String) -> Bool {
+    static func writeTrackDataToDisk(data: NSData, withFileName trackURL: String, artistName: String, trackName: String) -> Bool {
         let fm = NSFileManager()
         let cachesURL = fm.URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
         let modifiedTrackURL = (NSURL(string: trackURL)?.URLByDeletingLastPathComponent?.URLString.stringByRemovingMusicallyAddressPath())!
@@ -28,22 +28,55 @@ class FileManager {
         let fileName = (NSURL(string: trackURL)?.lastPathComponent)!
         let trackPathURL = trackDirectoryURL.URLByAppendingPathComponent(fileName)
         if !NSFileManager.defaultManager().fileExistsAtPath(trackPathURL.path!) {
-            return NSFileManager.defaultManager().createFileAtPath(trackPathURL.path!, contents: data, attributes: nil)
+            
+            if NSFileManager.defaultManager().createFileAtPath(trackPathURL.path!, contents: data, attributes: nil) {
+                return writeTrackInfoDataToDisk(artistName: artistName, trackName: trackName, withFileName: trackURL)
+            }
         }
         return false
     }
     
-    static func returnTrackURLFromDisk(trackURL trackURL: String) -> NSURL? {
-        if trackExistsOnDisk(trackURL: trackURL) {
-            return trackPathURLFromTrackURL(trackURL)
+    static func returnTrackInfoFromDisk(trackURL trackURL: String) -> TrackInfoLocal? {
+        let trackPathURL = trackPathURLFromTrackURL(trackURL)
+        
+        let lastPathComponentWithDatFileExtension = trackPathURL.URLByDeletingPathExtension!.lastPathComponent! + "TrackInfo.dat"
+        let trackInfoURL = (trackPathURL.URLByDeletingLastPathComponent?.URLByAppendingPathComponent(lastPathComponentWithDatFileExtension))!
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(trackInfoURL.path!) {
+            let data = NSFileManager.defaultManager().contentsAtPath(trackInfoURL.path!)
+            
+            return TrackInfoLocal.unarchive(data)
         } else {
-            print("File doesn't exist at path: \(trackPathURLFromTrackURL(trackURL).path!)")
+            print("File doesn't exist at path: \(trackInfoURL.path!)")
             return nil
         }
     }
     
+//    static func returnTrackURLFromDisk(trackURL trackURL: String) -> NSURL? {
+//        if trackExistsOnDisk(trackURL: trackURL) {
+//            return trackPathURLFromTrackURL(trackURL)
+//        } else {
+//            print("File doesn't exist at path: \(trackPathURLFromTrackURL(trackURL).path!)")
+//            return nil
+//        }
+//    }
+    
     static func trackExistsOnDisk(trackURL trackURL: String) -> Bool {
         return NSFileManager.defaultManager().fileExistsAtPath(trackPathURLFromTrackURL(trackURL).path!)
+    }
+    
+    private static func writeTrackInfoDataToDisk(artistName artistName: String, trackName: String, withFileName trackURL: String) -> Bool {
+        let trackPathURL = trackPathURLFromTrackURL(trackURL)
+        
+        let lastPathComponentWithDatFileExtension = trackPathURL.URLByDeletingPathExtension!.lastPathComponent! + "TrackInfo.dat"
+        let trackInfoURL = (trackPathURL.URLByDeletingLastPathComponent?.URLByAppendingPathComponent(lastPathComponentWithDatFileExtension))!
+        print("trackInfoURL: \(trackInfoURL)")
+        
+        let archivedLocalTrackInfo = TrackInfoLocal(url: trackPathURL, trackName: trackName, artistName: artistName).archive()
+        if !NSFileManager.defaultManager().fileExistsAtPath(trackInfoURL.path!) {
+            return NSFileManager.defaultManager().createFileAtPath(trackInfoURL.path!, contents: archivedLocalTrackInfo, attributes: nil)
+        }
+        return false
     }
     
     private static func trackPathURLFromTrackURL(trackURL: String) -> NSURL {

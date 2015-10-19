@@ -29,6 +29,7 @@ class SearchMusicTrackTableViewController: UITableViewController, UISearchBarDel
     let kCellIdentifier = "TrackItemCellIdentifier"
     
     var currentNavigationController: UINavigationController? // used for seguing back to the video playback controller when the song is chosen. because SearchMusicTrackTableViewController is not part of the navigationcontroller stack, it has to be stored
+    var segueBackViewController: BaseViewController?
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
@@ -79,31 +80,30 @@ extension SearchMusicTrackTableViewController {
         }
         
         let trackURL = tracks[indexPath.row].trackPreviewURL
+        let artistName = tracks[indexPath.row].artistName
+        let trackName = tracks[indexPath.row].trackName
         
         if let currentNavigationController = currentNavigationController {
-            let playbackViewController = currentNavigationController.viewControllers.filter({$0 is VideoPlaybackViewController}).first as? VideoPlaybackViewController
-            
             if FileManager.trackExistsOnDisk(trackURL: trackURL) {
-                if let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
-                    playbackViewController.musicTrackURL = diskTrackURL
-                    
-                    currentNavigationController.popToViewController(playbackViewController, animated: true)
+                if let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = segueBackViewController {
+                    segueBackViewController.musicTrackInfo = trackInfo
+                    currentNavigationController.popToViewController(segueBackViewController, animated: true)
                 }
             } else {
-                if let trackData = musicCache.objectForKey(trackURL) as? NSData, playbackViewController = playbackViewController {
-                    if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL) {
-                        playbackViewController.musicTrackURL = diskTrackURL
+                if let trackData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
+                    if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL) {
+                        segueBackViewController.musicTrackInfo = trackInfo
                         
-                        currentNavigationController.popToViewController(playbackViewController, animated: true)
+                        currentNavigationController.popToViewController(segueBackViewController, animated: true)
                     }
                 } else {
                     Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
                         switch data {
                         case .Success(let track):
-                            if FileManager.writeTrackDataToDisk(track, withFileName: trackURL), let diskTrackURL = FileManager.returnTrackURLFromDisk(trackURL: trackURL), playbackViewController = playbackViewController {
-                                playbackViewController.musicTrackURL = diskTrackURL
+                            if FileManager.writeTrackDataToDisk(track, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = self.segueBackViewController {
+                                segueBackViewController.musicTrackInfo = trackInfo
                                 
-                                currentNavigationController.popToViewController(playbackViewController, animated: true)
+                                currentNavigationController.popToViewController(segueBackViewController, animated: true)
                             }
                         case .Failure(_, let error):
                             print(error)

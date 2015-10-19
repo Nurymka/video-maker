@@ -8,16 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */; settings = {ASSET_TAGS = (); }; };
+		7D01C7DE1BD4BD220093E181 /* AudioTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7DD1BD4BD220093E181 /* AudioTypeButton.swift */; settings = {ASSET_TAGS = (); }; };
+		7D01C7E11BD4C13C0093E181 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E01BD4C13C0093E181 /* R.swift */; settings = {ASSET_TAGS = (); }; };
+		7D01C7E31BD4C5140093E181 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E21BD4C5140093E181 /* SBConstants.swift */; settings = {ASSET_TAGS = (); }; };
+		7D01C7E61BD4C5B00093E181 /* ResourceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E51BD4C5B00093E181 /* ResourceExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		7D01C7E81BD4C8760093E181 /* FontKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E71BD4C8760093E181 /* FontKit.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0BE7EC1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0E59891BCFE8F400F7A2B4 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0E598B1BCFE93C00F7A2B4 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */; settings = {ASSET_TAGS = (); }; };
-		7D0E598E1BCFEBD200F7A2B4 /* FontKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E598D1BCFEBD200F7A2B4 /* FontKit.swift */; settings = {ASSET_TAGS = (); }; };
 		7D0E59901BD017B700F7A2B4 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E598F1BD017B600F7A2B4 /* GeometryExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		7D2076001BD069FD005C010D /* TimescaleSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */; settings = {ASSET_TAGS = (); }; };
 		7D2324841BC77A34004A1976 /* PlaylistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2324831BC77A34004A1976 /* PlaylistAPI.swift */; settings = {ASSET_TAGS = (); }; };
 		7D2324861BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2324851BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */; };
 		7D2837261BB113DC00BE8DB9 /* MusicRetrievalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */; settings = {ASSET_TAGS = (); }; };
+		7D4813271BD4D8460038325E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4813261BD4D8450038325E /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D5F44FB1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14231B98C15600453DA1 /* RecordViewController.swift */; };
@@ -27,7 +32,6 @@
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
-		7DB415A91BB66ECA002DEE33 /* 940453906.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DB415A81BB66ECA002DEE33 /* 940453906.m4a */; settings = {ASSET_TAGS = (); }; };
 		7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */; settings = {ASSET_TAGS = (); }; };
 		7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC14541BB38C29000177D7 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
 		7DE9325E1BD0501B00040833 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932581BD0501B00040833 /* Cabin-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
@@ -54,10 +58,14 @@
 		0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationKit.swift; sourceTree = "<group>"; };
+		7D01C7DD1BD4BD220093E181 /* AudioTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTypeButton.swift; sourceTree = "<group>"; };
+		7D01C7E01BD4C13C0093E181 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.swift; path = Resources/R.swift; sourceTree = "<group>"; };
+		7D01C7E21BD4C5140093E181 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SBConstants.swift; path = Resources/SBConstants.swift; sourceTree = "<group>"; };
+		7D01C7E51BD4C5B00093E181 /* ResourceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtensions.swift; sourceTree = "<group>"; };
+		7D01C7E71BD4C8760093E181 /* FontKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
 		7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
-		7D0E598D1BCFEBD200F7A2B4 /* FontKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
 		7D0E598F1BD017B600F7A2B4 /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimescaleSegmentedControl.swift; sourceTree = "<group>"; };
 		7D2324831BC77A34004A1976 /* PlaylistAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistAPI.swift; sourceTree = "<group>"; };
@@ -65,6 +73,7 @@
 		7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayCaptionView.swift; sourceTree = "<group>"; };
 		7D282E131BA78DB000A04E14 /* Main-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Main-Bridging-Header.h"; sourceTree = "<group>"; };
 		7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicRetrievalAPI.swift; sourceTree = "<group>"; };
+		7D4813261BD4D8450038325E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,7 +88,6 @@
 		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		7DB415A81BB66ECA002DEE33 /* 940453906.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 940453906.m4a; sourceTree = "<group>"; };
 		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
 		7DDC14541BB38C29000177D7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		7DE932581BD0501B00040833 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
@@ -111,11 +119,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D01C7DF1BD4C1330093E181 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				7D01C7E21BD4C5140093E181 /* SBConstants.swift */,
+				7D01C7E01BD4C13C0093E181 /* R.swift */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
+		7D01C7E41BD4C5970093E181 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7D01C7E51BD4C5B00093E181 /* ResourceExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		7D0E598C1BCFEB2300F7A2B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				7DE932641BD05FEE00040833 /* StyleKit.swift */,
-				7D0E598D1BCFEBD200F7A2B4 /* FontKit.swift */,
+				7D01C7E71BD4C8760093E181 /* FontKit.swift */,
 				7D0E598F1BD017B600F7A2B4 /* GeometryExtensions.swift */,
 				7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */,
 			);
@@ -149,6 +174,7 @@
 				7DC092F21BBD0EAF00CC5619 /* View Controllers */,
 				7DC092F31BBD0EBD00CC5619 /* User Interface */,
 				7DC092F51BBD0EF700CC5619 /* Utils */,
+				7D01C7E41BD4C5970093E181 /* Extensions */,
 				7DC092F41BBD0EDF00CC5619 /* Storyboards */,
 				7D6A14281B98C15600453DA1 /* Images.xcassets */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
@@ -160,10 +186,11 @@
 		7D6A141F1B98C15600453DA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7D01C7DF1BD4C1330093E181 /* Generated */,
 				7DE932571BD0495800040833 /* Fonts */,
-				7DB415A81BB66ECA002DEE33 /* 940453906.m4a */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D282E131BA78DB000A04E14 /* Main-Bridging-Header.h */,
+				A32EB0CFD33E2BCF63D7F325 /* Resources */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -193,6 +220,7 @@
 				7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */,
 				7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */,
 				7D2324851BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift */,
+				7D4813261BD4D8450038325E /* BaseViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -200,12 +228,13 @@
 		7DC092F31BBD0EBD00CC5619 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				7D0E598C1BCFEB2300F7A2B4 /* Utils */,
+				7D01C7DD1BD4BD220093E181 /* AudioTypeButton.swift */,
 				7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */,
 				7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */,
 				7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */,
 				7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */,
 				7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */,
+				7D0E598C1BCFEB2300F7A2B4 /* Utils */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -242,6 +271,13 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		A32EB0CFD33E2BCF63D7F325 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C11CB4E72E49C4593853348C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +304,7 @@
 			buildConfigurationList = 7D6A143B1B98C15700453DA1 /* Build configuration list for PBXNativeTarget "VideoMaker" */;
 			buildPhases = (
 				BBAA3CF055F5F169CC72EA00 /* Check Pods Manifest.lock */,
+				F55C2C57EC3D059D42DEFD7C /* Build Resource-Index */,
 				7D6A14181B98C15600453DA1 /* Sources */,
 				7D6A14191B98C15600453DA1 /* Frameworks */,
 				7D6A141A1B98C15600453DA1 /* Resources */,
@@ -347,7 +384,6 @@
 			files = (
 				7D6A14271B98C15600453DA1 /* Main.storyboard in Resources */,
 				7DE932621BD0501C00040833 /* Cabin-MediumItalic.ttf in Resources */,
-				7DB415A91BB66ECA002DEE33 /* 940453906.m4a in Resources */,
 				7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */,
 				7DE9325F1BD0501C00040833 /* Cabin-BoldItalic.ttf in Resources */,
 				7DE932631BD0501C00040833 /* Cabin-Regular.ttf in Resources */,
@@ -413,6 +449,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F55C2C57EC3D059D42DEFD7C /* Build Resource-Index */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Resource-Index";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcres --no-ansi build $PROJECT_FILE_PATH $SRCROOT/VideoMaker/Resources/R\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -421,24 +472,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */,
-				7D0E598E1BCFEBD200F7A2B4 /* FontKit.swift in Sources */,
 				7D5F44FB1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift in Sources */,
 				7DE932651BD05FEE00040833 /* StyleKit.swift in Sources */,
 				7D0BE7EC1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift in Sources */,
 				7D2324841BC77A34004A1976 /* PlaylistAPI.swift in Sources */,
+				7D4813271BD4D8460038325E /* BaseViewController.swift in Sources */,
 				7D0E59891BCFE8F400F7A2B4 /* RecordButton.swift in Sources */,
 				7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */,
+				7D01C7E31BD4C5140093E181 /* SBConstants.swift in Sources */,
 				7D2837261BB113DC00BE8DB9 /* MusicRetrievalAPI.swift in Sources */,
 				7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */,
 				7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
 				7D2324861BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift in Sources */,
 				7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */,
+				7D01C7E61BD4C5B00093E181 /* ResourceExtensions.swift in Sources */,
 				7D2076001BD069FD005C010D /* TimescaleSegmentedControl.swift in Sources */,
+				7D01C7E11BD4C13C0093E181 /* R.swift in Sources */,
 				7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */,
+				7D01C7DE1BD4BD220093E181 /* AudioTypeButton.swift in Sources */,
 				7D0E598B1BCFE93C00F7A2B4 /* BaseViews.swift in Sources */,
 				7D0E59901BD017B700F7A2B4 /* GeometryExtensions.swift in Sources */,
 				7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */,
+				7D01C7E81BD4C8760093E181 /* FontKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

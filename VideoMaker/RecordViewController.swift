@@ -10,14 +10,16 @@ import UIKit
 import SCRecorder
 import RBBAnimation
 
-class RecordViewController: UIViewController {
+class RecordViewController: BaseViewController {
     let kMaximumRecordingLength = 15.0
     let kMinimumRecordingLength = 1.0
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var recordButton: RecordButton!
     @IBOutlet weak var timescaleButton: UIButton!
+    @IBOutlet weak var deleteLastSegmentButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var audioTypeButton: AudioTypeButton!
     @IBOutlet weak var timescaleSegmentedControl: TimescaleSegmentedControl!
     @IBOutlet weak var timescaleSegmentedControlWrapper: TimescaleSegmentedControlWrapper!
     
@@ -26,7 +28,7 @@ class RecordViewController: UIViewController {
     
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
-    
+  
     // for storing the scaled recording duration
     var scaledRecordedDuration: Double = 0.0
     var previousDuration: CMTime?
@@ -53,6 +55,7 @@ class RecordViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
+        print("musicTrackInfo: \(musicTrackInfo)")
         prepareSession()
     }
     
@@ -89,6 +92,8 @@ class RecordViewController: UIViewController {
             recorder.session = session
             scaledRecordedDuration = 0.0
             previousDuration = nil
+            deleteLastSegmentButton.enabled = false
+            doneButton.enabled = false
             updateRecordingTime()
         }
     }
@@ -109,6 +114,7 @@ class RecordViewController: UIViewController {
         }
     }
     
+    // TODO: - change retake button function to delete last segment
     @IBAction func retakeButtonPressed(sender: AnyObject) {
         if (recorder.session != nil) {
             recordButton.progress = 0.0
@@ -135,7 +141,7 @@ class RecordViewController: UIViewController {
         print("Current timeScale: \(getVideoTimeScaleFromUISegment(segmentedControl.selectedSegmentIndex))")
     }
     
-    
+    // TODO: - make an acceptable pop out animation for segmented control
     @IBAction func timescaleButtonPressed(sender: AnyObject) {
         if timescaleSegmentedControlWrapper.layer.opacity == 0.0 {
             let fadeInAnim = AnimationKit.fadeIn()
@@ -160,6 +166,34 @@ class RecordViewController: UIViewController {
         }
     }
     
+    @IBAction func audioTypeButtonPressed(sender: AnyObject) {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        actionSheetController.view.tintColor = StyleKit.lightPurple
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        let originalSoundAction = UIAlertAction(title: "Original Sound", style: .Default) { (action) in
+            self.audioTypeButton.changeButtonStateTo(.OriginalSound)
+        }
+        actionSheetController.addAction(originalSoundAction)
+        
+        let addMusicAction = UIAlertAction(title: "Pick a Song", style: .Default) { (action) in
+            self.audioTypeButton.changeButtonStateTo(.PickSong)
+            self.performSegueWithIdentifier("Choose Music Playlist", sender: self)
+        }
+        actionSheetController.addAction(addMusicAction)
+        
+        let noSoundAction = UIAlertAction(title: "No Sound", style: .Default) { (action) in
+            self.audioTypeButton.changeButtonStateTo(.NoSound)
+        }
+        actionSheetController.addAction(noSoundAction)
+        
+        presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+    
     @IBAction func flashButtonPressed(sender: AnyObject) {
         recorder.flashMode = recorder.flashMode == .Off ? .Light : .Off
     }
@@ -174,6 +208,9 @@ class RecordViewController: UIViewController {
         if (segue.identifier == "Show Video") {
             let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
             videoPlaybackViewController.recordSession = recordSession
+        } else if segue.identifier == "Choose Music Playlist" {
+            let choosePlaylistViewController = segue.destinationViewController as! ChoosePlaylistCollectionViewController
+            choosePlaylistViewController.segueBackViewController = self
         }
     }
 
@@ -192,9 +229,7 @@ class RecordViewController: UIViewController {
         }
         
         if scaledRecordedDuration >= kMinimumRecordingLength {
-            doneButton.enabled = true
-        } else {
-            doneButton.enabled = false
+            enableNavigationControlButtons()
         }
         
         if scaledRecordedDuration >= kMaximumRecordingLength {
@@ -212,6 +247,17 @@ class RecordViewController: UIViewController {
         case 4: return 0.5
         default: return 1.0
         }
+    }
+    
+// MARK: - UI Related
+    func enableNavigationControlButtons() {
+        if doneButton.layer.opacity == 0.0 {
+            doneButton.layer.opacity = 1.0
+            deleteLastSegmentButton.layer.opacity = 1.0
+        }
+        
+        doneButton.enabled = true
+        deleteLastSegmentButton.enabled = true
     }
 }
 

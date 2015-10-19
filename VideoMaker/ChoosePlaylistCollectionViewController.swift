@@ -19,6 +19,7 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     var currentSearchString = ""
     
     // for segues
+    var segueBackViewController: BaseViewController? // when the song is chosen, the navigation controller will pop back to the original sender
     var seguePlaylistItem: PlaylistItem?
 
 // MARK: - View Controller Cycle
@@ -43,9 +44,10 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Choose Music Track" {
-            if let playlistItem = seguePlaylistItem {
+            if let playlistItem = seguePlaylistItem, segueBackViewController = segueBackViewController {
                 let chooseMusicViewController = segue.destinationViewController as! ChooseMusicTrackTableViewController
                 chooseMusicViewController.playlistItem = playlistItem
+                chooseMusicViewController.segueBackViewController = segueBackViewController
             }
         }
     }
@@ -92,6 +94,7 @@ extension ChoosePlaylistCollectionViewController: UISearchBarDelegate {
         if let searchString = searchController.searchBar.text {
             if searchString != "" {
                 let searchVC = searchController.searchResultsController as! SearchMusicTrackTableViewController
+                searchVC.segueBackViewController = segueBackViewController
                 searchVC.searchForMusicWithSearchString(searchString)
             }
         }

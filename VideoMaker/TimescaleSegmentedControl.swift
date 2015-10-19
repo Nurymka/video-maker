@@ -15,7 +15,7 @@ class TimescaleSegmentedControl: UISegmentedControl {
     let triangleHeight: CGFloat = 5.0
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        let titleTextAttributes = [NSFontAttributeName : FontKit.cabinRegular, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        let titleTextAttributes = [NSFontAttributeName : FontKit.segmentedControlLabel, NSForegroundColorAttributeName : UIColor.whiteColor()]
         setTitleTextAttributes(titleTextAttributes, forState: .Normal)
         setTitleTextAttributes(titleTextAttributes, forState: .Selected)
         

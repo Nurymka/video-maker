@@ -23,26 +23,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQJ-Nl-Hbb" userLabel="Preview View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-BD-J2q">
-                                        <rect key="frame" x="0.0" y="0.0" width="37" height="30"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="recordingFinished:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ByS-Zc-chd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI">
-                                        <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
-                                        <state key="normal" title="Retake">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI" userLabel="Delete Last Segment Button">
+                                        <rect key="frame" x="18" y="486" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="eiM-hK-ZIh"/>
+                                            <constraint firstAttribute="width" constant="35" id="zsy-Jt-SiR"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-delete-last-segment">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="retakeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gea-yX-Rwl"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-AV-Mdq" customClass="RecordButton" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="110" y="453" width="100" height="100"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-AV-Mdq" customClass="RecordButton" customModule="VideoMaker" customModuleProvider="target">
+                                        <rect key="frame" x="111" y="453" width="100" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Dd5-jp-9dZ"/>
@@ -75,8 +70,8 @@
                                             <constraint firstAttribute="trailing" secondItem="5QG-PY-y1A" secondAttribute="trailing" id="x0Q-bI-lzp"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
-                                        <rect key="frame" x="138" y="401" width="44" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
+                                        <rect key="frame" x="139" y="401" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
                                             <constraint firstAttribute="height" constant="44" id="YCS-ek-iM1"/>
@@ -92,13 +87,16 @@
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horse" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-NW-pfo">
                                         <rect key="frame" x="261" y="395" width="25" height="21"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="VideoMaker" customModuleProvider="target">
                                         <rect key="frame" x="255" y="16" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="RGH-oU-pfd"/>
                                             <constraint firstAttribute="height" constant="55" id="fTe-A5-nMM"/>
                                         </constraints>
                                         <state key="normal" image="btn-speakerOn"/>
+                                        <connections>
+                                            <action selector="audioTypeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f33-V2-tKD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cN-cEq" userLabel="Flash Button">
                                         <rect key="frame" x="274" y="154" width="19" height="24"/>
@@ -122,12 +120,28 @@
                                             <action selector="reverseCameraButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TYb-dj-mOG"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-BD-J2q">
+                                        <rect key="frame" x="255" y="478" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="E3r-Vy-MRv"/>
+                                            <constraint firstAttribute="width" constant="50" id="c53-xg-nPj"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-check">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recordingFinished:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ByS-Zc-chd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.66317288230000004" blue="0.33105519119999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="fCp-AV-Mdq" firstAttribute="top" secondItem="cao-jM-A8e" secondAttribute="bottom" constant="8" id="1py-ad-932"/>
                                     <constraint firstItem="Vym-IC-r9s" firstAttribute="width" secondItem="WQJ-Nl-Hbb" secondAttribute="width" multiplier="0.9" id="2BW-ZB-SGN"/>
+                                    <constraint firstItem="cmA-fn-joI" firstAttribute="leading" secondItem="WQJ-Nl-Hbb" secondAttribute="leading" constant="18" id="3uN-ep-ZQs"/>
                                     <constraint firstItem="TGD-RC-yfA" firstAttribute="top" secondItem="2tj-aV-Juu" secondAttribute="bottom" constant="30" id="AEg-Qz-0Fv"/>
+                                    <constraint firstItem="cmA-fn-joI" firstAttribute="centerY" secondItem="fCp-AV-Mdq" secondAttribute="centerY" id="Atj-WB-wjN"/>
+                                    <constraint firstItem="e3e-BD-J2q" firstAttribute="centerY" secondItem="fCp-AV-Mdq" secondAttribute="centerY" id="Bgo-Si-pxR"/>
                                     <constraint firstItem="fCp-AV-Mdq" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="GCG-3O-htH"/>
                                     <constraint firstItem="2tj-aV-Juu" firstAttribute="top" secondItem="WQJ-Nl-Hbb" secondAttribute="top" constant="16" id="Hjc-YY-Vm3"/>
                                     <constraint firstItem="SGO-Um-L04" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="7" id="JhN-xJ-Vvy"/>
@@ -135,6 +149,7 @@
                                     <constraint firstItem="4iu-NW-pfo" firstAttribute="trailing" secondItem="5QG-PY-y1A" secondAttribute="trailing" constant="-18" id="TPr-i1-dAb"/>
                                     <constraint firstItem="4iu-NW-pfo" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="5" id="Vvw-sQ-rgP"/>
                                     <constraint firstItem="cao-jM-A8e" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="ZxR-qs-u1z"/>
+                                    <constraint firstAttribute="trailing" secondItem="e3e-BD-J2q" secondAttribute="trailing" constant="15" id="bDp-BF-iwV"/>
                                     <constraint firstItem="Vym-IC-r9s" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="dmW-OG-a6C"/>
                                     <constraint firstItem="cao-jM-A8e" firstAttribute="top" secondItem="Vym-IC-r9s" secondAttribute="bottom" constant="5" id="iKA-9A-PdA"/>
                                     <constraint firstAttribute="trailing" secondItem="2tj-aV-Juu" secondAttribute="trailing" constant="10" id="pE7-4v-Kdc"/>
@@ -158,6 +173,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="audioTypeButton" destination="2tj-aV-Juu" id="NRr-ER-cCq"/>
+                        <outlet property="deleteLastSegmentButton" destination="cmA-fn-joI" id="sXo-Vr-fTQ"/>
                         <outlet property="doneButton" destination="e3e-BD-J2q" id="0hZ-Rg-wtV"/>
                         <outlet property="horseImageView" destination="4iu-NW-pfo" id="5Lm-8A-Koi"/>
                         <outlet property="previewView" destination="WQJ-Nl-Hbb" id="ARA-gF-gOc"/>
@@ -167,6 +184,7 @@
                         <outlet property="timescaleSegmentedControl" destination="5QG-PY-y1A" id="8NR-vU-En3"/>
                         <outlet property="timescaleSegmentedControlWrapper" destination="Vym-IC-r9s" id="upo-5Y-BSt"/>
                         <segue destination="McN-6d-tRK" kind="show" identifier="Show Video" id="vg3-zL-j0n"/>
+                        <segue destination="gPx-Xh-dXN" kind="show" identifier="Choose Music Playlist" id="9my-Vd-KPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -285,7 +303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gy-OC-B4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="389"/>
+            <point key="canvasLocation" x="1818" y="755"/>
         </scene>
         <!--Search Music Track View Controller-->
         <scene sceneID="Upr-Ly-Xvu">
@@ -378,7 +396,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCollectionViewCell" id="Y9P-e4-i3C" customClass="ChoosePlaylistCollectionViewCell" customModule="VideoMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="150" height="150"/>
+                                <rect key="frame" x="0.0" y="20" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -519,9 +537,28 @@
             </objects>
             <point key="canvasLocation" x="3015" y="389"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="gz8-fc-Rni">
+            <objects>
+                <viewController id="exE-q2-Nq6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kkM-Ys-A0R"/>
+                        <viewControllerLayoutGuide type="bottom" id="3gH-SL-tb1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xHf-AF-E3C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jZm-5f-uWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="btn-cameraFlip" width="30" height="23"/>
+        <image name="btn-check" width="50" height="50"/>
+        <image name="btn-delete-last-segment" width="35" height="35"/>
         <image name="btn-flash" width="19" height="24"/>
         <image name="btn-speakerOn" width="55" height="55"/>
         <image name="btn-timescale" width="35" height="35"/>
@@ -530,4 +567,7 @@
         <image name="playIcon" width="32" height="36"/>
         <image name="snail" width="28" height="15"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9my-Vd-KPz"/>
+    </inferredMetricsTieBreakers>
 </document>
