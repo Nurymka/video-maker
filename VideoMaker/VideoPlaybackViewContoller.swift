@@ -90,12 +90,14 @@ class VideoPlaybackViewController: BaseViewController {
         let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
         
         let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-        let musicAsset = AVURLAsset(URL: musicTrackInfo!.url)
-        if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
-            do {
-                try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
-            } catch {
-                print("Music Track timeRange couldn't be added: \(error)")
+        if let assetURL = LocalMusicManager.returnMusicDataFromTrackId(trackId: musicTrackInfo!.id) {
+            let musicAsset = AVURLAsset(URL: assetURL)
+            if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
+                do {
+                    try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
+                } catch {
+                    print("Music Track timeRange couldn't be added: \(error)")
+                }
             }
         }
     }
@@ -216,64 +218,65 @@ class VideoPlaybackViewController: BaseViewController {
         performSegueWithIdentifier("Choose Music Playlist", sender: self)
     }
     
-    @IBAction func editAudioPressed(sender: AnyObject) {
-        configureDraggableSlider()
-    }
+//    @IBAction func editAudioPressed(sender: AnyObject) {
+//        configureDraggableSlider()
+//    }
+//    
+//    @IBAction func editAudioFinishedPressed(sender: AnyObject) {
+//        draggableAudioSlider.hidden = true
+//        editAudioFinishedButton.hidden = true
+//        editAudioButton.enabled = true
+//        audioStartingPosition = draggableAudioSlider.lowerValue
+//    }
     
-    @IBAction func editAudioFinishedPressed(sender: AnyObject) {
-        draggableAudioSlider.hidden = true
-        editAudioFinishedButton.hidden = true
-        editAudioButton.enabled = true
-        audioStartingPosition = draggableAudioSlider.lowerValue
-    }
-    
-    func draggableAudioSliderEditingDidStart() {
-        player?.pause()
-    }
-    
-    func draggableAudioSliderEditingDidEnd() {
-        if let oldMutableCompositionAudioTrack = composition?.tracksWithMediaType(AVMediaTypeAudio).first {
-            composition?.removeTrack(oldMutableCompositionAudioTrack)
-        }
-        
-        let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
-        
-        let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-        let musicAsset = AVURLAsset(URL: musicTrackInfo!.url)
-        if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
-            do {
-                let startingTime = CMTime(seconds: draggableAudioSlider.lowerValue, preferredTimescale: musicAssetTrack.timeRange.duration.timescale)
-                try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(startingTime, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
-            } catch {
-                print("Music Track timeRange couldn't be added: \(error)")
-            }
-        }
-        player?.setItemByAsset(composition)
-        player?.play()
-    }
+//    func draggableAudioSliderEditingDidStart() {
+//        player?.pause()
+//    }
+//    
+//    func draggableAudioSliderEditingDidEnd() {
+//        if let oldMutableCompositionAudioTrack = composition?.tracksWithMediaType(AVMediaTypeAudio).first {
+//            composition?.removeTrack(oldMutableCompositionAudioTrack)
+//        }
+//        
+//        let recordedVideoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first
+//        
+//        let mutableCompositionAudioTrack = composition?.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
+//        if let musicAsset = AVURLAsset(URL: LocalMusicManager.returnMusicDataFromTrackId(trackId: musicTrackInfo!.id)) {
+//            if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first, videoTrackDuration = recordedVideoTrack?.timeRange.duration {
+//                do {
+//                    let startingTime = CMTime(seconds: draggableAudioSlider.lowerValue, preferredTimescale: musicAssetTrack.timeRange.duration.timescale)
+//                    try mutableCompositionAudioTrack?.insertTimeRange(CMTimeRangeMake(startingTime, videoTrackDuration), ofTrack:musicAssetTrack, atTime: kCMTimeZero)
+//                } catch {
+//                    print("Music Track timeRange couldn't be added: \(error)")
+//                }
+//            }
+//        }
+//        player?.setItemByAsset(composition)
+//        player?.play()
+//    }
     
 // MARK: - Misc
     
-    func configureDraggableSlider() {
-        if let musicTrackInfo = musicTrackInfo {
-            let musicAsset = AVURLAsset(URL: musicTrackInfo.url)
-            if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first {
-                draggableAudioSlider.minimumValue = 0.0
-                draggableAudioSlider.maximumValue = Double(CMTimeGetSeconds(musicAssetTrack.timeRange.duration))
-                
-                if let videoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first {
-                    draggableAudioSlider.upperValue = audioStartingPosition + Double(CMTimeGetSeconds(videoTrack.timeRange.duration))
-                    draggableAudioSlider.lowerValue = audioStartingPosition
-                    draggableAudioSlider.updateRange()
-                }
-                draggableAudioSlider.hidden = false
-                editAudioFinishedButton.hidden = false
-                editAudioButton.enabled = false
-                draggableAudioSlider.addTarget(self, action: "draggableAudioSliderEditingDidEnd", forControlEvents: .TouchDragExit)
-                draggableAudioSlider.addTarget(self, action: "draggableAudioSliderEditingDidStart", forControlEvents: .TouchDragEnter)
-            }
-        }
-    }
+//    func configureDraggableSlider() {
+//        if let musicTrackInfo = musicTrackInfo {
+//            let musicAsset = AVURLAsset(URL: musicTrackInfo.url)
+//            if let musicAssetTrack = musicAsset.tracksWithMediaType(AVMediaTypeAudio).first {
+//                draggableAudioSlider.minimumValue = 0.0
+//                draggableAudioSlider.maximumValue = Double(CMTimeGetSeconds(musicAssetTrack.timeRange.duration))
+//                
+//                if let videoTrack = composition?.tracksWithMediaType(AVMediaTypeVideo).first {
+//                    draggableAudioSlider.upperValue = audioStartingPosition + Double(CMTimeGetSeconds(videoTrack.timeRange.duration))
+//                    draggableAudioSlider.lowerValue = audioStartingPosition
+//                    draggableAudioSlider.updateRange()
+//                }
+//                draggableAudioSlider.hidden = false
+//                editAudioFinishedButton.hidden = false
+//                editAudioButton.enabled = false
+//                draggableAudioSlider.addTarget(self, action: "draggableAudioSliderEditingDidEnd", forControlEvents: .TouchDragExit)
+//                draggableAudioSlider.addTarget(self, action: "draggableAudioSliderEditingDidStart", forControlEvents: .TouchDragEnter)
+//            }
+//        }
+//    }
     
     func keyboardWillShow(notification: NSNotification) {
         if let captionView = captionView {

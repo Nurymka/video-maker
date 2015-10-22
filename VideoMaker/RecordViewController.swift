@@ -54,6 +54,7 @@ class RecordViewController: BaseViewController {
         
         recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
         
+        UILabel.my_appearanceWhenContainedIn(UIAlertController).setAppearanceFontForAlertController(nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -181,7 +182,7 @@ class RecordViewController: BaseViewController {
     }
     
     @IBAction func audioTypeButtonPressed(sender: AnyObject) {
-        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let actionSheetController = UIAlertController(title: nil, message: "You can only pick a song if you didn't record anything yet", preferredStyle: .ActionSheet)
         actionSheetController.view.tintColor = StyleKit.lightPurple
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+// from http://stackoverflow.com/questions/24136874/appearancewhencontainedin-in-swift
+@interface UIView (UIViewAppearance_Swift)
 
-@interface UIAppearance_Swift : UIView
+// appearanceWhenContainedIn: is not available in Swift. This fixes that.
++ (instancetype)my_appearanceWhenContainedIn:(Class<UIAppearanceContainer>)containerClass;
 
 @end

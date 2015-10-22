@@ -8,6 +8,9 @@
 
 #import "UIAppearance+Swift.h"
 
-@implementation UIAppearance_Swift
+@implementation UIView (UIViewAppearance_Swift)
++ (instancetype)my_appearanceWhenContainedIn:(Class<UIAppearanceContainer>)containerClass {
+    return [self appearanceWhenContainedIn:containerClass, nil];
+}
 
 @end
