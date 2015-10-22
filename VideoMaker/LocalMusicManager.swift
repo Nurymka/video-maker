@@ -49,6 +49,7 @@ class LocalMusicManager {
             }
         } else {
             print("at function \(__FUNCTION__) musicDataURL not found")
+            return nil
         }
     }
     
@@ -94,7 +95,7 @@ class LocalMusicManager {
     
     private static func trackInfoURLfromMusicDataURL(musicDataURL: NSURL) -> NSURL {
         let trackInfoFilename = trackInfoFilenameFromTrackId(Int(musicDataURL.URLByDeletingPathExtension!.lastPathComponent!)!)
-        let trackInfoURL = musicDataURL.URLByDeletingLastPathComponent?.URLByAppendingPathComponent(trackInfoFilename)
+        let trackInfoURL = (musicDataURL.URLByDeletingLastPathComponent?.URLByAppendingPathComponent(trackInfoFilename))!
         return trackInfoURL
     }
 }

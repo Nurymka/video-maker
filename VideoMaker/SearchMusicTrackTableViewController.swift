@@ -79,30 +79,29 @@ extension SearchMusicTrackTableViewController {
             audioPlayer.stop()
         }
         
+        let trackId = tracks[indexPath.row].id
         let trackURL = tracks[indexPath.row].trackPreviewURL
         let artistName = tracks[indexPath.row].artistName
         let trackName = tracks[indexPath.row].trackName
         
         if let currentNavigationController = currentNavigationController {
-            if FileManager.trackExistsOnDisk(trackURL: trackURL) {
-                if let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = segueBackViewController {
+            if LocalMusicManager.trackExistsOnDisk(trackId: trackId) {
+                if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                     segueBackViewController.musicTrackInfo = trackInfo
                     currentNavigationController.popToViewController(segueBackViewController, animated: true)
                 }
             } else {
-                if let trackData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
-                    if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL) {
+                if let musicData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
+                    if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                         segueBackViewController.musicTrackInfo = trackInfo
-                        
                         currentNavigationController.popToViewController(segueBackViewController, animated: true)
                     }
                 } else {
                     Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
                         switch data {
-                        case .Success(let track):
-                            if FileManager.writeTrackDataToDisk(track, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = self.segueBackViewController {
+                        case .Success(let data):
+                            if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                                 segueBackViewController.musicTrackInfo = trackInfo
-                                
                                 currentNavigationController.popToViewController(segueBackViewController, animated: true)
                             }
                         case .Failure(_, let error):

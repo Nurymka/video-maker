@@ -84,25 +84,27 @@ extension ChooseMusicTrackTableViewController {
         }
         
         let trackURL = tracks[indexPath.row].trackPreviewURL
+        let trackId = tracks[indexPath.row].id
         let artistName = tracks[indexPath.row].artistName
         let trackName = tracks[indexPath.row].trackName
         
-        if FileManager.trackExistsOnDisk(trackURL: trackURL) {
-            if let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = segueBackViewController {
+        // if (music is on disk) else if (music is cached but not on disk) else if (music is not cached nor it's on disk)
+        if LocalMusicManager.trackExistsOnDisk(trackId: trackId) {
+            if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                 segueBackViewController.musicTrackInfo = trackInfo
                 self.navigationController?.popToViewController(segueBackViewController, animated: true)
             }
         } else {
-            if let trackData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
-                if FileManager.writeTrackDataToDisk(trackData, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL) {
+            if let musicData = musicCache.objectForKey(trackId) as? NSData, segueBackViewController = segueBackViewController {
+                if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                     segueBackViewController.musicTrackInfo = trackInfo
                     self.navigationController?.popToViewController(segueBackViewController, animated: true)
                 }
             } else {
                 Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
                     switch data {
-                    case .Success(let track):
-                        if FileManager.writeTrackDataToDisk(track, withFileName: trackURL, artistName: artistName, trackName: trackName), let trackInfo = FileManager.returnTrackInfoFromDisk(trackURL: trackURL), segueBackViewController = self.segueBackViewController {
+                    case .Success(let data):
+                        if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                             segueBackViewController.musicTrackInfo = trackInfo
                             self.navigationController?.popToViewController(segueBackViewController, animated: true)
                         }
@@ -135,16 +137,17 @@ extension ChooseMusicTrackTableViewController {
             if cell.buttonState == .PlayButton {
                 cell.changeButtonStateTo(.LoadingPreview)
                 let trackURL = tracks[indexPath.row].trackPreviewURL
+                let trackId = tracks[indexPath.row].id
                 cell.request?.cancel()
                 print(trackURL)
-                print(tracks[indexPath.row].id)
-                if let trackData = musicCache.objectForKey(trackURL) as? NSData {
+                print(trackId)
+                if let trackData = musicCache.objectForKey(trackId) as? NSData {
                     playTrackFromData(trackData, andConfigureButtonStateForCell: cell, inIndexPath: indexPath)
                 } else {
                     Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
                         switch data {
                         case .Success(let track):
-                            self.musicCache.setObject(track, forKey: trackURL)
+                            self.musicCache.setObject(track, forKey: trackId)
                             playTrackFromData(track, andConfigureButtonStateForCell: cell, inIndexPath: indexPath)
                         case .Failure(_, let error):
                             print(error)
