@@ -87,30 +87,29 @@ struct TrackInfo {
 // data used for ui elements, once the data is retrieved
 // structs as NSData and back -> http://stackoverflow.com/questions/28916535/swift-structs-to-nsdata-and-back
 struct TrackInfoLocal {
-    let url: NSURL // local url
+    let id: Int
     let trackName: String
     let artistName: String
     
-    init(url: NSURL, trackName: String, artistName: String) {
-        self.url = url
+    init(id: Int, trackName: String, artistName: String) {
+        self.id = id
         self.trackName = trackName
         self.artistName = artistName
     }
     
     struct ArchivedTrackInfoLocal {
-        var urlLength: Int64
+        var id: Int64
         var trackNameLength: Int64
         var artistNameLength: Int64
     }
     
     func archive() -> NSData {
-        var archivedTrackInfoLocal = ArchivedTrackInfoLocal(urlLength: Int64(self.url.absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)), trackNameLength: Int64(self.trackName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)), artistNameLength:
+        var archivedTrackInfoLocal = ArchivedTrackInfoLocal(id: Int64(self.id), trackNameLength: Int64(self.trackName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)), artistNameLength:
             Int64(self.artistName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)))
         
         let metadata = NSData(bytes: &archivedTrackInfoLocal, length: sizeof(ArchivedTrackInfoLocal))
         
         let archivedData = NSMutableData(data: metadata)
-        archivedData.appendData(url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
         archivedData.appendData(trackName.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
         archivedData.appendData(artistName.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
         
@@ -118,18 +117,14 @@ struct TrackInfoLocal {
     }
     
     static func unarchive(data: NSData!) -> TrackInfoLocal {
-        var archivedTrackInfoLocal = ArchivedTrackInfoLocal(urlLength: 0, trackNameLength: 0, artistNameLength: 0)
+        var archivedTrackInfoLocal = ArchivedTrackInfoLocal(id: 0, trackNameLength: 0, artistNameLength: 0)
         let archivedStructLength = sizeof(ArchivedTrackInfoLocal)
         
         let archivedData = data.subdataWithRange(NSMakeRange(0, archivedStructLength))
         archivedData.getBytes(&archivedTrackInfoLocal, length: archivedStructLength)
         
-        let urlRange = NSMakeRange(archivedStructLength, Int(archivedTrackInfoLocal.urlLength))
-        let trackNameRange = NSMakeRange(archivedStructLength + Int(archivedTrackInfoLocal.urlLength), Int(archivedTrackInfoLocal.trackNameLength))
-        let artistNameRange = NSMakeRange(archivedStructLength + Int(archivedTrackInfoLocal.urlLength) + Int(archivedTrackInfoLocal.trackNameLength), Int(archivedTrackInfoLocal.artistNameLength))
-        
-        let urlData = data.subdataWithRange(urlRange)
-        let url = NSURL(fileURLWithPath: NSString(data: urlData, encoding: NSUTF8StringEncoding) as! String)
+        let trackNameRange = NSMakeRange(archivedStructLength, Int(archivedTrackInfoLocal.trackNameLength))
+        let artistNameRange = NSMakeRange(archivedStructLength + Int(archivedTrackInfoLocal.trackNameLength), Int(archivedTrackInfoLocal.artistNameLength))
         
         let trackNameData = data.subdataWithRange(trackNameRange)
         let trackName = NSString(data: trackNameData, encoding: NSUTF8StringEncoding) as! String
@@ -137,7 +132,7 @@ struct TrackInfoLocal {
         let artistNameData = data.subdataWithRange(artistNameRange)
         let artistName = NSString(data: artistNameData, encoding: NSUTF8StringEncoding) as! String
         
-        return TrackInfoLocal(url: url, trackName: trackName, artistName: artistName)
+        return TrackInfoLocal(id: Int(archivedTrackInfoLocal.id), trackName: trackName, artistName: artistName)
     }
 }
 

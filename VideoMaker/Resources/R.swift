@@ -24,18 +24,30 @@ public enum R {
     public enum ImagesAssets : String {
         /// AppIcon
         case app = "AppIcon"
+        /// btn-add-caption
+        case btnAddCaption = "btn-add-caption"
+        /// btn-bareCross
+        case btnBareCross = "btn-bareCross"
         /// btn-cameraFlip
         case btnCameraFlip = "btn-cameraFlip"
         /// btn-check
         case btnCheck = "btn-check"
+        /// btn-cross
+        case btnCross = "btn-cross"
         /// btn-delete-last-segment
         case btnDeleteLastSegment = "btn-delete-last-segment"
         /// btn-editAudio
         case btnEditAudio = "btn-editAudio"
+        /// btn-edit-done
+        case btnEditDone = "btn-edit-done"
         /// btn-flash
         case btnFlash = "btn-flash"
+        /// btn-leftArrow
+        case btnLeftArrow = "btn-leftArrow"
         /// btn-musicNote
         case btnMusicNote = "btn-musicNote"
+        /// btn-send
+        case btnSend = "btn-send"
         /// btn-speakerOff
         case btnSpeakerOff = "btn-speakerOff"
         /// btn-speakerOn

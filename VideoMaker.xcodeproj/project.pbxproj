@@ -34,7 +34,7 @@
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
 		7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */; settings = {ASSET_TAGS = (); }; };
-		7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC14541BB38C29000177D7 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
+		7DDDD8EE1BD967170077FF51 /* LocalMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */; settings = {ASSET_TAGS = (); }; };
 		7DE9325E1BD0501B00040833 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932581BD0501B00040833 /* Cabin-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
 		7DE9325F1BD0501C00040833 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932591BD0501B00040833 /* Cabin-BoldItalic.ttf */; settings = {ASSET_TAGS = (); }; };
 		7DE932601BD0501C00040833 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325A1BD0501B00040833 /* Cabin-Italic.ttf */; settings = {ASSET_TAGS = (); }; };
@@ -91,7 +91,7 @@
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
-		7DDC14541BB38C29000177D7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMusicManager.swift; sourceTree = "<group>"; };
 		7DE932581BD0501B00040833 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		7DE932591BD0501B00040833 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		7DE9325A1BD0501B00040833 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */,
-				7DDC14541BB38C29000177D7 /* Utilities.swift */,
+				7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */,
 				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
 				7D2324831BC77A34004A1976 /* PlaylistAPI.swift */,
 			);
@@ -488,7 +488,6 @@
 				7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
 				7D2324861BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift in Sources */,
-				7DDC14551BB38C29000177D7 /* Utilities.swift in Sources */,
 				7D01C7E61BD4C5B00093E181 /* ResourceExtensions.swift in Sources */,
 				7D2076001BD069FD005C010D /* TimescaleSegmentedControl.swift in Sources */,
 				7D01C7E11BD4C13C0093E181 /* R.swift in Sources */,
@@ -498,6 +497,7 @@
 				7D0E59901BD017B700F7A2B4 /* GeometryExtensions.swift in Sources */,
 				7D4C8B021BD574DA00ADA6D3 /* TrackNameLabel.swift in Sources */,
 				7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */,
+				7DDDD8EE1BD967170077FF51 /* LocalMusicManager.swift in Sources */,
 				7D01C7E81BD4C8760093E181 /* FontKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
