@@ -8,7 +8,14 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Cabin-Medium.ttf">
+            <string>Cabin-Medium</string>
+        </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
@@ -22,14 +29,14 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQJ-Nl-Hbb" userLabel="Preview View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI" userLabel="Delete Last Segment Button">
-                                        <rect key="frame" x="18" y="585" width="35" height="35"/>
+                                        <rect key="frame" x="18" y="486" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="eiM-hK-ZIh"/>
                                             <constraint firstAttribute="width" constant="35" id="zsy-Jt-SiR"/>
@@ -42,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-AV-Mdq" customClass="RecordButton" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="111" y="552" width="100" height="100"/>
+                                        <rect key="frame" x="111" y="453" width="100" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Dd5-jp-9dZ"/>
@@ -50,10 +57,10 @@
                                         </constraints>
                                     </view>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-IC-r9s" userLabel="Segmented Control Wrapper" customClass="TimescaleSegmentedControlWrapper" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="19" y="461" width="337" height="34"/>
+                                        <rect key="frame" x="16" y="362" width="288" height="34"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-PY-y1A" customClass="TimescaleSegmentedControl" customModule="VideoMaker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="337" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <segments>
                                                     <segment title="0.25x"/>
@@ -76,7 +83,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
-                                        <rect key="frame" x="139" y="500" width="44" height="44"/>
+                                        <rect key="frame" x="139" y="401" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
                                             <constraint firstAttribute="height" constant="44" id="YCS-ek-iM1"/>
@@ -87,20 +94,20 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snail" translatesAutoresizingMaskIntoConstraints="NO" id="SGO-Um-L04">
-                                        <rect key="frame" x="33" y="496" width="28" height="15"/>
+                                        <rect key="frame" x="30" y="397" width="28" height="15"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horse" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-NW-pfo">
-                                        <rect key="frame" x="313" y="494" width="25" height="21"/>
+                                        <rect key="frame" x="261" y="395" width="25" height="21"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GI-or-ZJ7" userLabel="Track Name BG">
-                                        <rect key="frame" x="34" y="30" width="325" height="28"/>
+                                        <rect key="frame" x="34" y="30" width="270" height="28"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="G3h-bH-iUv"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="33" width="231" height="21"/>
+                                        <rect key="frame" x="71" y="33" width="176" height="21"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -114,7 +121,7 @@
                                         <state key="normal" image="btn-editAudio"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="VideoMaker" customModuleProvider="target">
-                                        <rect key="frame" x="310" y="16" width="55" height="55"/>
+                                        <rect key="frame" x="255" y="16" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="RGH-oU-pfd"/>
                                             <constraint firstAttribute="height" constant="55" id="fTe-A5-nMM"/>
@@ -125,7 +132,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cN-cEq" userLabel="Flash Button">
-                                        <rect key="frame" x="329" y="154" width="19" height="24"/>
+                                        <rect key="frame" x="274" y="154" width="19" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="19" id="Nko-OG-5Zq"/>
                                             <constraint firstAttribute="height" constant="24" id="rFG-Pi-J4B"/>
@@ -136,7 +143,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-RC-yfA" userLabel="Camera Flip Button">
-                                        <rect key="frame" x="322" y="101" width="30" height="23"/>
+                                        <rect key="frame" x="267" y="101" width="30" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="4yk-LQ-Mi5"/>
                                             <constraint firstAttribute="width" constant="30" id="ygt-qF-rOu"/>
@@ -147,7 +154,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-BD-J2q">
-                                        <rect key="frame" x="310" y="577" width="50" height="50"/>
+                                        <rect key="frame" x="255" y="478" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="E3r-Vy-MRv"/>
                                             <constraint firstAttribute="width" constant="50" id="c53-xg-nPj"/>
@@ -205,7 +212,6 @@
                     <navigationItem key="navigationItem" id="WNF-ZK-oIM"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="audioTypeButton" destination="2tj-aV-Juu" id="NRr-ER-cCq"/>
                         <outlet property="deleteLastSegmentButton" destination="cmA-fn-joI" id="sXo-Vr-fTQ"/>
@@ -221,12 +227,12 @@
                         <outlet property="trackNameLabel" destination="LKB-Wj-PuV" id="k9m-IO-LIz"/>
                         <outlet property="trackNameLabelBG" destination="6GI-or-ZJ7" id="jQR-Np-Yhv"/>
                         <segue destination="McN-6d-tRK" kind="show" identifier="Show Video" id="vg3-zL-j0n"/>
-                        <segue destination="gPx-Xh-dXN" kind="show" identifier="Choose Music Playlist" id="9my-Vd-KPz"/>
+                        <segue destination="rPE-HQ-KAW" kind="presentation" identifier="Choose Music Playlist" id="uxC-de-KZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="394"/>
+            <point key="canvasLocation" x="1069" y="373"/>
         </scene>
         <!--Video Playback View Controller-->
         <scene sceneID="tGI-ay-gin">
@@ -328,24 +334,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="draggableAudioSlider" destination="ZdR-dk-MXy" id="s05-kd-sCh"/>
                         <outlet property="editAudioButton" destination="P4K-ci-4TT" id="rr8-yD-ozB"/>
                         <outlet property="editAudioFinishedButton" destination="aVL-Gk-QAy" id="go4-Ir-5Ac"/>
                         <outlet property="filterSwipableView" destination="FrG-rf-qba" id="1xb-k1-rz3"/>
                         <outlet property="insertCaptionButton" destination="VCP-dy-H8l" id="iPp-9x-I68"/>
-                        <segue destination="gPx-Xh-dXN" kind="show" identifier="Choose Music Playlist" id="E3v-2l-6PH"/>
+                        <segue destination="rPE-HQ-KAW" kind="presentation" identifier="Choose Music Playlist" id="Ncs-cA-kYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gy-OC-B4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="755"/>
+            <point key="canvasLocation" x="1762" y="373"/>
         </scene>
         <!--Search Music Track View Controller-->
         <scene sceneID="Upr-Ly-Xvu">
             <objects>
-                <tableViewController storyboardIdentifier="SearchMusicTrackTableViewController" id="ygx-oo-kfd" userLabel="Search Music Track View Controller" customClass="SearchMusicTrackTableViewController" customModule="VideoMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchMusicTrackTableViewController" extendedLayoutIncludesOpaqueBars="YES" id="ygx-oo-kfd" userLabel="Search Music Track View Controller" customClass="SearchMusicTrackTableViewController" customModule="VideoMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="gDx-h2-lhN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,9 +364,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-IM-J9W">
-                                            <rect key="frame" x="113" y="69" width="194" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <rect key="frame" x="113" y="68" width="194" height="19"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
+                                            <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7K-7O-Qbr">
@@ -376,8 +381,8 @@
                                             <rect key="frame" x="32" y="31" width="37" height="37"/>
                                         </activityIndicatorView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" text="TrackName21312slkjdaslkjdsaljkdas;lkdjas;ldjksalkjxclzxjc;lZKXJc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="5BK-WH-QYg">
-                                            <rect key="frame" x="113" y="8" width="190" height="44"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="113" y="8" width="190" height="43"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -397,6 +402,7 @@
                                         <constraint firstItem="On1-fF-HiC" firstAttribute="centerY" secondItem="c7K-7O-Qbr" secondAttribute="centerY" id="w37-3v-bKf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="albumCoverButton" destination="c7K-7O-Qbr" id="TK5-IQ-mRe"/>
                                     <outlet property="artistNameLabel" destination="gEX-IM-J9W" id="5NK-er-JoC"/>
@@ -415,12 +421,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbs-Wg-0Is" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015" y="1096"/>
+            <point key="canvasLocation" x="2710" y="-477"/>
         </scene>
         <!--Choose Playlist Collection View Controller-->
         <scene sceneID="UmM-Mw-cwy">
             <objects>
-                <collectionViewController id="gPx-Xh-dXN" userLabel="Choose Playlist Collection View Controller" customClass="ChoosePlaylistCollectionViewController" customModule="VideoMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="gPx-Xh-dXN" userLabel="Choose Playlist Collection View Controller" customClass="ChoosePlaylistCollectionViewController" customModule="VideoMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fAC-df-062">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -433,7 +439,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCollectionViewCell" id="Y9P-e4-i3C" customClass="ChoosePlaylistCollectionViewCell" customModule="VideoMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="150" height="150"/>
+                                <rect key="frame" x="0.0" y="64" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -444,7 +450,7 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="world music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-7d-6Gu">
                                             <rect key="frame" x="10" y="129" width="130" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -472,20 +478,21 @@
                             <outlet property="delegate" destination="gPx-Xh-dXN" id="cPd-Bj-lkr"/>
                         </connections>
                     </collectionView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationItem key="navigationItem" id="5fV-Vz-91q"/>
                     <connections>
                         <segue destination="i4Q-dM-hXe" kind="show" identifier="Choose Music Track" id="dS4-C4-l7v"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDB-3k-IxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2504" y="389"/>
+            <point key="canvasLocation" x="1637" y="-477"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="csT-fI-usY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0zZ-zk-32M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -497,7 +504,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vz-3s-WN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="389"/>
+            <point key="canvasLocation" x="454" y="373"/>
         </scene>
         <!--Choose Music Track View Controller-->
         <scene sceneID="Wvd-9R-V75">
@@ -516,9 +523,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqZ-3S-y5G">
-                                            <rect key="frame" x="113" y="69" width="194" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <rect key="frame" x="113" y="68" width="194" height="19"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
+                                            <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3f-Pd-Ch3">
@@ -533,8 +540,8 @@
                                             <rect key="frame" x="32" y="31" width="37" height="37"/>
                                         </activityIndicatorView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" text="TrackName21312slkjdaslkjdsaljkdas;lkdjas;ldjksalkjxclzxjc;lZKXJc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="lke-7X-huM">
-                                            <rect key="frame" x="113" y="8" width="190" height="44"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="113" y="8" width="190" height="43"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -554,6 +561,7 @@
                                         <constraint firstItem="lke-7X-huM" firstAttribute="leading" secondItem="vqZ-3S-y5G" secondAttribute="leading" id="tot-Mm-G2I"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="albumCoverButton" destination="I3f-Pd-Ch3" id="P11-Vg-fU8"/>
                                     <outlet property="artistNameLabel" destination="vqZ-3S-y5G" id="X0L-HP-bsX"/>
@@ -568,11 +576,10 @@
                         </connections>
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5L-Dk-cDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015" y="389"/>
+            <point key="canvasLocation" x="2192" y="-477"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gz8-fc-Rni">
@@ -591,6 +598,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZm-5f-uWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2nL-o5-uqv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rPE-HQ-KAW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lMx-pJ-gfl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gPx-Xh-dXN" kind="relationship" relationship="rootViewController" id="Adi-cy-9UU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CEf-ie-KUm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="-477"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn-cameraFlip" width="30" height="23"/>
@@ -606,6 +632,6 @@
         <image name="snail" width="28" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9my-Vd-KPz"/>
+        <segue reference="uxC-de-KZf"/>
     </inferredMetricsTieBreakers>
 </document>

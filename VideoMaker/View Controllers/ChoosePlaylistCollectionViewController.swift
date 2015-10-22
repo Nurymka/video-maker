@@ -15,7 +15,7 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     var searchBarHeight: CGFloat = 0.0
     
     // for searches
-    var searchController: UISearchController!
+    var searchController: SongSearchController!
     var currentSearchString = ""
     
     // for segues
@@ -25,34 +25,59 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBarAppearance()
         if let searchMusicTrackController = storyboard?.instantiateViewControllerWithIdentifier("SearchMusicTrackTableViewController") as? SearchMusicTrackTableViewController {
             searchMusicTrackController.currentNavigationController = navigationController
-            searchController = UISearchController(searchResultsController: searchMusicTrackController)
+            searchController = SongSearchController(searchResultsController: searchMusicTrackController)
         }
         searchController.searchBar.sizeToFit()
         
         searchController.dimsBackgroundDuringPresentation = true
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
+        searchController.delegate = self
         definesPresentationContext = true
         
-        searchBarHeight = 44.0
-        searchController.searchBar.frame = CGRectMake(0, 0, UIApplication.sharedApplication().statusBarFrame.size.width, searchBarHeight)
+        searchController.searchBar.scopeButtonTitles = [] // sets up the frame in the background
+        searchBarHeight = searchController.searchBar.frame.size.height
         collectionView?.addSubview(searchController.searchBar)
         searchController.searchBar.placeholder = "search for a song"
+        
+        UITextField.my_appearanceWhenContainedIn(UISearchBar).defaultTextAttributes = [NSFontAttributeName: FontKit.searchBarText]
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Choose Music Track" {
             if let playlistItem = seguePlaylistItem, segueBackViewController = segueBackViewController {
                 let chooseMusicViewController = segue.destinationViewController as! ChooseMusicTrackTableViewController
+                navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+                chooseMusicViewController.title = playlistItem.name
                 chooseMusicViewController.playlistItem = playlistItem
                 chooseMusicViewController.segueBackViewController = segueBackViewController
             }
         }
     }
+    
+// MARK: - UI Related
+    func configureNavigationBarAppearance() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(key: .btnBareCross), style: .Plain, target: self, action: "backButtonPressed")
+        navigationItem.title = "pick a song"
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barTintColor = StyleKit.lightPurple
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: FontKit.navBarTitle, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+    
+// MARK: - Button Touch Handlers
+    func backButtonPressed() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
-
 // MARK: - UICollectionViewDataSource
 extension ChoosePlaylistCollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -98,6 +123,12 @@ extension ChoosePlaylistCollectionViewController: UISearchBarDelegate {
                 searchVC.searchForMusicWithSearchString(searchString)
             }
         }
+    }
+}
+
+extension ChoosePlaylistCollectionViewController: UISearchControllerDelegate {
+    func willPresentSearchController(searchController: UISearchController) {
+        
     }
 }
 

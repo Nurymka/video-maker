@@ -57,9 +57,13 @@ class RecordViewController: BaseViewController {
         UILabel.my_appearanceWhenContainedIn(UIAlertController).setAppearanceFontForAlertController(nil)
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
         print("musicTrackInfo: \(musicTrackInfo)")
         if let musicTrackInfo = musicTrackInfo {
             trackNameLabel.changeScrollableTextTo(String.presentableArtistAndSongName(musicTrackInfo.artistName, songName: musicTrackInfo.trackName))
@@ -91,7 +95,6 @@ class RecordViewController: BaseViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        navigationController?.navigationBarHidden = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -226,7 +229,8 @@ class RecordViewController: BaseViewController {
             let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
             videoPlaybackViewController.recordSession = recordSession
         } else if segue.identifier == "Choose Music Playlist" {
-            let choosePlaylistViewController = segue.destinationViewController as! ChoosePlaylistCollectionViewController
+            let targetNavController = segue.destinationViewController as! UINavigationController
+            let choosePlaylistViewController = targetNavController.topViewController as! ChoosePlaylistCollectionViewController
             choosePlaylistViewController.segueBackViewController = self
         }
     }

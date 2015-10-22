@@ -28,8 +28,14 @@ class SearchMusicTrackTableViewController: UITableViewController, UISearchBarDel
     // constants
     let kCellIdentifier = "TrackItemCellIdentifier"
     
-    var currentNavigationController: UINavigationController? // used for seguing back to the video playback controller when the song is chosen. because SearchMusicTrackTableViewController is not part of the navigationcontroller stack, it has to be stored
+    var currentNavigationController: UINavigationController?
     var segueBackViewController: BaseViewController?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.separatorColor = StyleKit.lightPurple
+    }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
@@ -88,13 +94,13 @@ extension SearchMusicTrackTableViewController {
             if LocalMusicManager.trackExistsOnDisk(trackId: trackId) {
                 if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                     segueBackViewController.musicTrackInfo = trackInfo
-                    currentNavigationController.popToViewController(segueBackViewController, animated: true)
+                    currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
                 if let musicData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
                     if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                         segueBackViewController.musicTrackInfo = trackInfo
-                        currentNavigationController.popToViewController(segueBackViewController, animated: true)
+                        currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                     }
                 } else {
                     Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
@@ -102,7 +108,7 @@ extension SearchMusicTrackTableViewController {
                         case .Success(let data):
                             if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                                 segueBackViewController.musicTrackInfo = trackInfo
-                                currentNavigationController.popToViewController(segueBackViewController, animated: true)
+                                currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                             }
                         case .Failure(_, let error):
                             print(error)
@@ -250,7 +256,9 @@ class SearchMusicTrackViewCell: UITableViewCell {
     
     var request: Alamofire.Request?
     var buttonState: ButtonState = .PlayButton
-
+    override var separatorInset: UIEdgeInsets {
+        get { return UIEdgeInsetsZero } set {}
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

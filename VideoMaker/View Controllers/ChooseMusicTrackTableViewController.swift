@@ -33,6 +33,8 @@ class ChooseMusicTrackTableViewController: UITableViewController {
         if totalResultPages == -1 {
             loadMusic()
         }
+        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.separatorColor = StyleKit.lightPurple
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -92,13 +94,13 @@ extension ChooseMusicTrackTableViewController {
         if LocalMusicManager.trackExistsOnDisk(trackId: trackId) {
             if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                 segueBackViewController.musicTrackInfo = trackInfo
-                self.navigationController?.popToViewController(segueBackViewController, animated: true)
+                dismissViewControllerAnimated(true, completion: nil)
             }
         } else {
             if let musicData = musicCache.objectForKey(trackId) as? NSData, segueBackViewController = segueBackViewController {
                 if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                     segueBackViewController.musicTrackInfo = trackInfo
-                    self.navigationController?.popToViewController(segueBackViewController, animated: true)
+                    dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
                 Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
@@ -106,7 +108,7 @@ extension ChooseMusicTrackTableViewController {
                     case .Success(let data):
                         if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                             segueBackViewController.musicTrackInfo = trackInfo
-                            self.navigationController?.popToViewController(segueBackViewController, animated: true)
+                            self.dismissViewControllerAnimated(true, completion: nil)
                         }
                     case .Failure(_, let error):
                         print(error)
@@ -241,6 +243,9 @@ class ChooseMusicTrackViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
     
+    override var separatorInset: UIEdgeInsets {
+        get { return UIEdgeInsetsZero } set {}
+    }
     var request: Alamofire.Request?
     var buttonState: ButtonState = .PlayButton
     

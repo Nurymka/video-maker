@@ -33,6 +33,7 @@
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
 		7D777A331BD97638002C0134 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A321BD97638002C0134 /* UIAppearance+Swift.m */; settings = {ASSET_TAGS = (); }; };
 		7D777A351BD97729002C0134 /* AppearanceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A341BD97729002C0134 /* AppearanceKit.swift */; settings = {ASSET_TAGS = (); }; };
+		7D777A371BD987C4002C0134 /* SongSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A361BD987C4002C0134 /* SongSearchController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
 		7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */; settings = {ASSET_TAGS = (); }; };
@@ -92,6 +93,7 @@
 		7D777A311BD97638002C0134 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
 		7D777A321BD97638002C0134 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
 		7D777A341BD97729002C0134 /* AppearanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceKit.swift; sourceTree = "<group>"; };
+		7D777A361BD987C4002C0134 /* SongSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchController.swift; sourceTree = "<group>"; };
 		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -238,6 +240,7 @@
 				7D6A14231B98C15600453DA1 /* RecordViewController.swift */,
 				7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */,
 				7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */,
+				7D777A361BD987C4002C0134 /* SongSearchController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				7D0BE7EC1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift in Sources */,
 				7D2324841BC77A34004A1976 /* PlaylistAPI.swift in Sources */,
 				7D4813271BD4D8460038325E /* BaseViewController.swift in Sources */,
+				7D777A371BD987C4002C0134 /* SongSearchController.swift in Sources */,
 				7D777A351BD97729002C0134 /* AppearanceKit.swift in Sources */,
 				7D0E59891BCFE8F400F7A2B4 /* RecordButton.swift in Sources */,
 				7D6A14241B98C15600453DA1 /* RecordViewController.swift in Sources */,
