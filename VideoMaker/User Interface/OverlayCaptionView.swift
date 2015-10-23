@@ -25,9 +25,9 @@ class OverlayCaptionView: UIView {
         super.init(frame: frame)
         textField = UITextField()
         textField.delegate = self
-        textField.text = "hi bruh"
+        textField.text = "my caption"
         textField.textColor = UIColor.whiteColor()
-        textField.font = UIFont.boldSystemFontOfSize(30)
+        textField.font = FontKit.captionFont
         textField.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
         textField.textAlignment = .Center
         addSubview(textField)

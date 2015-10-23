@@ -34,6 +34,7 @@
 		7D777A331BD97638002C0134 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A321BD97638002C0134 /* UIAppearance+Swift.m */; settings = {ASSET_TAGS = (); }; };
 		7D777A351BD97729002C0134 /* AppearanceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A341BD97729002C0134 /* AppearanceKit.swift */; settings = {ASSET_TAGS = (); }; };
 		7D777A371BD987C4002C0134 /* SongSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A361BD987C4002C0134 /* SongSearchController.swift */; settings = {ASSET_TAGS = (); }; };
+		7D7DA75A1BD9AE4400A33BF3 /* UIElementsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */; settings = {ASSET_TAGS = (); }; };
 		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
 		7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */; settings = {ASSET_TAGS = (); }; };
@@ -94,6 +95,7 @@
 		7D777A321BD97638002C0134 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
 		7D777A341BD97729002C0134 /* AppearanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceKit.swift; sourceTree = "<group>"; };
 		7D777A361BD987C4002C0134 /* SongSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchController.swift; sourceTree = "<group>"; };
+		7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsContainer.swift; sourceTree = "<group>"; };
 		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -257,6 +259,7 @@
 				7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */,
 				7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */,
 				7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */,
+				7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				7D2076001BD069FD005C010D /* TimescaleSegmentedControl.swift in Sources */,
 				7D01C7E11BD4C13C0093E181 /* R.swift in Sources */,
 				7D282E0D1BA3769D00A04E14 /* OverlayCaptionView.swift in Sources */,
+				7D7DA75A1BD9AE4400A33BF3 /* UIElementsContainer.swift in Sources */,
 				7D01C7DE1BD4BD220093E181 /* AudioTypeButton.swift in Sources */,
 				7D0E598B1BCFE93C00F7A2B4 /* BaseViews.swift in Sources */,
 				7D0E59901BD017B700F7A2B4 /* GeometryExtensions.swift in Sources */,

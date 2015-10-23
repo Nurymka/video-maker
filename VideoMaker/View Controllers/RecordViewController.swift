@@ -14,6 +14,8 @@ class RecordViewController: BaseViewController {
     let kMaximumRecordingLength = 15.0
     let kMinimumRecordingLength = 1.0
     
+    var varMaximumRecordingLength = 15.0
+    @IBOutlet weak var UIElementsContainer: UIView!
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var recordButton: RecordButton!
     @IBOutlet weak var timescaleButton: UIButton!
@@ -32,18 +34,19 @@ class RecordViewController: BaseViewController {
     
     var recorder: SCRecorder!
     var recordSession: SCRecordSession?
-  
+    var player: AVAudioPlayer? // used for playing embedded music during recording
+    
     // for storing the scaled recording duration
     var scaledRecordedDuration: Double = 0.0
     var previousDuration: CMTime?
     var recordedDurationRatio: Float {
-        return Float(scaledRecordedDuration / kMaximumRecordingLength)
+        return Float(scaledRecordedDuration / varMaximumRecordingLength)
     }
     
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        varMaximumRecordingLength = kMaximumRecordingLength
         recorder = SCRecorder()
         if !recorder.startRunning() {
             print("something went wrong: \(recorder.error)")
@@ -65,16 +68,6 @@ class RecordViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
         print("musicTrackInfo: \(musicTrackInfo)")
-        if let musicTrackInfo = musicTrackInfo {
-            trackNameLabel.changeScrollableTextTo(String.presentableArtistAndSongName(musicTrackInfo.artistName, songName: musicTrackInfo.trackName))
-            trackNameLabel.layer.opacity = 1.0
-            trackNameLabelBG.layer.opacity = 1.0
-            editAudioButton.layer.opacity = 1.0
-        } else {
-            trackNameLabel.layer.opacity = 0.0
-            trackNameLabelBG.layer.opacity = 0.0
-            editAudioButton.layer.opacity = 0.0
-        }
         prepareSession()
     }
     
@@ -114,6 +107,7 @@ class RecordViewController: BaseViewController {
             doneButton.enabled = false
             updateRecordingTime()
         }
+        configureTrackNameLabelAndPlayer()
     }
     
 // MARK: - Button Touch Handlers
@@ -135,6 +129,11 @@ class RecordViewController: BaseViewController {
     // TODO: - change retake button function to delete last segment
     @IBAction func retakeButtonPressed(sender: AnyObject) {
         if (recorder.session != nil) {
+            if (sender is VideoPlaybackViewController) {
+                audioTypeButton.buttonState = .OriginalSound
+                musicTrackInfo = nil
+                configureTrackNameLabelAndPlayer()
+            }
             recordButton.progress = 0.0
             recorder.pause()
             recorder.session?.cancelSession({})
@@ -147,10 +146,17 @@ class RecordViewController: BaseViewController {
         if (touchDetector.state == .Began) {
             recorder.record()
             timescaleSegmentedControl.enabled = false
+            if musicTrackInfo != nil {
+                player?.rate = getVideoTimeScaleFromUISegment(timescaleSegmentedControl.selectedSegmentIndex)
+                player?.play()
+            }
         }
         else if (touchDetector.state == .Ended) {
             recorder.pause()
             timescaleSegmentedControl.enabled = true
+            if musicTrackInfo != nil {
+                player?.pause()
+            }
         }
     }
     
@@ -194,20 +200,22 @@ class RecordViewController: BaseViewController {
         actionSheetController.addAction(cancelAction)
         
         let originalSoundAction = UIAlertAction(title: "Original Sound", style: .Default) { (action) in
-            self.audioTypeButton.changeButtonStateTo(.OriginalSound)
-            //self.musicTrackInfo = nil
+            self.audioTypeButton.buttonState = .OriginalSound
+            self.musicTrackInfo = nil
+            self.configureTrackNameLabelAndPlayer()
         }
         actionSheetController.addAction(originalSoundAction)
         
         let addMusicAction = UIAlertAction(title: "Pick a Song", style: .Default) { (action) in
-            self.audioTypeButton.changeButtonStateTo(.PickSong)
             self.performSegueWithIdentifier("Choose Music Playlist", sender: self)
         }
+        addMusicAction.enabled = (recorder.session?.duration == kCMTimeZero)
         actionSheetController.addAction(addMusicAction)
         
         let noSoundAction = UIAlertAction(title: "No Sound", style: .Default) { (action) in
-            self.audioTypeButton.changeButtonStateTo(.NoSound)
-            //self.musicTrackInfo = nil
+            self.audioTypeButton.buttonState = .NoSound
+            self.musicTrackInfo = nil
+            self.configureTrackNameLabelAndPlayer()
         }
         actionSheetController.addAction(noSoundAction)
         
@@ -227,7 +235,11 @@ class RecordViewController: BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "Show Video") {
             let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
+            
             videoPlaybackViewController.recordSession = recordSession
+            videoPlaybackViewController.musicTrackInfo = musicTrackInfo
+            videoPlaybackViewController.initialAudioTypeButtonState = audioTypeButton.buttonState
+            
         } else if segue.identifier == "Choose Music Playlist" {
             let targetNavController = segue.destinationViewController as! UINavigationController
             let choosePlaylistViewController = targetNavController.topViewController as! ChoosePlaylistCollectionViewController
@@ -253,7 +265,7 @@ class RecordViewController: BaseViewController {
             enableNavigationControlButtons()
         }
         
-        if scaledRecordedDuration >= kMaximumRecordingLength {
+        if scaledRecordedDuration >= varMaximumRecordingLength {
             recordingFinished(self)
         }
     }
@@ -271,6 +283,34 @@ class RecordViewController: BaseViewController {
     }
     
 // MARK: - UI Related
+    func configureTrackNameLabelAndPlayer() {
+        if let musicTrackInfo = musicTrackInfo, musicDataURL = LocalMusicManager.returnMusicDataFromTrackId(trackId: musicTrackInfo.id) {
+            audioTypeButton.buttonState = .PickSong
+            trackNameLabel.changeScrollableTextTo(String.presentableArtistAndSongName(musicTrackInfo.artistName, songName: musicTrackInfo.trackName))
+            trackNameLabel.layer.opacity = 1.0
+            trackNameLabelBG.layer.opacity = 1.0
+            editAudioButton.layer.opacity = 1.0
+            do {
+                try player = AVAudioPlayer(contentsOfURL: musicDataURL)
+                player?.prepareToPlay()
+                player?.enableRate = true
+                
+                if let duration = player?.duration {
+                    varMaximumRecordingLength = duration < kMaximumRecordingLength ? duration : kMaximumRecordingLength
+                }
+                
+            } catch {
+                print("AVAudioPlayer couldn't be inited: \(error)")
+            }
+        } else {
+            varMaximumRecordingLength = kMaximumRecordingLength
+            trackNameLabel.changeScrollableTextTo("")
+            trackNameLabel.layer.opacity = 0.0
+            trackNameLabelBG.layer.opacity = 0.0
+            editAudioButton.layer.opacity = 0.0
+        }
+    }
+    
     func enableNavigationControlButtons() {
         if doneButton.layer.opacity == 0.0 {
             doneButton.layer.opacity = 1.0
