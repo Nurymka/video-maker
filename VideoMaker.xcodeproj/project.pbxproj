@@ -37,7 +37,6 @@
 		7D777A351BD97729002C0134 /* AppearanceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A341BD97729002C0134 /* AppearanceKit.swift */; settings = {ASSET_TAGS = (); }; };
 		7D777A371BD987C4002C0134 /* SongSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D777A361BD987C4002C0134 /* SongSearchController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D7DA75A1BD9AE4400A33BF3 /* UIElementsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */; settings = {ASSET_TAGS = (); }; };
-		7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */; };
 		7D8999D41B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */; };
 		7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */; settings = {ASSET_TAGS = (); }; };
 		7DDDD8EE1BD967170077FF51 /* LocalMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -54,6 +53,7 @@
 		EAC5D0F81BDA11A7008E80F3 /* NKRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D0F71BDA11A7008E80F3 /* NKRecorderTests.swift */; };
 		EAC5D0FC1BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; };
 		EAC5D0FD1BDA11A7008E80F3 /* NKRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EAC5D10E1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,7 +139,6 @@
 		7D777A341BD97729002C0134 /* AppearanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceKit.swift; sourceTree = "<group>"; };
 		7D777A361BD987C4002C0134 /* SongSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchController.swift; sourceTree = "<group>"; };
 		7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsContainer.swift; sourceTree = "<group>"; };
-		7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		EAC5D0F91BDA11A7008E80F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAC5D1091BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder-VideoMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		EAC5D10A1BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder-VideoMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker.release.xcconfig"; sourceTree = "<group>"; };
+		EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		FBB2B16BB987F261E35EE3DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -352,7 +352,6 @@
 				7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */,
 				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
 				7D2324831BC77A34004A1976 /* PlaylistAPI.swift */,
-				7D8999D11B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -391,6 +390,7 @@
 		EAC5D0E81BDA11A7008E80F3 /* NKRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */,
 				EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */,
 				EAC5D0EB1BDA11A7008E80F3 /* Info.plist */,
 			);
@@ -711,7 +711,6 @@
 				7D01C7E31BD4C5140093E181 /* SBConstants.swift in Sources */,
 				7D777A331BD97638002C0134 /* UIAppearance+Swift.m in Sources */,
 				7D2837261BB113DC00BE8DB9 /* MusicRetrievalAPI.swift in Sources */,
-				7D8999D21B9E149200F9136A /* RecordButtonTouchGestureRecognizer.swift in Sources */,
 				7DC092F11BBD0E2700CC5619 /* DraggableSlider.swift in Sources */,
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
 				7D2324861BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift in Sources */,
@@ -742,6 +741,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC5D10E1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +888,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "VideoMaker/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -904,6 +905,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "VideoMaker/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -954,6 +956,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3485EC66FA0DD62CA546B6B /* Pods-NKRecorder.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -963,11 +966,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = NKRecorder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.tom.NKRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -978,6 +982,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52CA73037B12828F23027A5C /* Pods-NKRecorder.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -986,7 +991,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = NKRecorder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.tom.NKRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
