@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */; };
+		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; };
 		7D01C7DC1BD4B2D90093E181 /* AnimationKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */; settings = {ASSET_TAGS = (); }; };
 		7D01C7DE1BD4BD220093E181 /* AudioTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7DD1BD4BD220093E181 /* AudioTypeButton.swift */; settings = {ASSET_TAGS = (); }; };
 		7D01C7E11BD4C13C0093E181 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E01BD4C13C0093E181 /* R.swift */; settings = {ASSET_TAGS = (); }; };
@@ -46,7 +48,12 @@
 		7DE932621BD0501C00040833 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325C1BD0501B00040833 /* Cabin-MediumItalic.ttf */; settings = {ASSET_TAGS = (); }; };
 		7DE932631BD0501C00040833 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325D1BD0501B00040833 /* Cabin-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		7DE932651BD05FEE00040833 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE932641BD05FEE00040833 /* StyleKit.swift */; settings = {ASSET_TAGS = (); }; };
-		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; };
+		EAC5D0EA1BDA11A7008E80F3 /* NKRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAC5D0F11BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; settings = {ASSET_TAGS = (); }; };
+		EAC5D0F81BDA11A7008E80F3 /* NKRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D0F71BDA11A7008E80F3 /* NKRecorderTests.swift */; };
+		EAC5D0FC1BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; };
+		EAC5D0FD1BDA11A7008E80F3 /* NKRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,11 +64,47 @@
 			remoteGlobalIDString = 7D6A141B1B98C15600453DA1;
 			remoteInfo = VideoMaker;
 		};
+		EAC5D0F21BDA11A7008E80F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D6A14141B98C15600453DA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAC5D0E61BDA11A7008E80F3;
+			remoteInfo = NKRecorder;
+		};
+		EAC5D0F41BDA11A7008E80F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D6A14141B98C15600453DA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D6A141B1B98C15600453DA1;
+			remoteInfo = VideoMaker;
+		};
+		EAC5D0FA1BDA11A7008E80F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D6A14141B98C15600453DA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAC5D0E61BDA11A7008E80F3;
+			remoteInfo = NKRecorder;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EAC5D1011BDA11A7008E80F3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAC5D0FD1BDA11A7008E80F3 /* NKRecorder.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKRecorder_VideoMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52CA73037B12828F23027A5C /* Pods-NKRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder/Pods-NKRecorder.release.xcconfig"; sourceTree = "<group>"; };
 		7D01C7DB1BD4B2D80093E181 /* AnimationKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationKit.swift; sourceTree = "<group>"; };
 		7D01C7DD1BD4BD220093E181 /* AudioTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTypeButton.swift; sourceTree = "<group>"; };
 		7D01C7E01BD4C13C0093E181 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
@@ -108,6 +151,15 @@
 		7DE9325C1BD0501B00040833 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		7DE9325D1BD0501B00040833 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		7DE932641BD05FEE00040833 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		D3485EC66FA0DD62CA546B6B /* Pods-NKRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder/Pods-NKRecorder.debug.xcconfig"; sourceTree = "<group>"; };
+		EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NKRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRecorder.h; sourceTree = "<group>"; };
+		EAC5D0EB1BDA11A7008E80F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAC5D0F01BDA11A7008E80F3 /* NKRecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NKRecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAC5D0F71BDA11A7008E80F3 /* NKRecorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKRecorderTests.swift; sourceTree = "<group>"; };
+		EAC5D0F91BDA11A7008E80F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAC5D1091BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder-VideoMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker.debug.xcconfig"; sourceTree = "<group>"; };
+		EAC5D10A1BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder-VideoMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker.release.xcconfig"; sourceTree = "<group>"; };
 		FBB2B16BB987F261E35EE3DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */,
+				EAC5D0FC1BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */,
+				526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +178,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAC5D0E31BDA11A7008E80F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAC5D0ED1BDA11A7008E80F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC5D0F11BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +231,8 @@
 		7D6A14131B98C15600453DA1 = {
 			isa = PBXGroup;
 			children = (
+				EAC5D0E81BDA11A7008E80F3 /* NKRecorder */,
+				EAC5D0F61BDA11A7008E80F3 /* NKRecorderTests */,
 				C11CB4E72E49C4593853348C /* Frameworks */,
 				EB62E34DA68EE12F47F59D81 /* Pods */,
 				7D6A141D1B98C15600453DA1 /* Products */,
@@ -174,6 +246,8 @@
 			children = (
 				7D6A141C1B98C15600453DA1 /* VideoMaker.app */,
 				7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */,
+				EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */,
+				EAC5D0F01BDA11A7008E80F3 /* NKRecorderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,20 +382,53 @@
 			children = (
 				7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */,
 				FBB2B16BB987F261E35EE3DE /* Pods.framework */,
+				27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */,
+				26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAC5D0E81BDA11A7008E80F3 /* NKRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */,
+				EAC5D0EB1BDA11A7008E80F3 /* Info.plist */,
+			);
+			path = NKRecorder;
+			sourceTree = "<group>";
+		};
+		EAC5D0F61BDA11A7008E80F3 /* NKRecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D0F71BDA11A7008E80F3 /* NKRecorderTests.swift */,
+				EAC5D0F91BDA11A7008E80F3 /* Info.plist */,
+			);
+			path = NKRecorderTests;
 			sourceTree = "<group>";
 		};
 		EB62E34DA68EE12F47F59D81 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */,
-				0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */,
+				EAC5D1091BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.debug.xcconfig */,
+				EAC5D10A1BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.release.xcconfig */,
+				D3485EC66FA0DD62CA546B6B /* Pods-NKRecorder.debug.xcconfig */,
+				52CA73037B12828F23027A5C /* Pods-NKRecorder.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EAC5D0E41BDA11A7008E80F3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC5D0EA1BDA11A7008E80F3 /* NKRecorder.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		7D6A141B1B98C15600453DA1 /* VideoMaker */ = {
@@ -335,10 +442,12 @@
 				7D6A141A1B98C15600453DA1 /* Resources */,
 				DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */,
 				BF7E4DF84E3898AC7ADBAC9D /* Embed Pods Frameworks */,
+				EAC5D1011BDA11A7008E80F3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EAC5D0FB1BDA11A7008E80F3 /* PBXTargetDependency */,
 			);
 			name = VideoMaker;
 			productName = VideoMaker;
@@ -363,6 +472,45 @@
 			productReference = 7D6A14311B98C15700453DA1 /* VideoMakerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EAC5D0E61BDA11A7008E80F3 /* NKRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAC5D0FE1BDA11A7008E80F3 /* Build configuration list for PBXNativeTarget "NKRecorder" */;
+			buildPhases = (
+				05F14E8FF07270DCE634F17B /* Check Pods Manifest.lock */,
+				EAC5D0E21BDA11A7008E80F3 /* Sources */,
+				EAC5D0E31BDA11A7008E80F3 /* Frameworks */,
+				EAC5D0E41BDA11A7008E80F3 /* Headers */,
+				EAC5D0E51BDA11A7008E80F3 /* Resources */,
+				B72AAF170C92DF4FC557335B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NKRecorder;
+			productName = NKRecorder;
+			productReference = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EAC5D0EF1BDA11A7008E80F3 /* NKRecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAC5D1021BDA11A7008E80F3 /* Build configuration list for PBXNativeTarget "NKRecorderTests" */;
+			buildPhases = (
+				EAC5D0EC1BDA11A7008E80F3 /* Sources */,
+				EAC5D0ED1BDA11A7008E80F3 /* Frameworks */,
+				EAC5D0EE1BDA11A7008E80F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAC5D0F31BDA11A7008E80F3 /* PBXTargetDependency */,
+				EAC5D0F51BDA11A7008E80F3 /* PBXTargetDependency */,
+			);
+			name = NKRecorderTests;
+			productName = NKRecorderTests;
+			productReference = EAC5D0F01BDA11A7008E80F3 /* NKRecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -379,6 +527,14 @@
 					};
 					7D6A14301B98C15700453DA1 = {
 						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 7D6A141B1B98C15600453DA1;
+					};
+					EAC5D0E61BDA11A7008E80F3 = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 227D5X5CZY;
+					};
+					EAC5D0EF1BDA11A7008E80F3 = {
+						CreatedOnToolsVersion = 7.0.1;
 						TestTargetID = 7D6A141B1B98C15600453DA1;
 					};
 				};
@@ -398,6 +554,8 @@
 			targets = (
 				7D6A141B1B98C15600453DA1 /* VideoMaker */,
 				7D6A14301B98C15700453DA1 /* VideoMakerTests */,
+				EAC5D0E61BDA11A7008E80F3 /* NKRecorder */,
+				EAC5D0EF1BDA11A7008E80F3 /* NKRecorderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -426,9 +584,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAC5D0E51BDA11A7008E80F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAC5D0EE1BDA11A7008E80F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05F14E8FF07270DCE634F17B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B72AAF170C92DF4FC557335B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NKRecorder/Pods-NKRecorder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBAA3CF055F5F169CC72EA00 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,7 +658,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */ = {
@@ -471,7 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F55C2C57EC3D059D42DEFD7C /* Build Resource-Index */ = {
@@ -486,7 +688,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcres --no-ansi build $PROJECT_FILE_PATH $SRCROOT/VideoMaker/Resources/R\n";
+			shellScript = "# /Users/Tony/.rvm/gems/ruby-2.1.2/bin/xcres --no-ansi build $PROJECT_FILE_PATH $SRCROOT/VideoMaker/Resources/R\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -536,6 +738,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAC5D0E21BDA11A7008E80F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAC5D0EC1BDA11A7008E80F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC5D0F81BDA11A7008E80F3 /* NKRecorderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -543,6 +760,21 @@
 			isa = PBXTargetDependency;
 			target = 7D6A141B1B98C15600453DA1 /* VideoMaker */;
 			targetProxy = 7D6A14321B98C15700453DA1 /* PBXContainerItemProxy */;
+		};
+		EAC5D0F31BDA11A7008E80F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAC5D0E61BDA11A7008E80F3 /* NKRecorder */;
+			targetProxy = EAC5D0F21BDA11A7008E80F3 /* PBXContainerItemProxy */;
+		};
+		EAC5D0F51BDA11A7008E80F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D6A141B1B98C15600453DA1 /* VideoMaker */;
+			targetProxy = EAC5D0F41BDA11A7008E80F3 /* PBXContainerItemProxy */;
+		};
+		EAC5D0FB1BDA11A7008E80F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAC5D0E61BDA11A7008E80F3 /* NKRecorder */;
+			targetProxy = EAC5D0FA1BDA11A7008E80F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -652,7 +884,7 @@
 		};
 		7D6A143C1B98C15700453DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50E594BFA3BC7CB4A41DA937 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = EAC5D1091BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -668,7 +900,7 @@
 		};
 		7D6A143D1B98C15700453DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BB8422BEDE202E05CAA517F /* Pods.release.xcconfig */;
+			baseConfigurationReference = EAC5D10A1BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -718,6 +950,78 @@
 			};
 			name = Release;
 		};
+		EAC5D0FF1BDA11A7008E80F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3485EC66FA0DD62CA546B6B /* Pods-NKRecorder.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NKRecorder/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.tom.NKRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EAC5D1001BDA11A7008E80F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52CA73037B12828F23027A5C /* Pods-NKRecorder.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NKRecorder/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.tom.NKRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EAC5D1031BDA11A7008E80F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = NKRecorderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.tom.NKRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoMaker.app/VideoMaker";
+			};
+			name = Debug;
+		};
+		EAC5D1041BDA11A7008E80F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NKRecorderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.tom.NKRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoMaker.app/VideoMaker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -744,6 +1048,24 @@
 			buildConfigurations = (
 				7D6A143F1B98C15700453DA1 /* Debug */,
 				7D6A14401B98C15700453DA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAC5D0FE1BDA11A7008E80F3 /* Build configuration list for PBXNativeTarget "NKRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAC5D0FF1BDA11A7008E80F3 /* Debug */,
+				EAC5D1001BDA11A7008E80F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAC5D1021BDA11A7008E80F3 /* Build configuration list for PBXNativeTarget "NKRecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAC5D1031BDA11A7008E80F3 /* Debug */,
+				EAC5D1041BDA11A7008E80F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

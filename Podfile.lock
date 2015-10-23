@@ -9,6 +9,7 @@ PODS:
     - EZAudio/Core
     - TPCircularBuffer (~> 0.0)
   - RBBAnimation (0.4.0)
+  - Reveal-iOS-SDK (1.6.1)
   - SCRecorder (2.5.3)
   - SwiftyJSON (2.3.0)
   - TPCircularBuffer (0.0.1)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 1.0)
   - EZAudio (~> 1.1.2)
   - RBBAnimation (= 0.4.0)
+  - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.5)
   - SwiftyJSON
 
@@ -26,8 +28,9 @@ SPEC CHECKSUMS:
   AlamofireImage: dc3d3de5d095fd9545b144ba8f6da5bfc539512a
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
+  Reveal-iOS-SDK: ceae964076cebe3efe63e5e9abe3152efce46aa8
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
