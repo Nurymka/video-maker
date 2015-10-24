@@ -6,23 +6,22 @@
 //  Copyright (c) 2015 Tom. All rights reserved.
 //
 
-import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-public class RecordButtonTouchGestureRecognizer: UIGestureRecognizer {
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+class RecordButtonTouchGestureRecognizer: UIGestureRecognizer {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if enabled {
             state = .Began
         }
     }
     
-    override public func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if enabled {
             state = .Ended
         }
     }
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if enabled {
             state = .Ended
         }

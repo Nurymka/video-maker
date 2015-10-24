@@ -17,7 +17,6 @@ target :NKRecorder do
     
     target :VideoMaker do
         link_with 'VideoMaker'
-        pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
     end
 
 end

@@ -9,7 +9,6 @@
 import UIKit
 import SCRecorder
 import RBBAnimation
-import NKRecorder
 
 class RecordViewController: BaseViewController {
     let kMaximumRecordingLength = 15.0

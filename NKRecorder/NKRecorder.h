@@ -15,5 +15,5 @@ FOUNDATION_EXPORT double NKRecorderVersionNumber;
 FOUNDATION_EXPORT const unsigned char NKRecorderVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <NKRecorder/PublicHeader.h>
-
+#import "NKRecorder/UIAppearance+Swift.h"
 
