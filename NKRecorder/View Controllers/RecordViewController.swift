@@ -10,7 +10,13 @@ import UIKit
 import SCRecorder
 import RBBAnimation
 
+protocol RecordViewControllerDelegate: class {
+    func recordingWillStart()
+    func recordingDidCancel()
+}
+
 class RecordViewController: BaseViewController {
+    weak var delegate: RecordViewControllerDelegate?
     let kMaximumRecordingLength = 15.0
     let kMinimumRecordingLength = 1.0
     
@@ -46,6 +52,9 @@ class RecordViewController: BaseViewController {
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let NKRecorderVC = (navigationController as? NKRecorderViewController)
+        delegate = NKRecorderVC
+        
         varMaximumRecordingLength = kMaximumRecordingLength
         recorder = SCRecorder()
         if !recorder.startRunning() {
@@ -140,10 +149,12 @@ class RecordViewController: BaseViewController {
             recorder.session = nil
             prepareSession()
         }
+        delegate?.recordingDidCancel()
     }
     
     func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
         if (touchDetector.state == .Began) {
+            delegate?.recordingWillStart()
             recorder.record()
             timescaleSegmentedControl.enabled = false
             if musicTrackInfo != nil {

@@ -117,7 +117,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="71" y="33" width="176" height="21"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -566,10 +566,10 @@
             </objects>
             <point key="canvasLocation" x="1637" y="-477"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Recorder View Controller-->
         <scene sceneID="csT-fI-usY">
             <objects>
-                <navigationController storyboardIdentifier="NKRecorderRootNavController" automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NKRecorderViewController" automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" customClass="NKRecorderViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0zZ-zk-32M">

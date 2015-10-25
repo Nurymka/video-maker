@@ -9,6 +9,10 @@
 import UIKit
 import SCRecorder
 
+protocol VideoPlaybackViewControllerDelegate: class {
+    func didProduceVideo(videoSession: NKVideoSession)
+}
+
 class VideoPlaybackViewController: BaseViewController {
     
     @IBOutlet weak var UIElementsContainerView: UIElementsContainer!
@@ -43,9 +47,14 @@ class VideoPlaybackViewController: BaseViewController {
     var canUseOriginalSound = true // if a song was chosen during the recording, one cannot use the original sound
     var initialAudioTypeButtonState: AudioTypeButton.ButtonState = .OriginalSound
     
+    weak var delegate: VideoPlaybackViewControllerDelegate?
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let NKRecorderVC = (navigationController as? NKRecorderViewController)
+        NKRecorderVC?.videoPlaybackViewController = self
+        delegate = NKRecorderVC
+        
         player = SCPlayer()
         player?.loopEnabled = true
         filterSwipableView.refreshAutomaticallyWhenScrolling = false // can't tell what this does, but it is false in the examples, so better stay it
@@ -193,39 +202,32 @@ class VideoPlaybackViewController: BaseViewController {
         }
     }
 // MARK: - Button Touch Handlers
-    @IBAction func saveToCameraRollPressed(sender: AnyObject)
-    {
+    func freezeUIForExport() {
         activityIndicatorContainer.hidden = false
         activityIndicatorView.startAnimating()
         player?.pause()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        let segmentsAsset = composition
-        var assetExport = SCAssetExportSession()
-        if let asset = segmentsAsset {
-            assetExport = SCAssetExportSession(asset: asset)
+    }
+    
+    func unfreezeUIForExport() {
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        player?.play()
+        activityIndicatorContainer.hidden = true
+        activityIndicatorView.stopAnimating()
+        removeCaptionView()
+    }
+    
+    func removeCaptionView() {
+        if captionView != nil {
+            insertCaptionPressed(self)
         }
-        assetExport.outputUrl = recordSession?.outputUrl
-        assetExport.outputFileType = AVFileTypeMPEG4
-        assetExport.audioConfiguration.preset = SCPresetHighestQuality
-        assetExport.videoConfiguration.preset = SCPresetHighestQuality
-        assetExport.videoConfiguration.filter = filterSwipableView.selectedFilter
-        if let captionView = captionView {
-            assetExport.videoConfiguration.overlay = captionView
+    }
+    
+    @IBAction func saveToCameraRollPressed(sender: AnyObject)
+    {
+        if let recordSession = recordSession, composition = composition {
+            delegate?.didProduceVideo(NKVideoSession(recordSession: recordSession, composition: composition, overlay: captionView, filter: filterSwipableView.selectedFilter, videoPlaybackViewControllerOrNil: self))
         }
-        assetExport.videoConfiguration.maxFrameRate = 35
-        let timestamp = CACurrentMediaTime()
-        assetExport.exportAsynchronouslyWithCompletionHandler({
-            print(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
-            if (assetExport.error == nil) {
-                if let path = assetExport.outputUrl?.path {
-                    UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
-                }
-            }
-            else {
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                UIAlertView(title: "Failed to save", message:assetExport.error?.localizedDescription, delegate: nil, cancelButtonTitle: "Okay").show()
-            }
-        })
     }
 
     @IBAction func insertCaptionPressed(sender: AnyObject) {
@@ -421,11 +423,6 @@ class VideoPlaybackViewController: BaseViewController {
     }
     
     func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
-        player?.play()
-        activityIndicatorContainer.hidden = true
-        activityIndicatorView.stopAnimating()
-        insertCaptionPressed(self)
         if (error == nil) {
             UIAlertView(title: "Saved to camera roll", message:"", delegate: nil, cancelButtonTitle: "Done").show()
         } else {

@@ -18,8 +18,8 @@
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
-		7DBD511B1BDC51E700E49B56 /* NKRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511A1BDC51E700E49B56 /* NKRecorder.swift */; };
-		7DBD511D1BDC563300E49B56 /* VideoMakerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511C1BDC563200E49B56 /* VideoMakerRootViewController.swift */; };
+		7DBD511B1BDC51E700E49B56 /* NKRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */; };
+		7DBD511D1BDC563300E49B56 /* VideoMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */; };
 		7DBE65571BDC74680031CECA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14281B98C15600453DA1 /* Images.xcassets */; };
 		7DDFB82B1BDB19EB0010B899 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4813261BD4D8450038325E /* BaseViewController.swift */; };
 		7DDFB82C1BDB19EB0010B899 /* ChooseMusicTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */; };
@@ -143,8 +143,8 @@
 		7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsContainer.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		7DBD511A1BDC51E700E49B56 /* NKRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecorder.swift; sourceTree = "<group>"; };
-		7DBD511C1BDC563200E49B56 /* VideoMakerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerRootViewController.swift; sourceTree = "<group>"; };
+		7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecorderViewController.swift; sourceTree = "<group>"; };
+		7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerViewController.swift; sourceTree = "<group>"; };
 		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
 		7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMusicManager.swift; sourceTree = "<group>"; };
 		7DE932581BD0501B00040833 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
-				7DBD511C1BDC563200E49B56 /* VideoMakerRootViewController.swift */,
+				7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
 			);
@@ -309,7 +309,7 @@
 		7DBD51191BDC51D500E49B56 /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				7DBD511A1BDC51E700E49B56 /* NKRecorder.swift */,
+				7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -713,7 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
-				7DBD511D1BDC563300E49B56 /* VideoMakerRootViewController.swift in Sources */,
+				7DBD511D1BDC563300E49B56 /* VideoMakerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +734,7 @@
 				7DDFB83E1BDB1A0D0010B899 /* TimescaleSegmentedControl.swift in Sources */,
 				7DDFB8511BDB1A440010B899 /* R.swift in Sources */,
 				7DDFB8301BDB19EB0010B899 /* VideoPlaybackViewContoller.swift in Sources */,
-				7DBD511B1BDC51E700E49B56 /* NKRecorder.swift in Sources */,
+				7DBD511B1BDC51E700E49B56 /* NKRecorderViewController.swift in Sources */,
 				7DDFB8401BDB1A0D0010B899 /* UIElementsContainer.swift in Sources */,
 				7DDFB83A1BDB1A0D0010B899 /* BaseViews.swift in Sources */,
 				7DDFB8371BDB1A090010B899 /* FontKit.swift in Sources */,
@@ -904,7 +904,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VideoMaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -921,7 +920,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VideoMaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
