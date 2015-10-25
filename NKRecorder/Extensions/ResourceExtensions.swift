@@ -18,6 +18,6 @@ extension UIFont {
 
 extension UIImage {
     convenience init?(key: R.ImagesAssets) {
-        self.init(named: key.rawValue)
+        self.init(named: key.rawValue, inBundle: NSBundle(identifier: "me.tom.NKRecorder"), compatibleWithTraitCollection: nil)
     }
 }

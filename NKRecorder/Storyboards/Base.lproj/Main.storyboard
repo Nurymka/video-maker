@@ -117,7 +117,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="71" y="33" width="176" height="21"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -569,7 +569,7 @@
         <!--Navigation Controller-->
         <scene sceneID="csT-fI-usY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NKRecorderRootNavController" automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0zZ-zk-32M">
@@ -660,23 +660,6 @@
             </objects>
             <point key="canvasLocation" x="2192" y="-477"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="gz8-fc-Rni">
-            <objects>
-                <viewController id="exE-q2-Nq6" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kkM-Ys-A0R"/>
-                        <viewControllerLayoutGuide type="bottom" id="3gH-SL-tb1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xHf-AF-E3C">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jZm-5f-uWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2nL-o5-uqv">
             <objects>
@@ -713,6 +696,6 @@
         <image name="snail" width="28" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ncs-cA-kYp"/>
+        <segue reference="uxC-de-KZf"/>
     </inferredMetricsTieBreakers>
 </document>

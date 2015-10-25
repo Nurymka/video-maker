@@ -5,7 +5,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-
 target :NKRecorder do
     link_with 'NKRecorder'
     pod 'SCRecorder', '~> 2.5'

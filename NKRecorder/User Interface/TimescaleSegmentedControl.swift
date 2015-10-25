@@ -19,13 +19,13 @@ class TimescaleSegmentedControl: UISegmentedControl {
         setTitleTextAttributes(titleTextAttributes, forState: .Normal)
         setTitleTextAttributes(titleTextAttributes, forState: .Selected)
         
-        setBackgroundImage(UIImage(named: "segCtrl-normal-bg"), forState: .Normal, barMetrics: .Default)
-        setBackgroundImage(UIImage(named: "segCtrl-selected-bg"), forState: .Selected, barMetrics: .Default)
-        setDividerImage(UIImage(named: "segCtrl-divider-none-selected"), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
-        setDividerImage(UIImage(named: "segCtrl-divider-right-selected"), forLeftSegmentState: .Normal, rightSegmentState: .Selected, barMetrics: .Default)
-        setDividerImage(UIImage(named: "segCtrl-divider-left-selected"), forLeftSegmentState: .Selected, rightSegmentState: .Normal, barMetrics: .Default)
+        setBackgroundImage(UIImage(key: .segCtrlNormalBg), forState: .Normal, barMetrics: .Default)
+        setBackgroundImage(UIImage(key: .segCtrlSelectedBg), forState: .Selected, barMetrics: .Default)
+        setDividerImage(UIImage(key: .segCtrlDividerNoneSelected), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
+        setDividerImage(UIImage(key: .segCtrlDividerRightSelected), forLeftSegmentState: .Normal, rightSegmentState: .Selected, barMetrics: .Default)
+        setDividerImage(UIImage(key: .segCtrlDividerLeftSelected), forLeftSegmentState: .Selected, rightSegmentState: .Normal, barMetrics: .Default)
         
-        let dividerImageWidth = UIImage(named: "segCtrl-divider-none-selected")!.size.width // assuming all the divider images have the same width
+        let dividerImageWidth = UIImage(key: .segCtrlDividerNoneSelected)!.size.width // assuming all the divider images have the same width
         setContentPositionAdjustment(UIOffsetMake(dividerImageWidth / 2, 0), forSegmentType: .Left, barMetrics: .Default)
         setContentPositionAdjustment(UIOffsetMake(-dividerImageWidth / 2, 0), forSegmentType: .Right, barMetrics: .Default)
     }
