@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "NKRecorder/**/*.{swift, h, m}"
+  s.source_files  = "NKRecorder/**/*.{swift,h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -105,7 +105,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "NKRecorder/**/*.{storyboard, xcassets, pdf, png, jpeg, jpg}"
+  s.resources = "NKRecorder/**/*.{storyboard,xcassets,pdf,png,jpeg,jpg}"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

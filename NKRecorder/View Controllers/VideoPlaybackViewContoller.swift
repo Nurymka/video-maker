@@ -70,8 +70,8 @@ class VideoPlaybackViewController: BaseViewController {
                                       SCFilter(CIFilterName: "CIPhotoEffectProcess"),
                                       SCFilter(CIFilterName: "CIPhotoEffectTonal"),
                                       SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
-        player?.CIImageRenderer = filterSwipableView
-        
+        player?.SCImageView = filterSwipableView
+
         if navigationController?.respondsToSelector("interactivePopGestureRecognizer") != nil {
             navigationController?.interactivePopGestureRecognizer?.enabled = false
         }

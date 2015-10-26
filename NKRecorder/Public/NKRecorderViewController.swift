@@ -47,10 +47,11 @@ public protocol NKRecorderDelegate: class {
 }
 
 public class NKRecorderViewController : UINavigationController {
-    private static let currentBundle = NSBundle(identifier: "me.tom.NKRecorder")!
+    static let currentBundle = NSBundle(forClass: NKRecorderViewController.self)
     public weak var recorderDelegate: NKRecorderDelegate?
     weak var videoPlaybackViewController: VideoPlaybackViewController?
     public class func mainNavController() -> NKRecorderViewController {
+        
         var once: dispatch_once_t = 0
         dispatch_once(&once) {
             loadCustomFonts()

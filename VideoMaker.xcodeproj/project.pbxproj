@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */; };
-		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; };
 		7D6342A71BDC85C100178183 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932581BD0501B00040833 /* Cabin-Bold.ttf */; };
 		7D6342A81BDC85C100178183 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932591BD0501B00040833 /* Cabin-BoldItalic.ttf */; };
 		7D6342A91BDC85C100178183 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325A1BD0501B00040833 /* Cabin-Italic.ttf */; };
@@ -55,8 +55,6 @@
 		EAC5D0EA1BDA11A7008E80F3 /* NKRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAC5D0F11BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; };
 		EAC5D0F81BDA11A7008E80F3 /* NKRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D0F71BDA11A7008E80F3 /* NKRecorderTests.swift */; };
-		EAC5D0FC1BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; };
-		EAC5D0FD1BDA11A7008E80F3 /* NKRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,28 +79,7 @@
 			remoteGlobalIDString = 7D6A141B1B98C15600453DA1;
 			remoteInfo = VideoMaker;
 		};
-		EAC5D0FA1BDA11A7008E80F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7D6A14141B98C15600453DA1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAC5D0E61BDA11A7008E80F3;
-			remoteInfo = NKRecorder;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		EAC5D1011BDA11A7008E80F3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EAC5D0FD1BDA11A7008E80F3 /* NKRecorder.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKRecorder_VideoMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,7 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */,
-				EAC5D0FC1BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */,
 				526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,12 +432,10 @@
 				7D6A141A1B98C15600453DA1 /* Resources */,
 				DA5A055CF5CC6FBD2B51896A /* Copy Pods Resources */,
 				BF7E4DF84E3898AC7ADBAC9D /* Embed Pods Frameworks */,
-				EAC5D1011BDA11A7008E80F3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EAC5D0FB1BDA11A7008E80F3 /* PBXTargetDependency */,
 			);
 			name = VideoMaker;
 			productName = VideoMaker;
@@ -786,11 +760,6 @@
 			isa = PBXTargetDependency;
 			target = 7D6A141B1B98C15600453DA1 /* VideoMaker */;
 			targetProxy = EAC5D0F41BDA11A7008E80F3 /* PBXContainerItemProxy */;
-		};
-		EAC5D0FB1BDA11A7008E80F3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EAC5D0E61BDA11A7008E80F3 /* NKRecorder */;
-			targetProxy = EAC5D0FA1BDA11A7008E80F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
