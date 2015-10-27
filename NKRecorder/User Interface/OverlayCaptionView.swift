@@ -14,46 +14,35 @@ protocol OverlayCaptionViewDelegate {
     func keyboardReturnWithEmptyString()
 }
 
-class OverlayCaptionView: UIView {
-    var textField: UITextField!
-    var isFrameSet: Bool = false
+class OverlayCaptionView: UITextField {
     var viewPercentageYPos: CGFloat = 0.0
     var screenToCaptionHeightRatio: CGFloat = 0.0
-    var delegate: OverlayCaptionViewDelegate?
+    var overlayViewDelegate: OverlayCaptionViewDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        textField = UITextField()
-        textField.delegate = self
-        textField.text = "my caption"
-        textField.textColor = UIColor.whiteColor()
-        textField.font = FontKit.captionFont
-        textField.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
-        textField.textAlignment = .Center
-        addSubview(textField)
+    init(superviewFrame: CGRect) {
+        super.init(frame: CGRectZero)
+        delegate = self
+        text = "my caption"
+        textColor = UIColor.whiteColor()
+        font = FontKit.captionFont
+        backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
+        textAlignment = .Center
+        sizeToFit()
+        frame = CGRect(x: 0, y: (superviewFrame.size.height - frame.size.height) / 2, width: superviewFrame.size.width, height: frame.size.height)
+        screenToCaptionHeightRatio = superviewFrame.size.height / frame.size.height
+        viewPercentageYPos = frame.origin.y / superviewFrame.size.height
+        print(frame)
     }
     
-    required init (coder aDecoder: NSCoder) {
-        fatalError("This class doesn't support NSCoding")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if !isFrameSet {
-            textField.sizeToFit()
-            textField.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: textField.frame.size.height)
-            screenToCaptionHeightRatio = frame.size.height / textField.frame.size.height
-            let frameHeight = frame.size.height
-            frame = CGRect(x: 0.0, y: (frame.size.height - textField.frame.size.height) / 2, width: textField.frame.size.width, height: textField.frame.size.height)
-            viewPercentageYPos = frame.origin.y / frameHeight
-            isFrameSet = true
-        } else {
-            textField.frame = CGRect(x: 0.0, y: frame.size.height * viewPercentageYPos, width: frame.size.width, height: frame.size.height / screenToCaptionHeightRatio)
-            textField.font = fontToFitHeight(30, maxFontSize: 70, labelText: textField.text!, font: textField.font!)
-        }
+        print(frame.size.width)
         print("layoutSubviews")
     }
-    
     
     private func fontToFitHeight(minFontSize: CGFloat, maxFontSize: CGFloat, labelText: String, font: UIFont) -> UIFont {
         var minFontSize = minFontSize
@@ -61,14 +50,14 @@ class OverlayCaptionView: UIView {
         var fontSizeAverage: CGFloat = 0
         var textAndLabelHeightDiff: CGFloat = 0
         let font = font
-    
+        
         while (minFontSize <= maxFontSize) {
             fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
             
             let labelHeight = frame.size.height
             let testStringHeight = labelText.sizeWithAttributes([NSFontAttributeName: font.fontWithSize(fontSizeAverage)]).height
             textAndLabelHeightDiff = labelHeight - testStringHeight
-    
+            
             if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
                 if (textAndLabelHeightDiff < 0) {
                     return font.fontWithSize(fontSizeAverage - 1)
@@ -86,8 +75,12 @@ class OverlayCaptionView: UIView {
                 return font.fontWithSize(fontSizeAverage)
             }
         }
-
+        
         return font.fontWithSize(fontSizeAverage)
+    }
+    
+    func copyWithNSCoder() -> OverlayCaptionView {
+        return NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self)) as! OverlayCaptionView
     }
 }
 
@@ -112,7 +105,7 @@ extension OverlayCaptionView: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         if textField.text == "" {
-            delegate?.keyboardReturnWithEmptyString()
+            overlayViewDelegate?.keyboardReturnWithEmptyString()
         }
         return true
     }

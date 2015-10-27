@@ -35,7 +35,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTA-SU-fsN" userLabel="Preview View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.9529411793" green="0.48627451059999999" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQJ-Nl-Hbb" userLabel="UI Elements Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -117,7 +117,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="71" y="33" width="176" height="21"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -261,7 +261,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrG-rf-qba" userLabel="Swipable Filter View" customClass="SCSwipeableFilterView">
+                            <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrG-rf-qba" userLabel="Swipable Filter View" customClass="SCSwipeableFilterView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37" colorSpace="calibratedRGB"/>
                             </view>
@@ -336,7 +336,7 @@
                                         </constraints>
                                         <state key="normal" image="btn-send"/>
                                         <connections>
-                                            <action selector="saveToCameraRollPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="PEb-Lq-nPv"/>
+                                            <action selector="sendButtonPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="hma-bT-QbL"/>
                                         </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWR-ZQ-LIL">
@@ -696,6 +696,6 @@
         <image name="snail" width="28" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uxC-de-KZf"/>
+        <segue reference="Ncs-cA-kYp"/>
     </inferredMetricsTieBreakers>
 </document>

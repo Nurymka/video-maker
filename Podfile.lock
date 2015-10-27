@@ -14,8 +14,8 @@ PODS:
     - EZAudio (~> 1.1.2)
     - SCRecorder (~> 2.5)
   - RBBAnimation (0.4.0)
-  - SCRecorder (2.6.1)
-  - SwiftyJSON (2.3.0)
+  - SCRecorder (2.5.3)
+  - SwiftyJSON (2.3.1)
   - TPCircularBuffer (0.0.1)
 
 DEPENDENCIES:
@@ -24,7 +24,7 @@ DEPENDENCIES:
   - EZAudio (~> 1.1.2)
   - NKRecorder (from `~/Documents/Taylr/video-maker/`)
   - RBBAnimation (= 0.4.0)
-  - SCRecorder
+  - SCRecorder (= 2.5.3)
   - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -37,8 +37,8 @@ SPEC CHECKSUMS:
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   NKRecorder: 28448b90a51270cccf4a9aef8aacfb1c608a072b
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  SCRecorder: ef11bc34094c43201cc7c94fa9aeb5266e5b9cf7
-  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
+  SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
 
 COCOAPODS: 0.39.0

@@ -12,7 +12,8 @@ import SCRecorder
 public struct NKVideoSession {
     let recordSession: SCRecordSession
     let composition: AVComposition
-    let overlay: UIView?
+    let overlayImage: UIImage?
+    let overlayImagePosition: CGPoint?
     let filter: SCFilter?
     var videoPlaybackViewControllerOrNil: VideoPlaybackViewController? // whenever one adds a caption view, layoutSubviews messes up controls after the export, that's why VideoPlaybackViewController is referenced and removes the caption view if it's present
     public func export(completion: (NSURL) -> ()) {
@@ -20,17 +21,17 @@ public struct NKVideoSession {
         assetExport.outputUrl = recordSession.outputUrl
         assetExport.outputFileType = AVFileTypeMPEG4
         assetExport.audioConfiguration.preset = SCPresetHighestQuality
-        assetExport.videoConfiguration.preset = SCPresetHighestQuality
+        //assetExport.videoConfiguration.preset = SCPresetHighestQuality
         assetExport.videoConfiguration.filter = filter
-        if let overlay = overlay {
-            assetExport.videoConfiguration.overlay = overlay
+        if let overlayImage = overlayImage {
+            assetExport.videoConfiguration.watermarkImage = overlayImage
+            assetExport.videoConfiguration.watermarkFrame = CGRect(x: 0, y: 0, width: 480, height: 640) // FIXME: HAX - 640x480 hardcoded
         }
         assetExport.videoConfiguration.maxFrameRate = 35
         let timestamp = CACurrentMediaTime()
         assetExport.exportAsynchronouslyWithCompletionHandler({
             print(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
             if (assetExport.error == nil) {
-                self.videoPlaybackViewControllerOrNil?.removeCaptionView()
                 completion(assetExport.outputUrl!)
             }
             else {

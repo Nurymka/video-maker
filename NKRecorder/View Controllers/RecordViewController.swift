@@ -54,16 +54,16 @@ class RecordViewController: BaseViewController {
         super.viewDidLoad()
         let NKRecorderVC = (navigationController as? NKRecorderViewController)
         delegate = NKRecorderVC
-        
         varMaximumRecordingLength = kMaximumRecordingLength
         recorder = SCRecorder()
         if !recorder.startRunning() {
             print("something went wrong: \(recorder.error)")
         }
-        recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
+        recorder.captureSessionPreset = AVCaptureSessionPreset640x480
+        //recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
         recorder.previewView = previewView
         recorder.delegate = self
-        
+        recorder.keepMirroringOnWrite = true
         recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
         
         UILabel.my_appearanceWhenContainedIn(UIAlertController).setAppearanceFontForAlertController(nil)

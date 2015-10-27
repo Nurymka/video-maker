@@ -35,7 +35,6 @@ class VideoPlaybackViewController: BaseViewController {
     
     var recordSession: SCRecordSession?
     var player: SCPlayer?
-    var playerLayer: AVPlayerLayer?
     var composition: AVMutableComposition?
     
     var captionView: OverlayCaptionView?
@@ -58,7 +57,7 @@ class VideoPlaybackViewController: BaseViewController {
         player = SCPlayer()
         player?.loopEnabled = true
         filterSwipableView.refreshAutomaticallyWhenScrolling = false // can't tell what this does, but it is false in the examples, so better stay it
-        filterSwipableView.contentMode = .ScaleAspectFit
+        filterSwipableView.contentMode = .ScaleAspectFill
         let emptyFilter = SCFilter()
         emptyFilter.name = "No Filter"
         filterSwipableView.filters = [emptyFilter,
@@ -70,8 +69,8 @@ class VideoPlaybackViewController: BaseViewController {
                                       SCFilter(CIFilterName: "CIPhotoEffectProcess"),
                                       SCFilter(CIFilterName: "CIPhotoEffectTonal"),
                                       SCFilter(CIFilterName: "CIPhotoEffectTransfer")]
-        player?.SCImageView = filterSwipableView
-
+        player?.CIImageRenderer = filterSwipableView
+        
         if navigationController?.respondsToSelector("interactivePopGestureRecognizer") != nil {
             navigationController?.interactivePopGestureRecognizer?.enabled = false
         }
@@ -87,10 +86,6 @@ class VideoPlaybackViewController: BaseViewController {
         
         configureTrackNameLabel()
         configureCompositionAndPlay()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        playerLayer?.frame = filterSwipableView.bounds
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -214,19 +209,14 @@ class VideoPlaybackViewController: BaseViewController {
         player?.play()
         activityIndicatorContainer.hidden = true
         activityIndicatorView.stopAnimating()
-        removeCaptionView()
     }
     
-    func removeCaptionView() {
-        if captionView != nil {
-            insertCaptionPressed(self)
-        }
-    }
-    
-    @IBAction func saveToCameraRollPressed(sender: AnyObject)
+    @IBAction func sendButtonPressed(sender: AnyObject)
     {
         if let recordSession = recordSession, composition = composition {
-            delegate?.didProduceVideo(NKVideoSession(recordSession: recordSession, composition: composition, overlay: captionView, filter: filterSwipableView.selectedFilter, videoPlaybackViewControllerOrNil: self))
+            let overlayImage = getOverlayImageFromView(captionView)
+            let overlayImagePosition = captionView?.frame.origin
+            delegate?.didProduceVideo(NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter, videoPlaybackViewControllerOrNil: self))
         }
     }
 
@@ -236,7 +226,7 @@ class VideoPlaybackViewController: BaseViewController {
             if let recognizer = tapGestureRecognizer {
                 self.view.addGestureRecognizer(recognizer)
             }
-            captionView = OverlayCaptionView(frame: view.frame)
+            captionView = OverlayCaptionView(superviewFrame: view.frame)
             captionViewPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "captionPanGestureRecognized:")
             if let captionView = captionView {
                 if let gestureRecognizer = captionViewPanGestureRecognizer {
@@ -263,9 +253,9 @@ class VideoPlaybackViewController: BaseViewController {
     }
     
     func dismissKeyboard(recognizer: UITapGestureRecognizer) {
-        if let isEditing = captionView?.textField.editing {
+        if let isEditing = captionView?.editing {
             if isEditing == true {
-                captionView?.textField.endEditing(true)
+                captionView?.endEditing(true)
             }
         }
     }
@@ -410,7 +400,7 @@ class VideoPlaybackViewController: BaseViewController {
     
     func keyboardWillShow(notification: NSNotification) {
         if let captionView = captionView {
-            if captionView.textField.isFirstResponder() == true {
+            if captionView.isFirstResponder() == true {
                 let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
                 let animationDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
                 UIView.animateWithDuration(animationDuration, animations: {
@@ -430,4 +420,23 @@ class VideoPlaybackViewController: BaseViewController {
         }
     }
     
+    func getOverlayImageFromView(view: OverlayCaptionView?) -> UIImage? {
+        if let view = view {
+            let copyView = view.copyWithNSCoder()
+            //FIXME: HACK WARNING - 640x480 hardcoded
+            let videoWidth: CGFloat = 480.0
+            let videoHeight: CGFloat = 640.0
+            copyView.frame = CGRectMake(copyView.frame.origin.x, copyView.frame.origin.y, videoWidth, copyView.bounds.size.height)
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(videoWidth, videoHeight), false, 0.0)
+            let context = UIGraphicsGetCurrentContext()
+            let originInContext = CGPoint(x: copyView.frame.origin.x, y: videoHeight * copyView.viewPercentageYPos)
+            CGContextTranslateCTM(context, originInContext.x, originInContext.y)
+            copyView.layer.renderInContext(context!)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return image
+        } else {
+            return nil
+        }
+    }
 }
