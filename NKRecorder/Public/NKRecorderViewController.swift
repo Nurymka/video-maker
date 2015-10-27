@@ -57,9 +57,7 @@ public class NKRecorderViewController : UINavigationController {
             loadCustomFonts()
         }
         let main = UIStoryboard(name: "Main", bundle: currentBundle)
-        let vc = main.instantiateViewControllerWithIdentifier("NKRecorderViewController") as! NKRecorderViewController
-        vc.delegate = vc
-        return vc
+        return main.instantiateViewControllerWithIdentifier("NKRecorderViewController") as! NKRecorderViewController
     }
     
     // adds a spinning activity indicator, freezes the playing video
@@ -70,6 +68,11 @@ public class NKRecorderViewController : UINavigationController {
     // removes the spinning activity indicator, unpauses the playing video
     public func play() {
         videoPlaybackViewController?.play()
+    }
+    
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
     }
     
     required public init?(coder aDecoder: NSCoder) {
