@@ -15,7 +15,7 @@ public struct NKVideoSession {
     let overlayImage: UIImage?
     let overlayImagePosition: CGPoint?
     let filter: SCFilter?
-    var videoPlaybackViewControllerOrNil: VideoPlaybackViewController? // whenever one adds a caption view, layoutSubviews messes up controls after the export, that's why VideoPlaybackViewController is referenced and removes the caption view if it's present
+    
     public func export(completion: (NSURL) -> ()) {
         let assetExport = SCAssetExportSession(asset: composition)
         assetExport.outputUrl = recordSession.outputUrl
@@ -52,21 +52,24 @@ public class NKRecorderViewController : UINavigationController {
     public weak var recorderDelegate: NKRecorderDelegate?
     weak var videoPlaybackViewController: VideoPlaybackViewController?
     public class func mainNavController() -> NKRecorderViewController {
-        
         var once: dispatch_once_t = 0
         dispatch_once(&once) {
             loadCustomFonts()
         }
         let main = UIStoryboard(name: "Main", bundle: currentBundle)
-        return main.instantiateViewControllerWithIdentifier("NKRecorderViewController") as! NKRecorderViewController
+        let vc = main.instantiateViewControllerWithIdentifier("NKRecorderViewController") as! NKRecorderViewController
+        vc.delegate = vc
+        return vc
     }
     
-    public func freezeUIForExport() {
-        videoPlaybackViewController?.freezeUIForExport()
+    // adds a spinning activity indicator, freezes the playing video
+    public func pause() {
+        videoPlaybackViewController?.pause()
     }
     
-    public func unfreezeUIFromExport() {
-        videoPlaybackViewController?.unfreezeUIForExport()
+    // removes the spinning activity indicator, unpauses the playing video
+    public func play() {
+        videoPlaybackViewController?.play()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -110,5 +113,17 @@ extension NKRecorderViewController: RecordViewControllerDelegate {
 extension NKRecorderViewController: VideoPlaybackViewControllerDelegate {
     func didProduceVideo(videoSession: NKVideoSession) {
         recorderDelegate?.didProduceVideo(self, videoSession: videoSession)
+    }
+}
+
+extension NKRecorderViewController: UINavigationControllerDelegate {
+    public func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        if viewController is VideoPlaybackViewController {
+            videoPlaybackViewController = (viewController as! VideoPlaybackViewController)
+            videoPlaybackViewController?.delegate = self
+        } else if viewController is RecordViewController {
+            let recordVC = (viewController as! RecordViewController)
+            recordVC.delegate = self
+        }
     }
 }

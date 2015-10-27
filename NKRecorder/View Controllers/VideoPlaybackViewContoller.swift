@@ -50,10 +50,6 @@ class VideoPlaybackViewController: BaseViewController {
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let NKRecorderVC = (navigationController as? NKRecorderViewController)
-        NKRecorderVC?.videoPlaybackViewController = self
-        delegate = NKRecorderVC
-        
         player = SCPlayer()
         player?.loopEnabled = true
         filterSwipableView.refreshAutomaticallyWhenScrolling = false // can't tell what this does, but it is false in the examples, so better stay it
@@ -197,14 +193,14 @@ class VideoPlaybackViewController: BaseViewController {
         }
     }
 // MARK: - Button Touch Handlers
-    func freezeUIForExport() {
+    func pause() {
         activityIndicatorContainer.hidden = false
         activityIndicatorView.startAnimating()
         player?.pause()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
     }
     
-    func unfreezeUIForExport() {
+    func play() {
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
         player?.play()
         activityIndicatorContainer.hidden = true
@@ -216,7 +212,7 @@ class VideoPlaybackViewController: BaseViewController {
         if let recordSession = recordSession, composition = composition {
             let overlayImage = getOverlayImageFromView(captionView)
             let overlayImagePosition = captionView?.frame.origin
-            delegate?.didProduceVideo(NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter, videoPlaybackViewControllerOrNil: self))
+            delegate?.didProduceVideo(NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
         }
     }
 

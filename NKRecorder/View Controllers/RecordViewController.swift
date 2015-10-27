@@ -52,8 +52,6 @@ class RecordViewController: BaseViewController {
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let NKRecorderVC = (navigationController as? NKRecorderViewController)
-        delegate = NKRecorderVC
         varMaximumRecordingLength = kMaximumRecordingLength
         recorder = SCRecorder()
         if !recorder.startRunning() {

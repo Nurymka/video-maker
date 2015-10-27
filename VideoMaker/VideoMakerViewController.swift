@@ -34,14 +34,14 @@ extension VideoMakerViewController: NKRecorderDelegate {
     }
     
     func didProduceVideo(recorderViewController: NKRecorderViewController, videoSession: NKVideoSession) {
-        recorderVC.freezeUIForExport()
+        recorderVC.pause()
         videoSession.export { (outputURL) in
             UISaveVideoAtPathToSavedPhotosAlbum(outputURL.path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
         }
     }
     
     func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
-        recorderVC.unfreezeUIFromExport()
+        recorderVC.play()
         if (error == nil) {
             UIAlertView(title: "Saved to camera roll", message:"", delegate: nil, cancelButtonTitle: "Done").show()
         } else {
