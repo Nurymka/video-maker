@@ -9,14 +9,8 @@
 /* Begin PBXBuildFile section */
 		0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */; };
 		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; };
-		7D54217E1BE17F0300F71937 /* PushWithoutAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D802C711BE14CFB0097C920 /* PushWithoutAnimationSegue.swift */; };
 		7D54217F1BE1803700F71937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
-		7D5421861BE1812500F71937 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216A1BE17B8300F71937 /* Cabin-Bold.ttf */; };
-		7D5421871BE1812500F71937 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216B1BE17B8300F71937 /* Cabin-BoldItalic.ttf */; };
-		7D5421881BE1812500F71937 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216C1BE17B8300F71937 /* Cabin-Italic.ttf */; };
-		7D5421891BE1812500F71937 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */; };
-		7D54218A1BE1812500F71937 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */; };
-		7D54218B1BE1812500F71937 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */; };
+		7D54218E1BE183D500F71937 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D54218D1BE183D500F71937 /* PushNoAnimationSegue.swift */; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
@@ -52,6 +46,12 @@
 		7DDFB84A1BDB1A340010B899 /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */; };
 		7DDFB8511BDB1A440010B899 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E01BD4C13C0093E181 /* R.swift */; };
 		7DDFB8521BDB1A440010B899 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E21BD4C5140093E181 /* SBConstants.swift */; };
+		7DECA10E1BE1851C009B9136 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216A1BE17B8300F71937 /* Cabin-Bold.ttf */; };
+		7DECA10F1BE1851C009B9136 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216B1BE17B8300F71937 /* Cabin-BoldItalic.ttf */; };
+		7DECA1101BE1851C009B9136 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216C1BE17B8300F71937 /* Cabin-Italic.ttf */; };
+		7DECA1111BE1851C009B9136 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */; };
+		7DECA1121BE1851C009B9136 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */; };
+		7DECA1131BE1851C009B9136 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */; };
 		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EAC5D0EA1BDA11A7008E80F3 /* NKRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAC5D0F11BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; };
@@ -109,6 +109,7 @@
 		7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
 		7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
+		7D54218D1BE183D500F71937 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,7 +126,6 @@
 		7D777A341BD97729002C0134 /* AppearanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceKit.swift; sourceTree = "<group>"; };
 		7D777A361BD987C4002C0134 /* SongSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchController.swift; sourceTree = "<group>"; };
 		7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsContainer.swift; sourceTree = "<group>"; };
-		7D802C711BE14CFB0097C920 /* PushWithoutAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushWithoutAnimationSegue.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecorderViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +250,6 @@
 		7D6A141E1B98C15600453DA1 /* VideoMaker */ = {
 			isa = PBXGroup;
 			children = (
-				7D54218C1BE1812E00F71937 /* Fonts */,
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
@@ -262,7 +261,7 @@
 		7D6A141F1B98C15600453DA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7DE932571BD0495800040833 /* Fonts */,
+				7D54218C1BE1812E00F71937 /* Fonts */,
 				7D01C7DF1BD4C1330093E181 /* Generated */,
 				A32EB0CFD33E2BCF63D7F325 /* Resources */,
 				EAC5D0EB1BDA11A7008E80F3 /* Info.plist */,
@@ -329,7 +328,7 @@
 				7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */,
 				7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */,
 				7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */,
-				7D802C711BE14CFB0097C920 /* PushWithoutAnimationSegue.swift */,
+				7D54218D1BE183D500F71937 /* PushNoAnimationSegue.swift */,
 				7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */,
 				7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */,
 				7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */,
@@ -355,13 +354,6 @@
 				EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		7DE932571BD0495800040833 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A32EB0CFD33E2BCF63D7F325 /* Resources */ = {
@@ -564,13 +556,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D5421881BE1812500F71937 /* Cabin-Italic.ttf in Resources */,
-				7D54218B1BE1812500F71937 /* Cabin-Regular.ttf in Resources */,
-				7D54218A1BE1812500F71937 /* Cabin-MediumItalic.ttf in Resources */,
-				7D5421871BE1812500F71937 /* Cabin-BoldItalic.ttf in Resources */,
 				7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */,
-				7D5421891BE1812500F71937 /* Cabin-Medium.ttf in Resources */,
-				7D5421861BE1812500F71937 /* Cabin-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,8 +571,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DECA1121BE1851C009B9136 /* Cabin-MediumItalic.ttf in Resources */,
+				7DECA1131BE1851C009B9136 /* Cabin-Regular.ttf in Resources */,
 				7D54217F1BE1803700F71937 /* Main.storyboard in Resources */,
+				7DECA10F1BE1851C009B9136 /* Cabin-BoldItalic.ttf in Resources */,
+				7DECA10E1BE1851C009B9136 /* Cabin-Bold.ttf in Resources */,
+				7DECA1111BE1851C009B9136 /* Cabin-Medium.ttf in Resources */,
 				7DBE65571BDC74680031CECA /* Images.xcassets in Resources */,
+				7DECA1101BE1851C009B9136 /* Cabin-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,9 +719,9 @@
 				7DDFB83D1BDB1A0D0010B899 /* RecordButton.swift in Sources */,
 				7DDFB8471BDB1A340010B899 /* LocalMusicManager.swift in Sources */,
 				7DDFB84A1BDB1A340010B899 /* RecordButtonTouchGestureRecognizer.swift in Sources */,
-				7D54217E1BE17F0300F71937 /* PushWithoutAnimationSegue.swift in Sources */,
 				7DDFB8351BDB1A090010B899 /* AnimationKit.swift in Sources */,
 				7DDFB8481BDB1A340010B899 /* MusicRetrievalAPI.swift in Sources */,
+				7D54218E1BE183D500F71937 /* PushNoAnimationSegue.swift in Sources */,
 				7DDFB82D1BDB19EB0010B899 /* ChoosePlaylistCollectionViewController.swift in Sources */,
 				7DDFB82E1BDB19EB0010B899 /* RecordViewController.swift in Sources */,
 				7DDFB8361BDB1A090010B899 /* AppearanceKit.swift in Sources */,
