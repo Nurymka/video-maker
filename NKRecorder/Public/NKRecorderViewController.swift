@@ -9,6 +9,7 @@
 import UIKit
 import SCRecorder
 
+//FIXME: - NKRecorder will crash if you don't have the Cabin fonts
 public struct NKVideoSession {
     let recordSession: SCRecordSession
     let composition: AVComposition
@@ -66,10 +67,10 @@ public class NKRecorderViewController : UINavigationController {
     public weak var recorderDelegate: NKRecorderDelegate?
     weak var videoPlaybackViewController: VideoPlaybackViewController?
     public class func mainNavController() -> NKRecorderViewController {
-        var once: dispatch_once_t = 0
-        dispatch_once(&once) {
-            loadCustomFonts()
-        }
+//        var once: dispatch_once_t = 0
+//        dispatch_once(&once) {
+//            loadCustomFonts()
+//        }
         let main = UIStoryboard(name: "Main", bundle: currentBundle)
         return main.instantiateViewControllerWithIdentifier("NKRecorderViewController") as! NKRecorderViewController
     }
@@ -93,28 +94,28 @@ public class NKRecorderViewController : UINavigationController {
         super.init(coder: aDecoder)
     }
     
-    private static func loadCustomFonts() {
-        func iterateEnum<T: Hashable>(_: T.Type) -> AnyGenerator<T> {
-            var i = 0
-            return anyGenerator {
-                let next = withUnsafePointer(&i) { UnsafePointer<T>($0).memory }
-                return next.hashValue == i++ ? next : nil
-            }
-        }
-        
-        for font in iterateEnum(R.Fonts.self) {
-            let fontURL = currentBundle.URLForResource(font.rawValue, withExtension: ".ttf")
-            // loading custom fonts programatically: http://www.marco.org/2012/12/21/ios-dynamic-font-loading
-            if let fontData = NSData(contentsOfURL: fontURL!) {
-            let provider = CGDataProviderCreateWithCFData(fontData as CFDataRef)
-            let font = CGFontCreateWithDataProvider(provider)
-            var error: Unmanaged<CFError>?
-            if (!CTFontManagerRegisterGraphicsFont(font!, &error)) {
-                print("Failed to register font: \(error)")
-                }
-            }
-        }
-    }
+//    private static func loadCustomFonts() {
+//        func iterateEnum<T: Hashable>(_: T.Type) -> AnyGenerator<T> {
+//            var i = 0
+//            return anyGenerator {
+//                let next = withUnsafePointer(&i) { UnsafePointer<T>($0).memory }
+//                return next.hashValue == i++ ? next : nil
+//            }
+//        }
+//        
+//        for font in iterateEnum(R.Fonts.self) {
+//            let fontURL = currentBundle.URLForResource(font.rawValue, withExtension: ".ttf")
+//            // loading custom fonts programatically: http://www.marco.org/2012/12/21/ios-dynamic-font-loading
+//            if let fontData = NSData(contentsOfURL: fontURL!) {
+//            let provider = CGDataProviderCreateWithCFData(fontData as CFDataRef)
+//            let font = CGFontCreateWithDataProvider(provider)
+//            var error: Unmanaged<CFError>?
+//            if (!CTFontManagerRegisterGraphicsFont(font!, &error)) {
+//                print("Failed to register font: \(error)")
+//                }
+//            }
+//        }
+//    }
 }
 
 extension NKRecorderViewController: RecordViewControllerDelegate {

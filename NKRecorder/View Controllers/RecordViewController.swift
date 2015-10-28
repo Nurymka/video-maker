@@ -237,11 +237,11 @@ class RecordViewController: BaseViewController {
 // MARK: - Segue Related
     
     func showVideo() {
-        performSegueWithIdentifier("Show Video", sender: self)
+        performSegueWithIdentifier("Show Video Playback", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "Show Video") {
+        if (segue.identifier == "Show Video Playback") {
             let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
             
             videoPlaybackViewController.recordSession = recordSession

@@ -262,7 +262,7 @@ class VideoPlaybackViewController: BaseViewController {
         let yesAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             let recordingViewController = self.navigationController?.viewControllers[0] as! RecordViewController
             recordingViewController.retakeButtonPressed(self)
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewControllerAnimated(false)
         }
         alertController.addAction(yesAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in

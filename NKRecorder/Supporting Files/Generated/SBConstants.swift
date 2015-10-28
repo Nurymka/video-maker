@@ -7,7 +7,7 @@ public enum CollectionViewCellreuseIdentifier : String {
 public enum SegueIdentifier : String {
     case ChooseMusicPlaylist = "Choose Music Playlist"
     case ChooseMusicTrack = "Choose Music Track"
-    case ShowVideo = "Show Video"
+    case ShowVideo = "Show Video Playback"
 }
 
 public enum StoryboardNames : String {

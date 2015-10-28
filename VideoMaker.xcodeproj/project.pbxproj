@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */; };
 		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; };
-		7D6342A71BDC85C100178183 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932581BD0501B00040833 /* Cabin-Bold.ttf */; };
-		7D6342A81BDC85C100178183 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE932591BD0501B00040833 /* Cabin-BoldItalic.ttf */; };
-		7D6342A91BDC85C100178183 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325A1BD0501B00040833 /* Cabin-Italic.ttf */; };
-		7D6342AA1BDC85C100178183 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325B1BD0501B00040833 /* Cabin-Medium.ttf */; };
-		7D6342AB1BDC85C100178183 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325C1BD0501B00040833 /* Cabin-MediumItalic.ttf */; };
-		7D6342AC1BDC85C100178183 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9325D1BD0501B00040833 /* Cabin-Regular.ttf */; };
+		7D54217E1BE17F0300F71937 /* PushWithoutAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D802C711BE14CFB0097C920 /* PushWithoutAnimationSegue.swift */; };
+		7D54217F1BE1803700F71937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
+		7D5421861BE1812500F71937 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216A1BE17B8300F71937 /* Cabin-Bold.ttf */; };
+		7D5421871BE1812500F71937 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216B1BE17B8300F71937 /* Cabin-BoldItalic.ttf */; };
+		7D5421881BE1812500F71937 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216C1BE17B8300F71937 /* Cabin-Italic.ttf */; };
+		7D5421891BE1812500F71937 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */; };
+		7D54218A1BE1812500F71937 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */; };
+		7D54218B1BE1812500F71937 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
@@ -44,7 +46,6 @@
 		7DDFB83F1BDB1A0D0010B899 /* TrackNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */; };
 		7DDFB8401BDB1A0D0010B899 /* UIElementsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */; };
 		7DDFB8411BDB1A110010B899 /* ResourceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E51BD4C5B00093E181 /* ResourceExtensions.swift */; };
-		7DDFB8421BDB1A190010B899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
 		7DDFB8471BDB1A340010B899 /* LocalMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */; };
 		7DDFB8481BDB1A340010B899 /* MusicRetrievalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */; };
 		7DDFB8491BDB1A340010B899 /* PlaylistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2324831BC77A34004A1976 /* PlaylistAPI.swift */; };
@@ -102,6 +103,12 @@
 		7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicRetrievalAPI.swift; sourceTree = "<group>"; };
 		7D4813261BD4D8450038325E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackNameLabel.swift; sourceTree = "<group>"; };
+		7D54216A1BE17B8300F71937 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
+		7D54216B1BE17B8300F71937 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7D54216C1BE17B8300F71937 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
+		7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
+		7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
+		7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,18 +125,13 @@
 		7D777A341BD97729002C0134 /* AppearanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceKit.swift; sourceTree = "<group>"; };
 		7D777A361BD987C4002C0134 /* SongSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchController.swift; sourceTree = "<group>"; };
 		7D7DA7591BD9AE4400A33BF3 /* UIElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsContainer.swift; sourceTree = "<group>"; };
+		7D802C711BE14CFB0097C920 /* PushWithoutAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushWithoutAnimationSegue.swift; sourceTree = "<group>"; };
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecorderViewController.swift; sourceTree = "<group>"; };
 		7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerViewController.swift; sourceTree = "<group>"; };
 		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
 		7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMusicManager.swift; sourceTree = "<group>"; };
-		7DE932581BD0501B00040833 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
-		7DE932591BD0501B00040833 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
-		7DE9325A1BD0501B00040833 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
-		7DE9325B1BD0501B00040833 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
-		7DE9325C1BD0501B00040833 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
-		7DE9325D1BD0501B00040833 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		7DE932641BD05FEE00040833 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		D3485EC66FA0DD62CA546B6B /* Pods-NKRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder/Pods-NKRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NKRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,19 @@
 			path = Kits;
 			sourceTree = "<group>";
 		};
+		7D54218C1BE1812E00F71937 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7D54216A1BE17B8300F71937 /* Cabin-Bold.ttf */,
+				7D54216B1BE17B8300F71937 /* Cabin-BoldItalic.ttf */,
+				7D54216C1BE17B8300F71937 /* Cabin-Italic.ttf */,
+				7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */,
+				7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */,
+				7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		7D6A14131B98C15600453DA1 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +250,7 @@
 		7D6A141E1B98C15600453DA1 /* VideoMaker */ = {
 			isa = PBXGroup;
 			children = (
+				7D54218C1BE1812E00F71937 /* Fonts */,
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
@@ -313,6 +329,7 @@
 				7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */,
 				7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */,
 				7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */,
+				7D802C711BE14CFB0097C920 /* PushWithoutAnimationSegue.swift */,
 				7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */,
 				7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */,
 				7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */,
@@ -343,12 +360,6 @@
 		7DE932571BD0495800040833 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7DE932581BD0501B00040833 /* Cabin-Bold.ttf */,
-				7DE932591BD0501B00040833 /* Cabin-BoldItalic.ttf */,
-				7DE9325A1BD0501B00040833 /* Cabin-Italic.ttf */,
-				7DE9325B1BD0501B00040833 /* Cabin-Medium.ttf */,
-				7DE9325C1BD0501B00040833 /* Cabin-MediumItalic.ttf */,
-				7DE9325D1BD0501B00040833 /* Cabin-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -553,7 +564,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D5421881BE1812500F71937 /* Cabin-Italic.ttf in Resources */,
+				7D54218B1BE1812500F71937 /* Cabin-Regular.ttf in Resources */,
+				7D54218A1BE1812500F71937 /* Cabin-MediumItalic.ttf in Resources */,
+				7D5421871BE1812500F71937 /* Cabin-BoldItalic.ttf in Resources */,
 				7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */,
+				7D5421891BE1812500F71937 /* Cabin-Medium.ttf in Resources */,
+				7D5421861BE1812500F71937 /* Cabin-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,14 +585,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D6342AB1BDC85C100178183 /* Cabin-MediumItalic.ttf in Resources */,
-				7D6342AC1BDC85C100178183 /* Cabin-Regular.ttf in Resources */,
-				7DDFB8421BDB1A190010B899 /* Main.storyboard in Resources */,
-				7D6342A81BDC85C100178183 /* Cabin-BoldItalic.ttf in Resources */,
-				7D6342A71BDC85C100178183 /* Cabin-Bold.ttf in Resources */,
-				7D6342AA1BDC85C100178183 /* Cabin-Medium.ttf in Resources */,
+				7D54217F1BE1803700F71937 /* Main.storyboard in Resources */,
 				7DBE65571BDC74680031CECA /* Images.xcassets in Resources */,
-				7D6342A91BDC85C100178183 /* Cabin-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +727,7 @@
 				7DDFB83D1BDB1A0D0010B899 /* RecordButton.swift in Sources */,
 				7DDFB8471BDB1A340010B899 /* LocalMusicManager.swift in Sources */,
 				7DDFB84A1BDB1A340010B899 /* RecordButtonTouchGestureRecognizer.swift in Sources */,
+				7D54217E1BE17F0300F71937 /* PushWithoutAnimationSegue.swift in Sources */,
 				7DDFB8351BDB1A090010B899 /* AnimationKit.swift in Sources */,
 				7DDFB8481BDB1A340010B899 /* MusicRetrievalAPI.swift in Sources */,
 				7DDFB82D1BDB19EB0010B899 /* ChoosePlaylistCollectionViewController.swift in Sources */,
