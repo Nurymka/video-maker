@@ -9,29 +9,29 @@
 import Foundation
 import Alamofire
 
-extension Alamofire.Request {
-    // the retrieved data is serialized into a uiimage, used for album cover retrieval
-    class func imageResponseSerializer() -> GenericResponseSerializer<UIImage> {
-        return GenericResponseSerializer { request, response, data in
-            
-            guard let validData = data else {
-                let failureReason = "Data couldn't be serialized. Input data was nil."
-                let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
-                return .Failure(data, error)
-            }
-            
-            if let image = UIImage(data: validData, scale: UIScreen.mainScreen().scale) {
-                return Result<UIImage>.Success(image)
-            } else {
-                return .Failure(data, Error.errorWithCode(.DataSerializationFailed, failureReason: "Unable to create image."))
-            }
-        }
-    }
-    
-    func responseImage(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<UIImage>) -> Void) -> Self {
-        return response(responseSerializer: Request.imageResponseSerializer(), completionHandler: completionHandler)
-    }
-}
+//extension Alamofire.Request {
+//    // the retrieved data is serialized into a uiimage, used for album cover retrieval
+//    class func imageResponseSerializer() -> GenericResponseSerializer<UIImage> {
+//        return GenericResponseSerializer { request, response, data in
+//            
+//            guard let validData = data else {
+//                let failureReason = "Data couldn't be serialized. Input data was nil."
+//                let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
+//                return .Failure(data, error)
+//            }
+//            
+//            if let image = UIImage(data: validData, scale: UIScreen.mainScreen().scale) {
+//                return Result<UIImage>.Success(image)
+//            } else {
+//                return .Failure(data, Error.errorWithCode(.DataSerializationFailed, failureReason: "Unable to create image."))
+//            }
+//        }
+//    }
+//    
+//    func responseImage(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<UIImage>) -> Void) -> Self {
+//        return response(responseSerializer: Request.imageResponseSerializer(), completionHandler: completionHandler)
+//    }
+//}
 
 struct MusicSearchAPI {
     static let resultLimit = 20

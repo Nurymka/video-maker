@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
+
 class ChoosePlaylistCollectionViewController: UICollectionViewController {
     let kCellReuseIdentifier = "PlaylistCollectionViewCell"
     
@@ -90,11 +92,11 @@ extension ChoosePlaylistCollectionViewController {
         cell.request?.cancel()
         cell.playlistNameLabel.text = playlistItem.name
         
-        cell.request = Alamofire.request(.GET, playlistItem.thumbnailURL).responseImage() { (_, _, image) in
-            switch image {
+        cell.request = Alamofire.request(.GET, playlistItem.thumbnailURL).responseImage() { response in
+            switch response.result {
             case .Success(let image):
                 cell.thumbnailImageView.image = image
-            case .Failure(_, let error):
+            case .Failure(let error):
                 print(error)
             }
         }

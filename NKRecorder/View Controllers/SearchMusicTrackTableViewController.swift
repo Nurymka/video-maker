@@ -68,11 +68,11 @@ extension SearchMusicTrackTableViewController {
             cell.changeButtonStateTo(.PauseButton)
         }
         
-        cell.request = Alamofire.request(.GET, tracks[indexPath.row].albumCoverURL).responseImage { (request, _, image) in
-            switch image {
+        cell.request = Alamofire.request(.GET, tracks[indexPath.row].albumCoverURL).responseImage() { response in
+            switch response.result {
             case .Success(let image):
                 cell.albumCoverButton.setBackgroundImage(image, forState: .Normal)
-            case .Failure(_, let error):
+            case .Failure(let error):
                 print(error)
             }
         }
@@ -103,14 +103,14 @@ extension SearchMusicTrackTableViewController {
                         currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                     }
                 } else {
-                    Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
-                        switch data {
+                    Alamofire.request(.GET, trackURL).responseData() { response in
+                        switch response.result {
                         case .Success(let data):
                             if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                                 segueBackViewController.musicTrackInfo = trackInfo
                                 currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                             }
-                        case .Failure(_, let error):
+                        case .Failure(let error):
                             print(error)
                         }
                     }
@@ -146,12 +146,12 @@ extension SearchMusicTrackTableViewController {
                 if let trackData = musicCache.objectForKey(trackURL) as? NSData {
                     playTrackFromData(trackData, andConfigureButtonStateForCell: cell, inIndexPath: indexPath)
                 } else {
-                    Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
-                        switch data {
+                    Alamofire.request(.GET, trackURL).responseData() { response in
+                        switch response.result {
                         case .Success(let track):
                             self.musicCache.setObject(track, forKey: trackURL)
                             playTrackFromData(track, andConfigureButtonStateForCell: cell, inIndexPath: indexPath)
-                        case .Failure(_, let error):
+                        case .Failure(let error):
                             print(error)
                         }
                     }
@@ -191,8 +191,8 @@ extension SearchMusicTrackTableViewController {
         currentResultPage = 0
         tracks = []
         self.tableView.reloadData()
-        Alamofire.request(MusicSearchAPI.Router.Search(searchString, currentResultPage)).responseJSON { (_, _, resultJSON) in
-            switch resultJSON {
+        Alamofire.request(MusicSearchAPI.Router.Search(searchString, currentResultPage)).responseJSON { response in
+            switch response.result {
             case .Success(let data):
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                     let trackInfos = ((data as! NSDictionary).valueForKey("results") as! [NSDictionary]).map {
@@ -209,7 +209,7 @@ extension SearchMusicTrackTableViewController {
                     self.currentSearchString = searchString
                     self.currentResultPage++
                 }
-            case .Failure(_, let error):
+            case .Failure(let error):
                 print(error)
             }
             self.loadingMusic = false
@@ -223,8 +223,8 @@ extension SearchMusicTrackTableViewController {
         
         loadingMusic = true
         NSLog("currentResultPage: \(currentResultPage)")
-        Alamofire.request(MusicSearchAPI.Router.Search(currentSearchString, currentResultPage)).responseJSON { (_, _, resultJSON) in
-            switch resultJSON {
+        Alamofire.request(MusicSearchAPI.Router.Search(currentSearchString, currentResultPage)).responseJSON { response in
+            switch response.result {
             case .Success(let data):
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                     let trackInfos = ((data as! NSDictionary).valueForKey("results") as! [NSDictionary]).map {
@@ -240,7 +240,7 @@ extension SearchMusicTrackTableViewController {
                     
                     self.currentResultPage++
                 }
-            case .Failure(_, let error):
+            case .Failure(let error):
                 print(error)
             }
             self.loadingMusic = false

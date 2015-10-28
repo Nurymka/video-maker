@@ -68,11 +68,11 @@ extension ChooseMusicTrackTableViewController {
             cell.changeButtonStateTo(.PauseButton)
         }
         
-        cell.request = Alamofire.request(.GET, tracks[indexPath.row].albumCoverURL).responseImage { (request, _, image) in
-            switch image {
+        cell.request = Alamofire.request(.GET, tracks[indexPath.row].albumCoverURL).responseImage { response in
+            switch response.result {
             case .Success(let image):
                 cell.albumCoverButton.setBackgroundImage(image, forState: .Normal)
-            case .Failure(_, let error):
+            case .Failure(let error):
                 print(error)
             }
         }
@@ -103,14 +103,14 @@ extension ChooseMusicTrackTableViewController {
                     dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
-                Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
-                    switch data {
+                Alamofire.request(.GET, trackURL).responseData() { response in
+                    switch response.result {
                     case .Success(let data):
                         if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                             segueBackViewController.musicTrackInfo = trackInfo
                             self.dismissViewControllerAnimated(true, completion: nil)
                         }
-                    case .Failure(_, let error):
+                    case .Failure(let error):
                         print(error)
                     }
                 }
@@ -146,12 +146,12 @@ extension ChooseMusicTrackTableViewController {
                 if let trackData = musicCache.objectForKey(trackId) as? NSData {
                     playTrackFromData(trackData, andConfigureButtonStateForCell: cell, inIndexPath: indexPath)
                 } else {
-                    Alamofire.request(.GET, trackURL).responseData() { (_, _, data: Result<NSData>) in
-                        switch data {
+                    Alamofire.request(.GET, trackURL).responseData() { response in
+                        switch response.result {
                         case .Success(let track):
                             self.musicCache.setObject(track, forKey: trackId)
                             playTrackFromData(track, andConfigureButtonStateForCell: cell, inIndexPath: indexPath)
-                        case .Failure(_, let error):
+                        case .Failure(let error):
                             print(error)
                         }
                     }
@@ -189,10 +189,9 @@ extension ChooseMusicTrackTableViewController {
         loadingMusic = true
         NSLog("currentResultPage: \(currentResultPage) in totalResultPages: \(totalResultPages)")
         if let playlistItem = playlistItem {
-            Alamofire.request(MusicPlaylistAPI.Router.Tracklist(playlistItem.tagId, currentResultPage)).responseJSON { (request, _, resultJSON) in
-                switch resultJSON {
+            Alamofire.request(MusicPlaylistAPI.Router.Tracklist(playlistItem.tagId, currentResultPage)).responseJSON { response in
+                switch response.result {
                 case .Success(let data):
-                    
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                         let dataResult = (data as! NSDictionary).valueForKey("result") as! NSDictionary
                         let trackInfos = (dataResult.valueForKey("content") as! [NSDictionary]).map({ (dic: NSDictionary) -> TrackInfo in
@@ -228,7 +227,7 @@ extension ChooseMusicTrackTableViewController {
                             
                         self.currentResultPage++
                     }
-                case .Failure(_, let error):
+                case .Failure(let error):
                     print(error)
                 }
                 self.loadingMusic = false

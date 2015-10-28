@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (2.0.2)
-  - AlamofireImage (1.1.2):
-    - Alamofire (~> 2.0)
+  - Alamofire (3.1.0)
+  - AlamofireImage (2.1.0):
+    - Alamofire (~> 3.1)
   - EZAudio (1.1.2):
     - EZAudio/Full (= 1.1.2)
   - EZAudio/Core (1.1.2)
@@ -9,8 +9,8 @@ PODS:
     - EZAudio/Core
     - TPCircularBuffer (~> 0.0)
   - NKRecorder (0.1.0):
-    - Alamofire (~> 2.0)
-    - AlamofireImage (~> 1.0)
+    - Alamofire (~> 3.1)
+    - AlamofireImage (~> 2.1)
     - EZAudio (~> 1.1.2)
     - SCRecorder (~> 2.5)
   - RBBAnimation (0.4.0)
@@ -19,8 +19,8 @@ PODS:
   - TPCircularBuffer (0.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 2.0)
-  - AlamofireImage (~> 1.0)
+  - Alamofire (~> 3.1)
+  - AlamofireImage (~> 2.1)
   - EZAudio (~> 1.1.2)
   - NKRecorder (from `~/Documents/Taylr/video-maker/`)
   - RBBAnimation (= 0.4.0)
@@ -32,10 +32,10 @@ EXTERNAL SOURCES:
     :path: ~/Documents/Taylr/video-maker/
 
 SPEC CHECKSUMS:
-  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
-  AlamofireImage: dc3d3de5d095fd9545b144ba8f6da5bfc539512a
+  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
-  NKRecorder: 28448b90a51270cccf4a9aef8aacfb1c608a072b
+  NKRecorder: f5ad9961d2f7618e84a2741eaf71f8fe64741b13
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
