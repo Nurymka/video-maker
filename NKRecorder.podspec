@@ -105,10 +105,9 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "NKRecorder/**/*.{storyboard,xcassets,pdf,png,jpeg,jpg,ttf}"
+  s.resources = "NKRecorder/**/*.{storyboard,pdf,png,jpeg,jpg,ttf}"
 
-  # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
-
+  s.preserve_paths = "NKRecorder/**/*.xcassets"
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
