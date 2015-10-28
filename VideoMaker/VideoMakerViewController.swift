@@ -35,7 +35,7 @@ extension VideoMakerViewController: NKRecorderDelegate {
     
     func didProduceVideo(recorderViewController: NKRecorderViewController, videoSession: NKVideoSession) {
         recorderVC.pause()
-        videoSession.export { (outputURL) in
+        videoSession.export() { (outputURL) in
             UISaveVideoAtPathToSavedPhotosAlbum(outputURL.path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
         }
     }

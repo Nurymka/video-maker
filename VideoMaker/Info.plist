@@ -39,14 +39,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Cabin-Regular.ttf</string>
-		<string>Cabin-Italic.ttf</string>
-		<string>Cabin-Bold.ttf</string>
-		<string>Cabin-BoldItalic.ttf</string>
-		<string>Cabin-Medium.ttf</string>
-		<string>Cabin-MediumItalic.ttf</string>
-	</array>
 </dict>
 </plist>

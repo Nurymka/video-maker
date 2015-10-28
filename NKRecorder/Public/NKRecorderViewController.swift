@@ -39,6 +39,20 @@ public struct NKVideoSession {
             }
         })
     }
+    
+    public func exportWithFirstFrame(completion: (NSURL, UIImage) -> ()) {
+        export { exportedVideoURL in
+            let asset = AVURLAsset(URL: exportedVideoURL)
+            let imageGenerator = AVAssetImageGenerator(asset: asset)
+            do {
+                let CGImage = try imageGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
+                let image = UIImage(CGImage: CGImage)
+                completion(exportedVideoURL, image)
+            } catch {
+                print("AVAssetImageGenerator couldn't create a CGImage, completion block won't run: \(error)")
+            }
+        }
+    }
 }
 
 public protocol NKRecorderDelegate: class {
