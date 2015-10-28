@@ -13,9 +13,7 @@ PODS:
     - AlamofireImage (~> 2.1)
     - EZAudio (~> 1.1.2)
     - SCRecorder (~> 2.5)
-  - RBBAnimation (0.4.0)
   - SCRecorder (2.5.3)
-  - SwiftyJSON (2.3.1)
   - TPCircularBuffer (0.0.1)
 
 DEPENDENCIES:
@@ -23,9 +21,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 2.1)
   - EZAudio (~> 1.1.2)
   - NKRecorder (from `~/Documents/Taylr/video-maker/`)
-  - RBBAnimation (= 0.4.0)
   - SCRecorder (= 2.5.3)
-  - SwiftyJSON
 
 EXTERNAL SOURCES:
   NKRecorder:
@@ -36,9 +32,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   NKRecorder: f5ad9961d2f7618e84a2741eaf71f8fe64741b13
-  RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
 
 COCOAPODS: 0.39.0

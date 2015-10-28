@@ -8,7 +8,6 @@
 
 import UIKit
 import SCRecorder
-import RBBAnimation
 
 protocol RecordViewControllerDelegate: class {
     func recordingWillStart()
