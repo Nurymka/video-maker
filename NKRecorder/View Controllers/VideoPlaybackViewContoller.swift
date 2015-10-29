@@ -228,6 +228,7 @@ class VideoPlaybackViewController: BaseViewController {
                 if let gestureRecognizer = captionViewPanGestureRecognizer {
                     captionView.addGestureRecognizer(gestureRecognizer)
                     view.addSubview(captionView)
+                    captionView.becomeFirstResponder()
                     NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object:nil)
                 }
             }
