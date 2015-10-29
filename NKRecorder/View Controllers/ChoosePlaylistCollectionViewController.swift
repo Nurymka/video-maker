@@ -23,7 +23,11 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     // for segues
     var segueBackViewController: BaseViewController? // when the song is chosen, the navigation controller will pop back to the original sender
     var seguePlaylistItem: PlaylistItem?
-
+    
+    // navigation bar related
+    var initialBarTintColor: UIColor?
+    var initialTintColor: UIColor?
+    
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,11 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationBarAppearanceBackToDefault()
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Choose Music Track" {
@@ -67,12 +76,22 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     
 // MARK: - UI Related
     func configureNavigationBarAppearance() {
+        initialBarTintColor = navigationController?.navigationBar.barTintColor
+        initialTintColor = navigationController?.navigationBar.tintColor
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(key: .btnBareCross), style: .Plain, target: self, action: "backButtonPressed")
         navigationItem.title = "pick a song"
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.barTintColor = StyleKit.lightPurple
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: FontKit.navBarTitle, NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+    
+    func navigationBarAppearanceBackToDefault() {
+        navigationController?.navigationBar.translucent = true
+        
+        navigationController?.navigationBar.barTintColor = initialBarTintColor
+        navigationController?.navigationBar.tintColor = initialTintColor
     }
     
 // MARK: - Button Touch Handlers
