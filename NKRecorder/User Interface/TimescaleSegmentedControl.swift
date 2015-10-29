@@ -28,6 +28,7 @@ class TimescaleSegmentedControl: UISegmentedControl {
         let dividerImageWidth = UIImage(key: .segCtrlDividerNoneSelected)!.size.width // assuming all the divider images have the same width
         setContentPositionAdjustment(UIOffsetMake(dividerImageWidth / 2, 0), forSegmentType: .Left, barMetrics: .Default)
         setContentPositionAdjustment(UIOffsetMake(-dividerImageWidth / 2, 0), forSegmentType: .Right, barMetrics: .Default)
+        tintColor = UIColor.whiteColor() 
     }
     
     override func layoutSubviews() {
