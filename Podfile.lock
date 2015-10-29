@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   Alamofire: 415bd7f56197722978759078486689f7ef913dce
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
-  NKRecorder: 3e2b47c01050bfb3ad9719cde374690b0565c3bc
+  NKRecorder: def5ce2622ca2b03186b36c4760b26ed9cf8e7a4
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
 

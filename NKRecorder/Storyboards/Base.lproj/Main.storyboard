@@ -504,28 +504,28 @@
             <objects>
                 <collectionViewController extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="gPx-Xh-dXN" userLabel="Choose Playlist Collection View Controller" customClass="ChoosePlaylistCollectionViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fAC-df-062">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cbo-Ma-XiD">
-                            <size key="itemSize" width="150" height="150"/>
+                            <size key="itemSize" width="180" height="180"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCollectionViewCell" id="Y9P-e4-i3C" customClass="ChoosePlaylistCollectionViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="150" height="150"/>
+                                <rect key="frame" x="0.0" y="64" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="47d-I1-QmG">
-                                            <rect key="frame" x="10" y="0.0" width="130" height="130"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47d-I1-QmG">
+                                            <rect key="frame" x="10" y="0.0" width="150" height="150"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="world music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-7d-6Gu">
-                                            <rect key="frame" x="10" y="129" width="130" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="world music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-7d-6Gu">
+                                            <rect key="frame" x="10" y="149" width="150" height="21"/>
                                             <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -555,13 +555,14 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="5fV-Vz-91q"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="i4Q-dM-hXe" kind="show" identifier="Choose Music Track" id="dS4-C4-l7v"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDB-3k-IxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637" y="-477"/>
+            <point key="canvasLocation" x="1636.5" y="-477.5"/>
         </scene>
         <!--Recorder View Controller-->
         <scene sceneID="csT-fI-usY">
@@ -607,18 +608,18 @@
             <objects>
                 <tableViewController id="i4Q-dM-hXe" userLabel="Choose Music Track View Controller" customClass="ChooseMusicTrackTableViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="9it-9w-bg1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackItemCellIdentifier" rowHeight="100" id="e8B-yK-2Xo" customClass="ChooseMusicTrackViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e8B-yK-2Xo" id="ak7-MX-dg0">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqZ-3S-y5G">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqZ-3S-y5G">
                                             <rect key="frame" x="113" y="68" width="194" height="19"/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
                                             <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -635,7 +636,7 @@
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-dn-E8i">
                                             <rect key="frame" x="32" y="31" width="37" height="37"/>
                                         </activityIndicatorView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" text="TrackName21312slkjdaslkjdsaljkdas;lkdjas;ldjksalkjxclzxjc;lZKXJc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="lke-7X-huM">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" misplaced="YES" text="TrackName21312slkjdaslkjdsaljkdas;lkdjas;ldjksalkjxclzxjc;lZKXJc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="lke-7X-huM">
                                             <rect key="frame" x="113" y="8" width="190" height="43"/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -713,6 +714,6 @@
         <image name="snail" width="28" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ncs-cA-kYp"/>
+        <segue reference="uxC-de-KZf"/>
     </inferredMetricsTieBreakers>
 </document>

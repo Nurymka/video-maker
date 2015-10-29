@@ -10,6 +10,7 @@
 		0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */; };
 		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; };
 		7D03CDB11BE1A76C007AE8AC /* VMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */; };
+		7D34DD331BE1C5C9009BC378 /* ScreenMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D34DD321BE1C5C9009BC378 /* ScreenMacros.swift */; };
 		7D54217F1BE1803700F71937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
@@ -101,6 +102,7 @@
 		7D2324851BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoosePlaylistCollectionViewController.swift; sourceTree = "<group>"; };
 		7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayCaptionView.swift; sourceTree = "<group>"; };
 		7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicRetrievalAPI.swift; sourceTree = "<group>"; };
+		7D34DD321BE1C5C9009BC378 /* ScreenMacros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenMacros.swift; sourceTree = "<group>"; };
 		7D4813261BD4D8450038325E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackNameLabel.swift; sourceTree = "<group>"; };
 		7D54216A1BE17B8300F71937 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
@@ -249,9 +251,9 @@
 			isa = PBXGroup;
 			children = (
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
+				7DBD511C1BDC563200E49B56 /* ExampleVideoMakerViewController.swift */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
-				7DBD511C1BDC563200E49B56 /* ExampleVideoMakerViewController.swift */,
 			);
 			path = VideoMaker;
 			sourceTree = "<group>";
@@ -306,13 +308,13 @@
 		7DC092F21BBD0EAF00CC5619 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */,
 				7D4813261BD4D8450038325E /* BaseViewController.swift */,
 				7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */,
 				7D2324851BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift */,
 				7D6A14231B98C15600453DA1 /* RecordViewController.swift */,
 				7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */,
 				7D777A361BD987C4002C0134 /* SongSearchController.swift */,
+				7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */,
 				7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */,
 			);
 			path = "View Controllers";
@@ -350,6 +352,7 @@
 				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
 				7D2324831BC77A34004A1976 /* PlaylistAPI.swift */,
 				EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */,
+				7D34DD321BE1C5C9009BC378 /* ScreenMacros.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				7DDFB8361BDB1A090010B899 /* AppearanceKit.swift in Sources */,
 				7DDFB8321BDB19FC0010B899 /* GeometryExtensions.swift in Sources */,
 				7DDFB8521BDB1A440010B899 /* SBConstants.swift in Sources */,
+				7D34DD331BE1C5C9009BC378 /* ScreenMacros.swift in Sources */,
 				7DDFB8411BDB1A110010B899 /* ResourceExtensions.swift in Sources */,
 				7DDFB8491BDB1A340010B899 /* PlaylistAPI.swift in Sources */,
 				7DDFB82B1BDB19EB0010B899 /* BaseViewController.swift in Sources */,

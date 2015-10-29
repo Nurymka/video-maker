@@ -114,6 +114,16 @@ extension ChoosePlaylistCollectionViewController: UICollectionViewDelegateFlowLa
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: searchBarHeight + 20.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if DeviceType.IS_IPHONE_6P {
+            return CGSize(width: 200.0, height: 200.0)
+        } else if DeviceType.IS_IPHONE_6 {
+            return CGSize(width: 180.0, height: 180.0)
+        } else {
+            return CGSize(width: 150.0, height: 150.0)
+        }
+    }
 }
 
 extension ChoosePlaylistCollectionViewController: UISearchBarDelegate {
@@ -144,3 +154,26 @@ class ChoosePlaylistCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
 }
+
+
+
+
+//FIXME: - Move to ScreenMacros.swift, temporarily here because xcode doesn't see them there 
+struct ScreenSize
+{
+    static let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
+    static let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
+    static let SCREEN_MAX_LENGTH = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    static let SCREEN_MIN_LENGTH = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+}
+
+struct DeviceType
+{
+    static let IS_IPHONE_4_OR_LESS =  UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
+    static let IS_IPHONE_5 = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
+    static let IS_IPHONE_6 = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
+    static let IS_IPHONE_6P = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
+}
+
+
+
