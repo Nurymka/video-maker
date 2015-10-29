@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import SCRecorder
 
-protocol OverlayCaptionViewDelegate {
-    func keyboardReturnWithEmptyString()
-}
+//protocol OverlayCaptionViewDelegate {
+//    func keyboardReturnWithEmptyString()
+//}
 
 class OverlayCaptionView: UITextField {
     var viewPercentageYPos: CGFloat = 0.0
     var screenToCaptionHeightRatio: CGFloat = 0.0
-    var overlayViewDelegate: OverlayCaptionViewDelegate?
+    //var overlayViewDelegate: OverlayCaptionViewDelegate?
     
     init(superviewFrame: CGRect) {
         super.init(frame: CGRectZero)
@@ -76,8 +76,13 @@ class OverlayCaptionView: UITextField {
         return font.fontWithSize(fontSizeAverage)
     }
     
-    func copyWithNSCoder() -> OverlayCaptionView {
-        return NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self)) as! OverlayCaptionView
+    func copyViewForImage() -> OverlayCaptionView {
+        let copy = OverlayCaptionView(superviewFrame: CGRectMake(0, 0, frame.width, frame.height/screenToCaptionHeightRatio))
+        copy.text = text
+        copy.frame = frame
+        copy.viewPercentageYPos = viewPercentageYPos
+        copy.screenToCaptionHeightRatio = screenToCaptionHeightRatio
+        return copy
     }
 }
 
@@ -102,7 +107,7 @@ extension OverlayCaptionView: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         if textField.text == "" {
-            overlayViewDelegate?.keyboardReturnWithEmptyString()
+            //overlayViewDelegate?.keyboardReturnWithEmptyString()
         }
         return true
     }

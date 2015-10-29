@@ -422,17 +422,16 @@ class VideoPlaybackViewController: BaseViewController {
     
     func getOverlayImageFromView(view: OverlayCaptionView?) -> UIImage? {
         if let view = view {
-            let copyView = view.copyWithNSCoder()
+            let copyView = view.copyViewForImage()
             //FIXME: HACK WARNING - 640x480 hardcoded
             let videoWidth: CGFloat = 480.0
             let videoHeight: CGFloat = 640.0
             copyView.frame = CGRectMake(copyView.frame.origin.x, copyView.frame.origin.y, videoWidth, copyView.bounds.size.height)
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(videoWidth, videoHeight), false, 0.0)
             let context = UIGraphicsGetCurrentContext()
-            let originInContext = CGPoint(x: copyView.frame.origin.x, y: videoHeight * copyView.viewPercentageYPos)
-            CGContextTranslateCTM(context, originInContext.x, originInContext.y)
+            CGContextTranslateCTM(context, 0.0, videoHeight * copyView.viewPercentageYPos)
             copyView.layer.renderInContext(context!)
-            let image = UIGraphicsGetImageFromCurrentImageContext()
+            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             return image
         } else {
