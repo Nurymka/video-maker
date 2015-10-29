@@ -120,30 +120,26 @@ public class NKRecorderViewController : UINavigationController {
     }
 }
 
-extension NKRecorderViewController: RecordViewControllerDelegate {
-    func recordingWillStart() {
+extension NKRecorderViewController: VideoMakerDelegate {
+    func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
         recorderDelegate?.willStartRecording(self)
     }
     
-    func recordingDidCancel() {
+    func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
         recorderDelegate?.didCancelRecording(self)
     }
-}
-
-extension NKRecorderViewController: VideoPlaybackViewControllerDelegate {
-    func didProduceVideo(videoSession: NKVideoSession) {
-        recorderDelegate?.didProduceVideo(self, videoSession: videoSession)
+    
+    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: NKVideoSession) {
+        recorderDelegate?.didProduceVideo(self, videoSession: session)
     }
 }
 
 extension NKRecorderViewController: UINavigationControllerDelegate {
     public func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        if viewController is VideoPlaybackViewController {
-            videoPlaybackViewController = (viewController as! VideoPlaybackViewController)
-            videoPlaybackViewController?.delegate = self
-        } else if viewController is RecordViewController {
-            let recordVC = (viewController as! RecordViewController)
-            recordVC.delegate = self
+        if viewController is VideoMakerViewController {
+            let vc = viewController as! VideoMakerViewController
+            videoPlaybackViewController = vc.videoPlaybackVC
+            vc.videoMakerDelegate = self
         }
     }
 }

@@ -10,8 +10,9 @@ import UIKit
 import SCRecorder
 
 protocol RecordViewControllerDelegate: class {
-    func recordingWillStart()
-    func recordingDidCancel()
+    func recorderWillStartRecording(recorder: RecordViewController)
+    func recorderDidCancelRecording(recorder: RecordViewController)
+    func recorder(recorder: RecordViewController, didRecordSession session: SCRecordSession)
 }
 
 class RecordViewController: BaseViewController {
@@ -146,12 +147,12 @@ class RecordViewController: BaseViewController {
             recorder.session = nil
             prepareSession()
         }
-        delegate?.recordingDidCancel()
+        delegate?.recorderDidCancelRecording(self)
     }
     
     func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
         if (touchDetector.state == .Began) {
-            delegate?.recordingWillStart()
+            delegate?.recorderWillStartRecording(self)
             recorder.record()
             timescaleSegmentedControl.enabled = false
             if musicTrackInfo != nil {
@@ -237,13 +238,12 @@ class RecordViewController: BaseViewController {
 // MARK: - Segue Related
     
     func showVideo() {
-        performSegueWithIdentifier("Show Video Playback", sender: self)
+        delegate?.recorder(self, didRecordSession: self.recordSession!)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "Show Video Playback") {
             let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
-            
             videoPlaybackViewController.recordSession = recordSession
             videoPlaybackViewController.musicTrackInfo = musicTrackInfo
             videoPlaybackViewController.initialAudioTypeButtonState = audioTypeButton.buttonState

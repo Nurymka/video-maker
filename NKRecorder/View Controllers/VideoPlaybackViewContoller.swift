@@ -10,7 +10,8 @@ import UIKit
 import SCRecorder
 
 protocol VideoPlaybackViewControllerDelegate: class {
-    func didProduceVideo(videoSession: NKVideoSession)
+    func videoPlaybackDidCancel(videoPlayback: VideoPlaybackViewController)
+    func videoPlayback(videoPlayback: VideoPlaybackViewController, didProduceVideoSession videoSession: NKVideoSession)
 }
 
 class VideoPlaybackViewController: BaseViewController {
@@ -50,6 +51,7 @@ class VideoPlaybackViewController: BaseViewController {
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         player = SCPlayer()
         player?.loopEnabled = true
         filterSwipableView.refreshAutomaticallyWhenScrolling = false // can't tell what this does, but it is false in the examples, so better stay it
@@ -70,16 +72,14 @@ class VideoPlaybackViewController: BaseViewController {
         if navigationController?.respondsToSelector("interactivePopGestureRecognizer") != nil {
             navigationController?.interactivePopGestureRecognizer?.enabled = false
         }
-        
-        audioTypeButton.buttonState = initialAudioTypeButtonState
-        if audioTypeButton.buttonState == .PickSong {
-            canUseOriginalSound = false
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
         print("musicTrackInfo: \(musicTrackInfo)")
-        
+        audioTypeButton.buttonState = initialAudioTypeButtonState
+        if audioTypeButton.buttonState == .PickSong {
+            canUseOriginalSound = false
+        }
         configureTrackNameLabel()
         configureCompositionAndPlay()
     }
@@ -212,7 +212,7 @@ class VideoPlaybackViewController: BaseViewController {
         if let recordSession = recordSession, composition = composition {
             let overlayImage = getOverlayImageFromView(captionView)
             let overlayImagePosition = captionView?.frame.origin
-            delegate?.didProduceVideo(NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
+            delegate?.videoPlayback(self, didProduceVideoSession: NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
         }
     }
 
@@ -260,9 +260,7 @@ class VideoPlaybackViewController: BaseViewController {
         let alertController = UIAlertController(title: "Discard Recording", message: "Do you really want to discard your current recording?", preferredStyle: .Alert)
         
         let yesAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
-            let recordingViewController = self.navigationController?.viewControllers[0] as! RecordViewController
-            recordingViewController.retakeButtonPressed(self)
-            self.navigationController?.popViewControllerAnimated(false)
+            self.delegate?.videoPlaybackDidCancel(self)
         }
         alertController.addAction(yesAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
@@ -408,13 +406,13 @@ class VideoPlaybackViewController: BaseViewController {
         }
     }
     
-    func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
-        if (error == nil) {
-            UIAlertView(title: "Saved to camera roll", message:"", delegate: nil, cancelButtonTitle: "Done").show()
-        } else {
-            UIAlertView(title: "Failed to save", message: "'", delegate: nil, cancelButtonTitle: "Okay").show()
-        }
-    }
+//    func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
+//        if (error == nil) {
+//            UIAlertView(title: "Saved to camera roll", message:"", delegate: nil, cancelButtonTitle: "Done").show()
+//        } else {
+//            UIAlertView(title: "Failed to save", message: "'", delegate: nil, cancelButtonTitle: "Okay").show()
+//        }
+//    }
     
     func getOverlayImageFromView(view: OverlayCaptionView?) -> UIImage? {
         if let view = view {

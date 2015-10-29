@@ -24,7 +24,7 @@
         <!--Record View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="Record View Controller" customClass="RecordViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Recorder" id="vXZ-lx-hvc" userLabel="Record View Controller" customClass="RecordViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -118,7 +118,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="33" width="176" height="21"/>
+                                        <rect key="frame" x="71" y="33" width="176" height="22"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -226,6 +226,7 @@
                     <navigationItem key="navigationItem" id="WNF-ZK-oIM"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="UIElementsContainer" destination="WQJ-Nl-Hbb" id="W5t-K2-Qqs"/>
                         <outlet property="audioTypeButton" destination="2tj-aV-Juu" id="NRr-ER-cCq"/>
@@ -242,17 +243,16 @@
                         <outlet property="trackNameLabel" destination="LKB-Wj-PuV" id="k9m-IO-LIz"/>
                         <outlet property="trackNameLabelBG" destination="6GI-or-ZJ7" id="bJt-Qe-Xft"/>
                         <segue destination="rPE-HQ-KAW" kind="presentation" identifier="Choose Music Playlist" id="uxC-de-KZf"/>
-                        <segue destination="McN-6d-tRK" kind="show" identifier="Show Video Playback" id="7ss-gd-vlI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069" y="373"/>
+            <point key="canvasLocation" x="1085" y="373"/>
         </scene>
         <!--Video Playback View Controller-->
         <scene sceneID="tGI-ay-gin">
             <objects>
-                <viewController id="McN-6d-tRK" userLabel="Video Playback View Controller" customClass="VideoPlaybackViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Video Playback" id="McN-6d-tRK" userLabel="Video Playback View Controller" customClass="VideoPlaybackViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fsT-ZC-4gu"/>
                         <viewControllerLayoutGuide type="bottom" id="7pE-eW-Uht"/>
@@ -519,7 +519,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCollectionViewCell" id="Y9P-e4-i3C" customClass="ChoosePlaylistCollectionViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="150" height="150"/>
+                                <rect key="frame" x="0.0" y="84" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -570,6 +570,7 @@
         <!--Recorder View Controller-->
         <scene sceneID="csT-fI-usY">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8vz-3s-WN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="NKRecorderViewController" automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" customClass="NKRecorderViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -579,12 +580,31 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="FOz-FQ-DAb"/>
+                        <segue destination="eAR-9X-1Zc" kind="relationship" relationship="rootViewController" id="jWI-Df-EJl"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8vz-3s-WN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="373"/>
+            <point key="canvasLocation" x="812" y="1223"/>
+        </scene>
+        <!--Video Maker View Controller-->
+        <scene sceneID="UFJ-F7-OkI">
+            <objects>
+                <viewController id="eAR-9X-1Zc" customClass="VideoMakerViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9QQ-nD-zXd"/>
+                        <viewControllerLayoutGuide type="bottom" id="HNf-lW-5OJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G3c-Kd-jyv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UAH-gM-pZT"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qZz-Oa-x6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1406" y="1223"/>
         </scene>
         <!--Choose Music Track View Controller-->
         <scene sceneID="Wvd-9R-V75">
@@ -596,7 +616,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackItemCellIdentifier" rowHeight="100" id="e8B-yK-2Xo" customClass="ChooseMusicTrackViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e8B-yK-2Xo" id="ak7-MX-dg0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
@@ -697,6 +717,6 @@
         <image name="snail" width="28" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uxC-de-KZf"/>
+        <segue reference="Ncs-cA-kYp"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		0320D110183FFB1792912263 /* Pods_NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A1E1D54250955D26E5E647 /* Pods_NKRecorder.framework */; };
 		526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F648D9339D1ACC56A74EB7 /* Pods_NKRecorder_VideoMaker.framework */; };
+		7D03CDB11BE1A76C007AE8AC /* VMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */; };
 		7D54217F1BE1803700F71937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14251B98C15600453DA1 /* Main.storyboard */; };
-		7D54218E1BE183D500F71937 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D54218D1BE183D500F71937 /* PushNoAnimationSegue.swift */; };
 		7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14211B98C15600453DA1 /* AppDelegate.swift */; };
 		7D6A142C1B98C15600453DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */; };
 		7D6A14381B98C15700453DA1 /* VideoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A14371B98C15700453DA1 /* VideoMakerTests.swift */; };
 		7DBD511B1BDC51E700E49B56 /* NKRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */; };
-		7DBD511D1BDC563300E49B56 /* VideoMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */; };
+		7DBD511D1BDC563300E49B56 /* ExampleVideoMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD511C1BDC563200E49B56 /* ExampleVideoMakerViewController.swift */; };
 		7DBE65571BDC74680031CECA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6A14281B98C15600453DA1 /* Images.xcassets */; };
 		7DDFB82B1BDB19EB0010B899 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4813261BD4D8450038325E /* BaseViewController.swift */; };
 		7DDFB82C1BDB19EB0010B899 /* ChooseMusicTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */; };
@@ -52,7 +52,6 @@
 		7DECA1111BE1851C009B9136 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */; };
 		7DECA1121BE1851C009B9136 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */; };
 		7DECA1131BE1851C009B9136 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */; };
-		8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2B16BB987F261E35EE3DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EAC5D0EA1BDA11A7008E80F3 /* NKRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC5D0E91BDA11A7008E80F3 /* NKRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAC5D0F11BDA11A7008E80F3 /* NKRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC5D0E71BDA11A7008E80F3 /* NKRecorder.framework */; };
 		EAC5D0F81BDA11A7008E80F3 /* NKRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D0F71BDA11A7008E80F3 /* NKRecorderTests.swift */; };
@@ -92,6 +91,7 @@
 		7D01C7E21BD4C5140093E181 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		7D01C7E51BD4C5B00093E181 /* ResourceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtensions.swift; sourceTree = "<group>"; };
 		7D01C7E71BD4C8760093E181 /* FontKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
+		7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMViewController.swift; sourceTree = "<group>"; };
 		7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
@@ -109,7 +109,6 @@
 		7D54216D1BE17B8300F71937 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
 		7D54216E1BE17B8300F71937 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		7D54216F1BE17B8300F71937 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
-		7D54218D1BE183D500F71937 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		7D5F44FA1BAC8C2B00332DBA /* SearchMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D6A141C1B98C15600453DA1 /* VideoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6A14201B98C15600453DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,7 +128,7 @@
 		7D8999D31B9E2FCE00F9136A /* VideoPlaybackViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlaybackViewContoller.swift; sourceTree = "<group>"; };
 		7DA77D911BAB4C5400AB16A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DBD511A1BDC51E700E49B56 /* NKRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecorderViewController.swift; sourceTree = "<group>"; };
-		7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerViewController.swift; sourceTree = "<group>"; };
+		7DBD511C1BDC563200E49B56 /* ExampleVideoMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleVideoMakerViewController.swift; sourceTree = "<group>"; };
 		7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSlider.swift; sourceTree = "<group>"; };
 		7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMusicManager.swift; sourceTree = "<group>"; };
 		7DE932641BD05FEE00040833 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -151,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BC947F93C4B6AD65AF03063 /* Pods.framework in Frameworks */,
 				526B7D46CB523F5CB2F2E40D /* Pods_NKRecorder_VideoMaker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,7 +251,7 @@
 				7D6A14211B98C15600453DA1 /* AppDelegate.swift */,
 				7D6A14201B98C15600453DA1 /* Info.plist */,
 				7D6A142A1B98C15600453DA1 /* LaunchScreen.xib */,
-				7DBD511C1BDC563200E49B56 /* VideoMakerViewController.swift */,
+				7DBD511C1BDC563200E49B56 /* ExampleVideoMakerViewController.swift */,
 			);
 			path = VideoMaker;
 			sourceTree = "<group>";
@@ -308,6 +306,7 @@
 		7DC092F21BBD0EAF00CC5619 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */,
 				7D4813261BD4D8450038325E /* BaseViewController.swift */,
 				7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */,
 				7D2324851BC78B18004A1976 /* ChoosePlaylistCollectionViewController.swift */,
@@ -328,7 +327,6 @@
 				7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */,
 				7DC092F01BBD0E2700CC5619 /* DraggableSlider.swift */,
 				7D282E0C1BA3769D00A04E14 /* OverlayCaptionView.swift */,
-				7D54218D1BE183D500F71937 /* PushNoAnimationSegue.swift */,
 				7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */,
 				7D2075FF1BD069FD005C010D /* TimescaleSegmentedControl.swift */,
 				7D4C8B011BD574DA00ADA6D3 /* TrackNameLabel.swift */,
@@ -690,7 +688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6A14221B98C15600453DA1 /* AppDelegate.swift in Sources */,
-				7DBD511D1BDC563300E49B56 /* VideoMakerViewController.swift in Sources */,
+				7DBD511D1BDC563300E49B56 /* ExampleVideoMakerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,7 +719,6 @@
 				7DDFB84A1BDB1A340010B899 /* RecordButtonTouchGestureRecognizer.swift in Sources */,
 				7DDFB8351BDB1A090010B899 /* AnimationKit.swift in Sources */,
 				7DDFB8481BDB1A340010B899 /* MusicRetrievalAPI.swift in Sources */,
-				7D54218E1BE183D500F71937 /* PushNoAnimationSegue.swift in Sources */,
 				7DDFB82D1BDB19EB0010B899 /* ChoosePlaylistCollectionViewController.swift in Sources */,
 				7DDFB82E1BDB19EB0010B899 /* RecordViewController.swift in Sources */,
 				7DDFB8361BDB1A090010B899 /* AppearanceKit.swift in Sources */,
@@ -736,6 +733,7 @@
 				7DDFB8311BDB19EB0010B899 /* SongSearchController.swift in Sources */,
 				7DDFB83F1BDB1A0D0010B899 /* TrackNameLabel.swift in Sources */,
 				7DDFB82C1BDB19EB0010B899 /* ChooseMusicTrackTableViewController.swift in Sources */,
+				7D03CDB11BE1A76C007AE8AC /* VMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 import NKRecorder
 
-class VideoMakerViewController: UIViewController {
+class ExampleVideoMakerViewController: UIViewController {
     var recorderVC: NKRecorderViewController = NKRecorderViewController.mainNavController()
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class VideoMakerViewController: UIViewController {
     }
 }
 
-extension VideoMakerViewController: NKRecorderDelegate {
+extension ExampleVideoMakerViewController: NKRecorderDelegate {
     func willStartRecording(recorderViewController: NKRecorderViewController) {
         
     }
