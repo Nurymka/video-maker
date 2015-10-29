@@ -21,6 +21,8 @@ class VideoMakerViewController: UIViewController {
     var currentFilter: SCFilter?
     weak var videoMakerDelegate: VideoMakerDelegate?
     
+    @IBOutlet weak var activityIndicatorContainer: UIView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         recorderVC = storyboard!.instantiateViewControllerWithIdentifier("Recorder") as! RecordViewController
@@ -47,6 +49,18 @@ class VideoMakerViewController: UIViewController {
     func showVideoPlayback() {
         recorderVC.view.removeFromSuperview()
         view.insertSubview(videoPlaybackVC.view, atIndex: 0)
+    }
+    
+    func freezeAndShowIndicator() {
+        activityIndicatorContainer.hidden = false
+        activityIndicatorView.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    }
+    
+    func unfreezeAndHideIndicator() {
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        activityIndicatorContainer.hidden = true
+        activityIndicatorView.stopAnimating()
     }
 }
 

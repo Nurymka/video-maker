@@ -31,9 +31,6 @@ class VideoPlaybackViewController: BaseViewController {
     @IBOutlet weak var trackNameLabel: TrackNameLabel!
     @IBOutlet weak var trackNameLabelBG: UIView!
     
-    @IBOutlet weak var activityIndicatorContainer: UIView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var composition: AVMutableComposition?
@@ -197,26 +194,14 @@ class VideoPlaybackViewController: BaseViewController {
         }
     }
 // MARK: - Button Touch Handlers
-    func pause() {
-        activityIndicatorContainer.hidden = false
-        activityIndicatorView.startAnimating()
-        player?.pause()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-    }
-    
-    func play() {
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
-        player?.play()
-        activityIndicatorContainer.hidden = true
-        activityIndicatorView.stopAnimating()
-    }
-    
+
     @IBAction func sendButtonPressed(sender: AnyObject)
     {
         if let recordSession = recordSession, composition = composition {
             let overlayImage = getOverlayImageFromView(captionView)
             let overlayImagePosition = captionView?.frame.origin
             delegate?.videoPlayback(self, didProduceVideoSession: NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
+            delegate?.videoPlaybackDidCancel(self)
         }
     }
 

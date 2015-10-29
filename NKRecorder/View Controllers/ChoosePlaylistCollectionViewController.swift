@@ -89,7 +89,6 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     
     func navigationBarAppearanceBackToDefault() {
         navigationController?.navigationBar.translucent = true
-        
         navigationController?.navigationBar.barTintColor = initialBarTintColor
         navigationController?.navigationBar.tintColor = initialTintColor
     }

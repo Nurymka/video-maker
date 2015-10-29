@@ -65,7 +65,7 @@ public class NKRecorderViewController : UINavigationController {
     public static var shouldLoadFontsAtLaunch = true
     static let currentBundle = NSBundle(forClass: NKRecorderViewController.self)
     public weak var recorderDelegate: NKRecorderDelegate?
-    weak var videoPlaybackViewController: VideoPlaybackViewController?
+    weak var videoMakerViewContorller: VideoMakerViewController?
     public class func mainNavController() -> NKRecorderViewController {
         if shouldLoadFontsAtLaunch == true {
             var once: dispatch_once_t = 0
@@ -77,14 +77,22 @@ public class NKRecorderViewController : UINavigationController {
         return main.instantiateViewControllerWithIdentifier("NKRecorderViewController") as! NKRecorderViewController
     }
     
-    // adds a spinning activity indicator, freezes the playing video
-    public func pause() {
-        videoPlaybackViewController?.pause()
+    public func pauseVideo() {
+        videoMakerViewContorller?.videoPlaybackVC.player?.pause()
     }
     
-    // removes the spinning activity indicator, unpauses the playing video
-    public func play() {
-        videoPlaybackViewController?.play()
+    public func resumeVideo() {
+        videoMakerViewContorller?.videoPlaybackVC.player?.play()
+    }
+    
+    // adds a spinning activity indicator
+    public func freezeAndShowIndicator() {
+        videoMakerViewContorller?.freezeAndShowIndicator()
+    }
+    
+    // removes the spinning activity indicator
+    public func unfreezeAndHideIndicator() {
+        videoMakerViewContorller?.unfreezeAndHideIndicator()
     }
     
     override public func viewDidLoad() {
@@ -138,7 +146,7 @@ extension NKRecorderViewController: UINavigationControllerDelegate {
     public func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         if viewController is VideoMakerViewController {
             let vc = viewController as! VideoMakerViewController
-            videoPlaybackViewController = vc.videoPlaybackVC
+            videoMakerViewContorller = vc
             vc.videoMakerDelegate = self
         }
     }
