@@ -215,12 +215,12 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WQJ-Nl-Hbb" secondAttribute="trailing" id="4HG-Wf-6QR"/>
                             <constraint firstItem="qTA-SU-fsN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="5VS-vj-ixc"/>
-                            <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="9Fz-7y-Rvx"/>
                             <constraint firstItem="qTA-SU-fsN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Eg8-eJ-ZP0"/>
                             <constraint firstAttribute="trailing" secondItem="qTA-SU-fsN" secondAttribute="trailing" id="OJt-ys-pQs"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qTA-SU-fsN" secondAttribute="bottom" id="PbE-zj-16C"/>
                             <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="TFe-Eb-Ilo"/>
                             <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ZTm-Fp-6tL"/>
+                            <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="pFi-8c-eCv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WNF-ZK-oIM"/>
@@ -247,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085" y="373"/>
+            <point key="canvasLocation" x="1091" y="373"/>
         </scene>
         <!--Video Playback View Controller-->
         <scene sceneID="tGI-ay-gin">
@@ -406,6 +406,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -519,7 +520,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCollectionViewCell" id="Y9P-e4-i3C" customClass="ChoosePlaylistCollectionViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="150" height="150"/>
+                                <rect key="frame" x="0.0" y="64" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -570,7 +571,6 @@
         <!--Recorder View Controller-->
         <scene sceneID="csT-fI-usY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8vz-3s-WN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="NKRecorderViewController" automaticallyAdjustsScrollViewInsets="NO" id="QXB-mE-5zm" customClass="NKRecorderViewController" customModule="NKRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -583,6 +583,7 @@
                         <segue destination="eAR-9X-1Zc" kind="relationship" relationship="rootViewController" id="jWI-Df-EJl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8vz-3s-WN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="1223"/>
         </scene>
@@ -616,7 +617,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackItemCellIdentifier" rowHeight="100" id="e8B-yK-2Xo" customClass="ChooseMusicTrackViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e8B-yK-2Xo" id="ak7-MX-dg0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
