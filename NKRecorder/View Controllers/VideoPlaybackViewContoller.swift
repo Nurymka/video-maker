@@ -41,7 +41,7 @@ class VideoPlaybackViewController: BaseViewController {
     var captionView: OverlayCaptionView?
     var captionViewPanGestureRecognizer: UIPanGestureRecognizer?
     
-    var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal
+    var tapGestureRecognizer: UITapGestureRecognizer? // used for keyboard dismissal and pausing/playing video
     
     //var audioStartingPosition: Double = 0.0
     var canUseOriginalSound = true // if a song was chosen during the recording, one cannot use the original sound
@@ -54,7 +54,6 @@ class VideoPlaybackViewController: BaseViewController {
         
         player = SCPlayer()
         player?.loopEnabled = true
-        filterSwipableView.refreshAutomaticallyWhenScrolling = false // can't tell what this does, but it is false in the examples, so better stay it
         filterSwipableView.contentMode = .ScaleAspectFill
         let emptyFilter = SCFilter()
         emptyFilter.name = "No Filter"
@@ -71,6 +70,11 @@ class VideoPlaybackViewController: BaseViewController {
         
         if navigationController?.respondsToSelector("interactivePopGestureRecognizer") != nil {
             navigationController?.interactivePopGestureRecognizer?.enabled = false
+        }
+        
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapGestureRecognized:")
+        if let recoginzer = tapGestureRecognizer {
+            filterSwipableView.addGestureRecognizer(recoginzer)
         }
     }
     
@@ -218,10 +222,6 @@ class VideoPlaybackViewController: BaseViewController {
 
     @IBAction func insertCaptionPressed(sender: AnyObject) {
         if captionView == nil {
-            tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
-            if let recognizer = tapGestureRecognizer {
-                self.view.addGestureRecognizer(recognizer)
-            }
             captionView = OverlayCaptionView(superviewFrame: view.frame)
             captionViewPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "captionPanGestureRecognized:")
             if let captionView = captionView {
@@ -248,11 +248,11 @@ class VideoPlaybackViewController: BaseViewController {
         }
     }
     
-    func dismissKeyboard(recognizer: UITapGestureRecognizer) {
-        if let isEditing = captionView?.editing {
-            if isEditing == true {
-                captionView?.endEditing(true)
-            }
+    func tapGestureRecognized(recognizer: UITapGestureRecognizer) {
+        if let isEditing = captionView?.editing where isEditing == true {
+            captionView?.endEditing(true)
+        } else {
+            playOrPauseVideoOnTap()
         }
     }
     
@@ -391,6 +391,12 @@ class VideoPlaybackViewController: BaseViewController {
 //            }
 //        }
 //    }
+    
+    func playOrPauseVideoOnTap() {
+        if let isPlaying = player?.isPlaying {
+            isPlaying ? player?.pause() : player?.play()
+        }
+    }
     
     func keyboardWillShow(notification: NSNotification) {
         if let captionView = captionView {

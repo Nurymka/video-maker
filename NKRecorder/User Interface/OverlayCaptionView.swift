@@ -31,7 +31,6 @@ class OverlayCaptionView: UITextField {
         frame = CGRect(x: 0, y: (superviewFrame.size.height - frame.size.height) / 2, width: superviewFrame.size.width, height: frame.size.height)
         screenToCaptionHeightRatio = superviewFrame.size.height / frame.size.height
         viewPercentageYPos = frame.origin.y / superviewFrame.size.height
-        print(frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,8 +39,6 @@ class OverlayCaptionView: UITextField {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print(frame.size.width)
-        print("layoutSubviews")
     }
     
     private func fontToFitHeight(minFontSize: CGFloat, maxFontSize: CGFloat, labelText: String, font: UIFont) -> UIFont {

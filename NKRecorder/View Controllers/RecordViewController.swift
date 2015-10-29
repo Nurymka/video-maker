@@ -139,6 +139,7 @@ class RecordViewController: BaseViewController {
             if (sender is VideoPlaybackViewController) {
                 audioTypeButton.buttonState = .OriginalSound
                 musicTrackInfo = nil
+                hideNavigationControlButtons()
                 configureTrackNameLabelAndPlayer()
             }
             recordButton.progress = 0.0
@@ -327,6 +328,11 @@ class RecordViewController: BaseViewController {
         
         doneButton.enabled = true
         deleteLastSegmentButton.enabled = true
+    }
+    
+    func hideNavigationControlButtons() {
+        doneButton.layer.opacity = 0.0
+        deleteLastSegmentButton.layer.opacity = 0.0
     }
 }
 
