@@ -68,14 +68,7 @@ extension ChooseMusicTrackTableViewController {
             cell.changeButtonStateTo(.PauseButton)
         }
         
-        cell.request = Alamofire.request(.GET, tracks[indexPath.row].albumCoverURL).responseImage { response in
-            switch response.result {
-            case .Success(let image):
-                cell.albumCoverButton.setBackgroundImage(image, forState: .Normal)
-            case .Failure(let error):
-                print(error)
-            }
-        }
+        cell.albumCoverButton.sd_setBackgroundImageWithURL(NSURL(string: tracks[indexPath.row].albumCoverURL)!, forState: .Normal)
         
         return cell
     }

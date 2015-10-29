@@ -132,7 +132,7 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency 'SCRecorder', '~> 2.5'
   s.dependency 'Alamofire', '~> 3.1'
-  s.dependency 'AlamofireImage', '~> 2.1'
+  s.dependency 'SDWebImage', '~> 3.7'
   s.dependency 'EZAudio', '~> 1.1.2'
 
 

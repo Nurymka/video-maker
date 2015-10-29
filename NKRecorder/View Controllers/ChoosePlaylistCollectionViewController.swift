@@ -92,15 +92,7 @@ extension ChoosePlaylistCollectionViewController {
         cell.request?.cancel()
         cell.playlistNameLabel.text = playlistItem.name
         
-        cell.request = Alamofire.request(.GET, playlistItem.thumbnailURL).responseImage() { response in
-            switch response.result {
-            case .Success(let image):
-                cell.thumbnailImageView.image = image
-            case .Failure(let error):
-                print(error)
-            }
-        }
-        
+        cell.thumbnailImageView.sd_setImageWithURL(NSURL(string: playlistItem.thumbnailURL)!)
         return cell
     }
     

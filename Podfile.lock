@@ -1,7 +1,5 @@
 PODS:
   - Alamofire (3.1.0)
-  - AlamofireImage (2.1.0):
-    - Alamofire (~> 3.1)
   - EZAudio (1.1.2):
     - EZAudio/Full (= 1.1.2)
   - EZAudio/Core (1.1.2)
@@ -10,18 +8,21 @@ PODS:
     - TPCircularBuffer (~> 0.0)
   - NKRecorder (0.1.0):
     - Alamofire (~> 3.1)
-    - AlamofireImage (~> 2.1)
     - EZAudio (~> 1.1.2)
     - SCRecorder (~> 2.5)
+    - SDWebImage (~> 3.7)
   - SCRecorder (2.5.3)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
   - TPCircularBuffer (0.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.1)
-  - AlamofireImage (~> 2.1)
   - EZAudio (~> 1.1.2)
   - NKRecorder (from `~/Documents/Taylr/video-maker/`)
   - SCRecorder (= 2.5.3)
+  - SDWebImage (~> 3.7)
 
 EXTERNAL SOURCES:
   NKRecorder:
@@ -29,10 +30,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 415bd7f56197722978759078486689f7ef913dce
-  AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
-  NKRecorder: def5ce2622ca2b03186b36c4760b26ed9cf8e7a4
+  NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
 
 COCOAPODS: 0.39.0
