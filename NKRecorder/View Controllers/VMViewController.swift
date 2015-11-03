@@ -9,21 +9,59 @@
 import UIKit
 import SCRecorder
 
-protocol VideoMakerDelegate: class {
+public protocol VideoMakerDelegate: class {
     func videoMakerWillStartRecording(videoMaker: VideoMakerViewController)
     func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController)
-    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: NKVideoSession)
+    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession)
 }
 
-class VideoMakerViewController: UIViewController {
+public final class VideoMakerViewController: UIViewController {
     var recorderVC: RecordViewController!
     var videoPlaybackVC: VideoPlaybackViewController!
     var currentFilter: SCFilter?
-    weak var videoMakerDelegate: VideoMakerDelegate?
+    public weak var videoMakerDelegate: VideoMakerDelegate?
     
     @IBOutlet weak var activityIndicatorContainer: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    override func viewDidLoad() {
+    
+    public static var shouldLoadFontsAtLaunch = true
+    static let currentBundle = NSBundle(forClass: VideoMakerViewController.self)
+// MARK: - Public
+    public class func mainController() -> VideoMakerViewController {
+        if shouldLoadFontsAtLaunch == true {
+            var once: dispatch_once_t = 0
+            dispatch_once(&once) {
+                loadCustomFonts()
+            }
+        }
+        let main = UIStoryboard(name: "Main", bundle: currentBundle)
+        return main.instantiateViewControllerWithIdentifier("VideoMakerViewController") as! VideoMakerViewController
+    }
+    
+    public func pauseVideo() {
+        videoPlaybackVC.player?.pause()
+    }
+    
+    public func resumeVideo() {
+        videoPlaybackVC.player?.play()
+    }
+    
+    // adds a spinning activity indicator
+    public func freezeAndShowIndicator() {
+        activityIndicatorContainer.hidden = false
+        activityIndicatorView.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    }
+    
+    // removes the spinning activity indicator
+    public func unfreezeAndHideIndicator() {
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        activityIndicatorContainer.hidden = true
+        activityIndicatorView.stopAnimating()
+    }
+    
+// MARK: - Internal
+    override public func viewDidLoad() {
         super.viewDidLoad()
         recorderVC = storyboard!.instantiateViewControllerWithIdentifier("Recorder") as! RecordViewController
         videoPlaybackVC = storyboard!.instantiateViewControllerWithIdentifier("Video Playback") as! VideoPlaybackViewController
@@ -37,7 +75,7 @@ class VideoMakerViewController: UIViewController {
         showRecorder()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override public func prefersStatusBarHidden() -> Bool {
         return true
     }
     
@@ -51,17 +89,29 @@ class VideoMakerViewController: UIViewController {
         view.insertSubview(videoPlaybackVC.view, atIndex: 0)
     }
     
-    func freezeAndShowIndicator() {
-        activityIndicatorContainer.hidden = false
-        activityIndicatorView.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    private static func loadCustomFonts() {
+        func iterateEnum<T: Hashable>(_: T.Type) -> AnyGenerator<T> {
+            var i = 0
+            return anyGenerator {
+                let next = withUnsafePointer(&i) { UnsafePointer<T>($0).memory }
+                return next.hashValue == i++ ? next : nil
+            }
+        }
+        
+        for font in iterateEnum(R.Fonts.self) {
+            let fontURL = currentBundle.URLForResource(font.rawValue, withExtension: ".ttf")
+            // loading custom fonts programatically: http://www.marco.org/2012/12/21/ios-dynamic-font-loading
+            if let fontData = NSData(contentsOfURL: fontURL!) {
+                let provider = CGDataProviderCreateWithCFData(fontData as CFDataRef)
+                let font = CGFontCreateWithDataProvider(provider)
+                var error: Unmanaged<CFError>?
+                if (!CTFontManagerRegisterGraphicsFont(font!, &error)) {
+                    print("Failed to register font: \(error)")
+                }
+            }
+        }
     }
-    
-    func unfreezeAndHideIndicator() {
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
-        activityIndicatorContainer.hidden = true
-        activityIndicatorView.stopAnimating()
-    }
+
 }
 
 extension VideoMakerViewController: RecordViewControllerDelegate {
@@ -87,8 +137,53 @@ extension VideoMakerViewController: VideoPlaybackViewControllerDelegate {
         showRecorder()
     }
     
-    func videoPlayback(videoPlayback: VideoPlaybackViewController, didProduceVideoSession videoSession: NKVideoSession) {
+    func videoPlayback(videoPlayback: VideoPlaybackViewController, didProduceVideoSession videoSession: VideoSession) {
         videoMakerDelegate?.videoMaker(self, didProduceVideoSession: videoSession)
     }
 }
 
+public struct VideoSession {
+    let recordSession: SCRecordSession
+    let composition: AVComposition
+    let overlayImage: UIImage?
+    let overlayImagePosition: CGPoint?
+    let filter: SCFilter?
+    
+    public func export(completion: (NSURL) -> ()) {
+        let assetExport = SCAssetExportSession(asset: composition)
+        assetExport.outputUrl = recordSession.outputUrl
+        assetExport.outputFileType = AVFileTypeMPEG4
+        assetExport.audioConfiguration.preset = SCPresetHighestQuality
+        //assetExport.videoConfiguration.preset = SCPresetHighestQuality
+        assetExport.videoConfiguration.filter = filter
+        if let overlayImage = overlayImage {
+            assetExport.videoConfiguration.watermarkImage = overlayImage
+            assetExport.videoConfiguration.watermarkFrame = CGRect(x: 0, y: 0, width: 480, height: 640) // FIXME: HAX - 640x480 hardcoded
+        }
+        assetExport.videoConfiguration.maxFrameRate = 35
+        let timestamp = CACurrentMediaTime()
+        assetExport.exportAsynchronouslyWithCompletionHandler({
+            print(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
+            if (assetExport.error == nil) {
+                completion(assetExport.outputUrl!)
+            }
+            else {
+                print("Video couldn't be exported: \(assetExport.error)")
+            }
+        })
+    }
+    
+    public func exportWithFirstFrame(completion: (NSURL, UIImage) -> ()) {
+        export { exportedVideoURL in
+            let asset = AVURLAsset(URL: exportedVideoURL)
+            let imageGenerator = AVAssetImageGenerator(asset: asset)
+            do {
+                let CGImage = try imageGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
+                let image = UIImage(CGImage: CGImage)
+                completion(exportedVideoURL, image)
+            } catch {
+                print("AVAssetImageGenerator couldn't create a CGImage, completion block won't run: \(error)")
+            }
+        }
+    }
+}

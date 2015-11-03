@@ -18,6 +18,6 @@ extension UIFont {
 
 extension UIImage {
     convenience init?(key: R.ImagesAssets) {
-        self.init(named: key.rawValue, inBundle: NKRecorderViewController.currentBundle, compatibleWithTraitCollection: nil)
+        self.init(named: key.rawValue, inBundle: VideoMakerViewController.currentBundle, compatibleWithTraitCollection: nil)
     }
 }

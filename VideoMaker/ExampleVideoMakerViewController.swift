@@ -10,13 +10,13 @@ import UIKit
 import NKRecorder
 
 class ExampleVideoMakerViewController: UIViewController {
-    var recorderVC: NKRecorderViewController = NKRecorderViewController.mainNavController()
+    var videoMakerVC: VideoMakerViewController = VideoMakerViewController.mainController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recorderVC.recorderDelegate = self
-        addChildViewController(recorderVC)
-        view.addSubview(recorderVC.view)
+        videoMakerVC.videoMakerDelegate = self
+        addChildViewController(videoMakerVC)
+        view.addSubview(videoMakerVC.view)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -24,24 +24,24 @@ class ExampleVideoMakerViewController: UIViewController {
     }
 }
 
-extension ExampleVideoMakerViewController: NKRecorderDelegate {
-    func willStartRecording(recorderViewController: NKRecorderViewController) {
+extension ExampleVideoMakerViewController: VideoMakerDelegate {
+    func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
         
     }
     
-    func didCancelRecording(recorderViewController: NKRecorderViewController) {
+    func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
         
     }
     
-    func didProduceVideo(recorderViewController: NKRecorderViewController, videoSession: NKVideoSession) {
-        recorderVC.freezeAndShowIndicator()
-        videoSession.export() { (outputURL) in
+    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession) {
+        videoMakerVC.freezeAndShowIndicator()
+        session.export() { (outputURL) in
             UISaveVideoAtPathToSavedPhotosAlbum(outputURL.path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
         }
     }
     
     func video(videoPath: NSString?, didFinishSavingWithError error: NSError?, contextInfo: UnsafePointer<()>) {
-        recorderVC.unfreezeAndHideIndicator()
+        videoMakerVC.unfreezeAndHideIndicator()
         if (error == nil) {
             UIAlertView(title: "Saved to camera roll", message:"", delegate: nil, cancelButtonTitle: "Done").show()
         } else {

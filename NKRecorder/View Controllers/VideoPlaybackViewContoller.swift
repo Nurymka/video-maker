@@ -11,7 +11,7 @@ import SCRecorder
 
 protocol VideoPlaybackViewControllerDelegate: class {
     func videoPlaybackDidCancel(videoPlayback: VideoPlaybackViewController)
-    func videoPlayback(videoPlayback: VideoPlaybackViewController, didProduceVideoSession videoSession: NKVideoSession)
+    func videoPlayback(videoPlayback: VideoPlaybackViewController, didProduceVideoSession videoSession: VideoSession)
 }
 
 class VideoPlaybackViewController: BaseViewController {
@@ -45,6 +45,7 @@ class VideoPlaybackViewController: BaseViewController {
     var initialAudioTypeButtonState: AudioTypeButton.ButtonState = .OriginalSound
     
     weak var delegate: VideoPlaybackViewControllerDelegate?
+    
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,7 +201,7 @@ class VideoPlaybackViewController: BaseViewController {
         if let recordSession = recordSession, composition = composition {
             let overlayImage = getOverlayImageFromView(captionView)
             let overlayImagePosition = captionView?.frame.origin
-            delegate?.videoPlayback(self, didProduceVideoSession: NKVideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
+            delegate?.videoPlayback(self, didProduceVideoSession: VideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
             delegate?.videoPlaybackDidCancel(self)
         }
     }
