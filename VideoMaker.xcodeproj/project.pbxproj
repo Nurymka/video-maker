@@ -91,7 +91,7 @@
 		7D01C7E21BD4C5140093E181 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		7D01C7E51BD4C5B00093E181 /* ResourceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtensions.swift; sourceTree = "<group>"; };
 		7D01C7E71BD4C8760093E181 /* FontKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
-		7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VMViewController.swift; path = "../View Controllers/VMViewController.swift"; sourceTree = "<group>"; };
+		7D03CDAF1BE1A55E007AE8AC /* VMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMViewController.swift; sourceTree = "<group>"; };
 		7D0BE7EB1BC8D7A600697341 /* ChooseMusicTrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMusicTrackTableViewController.swift; sourceTree = "<group>"; };
 		7D0E59881BCFE8F400F7A2B4 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		7D0E598A1BCFE93C00F7A2B4 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };

@@ -22,7 +22,7 @@ class OverlayCaptionView: UITextField {
     init(superviewFrame: CGRect) {
         super.init(frame: CGRectZero)
         delegate = self
-        text = "my caption"
+        text = ""
         textColor = UIColor.whiteColor()
         font = FontKit.captionFont
         backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)

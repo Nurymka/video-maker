@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.1.0)
+  - Alamofire (3.1.2)
   - EZAudio (1.1.2):
     - EZAudio/Full (= 1.1.2)
   - EZAudio/Core (1.1.2)
@@ -29,7 +29,7 @@ EXTERNAL SOURCES:
     :path: ~/Documents/Taylr/video-maker/
 
 SPEC CHECKSUMS:
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
