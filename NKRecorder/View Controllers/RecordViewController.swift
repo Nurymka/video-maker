@@ -21,7 +21,7 @@ class RecordViewController: BaseViewController {
     let kMinimumRecordingLength = 1.0
     
     var varMaximumRecordingLength = 15.0
-    @IBOutlet weak var UIElementsContainer: UIView!
+    @IBOutlet weak var UIElementsContainerView: UIElementsContainer!
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var recordButton: RecordButton!
     @IBOutlet weak var timescaleButton: UIButton!
@@ -65,6 +65,10 @@ class RecordViewController: BaseViewController {
         recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
         
         UILabel.my_appearanceWhenContainedIn(UIAlertController).setAppearanceFontForAlertController(nil)
+        
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapRecognized:")
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        previewView.addGestureRecognizer(doubleTapGestureRecognizer)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -132,6 +136,7 @@ class RecordViewController: BaseViewController {
             print("recordingFinished called")
         }
     }
+    
     
     // TODO: - change retake button function to delete last segment
     @IBAction func retakeButtonPressed(sender: AnyObject) {
@@ -234,6 +239,10 @@ class RecordViewController: BaseViewController {
     
     @IBAction func flashButtonPressed(sender: AnyObject) {
         recorder.flashMode = recorder.flashMode == .Off ? .Light : .Off
+    }
+    
+    func doubleTapRecognized(recoginzer: UITapGestureRecognizer) {
+        reverseCameraButtonPressed(self)
     }
     
 // MARK: - Segue Related
