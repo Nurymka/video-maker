@@ -238,8 +238,8 @@ class VideoPlaybackViewController: BaseViewController {
     func tapGestureRecognized(recognizer: UITapGestureRecognizer) {
         if let isEditing = captionView?.editing where isEditing == true {
             captionView?.endEditing(true)
-        } else {
-            playOrPauseVideoOnTap()
+        } else if captionView == nil {
+            insertCaptionPressed(self)
         }
     }
     
@@ -379,11 +379,11 @@ class VideoPlaybackViewController: BaseViewController {
 //        }
 //    }
     
-    func playOrPauseVideoOnTap() {
-        if let isPlaying = player?.isPlaying {
-            isPlaying ? player?.pause() : player?.play()
-        }
-    }
+//    func playOrPauseVideoOnTap() {
+//        if let isPlaying = player?.isPlaying {
+//            isPlaying ? player?.pause() : player?.play()
+//        }
+//    }
     
     func keyboardWillShow(notification: NSNotification) {
         if let captionView = captionView {
