@@ -69,6 +69,7 @@ class RecordViewController: BaseViewController {
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapRecognized:")
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         previewView.addGestureRecognizer(doubleTapGestureRecognizer)
+        print("(__FUNCTION__) called in RecordViewController")
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -107,11 +108,9 @@ class RecordViewController: BaseViewController {
     }
     
     func prepareSession() {
-        if (recorder.session == nil)
+        if (recordSession?.duration == kCMTimeZero)
         {
-            let session = SCRecordSession()
-            session.fileType = AVFileTypeMPEG4
-            recorder.session = session
+            recorder.session = recordSession
             scaledRecordedDuration = 0.0
             previousDuration = nil
             deleteLastSegmentButton.enabled = false
@@ -140,7 +139,7 @@ class RecordViewController: BaseViewController {
     
     // TODO: - change retake button function to delete last segment
     @IBAction func retakeButtonPressed(sender: AnyObject) {
-        if (recorder.session != nil) {
+        if (recorder.session?.duration != kCMTimeZero) {
             if (sender is VideoPlaybackViewController) {
                 audioTypeButton.buttonState = .OriginalSound
                 musicTrackInfo = nil
@@ -150,14 +149,14 @@ class RecordViewController: BaseViewController {
             }
             recordButton.progress = 0.0
             recorder.pause()
-            recorder.session?.cancelSession({})
-            recorder.session = nil
+            recorder.session?.cancelSession(nil)
             prepareSession()
         }
         delegate?.recorderDidCancelRecording(self)
     }
     
     func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
+        
         if (touchDetector.state == .Began) {
             delegate?.recorderWillStartRecording(self)
             recorder.record()
@@ -354,6 +353,7 @@ class RecordViewController: BaseViewController {
     }
     
     func resetTimescaleSegmentedControl() {
+        timescaleSegmentedControlWrapper.layer.opacity = 1.0
         configureTimescaleSegmentedControlOpacity()
         timescaleSegmentedControl.selectedSegmentIndex = TimescaleSegmentedControlIndex.x1.rawValue
     }

@@ -26,6 +26,9 @@ public final class VideoMakerViewController: UIViewController {
     
     public static var shouldLoadFontsAtLaunch = true
     static let currentBundle = NSBundle(forClass: VideoMakerViewController.self)
+    
+    // available to recordViewController
+    var mainRecordSession: SCRecordSession?
 // MARK: - Public
     public class func mainController() -> VideoMakerViewController {
         if shouldLoadFontsAtLaunch == true {
@@ -63,7 +66,10 @@ public final class VideoMakerViewController: UIViewController {
 // MARK: - Internal
     override public func viewDidLoad() {
         super.viewDidLoad()
+        mainRecordSession = SCRecordSession()
+        mainRecordSession?.fileType = AVFileTypeMPEG4
         recorderVC = storyboard!.instantiateViewControllerWithIdentifier("Recorder") as! RecordViewController
+        recorderVC.recordSession = mainRecordSession
         videoPlaybackVC = storyboard!.instantiateViewControllerWithIdentifier("Video Playback") as! VideoPlaybackViewController
         recorderVC.delegate = self
         videoPlaybackVC.delegate = self
