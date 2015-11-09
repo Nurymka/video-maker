@@ -202,6 +202,7 @@ class VideoPlaybackViewController: BaseViewController {
             let overlayImage = getOverlayImageFromView(captionView)
             let overlayImagePosition = captionView?.frame.origin
             delegate?.videoPlayback(self, didProduceVideoSession: VideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
+            removeCaptionView()
             delegate?.videoPlaybackDidCancel(self)
         }
     }
@@ -306,6 +307,12 @@ class VideoPlaybackViewController: BaseViewController {
             trackNameLabel.layer.opacity = 0.0
             trackNameLabelBG.layer.opacity = 0.0
             editAudioButton.layer.opacity = 0.0
+        }
+    }
+    
+    func removeCaptionView() {
+        if captionView != nil {
+            insertCaptionPressed(self)
         }
     }
 //    
