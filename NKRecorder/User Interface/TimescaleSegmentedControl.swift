@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum TimescaleSegmentedControlIndex: Int {
+    case x025, x05, x1, x15, x20
+}
+
 class TimescaleSegmentedControl: UISegmentedControl {
     
     // segmented control has a pointing triangle under it, making it look like a bubble

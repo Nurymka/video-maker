@@ -145,6 +145,7 @@ class RecordViewController: BaseViewController {
                 audioTypeButton.buttonState = .OriginalSound
                 musicTrackInfo = nil
                 hideNavigationControlButtons()
+                resetTimescaleSegmentedControl()
                 configureTrackNameLabelAndPlayer()
             }
             recordButton.progress = 0.0
@@ -189,9 +190,7 @@ class RecordViewController: BaseViewController {
             snailImageView.layer.addAnimation(fadeInAnim, forKey: "fadeIn")
             horseImageView.layer.addAnimation(fadeInAnim, forKey: "fadeIn")
             
-            timescaleSegmentedControlWrapper.layer.opacity = 1.0
-            snailImageView.layer.opacity = 1.0
-            horseImageView.layer.opacity = 1.0
+            configureTimescaleSegmentedControlOpacity()
         } else if timescaleSegmentedControlWrapper.layer.opacity == 1.0 {
             let fadeOutAnim = AnimationKit.fadeOut()
             
@@ -199,9 +198,7 @@ class RecordViewController: BaseViewController {
             snailImageView.layer.addAnimation(fadeOutAnim, forKey: "fadeOut")
             horseImageView.layer.addAnimation(fadeOutAnim, forKey: "fadeOut")
             
-            timescaleSegmentedControlWrapper.layer.opacity = 0.0
-            snailImageView.layer.opacity = 0.0
-            horseImageView.layer.opacity = 0.0
+            configureTimescaleSegmentedControlOpacity()
         }
     }
     
@@ -291,11 +288,11 @@ class RecordViewController: BaseViewController {
     
     func getVideoTimeScaleFromUISegment(index: Int) -> Float {
         switch (index) {
-        case 0: return 4.0
-        case 1: return 2.0
-        case 2: return 1.0
-        case 3: return 0.75
-        case 4: return 0.5
+        case TimescaleSegmentedControlIndex.x025.rawValue: return 4.0
+        case TimescaleSegmentedControlIndex.x05.rawValue: return 2.0
+        case TimescaleSegmentedControlIndex.x1.rawValue: return 1.0
+        case TimescaleSegmentedControlIndex.x15.rawValue: return 0.75
+        case TimescaleSegmentedControlIndex.x20.rawValue: return 0.5
         default: return 1.0
         }
     }
@@ -342,6 +339,23 @@ class RecordViewController: BaseViewController {
     func hideNavigationControlButtons() {
         doneButton.layer.opacity = 0.0
         deleteLastSegmentButton.layer.opacity = 0.0
+    }
+    
+    func configureTimescaleSegmentedControlOpacity() {
+        if timescaleSegmentedControlWrapper.layer.opacity == 0.0 {
+            timescaleSegmentedControlWrapper.layer.opacity = 1.0
+            snailImageView.layer.opacity = 1.0
+            horseImageView.layer.opacity = 1.0
+        } else if timescaleSegmentedControlWrapper.layer.opacity == 1.0 {
+            timescaleSegmentedControlWrapper.layer.opacity = 0.0
+            snailImageView.layer.opacity = 0.0
+            horseImageView.layer.opacity = 0.0
+        }
+    }
+    
+    func resetTimescaleSegmentedControl() {
+        configureTimescaleSegmentedControlOpacity()
+        timescaleSegmentedControl.selectedSegmentIndex = TimescaleSegmentedControlIndex.x1.rawValue
     }
 }
 
