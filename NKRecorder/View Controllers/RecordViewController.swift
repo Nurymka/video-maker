@@ -38,7 +38,7 @@ class RecordViewController: BaseViewController {
     @IBOutlet weak var snailImageView: UIImageView!
     @IBOutlet weak var horseImageView: UIImageView!
     
-    var recorder: SCRecorder!
+    var recorder = SCRecorder.sharedRecorder()
     var recordSession: SCRecordSession?
     var player: AVAudioPlayer? // used for playing embedded music during recording
     
@@ -53,15 +53,10 @@ class RecordViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         varMaximumRecordingLength = kMaximumRecordingLength
-        recorder = SCRecorder()
-        if !recorder.startRunning() {
-            print("something went wrong: \(recorder.error)")
-        }
-        recorder.captureSessionPreset = AVCaptureSessionPreset640x480
+        
         //recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
         recorder.previewView = previewView
         recorder.delegate = self
-        recorder.keepMirroringOnWrite = true
         recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
         
         UILabel.my_appearanceWhenContainedIn(UIAlertController).setAppearanceFontForAlertController(nil)
@@ -69,7 +64,8 @@ class RecordViewController: BaseViewController {
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapRecognized:")
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         previewView.addGestureRecognizer(doubleTapGestureRecognizer)
-        print("(__FUNCTION__) called in RecordViewController")
+        
+        prepareSession()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -80,23 +76,19 @@ class RecordViewController: BaseViewController {
         super.viewWillAppear(animated)
         //navigationController?.setNavigationBarHidden(true, animated: true)
         print("musicTrackInfo: \(musicTrackInfo)")
-        prepareSession()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         recorder.previewViewFrameChanged()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        recorder.startRunning()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        recorder.stopRunning()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -109,9 +101,7 @@ class RecordViewController: BaseViewController {
     }
     
     func prepareSession() {
-        if (recordSession?.duration == kCMTimeZero)
-        {
-            recorder.session = recordSession
+        if (recordSession?.duration == kCMTimeZero) {
             scaledRecordedDuration = 0.0
             previousDuration = nil
             hideNavigationControlButtons()
@@ -308,11 +298,9 @@ class RecordViewController: BaseViewController {
                 try player = AVAudioPlayer(contentsOfURL: musicDataURL)
                 player?.prepareToPlay()
                 player?.enableRate = true
-                
                 if let duration = player?.duration {
                     varMaximumRecordingLength = duration < kMaximumRecordingLength ? duration : kMaximumRecordingLength
                 }
-                
             } catch {
                 print("AVAudioPlayer couldn't be inited: \(error)")
             }

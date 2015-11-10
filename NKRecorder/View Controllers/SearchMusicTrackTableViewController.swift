@@ -96,6 +96,10 @@ extension SearchMusicTrackTableViewController {
                 if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                     segueBackViewController.musicTrackInfo = trackInfo
                     musicDelegate?.searchMusicTrackChosen()
+                    if (segueBackViewController is RecordViewController) {
+                        let recordVC = segueBackViewController as! RecordViewController
+                        recordVC.prepareSession()
+                    }
                     currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
@@ -103,6 +107,10 @@ extension SearchMusicTrackTableViewController {
                     if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                         segueBackViewController.musicTrackInfo = trackInfo
                         musicDelegate?.searchMusicTrackChosen()
+                        if (segueBackViewController is RecordViewController) {
+                            let recordVC = segueBackViewController as! RecordViewController
+                            recordVC.prepareSession()
+                        }
                         currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                     }
                 } else {
@@ -112,6 +120,10 @@ extension SearchMusicTrackTableViewController {
                             if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                                 segueBackViewController.musicTrackInfo = trackInfo
                                 self.musicDelegate?.searchMusicTrackChosen()
+                                if (segueBackViewController is RecordViewController) {
+                                    let recordVC = segueBackViewController as! RecordViewController
+                                    recordVC.prepareSession()
+                                }
                                 currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                             }
                         case .Failure(let error):

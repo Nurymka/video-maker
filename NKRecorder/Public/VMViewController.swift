@@ -28,8 +28,26 @@ public final class VideoMakerViewController: UIViewController {
     static let currentBundle = NSBundle(forClass: VideoMakerViewController.self)
     
     // available to recordViewController
-    var mainRecordSession: SCRecordSession?
+    var sharedRecordSession: SCRecordSession?
 // MARK: - Public
+    
+    public class func preloadRecorderAsynchronously() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
+                let recorder = SCRecorder.sharedRecorder()
+                if !recorder.startRunning() {
+                    print("something went wrong: \(recorder.error)")
+                }
+                recorder.captureSessionPreset = AVCaptureSessionPreset640x480
+                recorder.keepMirroringOnWrite = true
+                recorder.startRunning()
+                let session = SCRecordSession()
+                session.fileType = AVFileTypeMPEG4
+                recorder.session = session
+            }
+        }
+    }
+    
     public class func mainController() -> VideoMakerViewController {
         if shouldLoadFontsAtLaunch == true {
             var once: dispatch_once_t = 0
@@ -66,10 +84,7 @@ public final class VideoMakerViewController: UIViewController {
 // MARK: - Internal
     override public func viewDidLoad() {
         super.viewDidLoad()
-        mainRecordSession = SCRecordSession()
-        mainRecordSession?.fileType = AVFileTypeMPEG4
         recorderVC = storyboard!.instantiateViewControllerWithIdentifier("Recorder") as! RecordViewController
-        recorderVC.recordSession = mainRecordSession
         videoPlaybackVC = storyboard!.instantiateViewControllerWithIdentifier("Video Playback") as! VideoPlaybackViewController
         recorderVC.delegate = self
         videoPlaybackVC.delegate = self

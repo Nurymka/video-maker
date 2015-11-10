@@ -95,6 +95,10 @@ extension ChooseMusicTrackTableViewController {
             if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                 segueBackViewController.musicTrackInfo = trackInfo
                 musicDelegate?.musicTrackChosen()
+                if (segueBackViewController is RecordViewController) {
+                    let recordVC = segueBackViewController as! RecordViewController
+                    recordVC.prepareSession()
+                }
                 dismissViewControllerAnimated(true, completion: nil)
             }
         } else {
@@ -102,6 +106,10 @@ extension ChooseMusicTrackTableViewController {
                 if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                     segueBackViewController.musicTrackInfo = trackInfo
                     musicDelegate?.musicTrackChosen()
+                    if (segueBackViewController is RecordViewController) {
+                        let recordVC = segueBackViewController as! RecordViewController
+                        recordVC.prepareSession()
+                    }
                     dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
@@ -111,6 +119,10 @@ extension ChooseMusicTrackTableViewController {
                         if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                             segueBackViewController.musicTrackInfo = trackInfo
                             self.musicDelegate?.musicTrackChosen()
+                            if (segueBackViewController is RecordViewController) {
+                                let recordVC = segueBackViewController as! RecordViewController
+                                recordVC.prepareSession()
+                            }
                             self.dismissViewControllerAnimated(true, completion: nil)
                         }
                     case .Failure(let error):
