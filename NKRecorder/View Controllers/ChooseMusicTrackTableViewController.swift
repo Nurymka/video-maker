@@ -10,6 +10,10 @@ import UIKit
 import Alamofire
 import AVFoundation
 
+protocol ChooseMusicTrackTableViewControllerDelegate: class {
+    func musicTrackChosen()
+}
+
 class ChooseMusicTrackTableViewController: UITableViewController {
     var tracks: [TrackInfo] = []
     let musicCache = NSCache()
@@ -27,6 +31,9 @@ class ChooseMusicTrackTableViewController: UITableViewController {
     
     // constants
     let kCellIdentifier = "TrackItemCellIdentifier"
+    
+    // delegate
+    var musicDelegate: ChooseMusicTrackTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,12 +94,14 @@ extension ChooseMusicTrackTableViewController {
         if LocalMusicManager.trackExistsOnDisk(trackId: trackId) {
             if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                 segueBackViewController.musicTrackInfo = trackInfo
+                musicDelegate?.musicTrackChosen()
                 dismissViewControllerAnimated(true, completion: nil)
             }
         } else {
             if let musicData = musicCache.objectForKey(trackId) as? NSData, segueBackViewController = segueBackViewController {
                 if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                     segueBackViewController.musicTrackInfo = trackInfo
+                    musicDelegate?.musicTrackChosen()
                     dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
@@ -101,6 +110,7 @@ extension ChooseMusicTrackTableViewController {
                     case .Success(let data):
                         if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                             segueBackViewController.musicTrackInfo = trackInfo
+                            self.musicDelegate?.musicTrackChosen()
                             self.dismissViewControllerAnimated(true, completion: nil)
                         }
                     case .Failure(let error):

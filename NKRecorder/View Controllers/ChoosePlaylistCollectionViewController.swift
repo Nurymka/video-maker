@@ -33,6 +33,7 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
         configureNavigationBarAppearance()
         if let searchMusicTrackController = storyboard?.instantiateViewControllerWithIdentifier("SearchMusicTrackTableViewController") as? SearchMusicTrackTableViewController {
             searchMusicTrackController.currentNavigationController = navigationController
+            searchMusicTrackController.musicDelegate = self
             searchController = SongSearchController(searchResultsController: searchMusicTrackController)
         }
         searchController.searchBar.sizeToFit()
@@ -58,7 +59,6 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationBarAppearanceBackToDefault()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -69,6 +69,7 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
                 chooseMusicViewController.title = playlistItem.name
                 chooseMusicViewController.playlistItem = playlistItem
                 chooseMusicViewController.segueBackViewController = segueBackViewController
+                chooseMusicViewController.musicDelegate = self
             }
         }
     }
@@ -94,6 +95,7 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     
 // MARK: - Button Touch Handlers
     func backButtonPressed() {
+        navigationBarAppearanceBackToDefault()
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
@@ -132,6 +134,17 @@ extension ChoosePlaylistCollectionViewController: UICollectionViewDelegateFlowLa
         } else {
             return CGSize(width: 150.0, height: 150.0)
         }
+    }
+}
+
+// Reseting nav bar appearance
+extension ChoosePlaylistCollectionViewController: ChooseMusicTrackTableViewControllerDelegate, SearchMusicTrackTableViewControllerDelegate {
+    func musicTrackChosen() {
+        navigationBarAppearanceBackToDefault()
+    }
+    
+    func searchMusicTrackChosen() {
+        navigationBarAppearanceBackToDefault()
     }
 }
 

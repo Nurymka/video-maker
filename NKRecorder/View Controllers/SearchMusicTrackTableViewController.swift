@@ -12,6 +12,10 @@ import Alamofire
 import AVFoundation
 import SDWebImage
 
+protocol SearchMusicTrackTableViewControllerDelegate: class {
+    func searchMusicTrackChosen()
+}
+
 class SearchMusicTrackTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate {
     
     var tracks: [TrackInfo] = []
@@ -31,6 +35,9 @@ class SearchMusicTrackTableViewController: UITableViewController, UISearchBarDel
     
     var currentNavigationController: UINavigationController?
     var segueBackViewController: BaseViewController?
+    
+    // delegate
+    var musicDelegate: SearchMusicTrackTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +95,14 @@ extension SearchMusicTrackTableViewController {
             if LocalMusicManager.trackExistsOnDisk(trackId: trackId) {
                 if let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = segueBackViewController {
                     segueBackViewController.musicTrackInfo = trackInfo
+                    musicDelegate?.searchMusicTrackChosen()
                     currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
                 if let musicData = musicCache.objectForKey(trackURL) as? NSData, segueBackViewController = segueBackViewController {
                     if LocalMusicManager.writeMusicDataToDisk(musicData, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId) {
                         segueBackViewController.musicTrackInfo = trackInfo
+                        musicDelegate?.searchMusicTrackChosen()
                         currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                     }
                 } else {
@@ -102,6 +111,7 @@ extension SearchMusicTrackTableViewController {
                         case .Success(let data):
                             if LocalMusicManager.writeMusicDataToDisk(data, trackId: trackId, trackName: trackName, artistName: artistName), let trackInfo = LocalMusicManager.returnTrackInfoFromDisk(trackId: trackId), segueBackViewController = self.segueBackViewController {
                                 segueBackViewController.musicTrackInfo = trackInfo
+                                self.musicDelegate?.searchMusicTrackChosen()
                                 currentNavigationController.dismissViewControllerAnimated(true, completion: nil)
                             }
                         case .Failure(let error):

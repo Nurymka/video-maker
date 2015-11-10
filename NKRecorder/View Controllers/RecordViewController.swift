@@ -78,7 +78,7 @@ class RecordViewController: BaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        //navigationController?.setNavigationBarHidden(true, animated: true)
         print("musicTrackInfo: \(musicTrackInfo)")
         prepareSession()
     }
@@ -86,10 +86,12 @@ class RecordViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         recorder.previewViewFrameChanged()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+
         recorder.startRunning()
     }
     
