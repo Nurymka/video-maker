@@ -91,7 +91,6 @@ class RecordViewController: BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
         recorder.startRunning()
     }
     
@@ -115,8 +114,7 @@ class RecordViewController: BaseViewController {
             recorder.session = recordSession
             scaledRecordedDuration = 0.0
             previousDuration = nil
-            deleteLastSegmentButton.enabled = false
-            doneButton.enabled = false
+            hideNavigationControlButtons()
             updateRecordingTime()
         }
         configureTrackNameLabelAndPlayer()
@@ -278,7 +276,7 @@ class RecordViewController: BaseViewController {
         }
         
         if scaledRecordedDuration >= kMinimumRecordingLength {
-            enableNavigationControlButtons()
+            showNavigationControlButtons()
         }
         
         if scaledRecordedDuration >= varMaximumRecordingLength {
@@ -327,14 +325,9 @@ class RecordViewController: BaseViewController {
         }
     }
     
-    func enableNavigationControlButtons() {
-        if doneButton.layer.opacity == 0.0 {
-            doneButton.layer.opacity = 1.0
-            deleteLastSegmentButton.layer.opacity = 1.0
-        }
-        
-        doneButton.enabled = true
-        deleteLastSegmentButton.enabled = true
+    func showNavigationControlButtons() {
+        doneButton.layer.opacity = 1.0
+        deleteLastSegmentButton.layer.opacity = 1.0
     }
     
     func hideNavigationControlButtons() {
