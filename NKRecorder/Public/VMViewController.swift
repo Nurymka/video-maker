@@ -148,6 +148,7 @@ extension VideoMakerViewController: RecordViewControllerDelegate {
         videoPlaybackVC.recordSession = session
         videoPlaybackVC.musicTrackInfo = recorder.musicTrackInfo
         videoPlaybackVC.initialAudioTypeButtonState = recorder.audioTypeButton.buttonState
+        videoPlaybackVC.recordingDuration = recorder.scaledRecordedDuration
         showVideoPlayback()
     }
 }
@@ -169,8 +170,9 @@ public struct VideoSession {
     let overlayImage: UIImage?
     let overlayImagePosition: CGPoint?
     let filter: SCFilter?
+    let duration: NSTimeInterval
     
-    public func export(completion: (NSURL) -> ()) {
+    public func export(completion: (NSURL, NSTimeInterval) -> ()) {
         let assetExport = SCAssetExportSession(asset: composition)
         assetExport.outputUrl = recordSession.outputUrl
         assetExport.outputFileType = AVFileTypeMPEG4
@@ -186,7 +188,7 @@ public struct VideoSession {
         assetExport.exportAsynchronouslyWithCompletionHandler({
             print(String(format: "Completed compression in %fs", CACurrentMediaTime() - timestamp))
             if (assetExport.error == nil) {
-                completion(assetExport.outputUrl!)
+                completion(assetExport.outputUrl!, self.duration)
             }
             else {
                 print("Video couldn't be exported: \(assetExport.error)")
@@ -194,14 +196,15 @@ public struct VideoSession {
         })
     }
     
-    public func exportWithFirstFrame(completion: (NSURL, UIImage) -> ()) {
-        export { exportedVideoURL in
+    public func exportWithFirstFrame(completion: (NSURL, UIImage, NSTimeInterval) -> ()) {
+        export { exportedVideoURL, duration in
+            
             let asset = AVURLAsset(URL: exportedVideoURL)
             let imageGenerator = AVAssetImageGenerator(asset: asset)
             do {
                 let CGImage = try imageGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
                 let image = UIImage(CGImage: CGImage)
-                completion(exportedVideoURL, image)
+                completion(exportedVideoURL, image, duration)
             } catch {
                 print("AVAssetImageGenerator couldn't create a CGImage, completion block won't run: \(error)")
             }

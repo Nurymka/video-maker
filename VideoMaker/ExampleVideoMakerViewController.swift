@@ -35,7 +35,7 @@ extension ExampleVideoMakerViewController: VideoMakerDelegate {
     
     func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession) {
         videoMakerVC.freezeAndShowIndicator()
-        session.export() { (outputURL) in
+        session.export() { (outputURL, duration) in
             UISaveVideoAtPathToSavedPhotosAlbum(outputURL.path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
         }
     }

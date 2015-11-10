@@ -238,13 +238,16 @@ class RecordViewController: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "Show Video Playback") {
-            let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
-            videoPlaybackViewController.recordSession = recordSession
-            videoPlaybackViewController.musicTrackInfo = musicTrackInfo
-            videoPlaybackViewController.initialAudioTypeButtonState = audioTypeButton.buttonState
-            
-        } else if segue.identifier == "Choose Music Playlist" {
+// REMINDER: Show Video Playback segue is replaced with VideoMakerViewController's showVideoPlayback() method
+//        if (segue.identifier == "Show Video Playback") {
+//            let videoPlaybackViewController: VideoPlaybackViewController = segue.destinationViewController as! VideoPlaybackViewController
+//            videoPlaybackViewController.recordSession = recordSession
+//            videoPlaybackViewController.musicTrackInfo = musicTrackInfo
+//            videoPlaybackViewController.initialAudioTypeButtonState = audioTypeButton.buttonState
+//            videoPlaybackViewController.recordingDuration = scaledRecordedDuration
+//
+//        }
+        if segue.identifier == "Choose Music Playlist" {
             let targetNavController = segue.destinationViewController as! UINavigationController
             let choosePlaylistViewController = targetNavController.topViewController as! ChoosePlaylistCollectionViewController
             choosePlaylistViewController.segueBackViewController = self

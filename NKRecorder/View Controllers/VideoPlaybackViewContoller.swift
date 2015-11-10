@@ -34,7 +34,7 @@ class VideoPlaybackViewController: BaseViewController {
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var composition: AVMutableComposition?
-    
+    var recordingDuration: NSTimeInterval = 0.0 // set during initalization
     var captionView: OverlayCaptionView?
     var captionViewPanGestureRecognizer: UIPanGestureRecognizer?
     
@@ -201,7 +201,7 @@ class VideoPlaybackViewController: BaseViewController {
         if let recordSession = recordSession, composition = composition {
             let overlayImage = getOverlayImageFromView(captionView)
             let overlayImagePosition = captionView?.frame.origin
-            delegate?.videoPlayback(self, didProduceVideoSession: VideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter))
+            delegate?.videoPlayback(self, didProduceVideoSession: VideoSession(recordSession: recordSession, composition: composition, overlayImage: overlayImage, overlayImagePosition: overlayImagePosition, filter: filterSwipableView.selectedFilter, duration: recordingDuration))
             removeCaptionView()
             delegate?.videoPlaybackDidCancel(self)
         }
