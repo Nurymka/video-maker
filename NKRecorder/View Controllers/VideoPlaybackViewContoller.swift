@@ -248,6 +248,7 @@ class VideoPlaybackViewController: BaseViewController {
         let alertController = UIAlertController(title: "Discard Recording", message: "Do you really want to discard your current recording?", preferredStyle: .Alert)
         
         let yesAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
+            self.removeCaptionView()
             self.delegate?.videoPlaybackDidCancel(self)
         }
         alertController.addAction(yesAction)
