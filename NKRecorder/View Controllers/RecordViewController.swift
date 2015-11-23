@@ -37,6 +37,9 @@ class RecordViewController: BaseViewController {
 
     @IBOutlet weak var snailImageView: UIImageView!
     @IBOutlet weak var horseImageView: UIImageView!
+
+    @IBOutlet weak var UIElementsTopConstraint: NSLayoutConstraint!
+    var topOffsetConstant: CGFloat = 0.0
     
     var recorder = SCRecorder.sharedRecorder()
     var recordSession: SCRecordSession?
@@ -52,6 +55,9 @@ class RecordViewController: BaseViewController {
     // microphone permissions
     var shouldShowMicrophoneNotEnabledAlert = false
     var microphoneNotEnabledAlert: UIAlertController?
+    
+
+    
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +74,8 @@ class RecordViewController: BaseViewController {
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         previewView.addGestureRecognizer(doubleTapGestureRecognizer)
         
+        UIElementsTopConstraint.constant = topOffsetConstant
+        
         prepareSession()
     }
     
@@ -79,7 +87,7 @@ class RecordViewController: BaseViewController {
         super.viewWillAppear(animated)
         //navigationController?.setNavigationBarHidden(true, animated: true)
         print("musicTrackInfo: \(musicTrackInfo)")
-        checkForMicrophone()
+        checkForMicrophoneAlert()
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,6 +97,7 @@ class RecordViewController: BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        checkCamera()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -114,13 +123,69 @@ class RecordViewController: BaseViewController {
         configureTrackNameLabelAndPlayer()
     }
     
-    func checkForMicrophone() {
+    func checkForMicrophoneAlert() {
         let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeAudio)
         if authStatus != .Authorized {
             self.microphoneNotEnabledAlert = UIAlertController(title: "Unable to access microphone", message: "Please remove restrictions on the microphone to have sound in your videos (Settings -> Privacy -> Microphone -> On).", preferredStyle: .Alert)
             
             self.microphoneNotEnabledAlert!.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
             shouldShowMicrophoneNotEnabledAlert = true
+        } else if authStatus == .Authorized {
+            shouldShowMicrophoneNotEnabledAlert = false
+        }
+    }
+    
+// MARK: - Camera Permissions
+    
+    func checkCamera() {
+        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        print("Camera: \(authStatus.rawValue)")
+        switch authStatus {
+        case .Authorized: checkMicrophone()
+        case .Denied: alertForCameraAndMicrophoneAccessViaSetting()
+        case .NotDetermined: requestForCameraAccessInitially()
+        default: requestForCameraAccessInitially()
+        }
+    }
+    
+    func requestForCameraAccessInitially() {
+        if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { granted in
+                if !granted {
+                    self.alertForCameraAndMicrophoneAccessViaSetting()
+                }
+            }
+        }
+    }
+    
+    func alertForCameraAndMicrophoneAccessViaSetting() {
+        let alert = UIAlertController(title: "Oops", message: "Both camera & microphone access is required for recording", preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: .Cancel) { alert in
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            })
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func checkMicrophone() {
+        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeAudio)
+        print("Microphone: \(authStatus.rawValue)")
+        switch authStatus {
+        case .Authorized: break
+        case .Denied: alertForCameraAndMicrophoneAccessViaSetting()
+        case .NotDetermined: requestForMicrophoneAccessInitially()
+        default: requestForMicrophoneAccessInitially()
+        }
+    }
+    
+    func requestForMicrophoneAccessInitially() {
+        if AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio).count > 0 {
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio) { granted in
+                if !granted {
+                    self.alertForCameraAndMicrophoneAccessViaSetting()
+                }
+            }
         }
     }
     

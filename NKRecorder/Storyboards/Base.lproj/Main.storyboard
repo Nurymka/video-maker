@@ -38,10 +38,10 @@
                                 <animations/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQJ-Nl-Hbb" userLabel="UI Elements Container" customClass="UIElementsContainer" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-fn-joI" userLabel="Delete Last Segment Button">
-                                        <rect key="frame" x="18" y="442" width="35" height="35"/>
+                                        <rect key="frame" x="18" y="486" width="35" height="35"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="eiM-hK-ZIh"/>
@@ -55,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-AV-Mdq" customClass="RecordButton" customModule="NKRecorder" customModuleProvider="target">
-                                        <rect key="frame" x="110" y="409" width="100" height="100"/>
+                                        <rect key="frame" x="110" y="453" width="100" height="100"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -64,7 +64,7 @@
                                         </constraints>
                                     </view>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-IC-r9s" userLabel="Segmented Control Wrapper" customClass="TimescaleSegmentedControlWrapper" customModule="NKRecorder" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="318" width="288" height="34"/>
+                                        <rect key="frame" x="16" y="362" width="288" height="34"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-PY-y1A" customClass="TimescaleSegmentedControl" customModule="NKRecorder" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
@@ -92,7 +92,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cao-jM-A8e">
-                                        <rect key="frame" x="138" y="357" width="44" height="44"/>
+                                        <rect key="frame" x="138" y="401" width="44" height="44"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
@@ -104,11 +104,11 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snail" translatesAutoresizingMaskIntoConstraints="NO" id="SGO-Um-L04">
-                                        <rect key="frame" x="30" y="353" width="28" height="15"/>
+                                        <rect key="frame" x="30" y="397" width="28" height="15"/>
                                         <animations/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horse" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-NW-pfo">
-                                        <rect key="frame" x="261" y="351" width="25" height="21"/>
+                                        <rect key="frame" x="261" y="395" width="25" height="21"/>
                                         <animations/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GI-or-ZJ7" userLabel="Track Name BG">
@@ -126,7 +126,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="34" width="176" height="21"/>
+                                        <rect key="frame" x="71" y="33" width="176" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -178,7 +178,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-BD-J2q">
-                                        <rect key="frame" x="255" y="434" width="50" height="50"/>
+                                        <rect key="frame" x="255" y="478" width="50" height="50"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="E3r-Vy-MRv"/>
@@ -227,24 +227,23 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="5rZ-D8-IHK"/>
                             <constraint firstItem="qTA-SU-fsN" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="6Gk-Wm-ggW"/>
                             <constraint firstAttribute="bottom" secondItem="WQJ-Nl-Hbb" secondAttribute="bottom" id="Ahf-jw-CeU"/>
                             <constraint firstItem="qTA-SU-fsN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Eg8-eJ-ZP0"/>
-                            <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="JBX-io-Hpi"/>
                             <constraint firstAttribute="trailing" secondItem="WQJ-Nl-Hbb" secondAttribute="trailing" id="Lld-dY-99I"/>
                             <constraint firstAttribute="trailing" secondItem="qTA-SU-fsN" secondAttribute="trailing" id="OJt-ys-pQs"/>
                             <constraint firstAttribute="bottom" secondItem="qTA-SU-fsN" secondAttribute="bottom" id="w6T-3t-xAf"/>
+                            <constraint firstItem="WQJ-Nl-Hbb" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="zHI-d3-ObW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WNF-ZK-oIM"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="UIElementsContainerView" destination="WQJ-Nl-Hbb" id="ds4-He-GzP"/>
+                        <outlet property="UIElementsTopConstraint" destination="zHI-d3-ObW" id="Mz5-Sj-xgP"/>
                         <outlet property="audioTypeButton" destination="2tj-aV-Juu" id="NRr-ER-cCq"/>
                         <outlet property="deleteLastSegmentButton" destination="cmA-fn-joI" id="sXo-Vr-fTQ"/>
                         <outlet property="doneButton" destination="e3e-BD-J2q" id="0hZ-Rg-wtV"/>
@@ -282,7 +281,7 @@
                                 <animations/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnz-Yo-wOJ" userLabel="UI Elements Container" customClass="UIElementsContainer" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNy-S1-Bmj" userLabel="Track Name BG">
                                         <rect key="frame" x="34" y="30" width="270" height="28"/>
@@ -339,7 +338,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCy-3P-zaY">
-                                        <rect key="frame" x="14" y="437" width="44" height="44"/>
+                                        <rect key="frame" x="14" y="481" width="44" height="44"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="8wj-4l-Vfr"/>
@@ -351,7 +350,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BZ-g5-gTb">
-                                        <rect key="frame" x="255" y="434" width="50" height="50"/>
+                                        <rect key="frame" x="255" y="478" width="50" height="50"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Koi-Rz-Q8w"/>
@@ -372,7 +371,6 @@
                                     <constraint firstItem="iCy-3P-zaY" firstAttribute="leading" secondItem="qnz-Yo-wOJ" secondAttribute="leading" constant="14" id="Aj9-P4-6X7"/>
                                     <constraint firstItem="d4G-p4-2pg" firstAttribute="centerY" secondItem="Glt-oE-t4V" secondAttribute="centerY" id="IQ6-I9-RyI"/>
                                     <constraint firstItem="Cxg-FM-ant" firstAttribute="top" secondItem="Glt-oE-t4V" secondAttribute="bottom" constant="30" id="IyD-t4-vpb"/>
-                                    <constraint firstAttribute="bottom" secondItem="iCy-3P-zaY" secondAttribute="bottom" constant="33" id="LAg-kE-mQn"/>
                                     <constraint firstAttribute="trailing" secondItem="Glt-oE-t4V" secondAttribute="trailing" constant="10" id="OKe-R6-Jhu"/>
                                     <constraint firstItem="iCy-3P-zaY" firstAttribute="centerY" secondItem="8BZ-g5-gTb" secondAttribute="centerY" id="Tv9-AS-g7c"/>
                                     <constraint firstAttribute="bottom" secondItem="8BZ-g5-gTb" secondAttribute="bottom" constant="40" id="Wtz-c4-TU7"/>
@@ -383,14 +381,10 @@
                                     <constraint firstItem="iD3-Ib-dzv" firstAttribute="centerY" secondItem="Glt-oE-t4V" secondAttribute="centerY" id="kho-FI-iHa"/>
                                     <constraint firstItem="d4G-p4-2pg" firstAttribute="leading" secondItem="iD3-Ib-dzv" secondAttribute="trailing" constant="8" id="w5j-Lp-HiW"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="LAg-kE-mQn"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="FrG-rf-qba" secondAttribute="bottom" id="663-t5-R4s"/>
                             <constraint firstAttribute="trailing" secondItem="qnz-Yo-wOJ" secondAttribute="trailing" id="OHw-Lf-qBs"/>
@@ -399,17 +393,16 @@
                             <constraint firstItem="qnz-Yo-wOJ" firstAttribute="leading" secondItem="Vc1-M0-u7K" secondAttribute="leading" id="R1C-zE-SW7"/>
                             <constraint firstAttribute="trailing" secondItem="FrG-rf-qba" secondAttribute="trailing" id="Tco-1t-CkQ"/>
                             <constraint firstItem="FrG-rf-qba" firstAttribute="top" secondItem="Vc1-M0-u7K" secondAttribute="top" id="WpY-ee-Gsj"/>
-                            <constraint firstItem="qnz-Yo-wOJ" firstAttribute="top" secondItem="fsT-ZC-4gu" secondAttribute="bottom" id="eSa-5X-0WN"/>
+                            <constraint firstItem="qnz-Yo-wOJ" firstAttribute="top" secondItem="Vc1-M0-u7K" secondAttribute="top" id="qoG-Sf-obW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e6O-jR-oYD">
                         <nil key="title"/>
                     </navigationItem>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="UIElementsContainerView" destination="qnz-Yo-wOJ" id="PPw-ku-9dG"/>
+                        <outlet property="UIElementsTopConstraint" destination="qoG-Sf-obW" id="gTP-sh-rGA"/>
                         <outlet property="audioTypeButton" destination="Glt-oE-t4V" id="Gsn-M3-Vkg"/>
                         <outlet property="backButton" destination="iCy-3P-zaY" id="35f-mq-OEh"/>
                         <outlet property="editAudioButton" destination="iD3-Ib-dzv" id="Vry-RW-cdL"/>
@@ -439,10 +432,10 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nzZ-jZ-OWV" id="UUD-03-2fE">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-IM-J9W">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-IM-J9W">
                                             <rect key="frame" x="113" y="68" width="194" height="19"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
@@ -462,7 +455,7 @@
                                             <rect key="frame" x="32" y="31" width="37" height="37"/>
                                             <animations/>
                                         </activityIndicatorView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" text="TrackName21312slkjdaslkjdsaljkdas;lkdjas;ldjksalkjxclzxjc;lZKXJc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="5BK-WH-QYg">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" misplaced="YES" text="TrackName21312slkjdaslkjdsaljkdas;lkdjas;ldjksalkjxclzxjc;lZKXJc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="5BK-WH-QYg">
                                             <rect key="frame" x="113" y="8" width="190" height="43"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
@@ -525,7 +518,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCollectionViewCell" id="Y9P-e4-i3C" customClass="ChoosePlaylistCollectionViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="180" height="180"/>
+                                <rect key="frame" x="0.0" y="84" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
@@ -641,10 +634,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackItemCellIdentifier" rowHeight="100" id="e8B-yK-2Xo" customClass="ChooseMusicTrackViewCell" customModule="NKRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e8B-yK-2Xo" id="ak7-MX-dg0">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqZ-3S-y5G">

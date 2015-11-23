@@ -16,21 +16,29 @@ public protocol VideoMakerDelegate: class {
 }
 
 public final class VideoMakerViewController: UIViewController {
+    public static var shouldLoadFontsAtLaunch = true
+    public weak var videoMakerDelegate: VideoMakerDelegate?
+    public var topOffset: CGFloat = 0.0 { // controls the offset of the recorder ui elements at the top
+        didSet {
+            if recorderVC != nil && videoPlaybackVC != nil {
+                recorderVC.UIElementsTopConstraint.constant = topOffset
+                videoPlaybackVC.UIElementsTopConstraint.constant = topOffset
+            }
+        }
+    }
+    
     var recorderVC: RecordViewController!
     var videoPlaybackVC: VideoPlaybackViewController!
     var currentFilter: SCFilter?
-    public weak var videoMakerDelegate: VideoMakerDelegate?
-    
     @IBOutlet weak var activityIndicatorContainer: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
-    public static var shouldLoadFontsAtLaunch = true
     static let currentBundle = NSBundle(forClass: VideoMakerViewController.self)
     
     // available to recordViewController
     var sharedRecordSession: SCRecordSession?
-// MARK: - Public
     
+    
+// MARK: - Public
     public class func preloadRecorderAsynchronously() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
@@ -86,6 +94,8 @@ public final class VideoMakerViewController: UIViewController {
         super.viewDidLoad()
         recorderVC = storyboard!.instantiateViewControllerWithIdentifier("Recorder") as! RecordViewController
         videoPlaybackVC = storyboard!.instantiateViewControllerWithIdentifier("Video Playback") as! VideoPlaybackViewController
+        recorderVC.topOffsetConstant = topOffset
+        videoPlaybackVC.topOffsetConstant = topOffset
         recorderVC.delegate = self
         videoPlaybackVC.delegate = self
         
@@ -95,65 +105,6 @@ public final class VideoMakerViewController: UIViewController {
         videoPlaybackVC.didMoveToParentViewController(self)
         showRecorder()
     }
-    
-    override public func viewDidAppear(animated: Bool) {
-        checkCamera()
-    }
-    
-// camera permissions
-    
-    func checkCamera() {
-        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        print("Camera: \(authStatus.rawValue)")
-        switch authStatus {
-        case .Authorized: checkMicrophone()
-        case .Denied: alertForCameraAndMicrophoneAccessViaSetting()
-        case .NotDetermined: requestForCameraAccessInitially()
-        default: requestForCameraAccessInitially()
-        }
-    }
-    
-    func requestForCameraAccessInitially() {
-        if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { granted in
-                if !granted {
-                    self.alertForCameraAndMicrophoneAccessViaSetting()
-                }
-            }
-        }
-    }
-    
-    func alertForCameraAndMicrophoneAccessViaSetting() {
-        let alert = UIAlertController(title: "Oops", message: "Both camera & microphone access is required for recording", preferredStyle: .Alert)
-        
-        alert.addAction(UIAlertAction(title: "Okay", style: .Cancel) { alert in
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-        })
-        
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func checkMicrophone() {
-        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeAudio)
-        print("Microphone: \(authStatus.rawValue)")
-        switch authStatus {
-        case .Authorized: break
-        case .Denied: alertForCameraAndMicrophoneAccessViaSetting()
-        case .NotDetermined: requestForMicrophoneAccessInitially()
-        default: requestForMicrophoneAccessInitially()
-        }
-    }
-    
-    func requestForMicrophoneAccessInitially() {
-        if AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio).count > 0 {
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio) { granted in
-                if !granted {
-                    self.alertForCameraAndMicrophoneAccessViaSetting()
-                }
-            }
-        }
-    }
-//
     
     override public func prefersStatusBarHidden() -> Bool {
         return true

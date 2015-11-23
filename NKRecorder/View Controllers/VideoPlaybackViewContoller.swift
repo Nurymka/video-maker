@@ -31,6 +31,9 @@ class VideoPlaybackViewController: BaseViewController {
     @IBOutlet weak var trackNameLabel: TrackNameLabel!
     @IBOutlet weak var trackNameLabelBG: UIView!
     
+    @IBOutlet weak var UIElementsTopConstraint: NSLayoutConstraint!
+    var topOffsetConstant: CGFloat = 0.0
+    
     var recordSession: SCRecordSession?
     var player: SCPlayer?
     var composition: AVMutableComposition?
@@ -74,6 +77,8 @@ class VideoPlaybackViewController: BaseViewController {
         if let recoginzer = tapGestureRecognizer {
             filterSwipableView.addGestureRecognizer(recoginzer)
         }
+        
+        UIElementsTopConstraint.constant = topOffsetConstant
     }
     
     override func viewWillAppear(animated: Bool) {
