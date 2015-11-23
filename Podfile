@@ -13,7 +13,7 @@ target :NKRecorder do
     pod 'SDWebImage', '~> 3.7'
     target :VideoMaker do
         link_with 'VideoMaker'
-        pod 'NKRecorder', :path => '~/Documents/Taylr/video-maker/'
+        pod 'NKRecorder', :path => '~/Documents/Projects/Taylr/video-maker'
     end
 
 end

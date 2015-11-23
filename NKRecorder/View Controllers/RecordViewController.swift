@@ -49,6 +49,9 @@ class RecordViewController: BaseViewController {
         return Float(scaledRecordedDuration / varMaximumRecordingLength)
     }
     
+    // microphone permissions
+    var shouldShowMicrophoneNotEnabledAlert = false
+    var microphoneNotEnabledAlert: UIAlertController?
 // MARK: - View Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +79,7 @@ class RecordViewController: BaseViewController {
         super.viewWillAppear(animated)
         //navigationController?.setNavigationBarHidden(true, animated: true)
         print("musicTrackInfo: \(musicTrackInfo)")
+        checkForMicrophone()
     }
     
     override func viewDidLayoutSubviews() {
@@ -108,6 +112,16 @@ class RecordViewController: BaseViewController {
             updateRecordingTime()
         }
         configureTrackNameLabelAndPlayer()
+    }
+    
+    func checkForMicrophone() {
+        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeAudio)
+        if authStatus != .Authorized {
+            self.microphoneNotEnabledAlert = UIAlertController(title: "Unable to access microphone", message: "Please remove restrictions on the microphone to have sound in your videos (Settings -> Privacy -> Microphone -> On).", preferredStyle: .Alert)
+            
+            self.microphoneNotEnabledAlert!.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            shouldShowMicrophoneNotEnabledAlert = true
+        }
     }
     
 // MARK: - Button Touch Handlers
@@ -146,21 +160,25 @@ class RecordViewController: BaseViewController {
     }
     
     func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
-        
-        if (touchDetector.state == .Began) {
-            delegate?.recorderWillStartRecording(self)
-            recorder.record()
-            timescaleSegmentedControl.enabled = false
-            if musicTrackInfo != nil {
-                player?.rate = getVideoTimeScaleFromUISegment(timescaleSegmentedControl.selectedSegmentIndex)
-                player?.play()
+        if shouldShowMicrophoneNotEnabledAlert {
+            presentViewController(microphoneNotEnabledAlert!, animated: true, completion: nil)
+            shouldShowMicrophoneNotEnabledAlert = false
+        } else {
+            if (touchDetector.state == .Began) {
+                delegate?.recorderWillStartRecording(self)
+                recorder.record()
+                timescaleSegmentedControl.enabled = false
+                if musicTrackInfo != nil {
+                    player?.rate = getVideoTimeScaleFromUISegment(timescaleSegmentedControl.selectedSegmentIndex)
+                    player?.play()
+                }
             }
-        }
-        else if (touchDetector.state == .Ended) {
-            recorder.pause()
-            timescaleSegmentedControl.enabled = true
-            if musicTrackInfo != nil {
-                player?.pause()
+            else if (touchDetector.state == .Ended) {
+                recorder.pause()
+                timescaleSegmentedControl.enabled = true
+                if musicTrackInfo != nil {
+                    player?.pause()
+                }
             }
         }
     }
