@@ -7,20 +7,6 @@
 
 
 public enum R {
-    public enum Fonts : String {
-        /// Cabin-Bold
-        case cabinBold = "Cabin-Bold"
-        /// Cabin-BoldItalic
-        case cabinBoldItalic = "Cabin-BoldItalic"
-        /// Cabin-Italic
-        case cabinItalic = "Cabin-Italic"
-        /// Cabin-Medium
-        case cabinMedium = "Cabin-Medium"
-        /// Cabin-MediumItalic
-        case cabinMediumItalic = "Cabin-MediumItalic"
-        /// Cabin-Regular
-        case cabinRegular = "Cabin-Regular"
-    }
     public enum ImagesAssets : String {
         /// AppIcon
         case app = "AppIcon"

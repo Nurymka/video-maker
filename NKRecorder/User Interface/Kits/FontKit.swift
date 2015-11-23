@@ -9,16 +9,20 @@
 import UIKit
 
 class FontKit {
-    static let segmentedControlLabel = UIFont(fontName: .cabinRegular, size: 16.0)
-    static let artistAndTrackNameLabel = UIFont(fontName: .cabinRegular, size: 16.0)
-    static let captionFont = UIFont(fontName: .cabinMedium, size: 27.0)
-    static let navBarTitle = UIFont(fontName: .cabinRegular, size: 20.0)
-    static let searchBarText = UIFont(fontName: .cabinRegular, size: 14.0)
+    static var regularWeightFontName = UIFont.systemFontOfSize(10).fontName
+    static var mediumWeightFontName = UIFont.boldSystemFontOfSize(10).fontName
+    static var boldWeightFontName = UIFont.boldSystemFontOfSize(10).fontName
+    
+    static let segmentedControlLabel = UIFont(name: regularWeightFontName, size: 16.0)!
+    static let artistAndTrackNameLabel = UIFont(name: regularWeightFontName, size: 16.0)!
+    static let captionFont = UIFont(name: mediumWeightFontName, size: 27.0)!
+    static let navBarTitle = UIFont(name: regularWeightFontName, size: 20.0)!
+    static let searchBarText = UIFont(name: regularWeightFontName, size: 14.0)!
     
     // UIAlertController Fonts
-    static let alertControllerTitle = UIFont(fontName: .cabinRegular, size: 14.0)
-    static let alertControllerMessage = UIFont(fontName: .cabinRegular, size: 15.0)
-    static let alertControllerDefault = UIFont(fontName: .cabinRegular, size: 18.0)
-    static let alertControllerDestructive = UIFont(fontName: .cabinRegular, size: 18.0)
-    static let alertControllerCancel = UIFont(fontName: .cabinBold, size: 18.0)
+    static let alertControllerTitle = UIFont(name: regularWeightFontName, size: 14.0)!
+    static let alertControllerMessage = UIFont(name: regularWeightFontName, size: 15.0)!
+    static let alertControllerDefault = UIFont(name: regularWeightFontName, size: 18.0)!
+    static let alertControllerDestructive = UIFont(name: regularWeightFontName, size: 18.0)!
+    static let alertControllerCancel = UIFont(name: boldWeightFontName, size: 18.0)!
 }

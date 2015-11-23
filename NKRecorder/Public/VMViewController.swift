@@ -18,12 +18,32 @@ public protocol VideoMakerDelegate: class {
 public final class VideoMakerViewController: UIViewController {
     public static var shouldLoadFontsAtLaunch = true
     public weak var videoMakerDelegate: VideoMakerDelegate?
+    
     public var topOffset: CGFloat = 0.0 { // controls the offset of the recorder ui elements at the top
         didSet {
             if recorderVC != nil && videoPlaybackVC != nil {
-                recorderVC.UIElementsTopConstraint.constant = topOffset
-                videoPlaybackVC.UIElementsTopConstraint.constant = topOffset
+                if recorderVC.UIElementsTopConstraint != nil && videoPlaybackVC.UIElementsTopConstraint != nil {
+                    recorderVC.UIElementsTopConstraint.constant = topOffset
+                    videoPlaybackVC.UIElementsTopConstraint.constant = topOffset
+                }
             }
+        }
+    }
+    
+    // fonts
+    public static var regularWeightFontName = UIFont.systemFontOfSize(10).fontName {
+        didSet {
+            FontKit.regularWeightFontName = regularWeightFontName
+        }
+    }
+    public static var mediumWeightFontName = UIFont.boldSystemFontOfSize(10).fontName {
+        didSet {
+            FontKit.mediumWeightFontName = mediumWeightFontName
+        }
+    }
+    public static var boldWeightFontName = UIFont.boldSystemFontOfSize(10).fontName {
+        didSet {
+            FontKit.boldWeightFontName = boldWeightFontName
         }
     }
     
@@ -57,12 +77,6 @@ public final class VideoMakerViewController: UIViewController {
     }
     
     public class func mainController() -> VideoMakerViewController {
-        if shouldLoadFontsAtLaunch == true {
-            var once: dispatch_once_t = 0
-            dispatch_once(&once) {
-                loadCustomFonts()
-            }
-        }
         let main = UIStoryboard(name: "Main", bundle: currentBundle)
         return main.instantiateViewControllerWithIdentifier("VideoMakerViewController") as! VideoMakerViewController
     }
@@ -119,30 +133,6 @@ public final class VideoMakerViewController: UIViewController {
         recorderVC.view.removeFromSuperview()
         view.insertSubview(videoPlaybackVC.view, atIndex: 0)
     }
-    
-    private static func loadCustomFonts() {
-        func iterateEnum<T: Hashable>(_: T.Type) -> AnyGenerator<T> {
-            var i = 0
-            return anyGenerator {
-                let next = withUnsafePointer(&i) { UnsafePointer<T>($0).memory }
-                return next.hashValue == i++ ? next : nil
-            }
-        }
-        
-        for font in iterateEnum(R.Fonts.self) {
-            let fontURL = currentBundle.URLForResource(font.rawValue, withExtension: ".ttf")
-            // loading custom fonts programatically: http://www.marco.org/2012/12/21/ios-dynamic-font-loading
-            if let fontData = NSData(contentsOfURL: fontURL!) {
-                let provider = CGDataProviderCreateWithCFData(fontData as CFDataRef)
-                let font = CGFontCreateWithDataProvider(provider)
-                var error: Unmanaged<CFError>?
-                if (!CTFontManagerRegisterGraphicsFont(font!, &error)) {
-                    print("Failed to register font: \(error)")
-                }
-            }
-        }
-    }
-
 }
 
 extension VideoMakerViewController: RecordViewControllerDelegate {

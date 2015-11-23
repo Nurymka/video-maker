@@ -10,11 +10,11 @@ import UIKit
 
 // xcres
 
-extension UIFont {
-    convenience init!(fontName: R.Fonts, size: CGFloat) {
-        self.init(name: fontName.rawValue, size: size)
-    }
-}
+//extension UIFont {
+//    convenience init!(fontName: R.Fonts, size: CGFloat) {
+//        self.init(name: fontName.rawValue, size: size)
+//    }
+//}
 
 extension UIImage {
     convenience init?(key: R.ImagesAssets) {
