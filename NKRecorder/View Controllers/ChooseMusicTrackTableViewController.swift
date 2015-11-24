@@ -279,7 +279,7 @@ class ChooseMusicTrackViewCell: UITableViewCell {
         case .PlayButton:
             buttonState = .PlayButton
             spinnerView.stopAnimating()
-            albumCoverButton.setImage(UIImage(named: "playIcon"), forState: UIControlState.Normal)
+            albumCoverButton.setImage(UIImage(key: .play), forState: .Normal)
             albumCoverButton.userInteractionEnabled = true
         case .LoadingPreview:
             buttonState = .LoadingPreview
@@ -289,7 +289,7 @@ class ChooseMusicTrackViewCell: UITableViewCell {
         case .PauseButton:
             buttonState = .PauseButton
             spinnerView.stopAnimating()
-            albumCoverButton.setImage(UIImage(named: "pauseIcon"), forState: .Normal)
+            albumCoverButton.setImage(UIImage(key: .pause), forState: .Normal)
             albumCoverButton.userInteractionEnabled = true
         }
     }

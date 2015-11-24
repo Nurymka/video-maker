@@ -63,9 +63,6 @@ public final class VideoMakerViewController: UIViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
                 let recorder = SCRecorder.sharedRecorder()
-                if !recorder.startRunning() {
-                    print("something went wrong: \(recorder.error)")
-                }
                 recorder.captureSessionPreset = AVCaptureSessionPreset640x480
                 recorder.keepMirroringOnWrite = true
                 recorder.startRunning()
