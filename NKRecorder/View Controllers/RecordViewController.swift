@@ -21,8 +21,11 @@ class RecordViewController: BaseViewController {
     let kMinimumRecordingLength = 1.0
     
     var varMaximumRecordingLength = 15.0
+    
+    @IBOutlet weak var focusView: SCRecorderToolsView!
     @IBOutlet weak var UIElementsContainerView: UIElementsContainer!
     @IBOutlet weak var previewView: UIView!
+    
     @IBOutlet weak var recordButton: RecordButton!
     @IBOutlet weak var timescaleButton: UIButton!
     @IBOutlet weak var deleteLastSegmentButton: UIButton!
@@ -66,7 +69,7 @@ class RecordViewController: BaseViewController {
         //recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
         recorder.previewView = previewView
         recorder.delegate = self
-        recordButton.addGestureRecognizer(RecordButtonTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
+        recordButton.addGestureRecognizer(VideoMakerTouchGestureRecognizer(target: self, action: "recordViewTouchDetected:"))
         
         UILabel.my_appearanceWhenContainedIn(UIAlertController).setAppearanceFontForAlertController(nil)
         
@@ -74,6 +77,8 @@ class RecordViewController: BaseViewController {
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         previewView.addGestureRecognizer(doubleTapGestureRecognizer)
         
+        focusView.recorder = recorder
+        focusView.outsideFocusTargetImage = UIImage(key: .focus)
         UIElementsTopConstraint.constant = topOffsetConstant
         
         prepareSession()
@@ -224,7 +229,7 @@ class RecordViewController: BaseViewController {
         delegate?.recorderDidCancelRecording(self)
     }
     
-    func recordViewTouchDetected(touchDetector: RecordButtonTouchGestureRecognizer) {
+    func recordViewTouchDetected(touchDetector: VideoMakerTouchGestureRecognizer) {
         if shouldShowMicrophoneNotEnabledAlert {
             presentViewController(microphoneNotEnabledAlert!, animated: true, completion: nil)
             shouldShowMicrophoneNotEnabledAlert = false

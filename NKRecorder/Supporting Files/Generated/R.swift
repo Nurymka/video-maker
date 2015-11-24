@@ -42,6 +42,8 @@ public enum R {
         case btnTimescale = "btn-timescale"
         /// editAudioIcon
         case editAudio = "editAudioIcon"
+        /// focusIcon
+        case focus = "focus"
         /// horse
         case horse = "horse"
         /// pauseIcon

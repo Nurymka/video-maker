@@ -42,9 +42,10 @@
 		7DDFB8471BDB1A340010B899 /* LocalMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */; };
 		7DDFB8481BDB1A340010B899 /* MusicRetrievalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */; };
 		7DDFB8491BDB1A340010B899 /* PlaylistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2324831BC77A34004A1976 /* PlaylistAPI.swift */; };
-		7DDFB84A1BDB1A340010B899 /* RecordButtonTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */; };
+		7DDFB84A1BDB1A340010B899 /* VideoMakerTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D10D1BDA1456008E80F3 /* VideoMakerTouchGestureRecognizer.swift */; };
 		7DDFB8511BDB1A440010B899 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E01BD4C13C0093E181 /* R.swift */; };
 		7DDFB8521BDB1A440010B899 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D01C7E21BD4C5140093E181 /* SBConstants.swift */; };
+		E20ED2FB1C0454E4002CCAC6 /* focus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E20ED2F91C045347002CCAC6 /* focus@2x.png */; };
 		EAAD86251BF9875A007A3AA5 /* btn-add-caption@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD860C1BF9875A007A3AA5 /* btn-add-caption@2x.png */; };
 		EAAD86261BF9875A007A3AA5 /* btn-bareCross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD860D1BF9875A007A3AA5 /* btn-bareCross@2x.png */; };
 		EAAD86271BF9875A007A3AA5 /* btn-cameraFlip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD860E1BF9875A007A3AA5 /* btn-cameraFlip@2x.png */; };
@@ -144,6 +145,7 @@
 		7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMusicManager.swift; sourceTree = "<group>"; };
 		7DE932641BD05FEE00040833 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		D3485EC66FA0DD62CA546B6B /* Pods-NKRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder/Pods-NKRecorder.debug.xcconfig"; sourceTree = "<group>"; };
+		E20ED2F91C045347002CCAC6 /* focus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "focus@2x.png"; sourceTree = "<group>"; };
 		EAAD860C1BF9875A007A3AA5 /* btn-add-caption@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-add-caption@2x.png"; sourceTree = "<group>"; };
 		EAAD860D1BF9875A007A3AA5 /* btn-bareCross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-bareCross@2x.png"; sourceTree = "<group>"; };
 		EAAD860E1BF9875A007A3AA5 /* btn-cameraFlip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-cameraFlip@2x.png"; sourceTree = "<group>"; };
@@ -177,7 +179,7 @@
 		EAC5D0F91BDA11A7008E80F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAC5D1091BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder-VideoMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		EAC5D10A1BDA1395008E80F3 /* Pods-NKRecorder-VideoMaker.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-NKRecorder-VideoMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker.release.xcconfig"; sourceTree = "<group>"; };
-		EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonTouchGestureRecognizer.swift; sourceTree = "<group>"; };
+		EAC5D10D1BDA1456008E80F3 /* VideoMakerTouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerTouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		FBB2B16BB987F261E35EE3DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -370,7 +372,7 @@
 				7DDDD8ED1BD967170077FF51 /* LocalMusicManager.swift */,
 				7D2837251BB113DC00BE8DB9 /* MusicRetrievalAPI.swift */,
 				7D2324831BC77A34004A1976 /* PlaylistAPI.swift */,
-				EAC5D10D1BDA1456008E80F3 /* RecordButtonTouchGestureRecognizer.swift */,
+				EAC5D10D1BDA1456008E80F3 /* VideoMakerTouchGestureRecognizer.swift */,
 				7D34DD321BE1C5C9009BC378 /* ScreenMacros.swift */,
 			);
 			path = Utils;
@@ -414,6 +416,7 @@
 				EAAD86191BF9875A007A3AA5 /* btn-speakerOn@2x.png */,
 				EAAD861A1BF9875A007A3AA5 /* btn-timescale@2x.png */,
 				EAAD861B1BF9875A007A3AA5 /* editAudioIcon@2x.png */,
+				E20ED2F91C045347002CCAC6 /* focus@2x.png */,
 				EAAD861C1BF9875A007A3AA5 /* horse@2x.png */,
 				EAAD861D1BF9875A007A3AA5 /* pauseIcon@2x.png */,
 				EAAD861E1BF9875A007A3AA5 /* playIcon@2x.png */,
@@ -481,7 +484,6 @@
 			buildConfigurationList = 7D6A143B1B98C15700453DA1 /* Build configuration list for PBXNativeTarget "VideoMaker" */;
 			buildPhases = (
 				BBAA3CF055F5F169CC72EA00 /* Check Pods Manifest.lock */,
-				F55C2C57EC3D059D42DEFD7C /* Build Resource-Index */,
 				7D6A14181B98C15600453DA1 /* Sources */,
 				7D6A14191B98C15600453DA1 /* Frameworks */,
 				7D6A141A1B98C15600453DA1 /* Resources */,
@@ -649,6 +651,7 @@
 				EAAD86371BF9875A007A3AA5 /* playIcon@2x.png in Resources */,
 				EAAD86271BF9875A007A3AA5 /* btn-cameraFlip@2x.png in Resources */,
 				EAAD86291BF9875A007A3AA5 /* btn-cross@2x.png in Resources */,
+				E20ED2FB1C0454E4002CCAC6 /* focus@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,21 +740,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NKRecorder-VideoMaker/Pods-NKRecorder-VideoMaker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F55C2C57EC3D059D42DEFD7C /* Build Resource-Index */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Resource-Index";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# /Users/Tony/.rvm/gems/ruby-2.1.2/bin/xcres --no-ansi build $PROJECT_FILE_PATH $SRCROOT/VideoMaker/Resources/R\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -787,7 +775,7 @@
 				7DDFB82F1BDB19EB0010B899 /* SearchMusicTrackTableViewController.swift in Sources */,
 				7DDFB83D1BDB1A0D0010B899 /* RecordButton.swift in Sources */,
 				7DDFB8471BDB1A340010B899 /* LocalMusicManager.swift in Sources */,
-				7DDFB84A1BDB1A340010B899 /* RecordButtonTouchGestureRecognizer.swift in Sources */,
+				7DDFB84A1BDB1A340010B899 /* VideoMakerTouchGestureRecognizer.swift in Sources */,
 				7DDFB8351BDB1A090010B899 /* AnimationKit.swift in Sources */,
 				7DDFB8481BDB1A340010B899 /* MusicRetrievalAPI.swift in Sources */,
 				7DDFB82D1BDB19EB0010B899 /* ChoosePlaylistCollectionViewController.swift in Sources */,

@@ -35,6 +35,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTA-SU-fsN" userLabel="Preview View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qN-3G-cwD" customClass="SCRecorderToolsView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <animations/>
+                                    </view>
+                                </subviews>
                                 <animations/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQJ-Nl-Hbb" userLabel="UI Elements Container" customClass="UIElementsContainer" customModule="NKRecorder" customModuleProvider="target">
@@ -47,7 +53,7 @@
                                             <constraint firstAttribute="height" constant="35" id="eiM-hK-ZIh"/>
                                             <constraint firstAttribute="width" constant="35" id="zsy-Jt-SiR"/>
                                         </constraints>
-                                        <state key="normal" image="btn-delete-last-segment">
+                                        <state key="normal" image="focus">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -248,6 +254,7 @@
                         <outlet property="deleteLastSegmentButton" destination="cmA-fn-joI" id="sXo-Vr-fTQ"/>
                         <outlet property="doneButton" destination="e3e-BD-J2q" id="0hZ-Rg-wtV"/>
                         <outlet property="editAudioButton" destination="x14-w0-lLu" id="cyi-dJ-0fU"/>
+                        <outlet property="focusView" destination="5qN-3G-cwD" id="1U4-O6-8ra"/>
                         <outlet property="horseImageView" destination="4iu-NW-pfo" id="5Lm-8A-Koi"/>
                         <outlet property="previewView" destination="qTA-SU-fsN" id="Be4-RN-Msg"/>
                         <outlet property="recordButton" destination="fCp-AV-Mdq" id="NCB-RB-q4O"/>
@@ -731,12 +738,12 @@
         <image name="btn-cameraFlip" width="30" height="23"/>
         <image name="btn-check" width="50" height="50"/>
         <image name="btn-cross" width="35" height="35"/>
-        <image name="btn-delete-last-segment" width="35" height="35"/>
         <image name="btn-editAudio" width="35" height="35"/>
         <image name="btn-flash" width="19" height="24"/>
         <image name="btn-send" width="50" height="50"/>
         <image name="btn-speakerOn" width="55" height="55"/>
         <image name="btn-timescale" width="35" height="35"/>
+        <image name="focus" width="35" height="35"/>
         <image name="horse" width="25" height="21"/>
         <image name="playIcon" width="32" height="36"/>
         <image name="snail" width="28" height="15"/>

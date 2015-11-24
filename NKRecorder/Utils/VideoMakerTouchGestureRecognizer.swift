@@ -8,7 +8,7 @@
 
 import UIKit.UIGestureRecognizerSubclass
 
-class RecordButtonTouchGestureRecognizer: UIGestureRecognizer {
+class VideoMakerTouchGestureRecognizer: UIGestureRecognizer {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if enabled {
             state = .Began
