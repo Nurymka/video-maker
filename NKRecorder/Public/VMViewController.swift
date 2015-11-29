@@ -60,7 +60,7 @@ public final class VideoMakerViewController: UIViewController {
     
 // MARK: - Public
     public class func preloadRecorderAsynchronously() {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
                 let recorder = SCRecorder.sharedRecorder()
                 recorder.captureSessionPreset = AVCaptureSessionPreset640x480
@@ -70,7 +70,7 @@ public final class VideoMakerViewController: UIViewController {
                 session.fileType = AVFileTypeMPEG4
                 recorder.session = session
             }
-        }
+        //}
     }
     
     public class func mainController() -> VideoMakerViewController {
