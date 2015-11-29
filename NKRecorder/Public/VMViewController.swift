@@ -59,7 +59,7 @@ public final class VideoMakerViewController: UIViewController {
     
     
 // MARK: - Public
-    public class func preloadRecorderAsynchronously() {
+    public class func preloadRecorder() {
         //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
                 let recorder = SCRecorder.sharedRecorder()
