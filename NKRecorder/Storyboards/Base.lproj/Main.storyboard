@@ -53,7 +53,7 @@
                                             <constraint firstAttribute="height" constant="35" id="eiM-hK-ZIh"/>
                                             <constraint firstAttribute="width" constant="35" id="zsy-Jt-SiR"/>
                                         </constraints>
-                                        <state key="normal" image="focus">
+                                        <state key="normal" image="btn-delete-last-segment.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -104,7 +104,7 @@
                                             <constraint firstAttribute="width" constant="44" id="Hkn-E7-SLk"/>
                                             <constraint firstAttribute="height" constant="44" id="YCS-ek-iM1"/>
                                         </constraints>
-                                        <state key="normal" image="btn-timescale"/>
+                                        <state key="normal" image="btn-timescale.png"/>
                                         <connections>
                                             <action selector="timescaleButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vnc-IG-Tr6"/>
                                         </connections>
@@ -145,7 +145,7 @@
                                             <constraint firstAttribute="height" constant="35" id="0Kd-vF-LWG"/>
                                             <constraint firstAttribute="width" constant="35" id="3ZL-eg-HIX"/>
                                         </constraints>
-                                        <state key="normal" image="btn-editAudio"/>
+                                        <state key="normal" image="btn-editAudio.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="255" y="16" width="55" height="55"/>
@@ -154,7 +154,7 @@
                                             <constraint firstAttribute="width" constant="55" id="RGH-oU-pfd"/>
                                             <constraint firstAttribute="height" constant="55" id="fTe-A5-nMM"/>
                                         </constraints>
-                                        <state key="normal" image="btn-speakerOn"/>
+                                        <state key="normal" image="btn-speakerOn.png"/>
                                         <connections>
                                             <action selector="audioTypeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f33-V2-tKD"/>
                                         </connections>
@@ -166,7 +166,7 @@
                                             <constraint firstAttribute="width" constant="44" id="Nko-OG-5Zq"/>
                                             <constraint firstAttribute="height" constant="44" id="rFG-Pi-J4B"/>
                                         </constraints>
-                                        <state key="normal" image="btn-flash"/>
+                                        <state key="normal" image="btn-flash.png"/>
                                         <connections>
                                             <action selector="flashButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Foo-JD-ofo"/>
                                         </connections>
@@ -178,7 +178,7 @@
                                             <constraint firstAttribute="height" constant="44" id="4yk-LQ-Mi5"/>
                                             <constraint firstAttribute="width" constant="44" id="ygt-qF-rOu"/>
                                         </constraints>
-                                        <state key="normal" image="btn-cameraFlip"/>
+                                        <state key="normal" image="btn-cameraFlip.png"/>
                                         <connections>
                                             <action selector="reverseCameraButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TYb-dj-mOG"/>
                                         </connections>
@@ -190,7 +190,7 @@
                                             <constraint firstAttribute="height" constant="50" id="E3r-Vy-MRv"/>
                                             <constraint firstAttribute="width" constant="50" id="c53-xg-nPj"/>
                                         </constraints>
-                                        <state key="normal" image="btn-check">
+                                        <state key="normal" image="btn-check.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -304,7 +304,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-p4-2pg" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-p4-2pg" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="71" y="33" width="176" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
@@ -318,7 +318,7 @@
                                             <constraint firstAttribute="height" constant="35" id="OWZ-jd-Y1S"/>
                                             <constraint firstAttribute="width" constant="35" id="YdU-Xq-g2z"/>
                                         </constraints>
-                                        <state key="normal" image="btn-editAudio"/>
+                                        <state key="normal" image="btn-editAudio.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glt-oE-t4V" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="255" y="16" width="55" height="55"/>
@@ -327,7 +327,7 @@
                                             <constraint firstAttribute="height" constant="55" id="Fmx-6P-ww1"/>
                                             <constraint firstAttribute="width" constant="55" id="sbd-w6-F4Y"/>
                                         </constraints>
-                                        <state key="normal" image="btn-speakerOn"/>
+                                        <state key="normal" image="btn-speakerOn.png"/>
                                         <connections>
                                             <action selector="audioTypeButtonPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="AjA-H4-uJq"/>
                                         </connections>
@@ -339,7 +339,7 @@
                                             <constraint firstAttribute="height" constant="44" id="86X-iT-YfI"/>
                                             <constraint firstAttribute="width" constant="44" id="vL1-qL-lcL"/>
                                         </constraints>
-                                        <state key="normal" image="btn-add-caption"/>
+                                        <state key="normal" image="btn-add-caption.png"/>
                                         <connections>
                                             <action selector="insertCaptionPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="xDm-jg-7KP"/>
                                         </connections>
@@ -351,7 +351,7 @@
                                             <constraint firstAttribute="width" constant="44" id="8wj-4l-Vfr"/>
                                             <constraint firstAttribute="height" constant="44" id="rEh-oP-iSt"/>
                                         </constraints>
-                                        <state key="normal" image="btn-cross"/>
+                                        <state key="normal" image="btn-cross.png"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="eZu-4X-7T8"/>
                                         </connections>
@@ -363,7 +363,7 @@
                                             <constraint firstAttribute="height" constant="50" id="Koi-Rz-Q8w"/>
                                             <constraint firstAttribute="width" constant="50" id="sDs-bk-Fmm"/>
                                         </constraints>
-                                        <state key="normal" image="btn-send"/>
+                                        <state key="normal" image="btn-send.png"/>
                                         <connections>
                                             <action selector="sendButtonPressed:" destination="McN-6d-tRK" eventType="touchUpInside" id="hma-bT-QbL"/>
                                         </connections>
@@ -661,7 +661,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="I3f-Pd-Ch3" secondAttribute="height" multiplier="100:99" id="sUD-be-IPd"/>
                                             </constraints>
-                                            <state key="normal" image="playIcon"/>
+                                            <state key="normal" image="playIcon.png"/>
                                         </button>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-dn-E8i">
                                             <rect key="frame" x="32" y="31" width="37" height="37"/>
@@ -734,18 +734,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btn-add-caption" width="35" height="35"/>
-        <image name="btn-cameraFlip" width="30" height="23"/>
-        <image name="btn-check" width="50" height="50"/>
-        <image name="btn-cross" width="35" height="35"/>
-        <image name="btn-editAudio" width="35" height="35"/>
-        <image name="btn-flash" width="19" height="24"/>
-        <image name="btn-send" width="50" height="50"/>
-        <image name="btn-speakerOn" width="55" height="55"/>
-        <image name="btn-timescale" width="35" height="35"/>
-        <image name="focus" width="35" height="35"/>
+        <image name="btn-add-caption.png" width="35" height="35"/>
+        <image name="btn-cameraFlip.png" width="30" height="23"/>
+        <image name="btn-check.png" width="50" height="50"/>
+        <image name="btn-cross.png" width="35" height="35"/>
+        <image name="btn-delete-last-segment.png" width="35" height="35"/>
+        <image name="btn-editAudio.png" width="35" height="35"/>
+        <image name="btn-flash.png" width="19" height="24"/>
+        <image name="btn-send.png" width="50" height="50"/>
+        <image name="btn-speakerOn.png" width="55" height="55"/>
+        <image name="btn-timescale.png" width="35" height="35"/>
         <image name="horse" width="25" height="21"/>
         <image name="playIcon" width="32" height="36"/>
+        <image name="playIcon.png" width="32" height="36"/>
         <image name="snail" width="28" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
