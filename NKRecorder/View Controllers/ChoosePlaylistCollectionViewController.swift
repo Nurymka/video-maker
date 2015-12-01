@@ -11,7 +11,8 @@ import Alamofire
 
 class ChoosePlaylistCollectionViewController: UICollectionViewController {
     let kCellReuseIdentifier = "PlaylistCollectionViewCell"
-    
+    var playlists: [PlaylistItem] = []
+    var loadingPlaylists = false
     // layout
     //var searchBarHeight: CGFloat = 0.0
     
@@ -50,6 +51,7 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
 //        searchController.searchBar.placeholder = "search for a song"
 //        
 //        UITextField.my_appearanceWhenContainedIn(UISearchBar).defaultTextAttributes = [NSFontAttributeName: FontKit.searchBarText]
+        loadPlaylists()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -71,6 +73,45 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
                 chooseMusicViewController.segueBackViewController = segueBackViewController
                 chooseMusicViewController.musicDelegate = self
             }
+        }
+    }
+    
+// MARK: - Network Requests
+    func loadPlaylists() {
+        if loadingPlaylists {
+            return
+        }
+        
+        loadingPlaylists = true
+        Alamofire.request(MusicPlaylistAPI.PlaylistListRouter.PlaylistList()).responseJSON { response in
+            switch response.result {
+            case .Success(let data):
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                    let dataResult = (data as! NSDictionary).valueForKey("result") as! [NSDictionary]
+                    let playlistItems = dataResult.map({ (dic: NSDictionary) -> PlaylistItem in
+                        let tagId = dic["tagId"] as? Int
+                        let name = dic["displayName"] as? String
+                        let thumbnailURL = dic["coverUri"] as? String
+                        
+                        if let tagId = tagId, name = name, thumbnailURL = thumbnailURL {
+                            return PlaylistItem(thumbnailURL: thumbnailURL, name: name, tagId: tagId)
+                        } else {
+                            return PlaylistItem(thumbnailURL: "", name: "", tagId: -1)
+                        }
+                    }).filter({ $0.tagId != -1}).filter({ !$0.name.containsString("muser") })
+                    
+                    let lastItem = self.playlists.count
+                    self.playlists.appendContentsOf(playlistItems)
+                    let indexPaths = (lastItem..<self.playlists.count).map { NSIndexPath(forRow: $0, inSection: 0) }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.collectionView?.insertItemsAtIndexPaths(indexPaths)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+            }
+            self.loadingPlaylists = false
         }
     }
     
@@ -102,13 +143,15 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension ChoosePlaylistCollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MusicPlaylistAPI.playlists.count
+        //return MusicPlaylistAPI.playlists.count
+        return playlists.count;
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! ChoosePlaylistCollectionViewCell
-        let playlistItem = MusicPlaylistAPI.playlists[indexPath.row]
-        cell.request?.cancel()
+        //let playlistItem = MusicPlaylistAPI.playlists[indexPath.row]
+        let playlistItem = playlists[indexPath.row];
+        
         cell.playlistNameLabel.text = playlistItem.name
         
         cell.thumbnailImageView.sd_setImageWithURL(NSURL(string: playlistItem.thumbnailURL)!)
@@ -116,7 +159,8 @@ extension ChoosePlaylistCollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        seguePlaylistItem = MusicPlaylistAPI.playlists[indexPath.row]
+        //seguePlaylistItem = MusicPlaylistAPI.playlists[indexPath.row]
+        seguePlaylistItem = playlists[indexPath.row]
         performSegueWithIdentifier("Choose Music Track", sender: nil)
     }
 }
@@ -169,8 +213,6 @@ extension ChoosePlaylistCollectionViewController: ChooseMusicTrackTableViewContr
 class ChoosePlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var playlistNameLabel: UILabel!
-    
-    var request: Alamofire.Request?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
