@@ -36,7 +36,7 @@ class RecordViewController: BaseViewController {
     
     @IBOutlet weak var trackNameLabel: TrackNameLabel!
     @IBOutlet weak var trackNameLabelBG: UIView!
-    @IBOutlet weak var editAudioButton: UIButton!
+    //@IBOutlet weak var editAudioButton: UIButton!
 
     @IBOutlet weak var snailImageView: UIImageView!
     @IBOutlet weak var horseImageView: UIImageView!
@@ -384,7 +384,7 @@ class RecordViewController: BaseViewController {
             trackNameLabel.changeScrollableTextTo(String.presentableArtistAndSongName(musicTrackInfo.artistName, songName: musicTrackInfo.trackName))
             trackNameLabel.layer.opacity = 1.0
             trackNameLabelBG.layer.opacity = 1.0
-            editAudioButton.layer.opacity = 1.0
+            //editAudioButton.layer.opacity = 1.0
             do {
                 try player = AVAudioPlayer(contentsOfURL: musicDataURL)
                 player?.prepareToPlay()
@@ -400,7 +400,7 @@ class RecordViewController: BaseViewController {
             trackNameLabel.changeScrollableTextTo("")
             trackNameLabel.layer.opacity = 0.0
             trackNameLabelBG.layer.opacity = 0.0
-            editAudioButton.layer.opacity = 0.0
+            //editAudioButton.layer.opacity = 0.0
         }
     }
     

@@ -131,22 +131,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="33" width="176" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coldplay - Everglow" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-Wj-PuV" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="34" width="221" height="20"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x14-w0-lLu">
-                                        <rect key="frame" x="28" y="26" width="35" height="35"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="0Kd-vF-LWG"/>
-                                            <constraint firstAttribute="width" constant="35" id="3ZL-eg-HIX"/>
-                                        </constraints>
-                                        <state key="normal" image="btn-editAudio.png"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-aV-Juu" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="255" y="16" width="55" height="55"/>
                                         <animations/>
@@ -213,23 +204,31 @@
                                     <constraint firstItem="SGO-Um-L04" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="7" id="JhN-xJ-Vvy"/>
                                     <constraint firstAttribute="trailing" secondItem="TGD-RC-yfA" secondAttribute="trailing" constant="14" id="KK6-mA-Bvs"/>
                                     <constraint firstItem="6GI-or-ZJ7" firstAttribute="leading" secondItem="WQJ-Nl-Hbb" secondAttribute="leading" constant="34" id="Nwi-Er-BfD"/>
+                                    <constraint firstItem="LKB-Wj-PuV" firstAttribute="centerX" secondItem="6GI-or-ZJ7" secondAttribute="centerX" id="QVE-Yk-yt7"/>
                                     <constraint firstItem="4iu-NW-pfo" firstAttribute="trailing" secondItem="5QG-PY-y1A" secondAttribute="trailing" constant="-18" id="TPr-i1-dAb"/>
-                                    <constraint firstItem="x14-w0-lLu" firstAttribute="leading" secondItem="WQJ-Nl-Hbb" secondAttribute="leading" constant="28" id="Tb3-qr-OzI"/>
+                                    <constraint firstItem="LKB-Wj-PuV" firstAttribute="centerY" secondItem="6GI-or-ZJ7" secondAttribute="centerY" id="VCL-hB-74C"/>
                                     <constraint firstItem="4iu-NW-pfo" firstAttribute="top" secondItem="5QG-PY-y1A" secondAttribute="bottom" constant="5" id="Vvw-sQ-rgP"/>
                                     <constraint firstItem="cao-jM-A8e" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="ZxR-qs-u1z"/>
-                                    <constraint firstItem="x14-w0-lLu" firstAttribute="centerY" secondItem="2tj-aV-Juu" secondAttribute="centerY" id="b0M-DD-IAb"/>
                                     <constraint firstAttribute="trailing" secondItem="e3e-BD-J2q" secondAttribute="trailing" constant="15" id="bDp-BF-iwV"/>
                                     <constraint firstItem="Vym-IC-r9s" firstAttribute="centerX" secondItem="WQJ-Nl-Hbb" secondAttribute="centerX" id="dmW-OG-a6C"/>
                                     <constraint firstItem="cao-jM-A8e" firstAttribute="top" secondItem="Vym-IC-r9s" secondAttribute="bottom" constant="5" id="iKA-9A-PdA"/>
-                                    <constraint firstItem="LKB-Wj-PuV" firstAttribute="leading" secondItem="x14-w0-lLu" secondAttribute="trailing" constant="8" id="lbX-2x-SUa"/>
+                                    <constraint firstItem="2tj-aV-Juu" firstAttribute="leading" secondItem="LKB-Wj-PuV" secondAttribute="trailing" id="oRt-87-9Dh"/>
                                     <constraint firstAttribute="trailing" secondItem="2tj-aV-Juu" secondAttribute="trailing" constant="10" id="pE7-4v-Kdc"/>
                                     <constraint firstItem="inz-cN-cEq" firstAttribute="top" secondItem="TGD-RC-yfA" secondAttribute="bottom" constant="16" id="sqF-xb-NSz"/>
                                     <constraint firstAttribute="bottom" secondItem="fCp-AV-Mdq" secondAttribute="bottom" constant="15" id="tIW-vC-aPw"/>
                                     <constraint firstItem="6GI-or-ZJ7" firstAttribute="centerY" secondItem="2tj-aV-Juu" secondAttribute="centerY" id="uC6-wJ-UPg"/>
                                     <constraint firstItem="LKB-Wj-PuV" firstAttribute="centerY" secondItem="2tj-aV-Juu" secondAttribute="centerY" id="wFp-Pe-VZB"/>
                                     <constraint firstItem="5QG-PY-y1A" firstAttribute="leading" secondItem="SGO-Um-L04" secondAttribute="leading" constant="-14" id="xlT-t3-q0n"/>
+                                    <constraint firstItem="LKB-Wj-PuV" firstAttribute="leading" secondItem="6GI-or-ZJ7" secondAttribute="leading" id="y7f-rR-cxB"/>
                                     <constraint firstAttribute="trailing" secondItem="inz-cN-cEq" secondAttribute="trailing" constant="14" id="y7z-lT-by8"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QVE-Yk-yt7"/>
+                                        <exclude reference="VCL-hB-74C"/>
+                                        <exclude reference="Imi-bj-lQT"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <animations/>
@@ -253,7 +252,6 @@
                         <outlet property="audioTypeButton" destination="2tj-aV-Juu" id="NRr-ER-cCq"/>
                         <outlet property="deleteLastSegmentButton" destination="cmA-fn-joI" id="sXo-Vr-fTQ"/>
                         <outlet property="doneButton" destination="e3e-BD-J2q" id="0hZ-Rg-wtV"/>
-                        <outlet property="editAudioButton" destination="x14-w0-lLu" id="cyi-dJ-0fU"/>
                         <outlet property="focusView" destination="5qN-3G-cwD" id="1U4-O6-8ra"/>
                         <outlet property="horseImageView" destination="4iu-NW-pfo" id="5Lm-8A-Koi"/>
                         <outlet property="previewView" destination="qTA-SU-fsN" id="Be4-RN-Msg"/>
@@ -304,22 +302,13 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-p4-2pg" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="33" width="176" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift - Enchanted" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-p4-2pg" customClass="TrackNameLabel" customModule="NKRecorder" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="34" width="221" height="20"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD3-Ib-dzv">
-                                        <rect key="frame" x="28" y="26" width="35" height="35"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="OWZ-jd-Y1S"/>
-                                            <constraint firstAttribute="width" constant="35" id="YdU-Xq-g2z"/>
-                                        </constraints>
-                                        <state key="normal" image="btn-editAudio.png"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glt-oE-t4V" userLabel="Audio Type Button" customClass="AudioTypeButton" customModule="NKRecorder" customModuleProvider="target">
                                         <rect key="frame" x="255" y="16" width="55" height="55"/>
                                         <animations/>
@@ -372,21 +361,19 @@
                                 <animations/>
                                 <constraints>
                                     <constraint firstItem="GNy-S1-Bmj" firstAttribute="centerY" secondItem="Glt-oE-t4V" secondAttribute="centerY" id="0pa-0j-7f3"/>
-                                    <constraint firstItem="Glt-oE-t4V" firstAttribute="leading" secondItem="d4G-p4-2pg" secondAttribute="trailing" constant="8" id="2wr-Ic-THu"/>
+                                    <constraint firstItem="Glt-oE-t4V" firstAttribute="leading" secondItem="d4G-p4-2pg" secondAttribute="trailing" id="2wr-Ic-THu"/>
                                     <constraint firstAttribute="trailing" secondItem="Cxg-FM-ant" secondAttribute="trailing" constant="15" id="7uM-T8-LQD"/>
                                     <constraint firstAttribute="trailing" secondItem="GNy-S1-Bmj" secondAttribute="trailing" constant="16" id="9hd-a1-vzw"/>
                                     <constraint firstItem="iCy-3P-zaY" firstAttribute="leading" secondItem="qnz-Yo-wOJ" secondAttribute="leading" constant="14" id="Aj9-P4-6X7"/>
                                     <constraint firstItem="d4G-p4-2pg" firstAttribute="centerY" secondItem="Glt-oE-t4V" secondAttribute="centerY" id="IQ6-I9-RyI"/>
                                     <constraint firstItem="Cxg-FM-ant" firstAttribute="top" secondItem="Glt-oE-t4V" secondAttribute="bottom" constant="30" id="IyD-t4-vpb"/>
+                                    <constraint firstItem="d4G-p4-2pg" firstAttribute="leading" secondItem="GNy-S1-Bmj" secondAttribute="leading" id="JHD-8i-O2u"/>
                                     <constraint firstAttribute="trailing" secondItem="Glt-oE-t4V" secondAttribute="trailing" constant="10" id="OKe-R6-Jhu"/>
                                     <constraint firstItem="iCy-3P-zaY" firstAttribute="centerY" secondItem="8BZ-g5-gTb" secondAttribute="centerY" id="Tv9-AS-g7c"/>
                                     <constraint firstAttribute="bottom" secondItem="8BZ-g5-gTb" secondAttribute="bottom" constant="40" id="Wtz-c4-TU7"/>
                                     <constraint firstItem="Glt-oE-t4V" firstAttribute="top" secondItem="qnz-Yo-wOJ" secondAttribute="top" constant="16" id="c0G-a9-y6c"/>
                                     <constraint firstAttribute="trailing" secondItem="8BZ-g5-gTb" secondAttribute="trailing" constant="15" id="ezL-vM-qgj"/>
-                                    <constraint firstItem="iD3-Ib-dzv" firstAttribute="leading" secondItem="qnz-Yo-wOJ" secondAttribute="leading" constant="28" id="iEU-ri-0D3"/>
                                     <constraint firstItem="GNy-S1-Bmj" firstAttribute="leading" secondItem="qnz-Yo-wOJ" secondAttribute="leading" constant="34" id="iMn-Hs-3A3"/>
-                                    <constraint firstItem="iD3-Ib-dzv" firstAttribute="centerY" secondItem="Glt-oE-t4V" secondAttribute="centerY" id="kho-FI-iHa"/>
-                                    <constraint firstItem="d4G-p4-2pg" firstAttribute="leading" secondItem="iD3-Ib-dzv" secondAttribute="trailing" constant="8" id="w5j-Lp-HiW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -412,7 +399,6 @@
                         <outlet property="UIElementsTopConstraint" destination="qoG-Sf-obW" id="gTP-sh-rGA"/>
                         <outlet property="audioTypeButton" destination="Glt-oE-t4V" id="Gsn-M3-Vkg"/>
                         <outlet property="backButton" destination="iCy-3P-zaY" id="35f-mq-OEh"/>
-                        <outlet property="editAudioButton" destination="iD3-Ib-dzv" id="Vry-RW-cdL"/>
                         <outlet property="filterSwipableView" destination="FrG-rf-qba" id="1xb-k1-rz3"/>
                         <outlet property="insertCaptionButton" destination="Cxg-FM-ant" id="MgN-S1-NXv"/>
                         <outlet property="sendButton" destination="8BZ-g5-gTb" id="qxT-97-WjK"/>
@@ -739,7 +725,6 @@
         <image name="btn-check.png" width="50" height="50"/>
         <image name="btn-cross.png" width="35" height="35"/>
         <image name="btn-delete-last-segment.png" width="35" height="35"/>
-        <image name="btn-editAudio.png" width="35" height="35"/>
         <image name="btn-flash.png" width="19" height="24"/>
         <image name="btn-send.png" width="50" height="50"/>
         <image name="btn-speakerOn.png" width="55" height="55"/>

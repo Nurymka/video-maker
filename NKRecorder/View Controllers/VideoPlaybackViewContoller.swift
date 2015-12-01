@@ -22,7 +22,7 @@ class VideoPlaybackViewController: BaseViewController {
     @IBOutlet weak var audioTypeButton: AudioTypeButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var insertCaptionButton: UIButton!
-    @IBOutlet weak var editAudioButton: UIButton!
+    //@IBOutlet weak var editAudioButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     
     //@IBOutlet weak var draggableAudioSlider: DraggableSlider!
@@ -307,12 +307,12 @@ class VideoPlaybackViewController: BaseViewController {
             trackNameLabel.changeScrollableTextTo(String.presentableArtistAndSongName(musicTrackInfo.artistName, songName: musicTrackInfo.trackName))
             trackNameLabel.layer.opacity = 1.0
             trackNameLabelBG.layer.opacity = 1.0
-            editAudioButton.layer.opacity = 1.0
+            //editAudioButton.layer.opacity = 1.0
         } else {
             trackNameLabel.changeScrollableTextTo("")
             trackNameLabel.layer.opacity = 0.0
             trackNameLabelBG.layer.opacity = 0.0
-            editAudioButton.layer.opacity = 0.0
+            //editAudioButton.layer.opacity = 0.0
         }
     }
     

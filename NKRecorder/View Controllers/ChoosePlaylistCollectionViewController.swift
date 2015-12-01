@@ -13,11 +13,11 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     let kCellReuseIdentifier = "PlaylistCollectionViewCell"
     
     // layout
-    var searchBarHeight: CGFloat = 0.0
+    //var searchBarHeight: CGFloat = 0.0
     
     // for searches
-    var searchController: SongSearchController!
-    var currentSearchString = ""
+    //var searchController: SongSearchController!
+    //var currentSearchString = ""
     
     // for segues
     var segueBackViewController: BaseViewController? // when the song is chosen, the navigation controller will pop back to the original sender
@@ -31,25 +31,25 @@ class ChoosePlaylistCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBarAppearance()
-        if let searchMusicTrackController = storyboard?.instantiateViewControllerWithIdentifier("SearchMusicTrackTableViewController") as? SearchMusicTrackTableViewController {
-            searchMusicTrackController.currentNavigationController = navigationController
-            searchMusicTrackController.musicDelegate = self
-            searchController = SongSearchController(searchResultsController: searchMusicTrackController)
-        }
-        searchController.searchBar.sizeToFit()
-        
-        searchController.dimsBackgroundDuringPresentation = true
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.delegate = self
-        searchController.delegate = self
-        definesPresentationContext = true
-        
-        searchController.searchBar.scopeButtonTitles = [] // sets up the frame in the background
-        searchBarHeight = searchController.searchBar.frame.size.height
-        collectionView?.addSubview(searchController.searchBar)
-        searchController.searchBar.placeholder = "search for a song"
-        
-        UITextField.my_appearanceWhenContainedIn(UISearchBar).defaultTextAttributes = [NSFontAttributeName: FontKit.searchBarText]
+//        if let searchMusicTrackController = storyboard?.instantiateViewControllerWithIdentifier("SearchMusicTrackTableViewController") as? SearchMusicTrackTableViewController {
+//            searchMusicTrackController.currentNavigationController = navigationController
+//            searchMusicTrackController.musicDelegate = self
+//            searchController = SongSearchController(searchResultsController: searchMusicTrackController)
+//        }
+//        searchController.searchBar.sizeToFit()
+//        
+//        searchController.dimsBackgroundDuringPresentation = true
+//        searchController.hidesNavigationBarDuringPresentation = false
+//        searchController.searchBar.delegate = self
+//        searchController.delegate = self
+//        definesPresentationContext = true
+//        
+//        searchController.searchBar.scopeButtonTitles = [] // sets up the frame in the background
+//        searchBarHeight = searchController.searchBar.frame.size.height
+//        collectionView?.addSubview(searchController.searchBar)
+//        searchController.searchBar.placeholder = "search for a song"
+//        
+//        UITextField.my_appearanceWhenContainedIn(UISearchBar).defaultTextAttributes = [NSFontAttributeName: FontKit.searchBarText]
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -122,9 +122,9 @@ extension ChoosePlaylistCollectionViewController {
 }
 
 extension ChoosePlaylistCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: searchBarHeight + 20.0, left: 0.0, bottom: 0.0, right: 0.0)
-    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: searchBarHeight + 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+//    }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if DeviceType.IS_IPHONE_6P {
@@ -148,23 +148,23 @@ extension ChoosePlaylistCollectionViewController: ChooseMusicTrackTableViewContr
     }
 }
 
-extension ChoosePlaylistCollectionViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if let searchString = searchController.searchBar.text {
-            if searchString != "" {
-                let searchVC = searchController.searchResultsController as! SearchMusicTrackTableViewController
-                searchVC.segueBackViewController = segueBackViewController
-                searchVC.searchForMusicWithSearchString(searchString)
-            }
-        }
-    }
-}
+//extension ChoosePlaylistCollectionViewController: UISearchBarDelegate {
+//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+//        if let searchString = searchController.searchBar.text {
+//            if searchString != "" {
+//                let searchVC = searchController.searchResultsController as! SearchMusicTrackTableViewController
+//                searchVC.segueBackViewController = segueBackViewController
+//                searchVC.searchForMusicWithSearchString(searchString)
+//            }
+//        }
+//    }
+//}
 
-extension ChoosePlaylistCollectionViewController: UISearchControllerDelegate {
-    func willPresentSearchController(searchController: UISearchController) {
-        
-    }
-}
+//extension ChoosePlaylistCollectionViewController: UISearchControllerDelegate {
+//    func willPresentSearchController(searchController: UISearchController) {
+//        
+//    }
+//}
 
 class ChoosePlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!

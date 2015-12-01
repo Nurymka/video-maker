@@ -12,8 +12,9 @@ class TrackNameLabel: UILabel {
     private var scrollTimer: NSTimer?
     
     func changeScrollableTextTo(string: String) {
-        text = string + "           "
+        text = string
         if isTruncated() {
+            text = string + "           "
             scrollTimer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "scrollLabel", userInfo: nil, repeats: true)
         } else {
             scrollTimer?.invalidate()
